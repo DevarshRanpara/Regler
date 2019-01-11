@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+
+import 'fancy_button.dart';
 
 void main() {
+  //debugPaintSizeEnabled=true;
   runApp(new MyApp());
 }
 
@@ -32,7 +36,6 @@ class LoginPageState extends State<HomePage>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _iconanimationController = new AnimationController(
@@ -123,26 +126,9 @@ class LoginPageState extends State<HomePage>
           )
         ],
       ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(right: 10.0,bottom: 10.0),
-        child: Container(
-          height: 50,
-          width: 100,
-          child: new FloatingActionButton(
-            shape: RoundedRectangleBorder(borderRadius:
-            BorderRadius.all(Radius.circular(50))
-            ),
-              onPressed: () => {},
-              child:new Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  new Icon(Icons.add),
-                  new Text("Sign Up")
-                ],
-              )
-          ),
-        ),
-      ),
+      floatingActionButton: FancyButton(
+        onPressed: (){},
+      ), 
     );
   }
 }
