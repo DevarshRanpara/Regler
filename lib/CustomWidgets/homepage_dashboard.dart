@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
 import './usage_report_user.dart';
+import '../CustomWidgets/circular_image.dart';
 
 class DashboardTop extends StatefulWidget {
   @override
   _DashboardTopState createState() => _DashboardTopState();
 }
 
+
+
 class _DashboardTopState extends State<DashboardTop> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,27 +21,32 @@ class _DashboardTopState extends State<DashboardTop> {
             padding:
                 const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
           ),
-          Card(
-            child: Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 30.0),
-                ),
-                Row(
-                  children: <Widget>[
-                    Icon(Icons.person),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    Text(
-                      "Welcome Mr. Devarsh",
-                      style:
-                          TextStyle(color: Colors.tealAccent, fontSize: 15.0),
-                    ),
-                  ],
-                )
-              ],
+          InkWell(
+            onTap: (){},
+            child: Card(
+              child: Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10.0, vertical: 30.0),
+                  ),
+                  Row(
+                    children: <Widget>[
+                      CircularImage(
+                        AssetImage("assets/dev.jpeg"),
+                      ),
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      Text(
+                        "Welcome Mr. Devarsh",
+                        style:
+                            TextStyle(color: Colors.tealAccent, fontSize: 15.0),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
           Center(

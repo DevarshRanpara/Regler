@@ -24,7 +24,8 @@ class _HomePageViewState extends State<HomePageView> {
         body: Container(
           margin: EdgeInsets.all(8.0),
           child: ListView(
-            children: <Widget>[DashboardTop()
+            children: <Widget>[
+              DashboardTop()
             ],
           ),
         ),
