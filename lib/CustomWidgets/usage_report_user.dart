@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 class UserReport extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(32.0),
-      child: Card(
+    return Card(
+      child: Container(
+        padding: const EdgeInsets.all(20.0),
         child: Row(
           children: [
             Expanded(
@@ -17,28 +17,40 @@ class UserReport extends StatelessWidget {
                   /*2*/
                   Container(
                     padding: const EdgeInsets.only(bottom: 8.0),
-                    child: Text(
-                      'Oeschinen Lake Campground',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.date_range),
+                        SizedBox(width: 8,),
+                        Text(
+                          '10th, Jan, 2019',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  Text(
-                    'Kandersteg, Switzerland',
-                    style: TextStyle(
-                      color: Colors.grey[500],
-                    ),
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.timelapse),
+                      SizedBox(width: 8.0),
+                      Text(
+                        '10:12 AM to 12:02 PM',
+                        style: TextStyle(
+                          color: Colors.grey[500],
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
             /*3*/
             Icon(
-              Icons.star,
+              Icons.arrow_forward_ios,
               color: Colors.red[500],
             ),
-            Text('41'),
+            Text('110 Min'),
           ],
         ),
       ),

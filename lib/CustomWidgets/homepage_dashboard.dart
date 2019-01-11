@@ -77,6 +77,13 @@ class _DashboardTopState extends State<DashboardTop> {
               style: TextStyle(color: Colors.red, fontSize: 20.0),
             )),
           ),
+          UserReport(),
+          UserReport(),
+          UserReport(),
+          UserReport(),
+          UserReport(),
+          UserReport(),
+          UserReport(),
           UserReport()
         ],
       ),
