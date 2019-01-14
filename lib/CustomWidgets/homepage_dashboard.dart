@@ -3,7 +3,13 @@ import 'package:flutter/material.dart';
 import './usage_report_user.dart';
 import './upper_dashboard.dart';
 
+
 class DashboardTop extends StatefulWidget {
+
+  final Function _gotoProfile;
+
+  DashboardTop(this._gotoProfile);
+
   @override
   _DashboardTopState createState() => _DashboardTopState();
 }
@@ -14,14 +20,16 @@ class _DashboardTopState extends State<DashboardTop> {
   int limit=1000;
   List<Widget> list = new List();
 
-  void _AddItem()
+  
+
+  void _addItem()
   {
     setState(() {
           list.add(UserReport());
         });
   }
 
-  List<Widget> _ListMyWidgets() {
+  List<Widget> _listMyWidgets() {
     
     //list.add(UpperDashboard(uname,limit,AddItem));
     return list;
@@ -34,9 +42,9 @@ class _DashboardTopState extends State<DashboardTop> {
       child: Column(
         children: <Widget>[
           Column(children: <Widget>[
-            UpperDashboard(uname,limit,_AddItem)
+            UpperDashboard(uname,limit,_addItem,widget._gotoProfile)
           ],),
-          Column(children: _ListMyWidgets(),)
+          Column(children: _listMyWidgets(),)
         ],
       ),
     );

@@ -6,9 +6,9 @@ class UpperDashboard extends StatelessWidget {
 
   final String name;
   final int bal;
-  Function addItem;
+  final Function addItem,gotoProfile;
 
-  UpperDashboard(this.name,this.bal,this.addItem);
+  UpperDashboard(this.name,this.bal,this.addItem,this.gotoProfile);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,9 @@ class UpperDashboard extends StatelessWidget {
       child: Column(
         children: <Widget>[
           InkWell(
-              onTap: () {},
+              onTap: () {
+                gotoProfile();
+              },
               child: Card(
                 
                 child: Container(
