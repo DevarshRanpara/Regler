@@ -10,25 +10,34 @@ class DashboardTop extends StatefulWidget {
 
 class _DashboardTopState extends State<DashboardTop> {
 
+  String uname="Devarsh";
+  int limit=1000;
+  List<Widget> list = new List();
+
+  void _AddItem()
+  {
+    setState(() {
+          list.add(UserReport());
+        });
+  }
+
   List<Widget> _ListMyWidgets() {
-    List<Widget> list = new List();
-    list.add(UpperDashboard("Devarsh",1000));
-    list.add(UserReport());
-    list.add(UserReport());
+    
+    //list.add(UpperDashboard(uname,limit,AddItem));
     return list;
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      // child: ListView.builder(
-      //   itemExtent: 20.0,
-      //   itemBuilder: (BuildContext ctx, int index){
-      //     UpperDashboard("Devarsh",1000);
-      //   },
-      //),
+     
       child: Column(
-        children: _ListMyWidgets()
+        children: <Widget>[
+          Column(children: <Widget>[
+            UpperDashboard(uname,limit,_AddItem)
+          ],),
+          Column(children: _ListMyWidgets(),)
+        ],
       ),
     );
   }

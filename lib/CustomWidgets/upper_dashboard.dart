@@ -6,8 +6,9 @@ class UpperDashboard extends StatelessWidget {
 
   final String name;
   final int bal;
+  Function addItem;
 
-  UpperDashboard(this.name,this.bal);
+  UpperDashboard(this.name,this.bal,this.addItem);
 
   @override
   Widget build(BuildContext context) {
@@ -51,13 +52,13 @@ class UpperDashboard extends StatelessWidget {
                   ),
                 ),
               )),
-          // Center(
-          //   child: OutlineButton(
-          //     child: Text("Turn On AC"),
-          //     onPressed: () {},
-          //     shape: const StadiumBorder(),
-          //   ),
-          // ),
+          Center(
+            child: OutlineButton(
+              child: Text("Turn On AC"),
+              onPressed: () {addItem();},
+              shape: const StadiumBorder(),
+            ),
+          ),
           InkWell(
               onTap: () {},
               child: Card(
