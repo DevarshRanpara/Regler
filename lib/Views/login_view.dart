@@ -13,6 +13,7 @@ class LoginPage extends StatelessWidget {
       title: "New App",
       home: new HomePage(),
       theme: new ThemeData(
+          fontFamily: 'Montserrat',
           primarySwatch: Colors.red,
           brightness: Brightness.dark,
           accentColor: Colors.red),

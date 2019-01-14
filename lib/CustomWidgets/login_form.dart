@@ -7,13 +7,13 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Form(
       //key: _formKey,
       child: new Theme(
         data: new ThemeData(
             brightness: Brightness.dark,
             primarySwatch: Colors.teal,
+            fontFamily: 'Montserrat',
             inputDecorationTheme: new InputDecorationTheme(
                 labelStyle: new TextStyle(color: Colors.teal, fontSize: 17.0))),
         child: new Container(
@@ -49,7 +49,6 @@ class LoginForm extends StatelessWidget {
                 },
                 splashColor: Colors.tealAccent,
               ),
-
             ],
           ),
         ),

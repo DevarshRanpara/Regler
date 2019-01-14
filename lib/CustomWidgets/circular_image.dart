@@ -19,7 +19,7 @@ class CircularImage extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               blurRadius: 10,
-              color: Colors.black45,
+              color: Colors.red,
             )
           ]
       ),
