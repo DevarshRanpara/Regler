@@ -107,6 +107,7 @@ class ChangePassword extends StatelessWidget {
                     ],
                   ),
                   onPressed: () {},
+                  splashColor: Colors.tealAccent,
                 ),
               ),
             ],

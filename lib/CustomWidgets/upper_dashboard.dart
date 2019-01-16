@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import '../CustomWidgets/circular_image.dart';
 
 class UpperDashboard extends StatelessWidget {
-
   final String name;
   final int bal;
-  final Function addItem,gotoProfile;
+  final Function addItem, gotoProfile;
 
-  UpperDashboard(this.name,this.bal,this.addItem,this.gotoProfile);
+  UpperDashboard(this.name, this.bal, this.addItem, this.gotoProfile);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,6 @@ class UpperDashboard extends StatelessWidget {
                 gotoProfile();
               },
               child: Card(
-                
                 child: Container(
                   padding: const EdgeInsets.all(20.0),
                   child: Row(
@@ -36,7 +34,7 @@ class UpperDashboard extends StatelessWidget {
                               width: 10.0,
                             ),
                             Text(
-                              "Welcome Mr. "+name,
+                              "Welcome Mr. " + name,
                               style: TextStyle(
                                   color: Colors.tealAccent,
                                   fontSize: 15.0,
@@ -57,14 +55,15 @@ class UpperDashboard extends StatelessWidget {
           Center(
             child: OutlineButton(
               child: Text("Turn On AC"),
-              onPressed: () {addItem();},
+              onPressed: () {
+                addItem();
+              },
               shape: const StadiumBorder(),
             ),
           ),
           InkWell(
               onTap: () {},
               child: Card(
-                
                 child: Container(
                   padding: const EdgeInsets.all(20.0),
                   child: Row(
@@ -73,15 +72,17 @@ class UpperDashboard extends StatelessWidget {
                         /*1*/
                         child: Row(
                           children: <Widget>[
-
                             Column(
                               children: <Widget>[
-                                Text("Remaining Balance ",style: TextStyle(color: Colors.white),),
+                                Text(
+                                  "Remaining Balance ",
+                                  style: TextStyle(color: Colors.white),
+                                ),
                                 SizedBox(
                                   height: 8.0,
                                 ),
                                 Text(
-                                  bal.toString()+" Minutes",
+                                  bal.toString() + " Minutes",
                                   style: TextStyle(
                                       color: Colors.redAccent,
                                       fontSize: 20.0,
@@ -101,17 +102,6 @@ class UpperDashboard extends StatelessWidget {
                   ),
                 ),
               )),
-          Container(
-            margin: const EdgeInsets.all(8.0),
-            child: Center(
-                child: Text(
-              "Your Usage",
-              style: TextStyle(
-                  color: Colors.red,
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.bold),
-            )),
-          ),
         ],
       ),
     );

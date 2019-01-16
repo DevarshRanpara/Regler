@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../CustomWidgets/circular_image.dart';
 import './change_password_view.dart';
+import './complain_view.dart';
+import './login_view.dart';
 
 class UserProfile extends StatelessWidget {
   @override
@@ -85,7 +87,9 @@ class UserProfile extends StatelessWidget {
                 )),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> Complain()));
+                },
                 child: Card(
                     child: Container(
                   padding: const EdgeInsets.all(20.0),
@@ -122,7 +126,9 @@ class UserProfile extends StatelessWidget {
                       ),
                     ],
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> LoginPage()));
+                  },
                 ),
               ),
             ],
