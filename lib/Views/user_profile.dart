@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../CustomWidgets/circular_image.dart';
+import './change_password_view.dart';
 
 class UserProfile extends StatelessWidget {
   @override
@@ -44,26 +45,29 @@ class UserProfile extends StatelessWidget {
                       ],
                     ),
                   ))),
-              InkWell(onTap: (){},
-              child : Card(
-                  child: Container(
-                padding: const EdgeInsets.all(20.0),
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.person,
-                      color: Colors.redAccent,
-                    ),
-                    SizedBox(
-                      width: 15.0,
-                    ),
-                    Text("Change Profile Picture")
-                  ],
-                ),
-              ))),
               InkWell(
-                onTap: (){},
-                              child: Card(
+                  onTap: () {},
+                  child: Card(
+                      child: Container(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.person,
+                          color: Colors.redAccent,
+                        ),
+                        SizedBox(
+                          width: 15.0,
+                        ),
+                        Text("Change Profile Picture")
+                      ],
+                    ),
+                  ))),
+              InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> ChangePassword()));
+                },
+                child: Card(
                     child: Container(
                   padding: const EdgeInsets.all(20.0),
                   child: Row(
@@ -81,14 +85,14 @@ class UserProfile extends StatelessWidget {
                 )),
               ),
               InkWell(
-                onTap: (){},
-                              child: Card(
+                onTap: () {},
+                child: Card(
                     child: Container(
                   padding: const EdgeInsets.all(20.0),
                   child: Row(
                     children: <Widget>[
                       Icon(
-                        Icons.assignment_late,
+                        Icons.error,
                         color: Colors.redAccent,
                       ),
                       SizedBox(
@@ -99,28 +103,28 @@ class UserProfile extends StatelessWidget {
                   ),
                 )),
               ),
-              
               Center(
-            child: RaisedButton(
-              color: Colors.redAccent,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Icon(Icons.arrow_back),
-                  SizedBox(width: 8,),
-                  Text(
-                              "Logout",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w800),
-                            ),
-                ],
+                child: RaisedButton(
+                  color: Colors.redAccent,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Icon(Icons.arrow_back),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        "Logout",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w800),
+                      ),
+                    ],
+                  ),
+                  onPressed: () {},
+                ),
               ),
-              onPressed: () {},
-              
-            ),
-          ),
             ],
           ),
         ),
