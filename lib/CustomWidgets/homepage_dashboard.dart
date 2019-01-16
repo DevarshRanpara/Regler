@@ -4,9 +4,9 @@ import './usage_report_user.dart';
 import './upper_dashboard.dart';
 
 class DashboardTop extends StatefulWidget {
-  final Function _gotoProfile;
+  final Function _gotoProfile,_gotoUsage;
 
-  DashboardTop(this._gotoProfile);
+  DashboardTop(this._gotoProfile,this._gotoUsage);
 
   @override
   _DashboardTopState createState() => _DashboardTopState();
@@ -58,7 +58,7 @@ class _DashboardTopState extends State<DashboardTop> {
         children: <Widget>[
           Column(
             children: <Widget>[
-              UpperDashboard(uname, limit, _addItem, widget._gotoProfile)
+              UpperDashboard(uname, limit, _addItem, widget._gotoProfile,widget._gotoUsage)
             ],
           ),
           Column(

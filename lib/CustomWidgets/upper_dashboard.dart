@@ -5,9 +5,9 @@ import '../CustomWidgets/circular_image.dart';
 class UpperDashboard extends StatelessWidget {
   final String name;
   final int bal;
-  final Function addItem, gotoProfile;
+  final Function addItem, gotoProfile,gotoUsage;
 
-  UpperDashboard(this.name, this.bal, this.addItem, this.gotoProfile);
+  UpperDashboard(this.name, this.bal, this.addItem, this.gotoProfile,this.gotoUsage);
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,9 @@ class UpperDashboard extends StatelessWidget {
             ),
           ),
           InkWell(
-              onTap: () {},
+              onTap: () {
+                gotoUsage();
+              },
               child: Card(
                 child: Container(
                   padding: const EdgeInsets.all(20.0),
