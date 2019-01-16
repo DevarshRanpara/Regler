@@ -109,7 +109,7 @@ class UserProfile extends StatelessWidget {
               ),
               Center(
                 child: RaisedButton(
-                  color: Colors.redAccent,
+                  color: Colors.red,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
@@ -126,9 +126,8 @@ class UserProfile extends StatelessWidget {
                       ),
                     ],
                   ),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> LoginPage()));
-                  },
+                  onPressed: () {},
+                  splashColor: Colors.orangeAccent,
                 ),
               ),
             ],
