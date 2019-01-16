@@ -126,7 +126,9 @@ class UserProfile extends StatelessWidget {
                       ),
                     ],
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    //Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context)=> LoginPage()));
+                  },
                   splashColor: Colors.orangeAccent,
                 ),
               ),

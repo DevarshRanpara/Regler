@@ -55,7 +55,8 @@ class LoginPageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: new Stack(
+      body:
+       new Stack(
         fit: StackFit.expand,
         children: <Widget>[
           new Image(
