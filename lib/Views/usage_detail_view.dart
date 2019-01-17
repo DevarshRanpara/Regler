@@ -61,7 +61,7 @@ class _UsageDetailState extends State<UsageDetail> {
                     ),
                   ))),
               InkWell(
-                  onTap: () {},
+                  onTap: (){},
                   child: Card(
                       child: Container(
                     padding: const EdgeInsets.all(8.0),
@@ -141,22 +141,22 @@ class _UsageDetailState extends State<UsageDetail> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text("Limit",style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.white70,
                               fontSize: 20.0,
-                              fontWeight: FontWeight.w200),),
+                              fontWeight: FontWeight.bold),),
 
                               SizedBox(height: 15.0,),
 
                                Text("Usage",style: TextStyle(
                               color: Colors.red,
                               fontSize: 20.0,
-                              fontWeight: FontWeight.w200),),
+                              fontWeight: FontWeight.bold),),
                                 SizedBox(height: 15.0,),
 
                               Text("Remining",style: TextStyle(
                               color: Colors.teal,
                               fontSize: 20.0,
-                              fontWeight: FontWeight.w200),),
+                              fontWeight: FontWeight.bold),),
 
                               
                               
@@ -167,22 +167,22 @@ class _UsageDetailState extends State<UsageDetail> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                            Text("200 Minutes",style: TextStyle(
-                              color: Colors.white70,
+                              color: Colors.white,
                               fontSize: 20.0,
-                              fontWeight: FontWeight.w200),),
+                              ),),
 
                               SizedBox(height: 15.0,),
 
                               Text("70 Minutes",style: TextStyle(
                               color: Colors.redAccent,
                               fontSize: 20.0,
-                              fontWeight: FontWeight.w200),),
+                              ),),
                               SizedBox(height: 15.0,),
 
                                Text("130 Minutes",style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,
-                              fontWeight: FontWeight.w200),),
+                              ),),
                               
                           ],
                         ),  
