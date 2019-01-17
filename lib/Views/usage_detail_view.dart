@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 class UsageDetail extends StatefulWidget {
+
+  final int limit=200;
+  final int use;
+
+  UsageDetail(this.use);
+  
   @override
   _UsageDetailState createState() => _UsageDetailState();
 }
@@ -12,8 +18,8 @@ class _UsageDetailState extends State<UsageDetail> {
   @override
   Widget build(BuildContext context) {
     var data = [
-      Usage("Remaining", 130, Colors.teal),
-      Usage("Used", 70, Colors.red),
+      Usage("Remaining", widget.limit-widget.use, Colors.teal),
+      Usage("Used", widget.use, Colors.red),
     ];
 
     var series = [
@@ -166,20 +172,20 @@ class _UsageDetailState extends State<UsageDetail> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                           Text("200 Minutes",style: TextStyle(
+                           Text(widget.limit.toString(),style: TextStyle(
                               color: Colors.white,
                               fontSize: 20.0,
                               ),),
 
                               SizedBox(height: 15.0,),
 
-                              Text("70 Minutes",style: TextStyle(
+                              Text(widget.use.toString(),style: TextStyle(
                               color: Colors.redAccent,
                               fontSize: 20.0,
                               ),),
                               SizedBox(height: 15.0,),
 
-                               Text("130 Minutes",style: TextStyle(
+                               Text((widget.limit-widget.use).toString(),style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,
                               ),),

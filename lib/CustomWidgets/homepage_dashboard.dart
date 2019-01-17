@@ -15,9 +15,10 @@ class DashboardTop extends StatefulWidget {
 
 class _DashboardTopState extends State<DashboardTop> {
   String uname = "Devarsh";
-  int limit = 130;
+  int limit = 200;
   List<Widget> list = new List();
   bool flag = true;
+  int usage=0;
 
   var data=[
     UserUsage("10th, Jan, 2019","10:00 AM","10:20 AM",20),
@@ -27,9 +28,12 @@ class _DashboardTopState extends State<DashboardTop> {
 
   @override
     void initState() {
+
         for(var i=0;i<data.length;i++)
         {
           _addItem(data[i]);
+          usage+=data[i].use;
+
         }
       super.initState();
     }
@@ -66,7 +70,7 @@ class _DashboardTopState extends State<DashboardTop> {
         children: <Widget>[
           Column(
             children: <Widget>[
-              UpperDashboard(uname, limit, _addItem, widget._gotoProfile,widget._gotoUsage)
+              UpperDashboard(uname, limit-usage, _addItem, widget._gotoProfile,widget._gotoUsage,usage)
             ],
           ),
           Column(

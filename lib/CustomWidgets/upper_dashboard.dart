@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import '../CustomWidgets/circular_image.dart';
 
 class UpperDashboard extends StatelessWidget {
+  final int use;
   final String name;
   final int bal;
   final Function addItem, gotoProfile,gotoUsage;
 
-  UpperDashboard(this.name, this.bal, this.addItem, this.gotoProfile,this.gotoUsage);
+  UpperDashboard(this.name, this.bal, this.addItem, this.gotoProfile,this.gotoUsage,this.use);
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +64,7 @@ class UpperDashboard extends StatelessWidget {
           // ),
           InkWell(
               onTap: () {
-                gotoUsage();
+                gotoUsage(use);
               },
               child: Card(
                 child: Container(
@@ -87,7 +88,7 @@ class UpperDashboard extends StatelessWidget {
                                 Text(
                                   bal.toString() + " Minutes",
                                   style: TextStyle(
-                                      color: Colors.redAccent,
+                                      color: Colors.tealAccent,
                                       fontSize: 20.0,
                                       fontWeight: FontWeight.bold),
                                 )
