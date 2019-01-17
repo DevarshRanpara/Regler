@@ -172,20 +172,20 @@ class _UsageDetailState extends State<UsageDetail> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                           Text(widget.limit.toString(),style: TextStyle(
+                           Text(widget.limit.toString()+" Minutes",style: TextStyle(
                               color: Colors.white,
                               fontSize: 20.0,
                               ),),
 
                               SizedBox(height: 15.0,),
 
-                              Text(widget.use.toString(),style: TextStyle(
+                              Text(widget.use.toString()+" Minutes",style: TextStyle(
                               color: Colors.redAccent,
                               fontSize: 20.0,
                               ),),
                               SizedBox(height: 15.0,),
 
-                               Text((widget.limit-widget.use).toString(),style: TextStyle(
+                               Text((widget.limit-widget.use).toString()+" Minutes",style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,
                               ),),
@@ -210,4 +210,3 @@ class Usage {
             r: color.red, g: color.green, b: color.blue, a: color.alpha);
 }
 
-//SizedBox(height: 200, width: 200,child: chart,)

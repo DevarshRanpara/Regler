@@ -24,6 +24,7 @@ class _DashboardTopState extends State<DashboardTop> {
     UserUsage("10th, Jan, 2019","10:00 AM","10:20 AM",20),
     UserUsage("12th, Jan, 2019","10:00 AM","10:20 AM",20),
     UserUsage("13th, Jan, 2019","10:00 AM","10:30 AM",30),
+    UserUsage("16th, Jan, 2019","10:00 AM","10:50 AM",50),
   ];
 
   @override
