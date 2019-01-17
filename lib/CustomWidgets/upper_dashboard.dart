@@ -75,6 +75,7 @@ class UpperDashboard extends StatelessWidget {
                         child: Row(
                           children: <Widget>[
                             Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
                                   "Remaining Balance ",

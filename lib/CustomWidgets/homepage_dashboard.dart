@@ -14,7 +14,7 @@ class DashboardTop extends StatefulWidget {
 
 class _DashboardTopState extends State<DashboardTop> {
   String uname = "Devarsh";
-  int limit = 1000;
+  int limit = 130;
   List<Widget> list = new List();
   bool flag = true;
 

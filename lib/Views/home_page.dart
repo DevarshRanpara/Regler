@@ -24,7 +24,7 @@ class _HomePageViewState extends State<HomePageView> {
 
   void _gotoUsage(){
     //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> DonutAutoLabelChart()));
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> UserProfile()));
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> UsageDetail()));
   }
 
   @override
