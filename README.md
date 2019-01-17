@@ -1,6 +1,9 @@
-# flutter_app
+# Regler
+## Device managament system App.
 
-A new Flutter application.
+Mobile side application for managing the device like AC.
+
+This application is created using Flutter.
 
 ## Getting Started
 
