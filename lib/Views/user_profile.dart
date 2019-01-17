@@ -53,55 +53,91 @@ class UserProfile extends StatelessWidget {
                     padding: const EdgeInsets.all(20.0),
                     child: Row(
                       children: <Widget>[
+                        Expanded(
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.person,
+                                color: Colors.redAccent,
+                              ),
+                              SizedBox(
+                                width: 15.0,
+                              ),
+                              Text("Change Profile Picture")
+                            ],
+                          ),
+                        ),
                         Icon(
-                          Icons.person,
-                          color: Colors.redAccent,
+                          Icons.arrow_forward_ios,
+                          color: Colors.red[500],
                         ),
-                        SizedBox(
-                          width: 15.0,
-                        ),
-                        Text("Change Profile Picture")
                       ],
                     ),
                   ))),
               InkWell(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> ChangePassword()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => ChangePassword()));
                 },
                 child: Card(
                     child: Container(
                   padding: const EdgeInsets.all(20.0),
                   child: Row(
                     children: <Widget>[
+                      Expanded(
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.security,
+                              color: Colors.redAccent,
+                            ),
+                            SizedBox(
+                              width: 15.0,
+                            ),
+                            Text("Change Password")
+                          ],
+                        ),
+                      ),
                       Icon(
-                        Icons.security,
-                        color: Colors.redAccent,
+                        Icons.arrow_forward_ios,
+                        color: Colors.red[500],
                       ),
-                      SizedBox(
-                        width: 15.0,
-                      ),
-                      Text("Change Password")
                     ],
                   ),
                 )),
               ),
               InkWell(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> Complain()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => Complain()));
                 },
                 child: Card(
                     child: Container(
                   padding: const EdgeInsets.all(20.0),
                   child: Row(
                     children: <Widget>[
+                      Expanded(
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.error,
+                              color: Colors.redAccent,
+                            ),
+                            SizedBox(
+                              width: 15.0,
+                            ),
+                            Text("Complain")
+                          ],
+                        ),
+                      ),
                       Icon(
-                        Icons.error,
-                        color: Colors.redAccent,
+                        Icons.arrow_forward_ios,
+                        color: Colors.red[500],
                       ),
-                      SizedBox(
-                        width: 15.0,
-                      ),
-                      Text("Complain")
                     ],
                   ),
                 )),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './usage_report_user.dart';
 import './upper_dashboard.dart';
+import '../Classes/user_usage.dart';
 
 class DashboardTop extends StatefulWidget {
   final Function _gotoProfile,_gotoUsage;
@@ -18,16 +19,23 @@ class _DashboardTopState extends State<DashboardTop> {
   List<Widget> list = new List();
   bool flag = true;
 
+  var data=[
+    UserUsage("10th, Jan, 2019","10:00 AM","10:20 AM",20),
+    UserUsage("12th, Jan, 2019","10:00 AM","10:20 AM",20),
+    UserUsage("13th, Jan, 2019","10:00 AM","10:30 AM",30),
+  ];
+
   @override
     void initState() {
-        _addItem();
-        _addItem();
-        _addItem();
+        for(var i=0;i<data.length;i++)
+        {
+          _addItem(data[i]);
+        }
       super.initState();
     }
 
 
-  void _addItem() {
+  void _addItem(UserUsage data) {
     if (flag) {
       list.add(
         Container(
@@ -43,7 +51,7 @@ class _DashboardTopState extends State<DashboardTop> {
       flag = false;
     }
     setState(() {
-      list.add(UserReport());
+      list.add(UserReport(data));
     });
   }
 

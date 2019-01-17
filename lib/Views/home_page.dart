@@ -5,6 +5,9 @@ import '../Views/user_profile.dart';
 import './usage_detail_view.dart';
 
 class MainPage extends StatelessWidget {
+
+  
+
   @override
   Widget build(BuildContext context) {
     return HomePageView();
@@ -12,11 +15,23 @@ class MainPage extends StatelessWidget {
 }
 
 class HomePageView extends StatefulWidget {
+
+  
   @override
   _HomePageViewState createState() => _HomePageViewState();
 }
 
 class _HomePageViewState extends State<HomePageView> {
+
+  final scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  void showSnakebar() {
+    final snackbar = new SnackBar(
+      content: new Text("No Internet Avilable"),
+      backgroundColor: Colors.red,
+    );
+    scaffoldKey.currentState.showSnackBar(snackbar);
+  }
 
   void _gotoProfile(){
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> UserProfile()));
@@ -25,6 +40,7 @@ class _HomePageViewState extends State<HomePageView> {
   void _gotoUsage(){
     //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> DonutAutoLabelChart()));
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> UsageDetail()));
+    //showSnakebar();
   }
 
   @override
@@ -36,7 +52,7 @@ class _HomePageViewState extends State<HomePageView> {
         accentColor: Colors.teal
         ),
       home: Scaffold(
-        
+        key: scaffoldKey,
         body: Container(
           margin: EdgeInsets.all(8.0),
           child: ListView(

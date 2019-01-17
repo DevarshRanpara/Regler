@@ -52,15 +52,15 @@ class UpperDashboard extends StatelessWidget {
                   ),
                 ),
               )),
-          Center(
-            child: OutlineButton(
-              child: Text("Turn On AC"),
-              onPressed: () {
-                addItem();
-              },
-              shape: const StadiumBorder(),
-            ),
-          ),
+          // Center(
+          //   child: OutlineButton(
+          //     child: Text("Turn On AC"),
+          //     onPressed: () {
+          //       addItem();
+          //     },
+          //     shape: const StadiumBorder(),
+          //   ),
+          // ),
           InkWell(
               onTap: () {
                 gotoUsage();

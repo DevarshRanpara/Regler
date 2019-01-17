@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
+import '../Classes/user_usage.dart';
+
 
 class UserReport extends StatelessWidget {
 
-  
+  final UserUsage data;
+
+  UserReport(this.data);
 
   @override
   Widget build(BuildContext context) {
+
+    
     return InkWell(
       onTap: (){},
       child: Card(
@@ -27,7 +33,7 @@ class UserReport extends StatelessWidget {
                           Icon(Icons.date_range),
                           SizedBox(width: 8,),
                           Text(
-                            '10th, Jan, 2019',
+                            data.date,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
@@ -40,7 +46,7 @@ class UserReport extends StatelessWidget {
                         Icon(Icons.timelapse),
                         SizedBox(width: 8.0),
                         Text(
-                          '10:12 AM to 12:02 PM',
+                          data.startingTime+" to "+data.endingTime,
                           style: TextStyle(
                             color: Colors.grey[500],
                           ),
@@ -55,7 +61,7 @@ class UserReport extends StatelessWidget {
                 Icons.arrow_forward_ios,
                 color: Colors.red[500],
               ),
-              Text('110 Min'),
+              Text(data.use.toString()+" Min"),
 
             ],
           ),
