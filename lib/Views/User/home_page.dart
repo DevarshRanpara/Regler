@@ -6,10 +6,7 @@ import 'package:flutter_app/CustomWidgets/homepage_dashboard.dart';
 import 'package:flutter_app/Views/User/user_profile.dart';
 import './usage_detail_view.dart';
 
-class MainPage extends StatelessWidget {
-
-  
-
+class UserMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HomePageView();
@@ -17,14 +14,11 @@ class MainPage extends StatelessWidget {
 }
 
 class HomePageView extends StatefulWidget {
-
-  
   @override
   _HomePageViewState createState() => _HomePageViewState();
 }
 
 class _HomePageViewState extends State<HomePageView> {
-
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
   void showSnakebar() {
@@ -35,13 +29,17 @@ class _HomePageViewState extends State<HomePageView> {
     scaffoldKey.currentState.showSnackBar(snackbar);
   }
 
-  void _gotoProfile(){
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> UserProfile()));
+  void _gotoProfile() {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (BuildContext context) => UserProfile()));
   }
 
-  void _gotoUsage(int usage){
+  void _gotoUsage(int usage) {
     //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> DonutAutoLabelChart()));
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> UsageDetail(usage)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => UsageDetail(usage)));
     //showSnakebar();
   }
 
@@ -49,10 +47,9 @@ class _HomePageViewState extends State<HomePageView> {
   Widget build(BuildContext context) {
     return new MaterialApp(
       theme: ThemeData(
-        brightness: Brightness.dark, 
-        fontFamily: 'Montserrat',
-        accentColor: Colors.teal
-        ),
+          brightness: Brightness.dark,
+          fontFamily: 'Montserrat',
+          accentColor: Colors.teal),
       home: Scaffold(
         key: scaffoldKey,
         body: Container(
@@ -63,7 +60,7 @@ class _HomePageViewState extends State<HomePageView> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
               ),
-              DashboardTop(_gotoProfile,_gotoUsage)
+              DashboardTop(_gotoProfile, _gotoUsage)
             ],
           ),
         ),

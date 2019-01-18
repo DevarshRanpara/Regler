@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_app/CustomWidgets/fancy_button.dart';
-//import 'package:flutter_app/CustomWidgets/login_form.dart';
-//import 'home_page.dart';
 import './User/home_page.dart';
+import './Admin/admin_home_view.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -33,7 +32,7 @@ class LoginPageState extends State<HomePage>
   final scaffoldKey = new GlobalKey<ScaffoldState>();
   final formKey = new GlobalKey<FormState>();
 
-  //String _userId;
+  String _userId;
   //String _password;
 
   //final _formKey = GlobalKey<FormState>();
@@ -63,8 +62,19 @@ class LoginPageState extends State<HomePage>
   }
 
   void _gotoHome() {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => MainPage()));
+    if(_userId=='user')
+    {
+      Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => UserMainPage()));
+    }
+    else if (_userId=='director') 
+    {
+      
+    }
+    else if (_userId=='admin') 
+    {
+      Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => AdminHomeView()));
+    }
+    
   }
 
   @override
@@ -116,7 +126,7 @@ class LoginPageState extends State<HomePage>
                               }
                             },
 
-                            //onSaved: (val) => _userId = val,
+                            onSaved: (val) => _userId = val,
                             keyboardType: TextInputType.emailAddress,
                           ),
                           TextFormField(
