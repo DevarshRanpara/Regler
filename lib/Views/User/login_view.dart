@@ -32,8 +32,8 @@ class LoginPageState extends State<HomePage>
   final scaffoldKey = new GlobalKey<ScaffoldState>();
   final formKey = new GlobalKey<FormState>();
 
-  String _userId;
-  String _password;
+  //String _userId;
+  //String _password;
 
   //final _formKey = GlobalKey<FormState>();
 
@@ -62,7 +62,6 @@ class LoginPageState extends State<HomePage>
   }
 
   void _gotoHome() {
-    
     Navigator.push(context,
         MaterialPageRoute(builder: (BuildContext context) => MainPage()));
   }
@@ -109,27 +108,27 @@ class LoginPageState extends State<HomePage>
                                 labelText: "Enter Your User ID"),
                             validator: (val) {
                               //val.length > 12 ? 'Invalid UserId' : null,
-                              if(val.length > 12 || val.isEmpty){
+                              if (val.length > 12 || val.isEmpty) {
                                 return 'Invalid UserId';
-                              }
-                              else{
+                              } else {
                                 return null;
                               }
                             },
-                                
-                            onSaved: (val) => _userId = val,
+
+                            //onSaved: (val) => _userId = val,
                             keyboardType: TextInputType.emailAddress,
                           ),
                           TextFormField(
                             decoration: new InputDecoration(
                                 labelText: "Enter Your Password"),
-                                validator: (val) =>
-                        val.length < 8  ? 'Password too short' : null,
-                    onSaved: (val) => _password = val,
+                            validator: (val) =>
+                                val.length < 8 ? 'Password too short' : null,
+                            //onSaved: (val) => _password = val,
                             keyboardType: TextInputType.text,
                             obscureText: true,
                           ),
-                          new Padding(padding: const EdgeInsets.only(top: 20.0)),
+                          new Padding(
+                              padding: const EdgeInsets.only(top: 20.0)),
                           new MaterialButton(
                             height: 40.0,
                             minWidth: 200.0,
@@ -148,7 +147,6 @@ class LoginPageState extends State<HomePage>
                   ),
                 ),
               )
-              
             ],
           )
         ],

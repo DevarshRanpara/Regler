@@ -1,23 +1,41 @@
 import 'package:flutter/material.dart';
 
-import '../CustomWidgets/circular_image.dart';
+import 'package:flutter_app/CustomWidgets/circular_image.dart';
 import './change_password_view.dart';
 import './complain_view.dart';
 
-class UserProfile extends StatelessWidget {
+class UserProfile extends StatefulWidget {
+  @override
+  _UserProfileState createState() => _UserProfileState();
+}
+
+class _UserProfileState extends State<UserProfile> {
+
+  final scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  void showSnakebar() {
+    final snackbar = new SnackBar(
+      content: new Text("User Will logout here"),
+      backgroundColor: Colors.red,
+    );
+    scaffoldKey.currentState.showSnackBar(snackbar);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       theme: ThemeData(
           brightness: Brightness.dark,
           fontFamily: 'Montserrat',
           accentColor: Colors.teal),
       home: Scaffold(
+        key: scaffoldKey,
         body: Container(
           margin: EdgeInsets.all(8.0),
           child: ListView(
             children: <Widget>[
               Padding(
+
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
               ),
@@ -163,6 +181,7 @@ class UserProfile extends StatelessWidget {
                   ),
                   onPressed: () {
                     //Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context)=> LoginPage()));
+                    showSnakebar();
                   },
                   splashColor: Colors.orangeAccent,
                 ),
@@ -174,3 +193,10 @@ class UserProfile extends StatelessWidget {
     );
   }
 }
+
+// class UserProfile1 extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return new 
+//   }
+// }

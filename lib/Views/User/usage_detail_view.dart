@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 class UsageDetail extends StatefulWidget {
-
-  final int limit=200;
+  final int limit = 200;
   final int use;
 
   UsageDetail(this.use);
-  
+
   @override
   _UsageDetailState createState() => _UsageDetailState();
 }
@@ -18,7 +17,7 @@ class _UsageDetailState extends State<UsageDetail> {
   @override
   Widget build(BuildContext context) {
     var data = [
-      Usage("Remaining", widget.limit-widget.use, Colors.teal),
+      Usage("Remaining", widget.limit - widget.use, Colors.teal),
       Usage("Used", widget.use, Colors.red),
     ];
 
@@ -52,22 +51,25 @@ class _UsageDetailState extends State<UsageDetail> {
                     child: Column(
                       children: <Widget>[
                         Icon(
-                        Icons.notifications,
-                        color: Colors.redAccent,
-                        size: 35.0,
-                      ),
-                      SizedBox(
-                        height: 15.0,
-                      ),
-                      Text("Usage Report",style: TextStyle(
+                          Icons.notifications,
+                          color: Colors.redAccent,
+                          size: 35.0,
+                        ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Text(
+                          "Usage Report",
+                          style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,
-                              fontWeight: FontWeight.w200),)
+                              fontWeight: FontWeight.w200),
+                        )
                       ],
                     ),
                   ))),
               InkWell(
-                  onTap: (){},
+                  onTap: () {},
                   child: Card(
                       child: Container(
                     padding: const EdgeInsets.all(8.0),
@@ -106,9 +108,7 @@ class _UsageDetailState extends State<UsageDetail> {
                               height: 15,
                             ),
                             Row(
-                              
                               children: <Widget>[
-                                
                                 SizedBox(
                                   width: sizeBoxSize,
                                   height: sizeBoxSize,
@@ -120,7 +120,6 @@ class _UsageDetailState extends State<UsageDetail> {
                                 SizedBox(
                                   width: 5.0,
                                 ),
-                                
                                 Text(
                                   "Used",
                                   style: TextStyle(
@@ -133,10 +132,8 @@ class _UsageDetailState extends State<UsageDetail> {
                         )
                       ],
                     ),
-                  )
-                  )
-                  ),
-                  InkWell(
+                  ))),
+              InkWell(
                   onTap: () {},
                   child: Card(
                       child: Container(
@@ -146,52 +143,71 @@ class _UsageDetailState extends State<UsageDetail> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text("Limit",style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold),),
-
-                              SizedBox(height: 15.0,),
-
-                               Text("Usage",style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold),),
-                                SizedBox(height: 15.0,),
-
-                              Text("Remining",style: TextStyle(
-                              color: Colors.teal,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold),),
-
-                              
-                              
+                            Text(
+                              "Limit",
+                              style: TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 15.0,
+                            ),
+                            Text(
+                              "Usage",
+                              style: TextStyle(
+                                  color: Colors.red,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 15.0,
+                            ),
+                            Text(
+                              "Remining",
+                              style: TextStyle(
+                                  color: Colors.teal,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ],
                         ),
-                        SizedBox(width: 20.0,),
+                        SizedBox(
+                          width: 20.0,
+                        ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                           Text(widget.limit.toString()+" Minutes",style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20.0,
-                              ),),
-
-                              SizedBox(height: 15.0,),
-
-                              Text(widget.use.toString()+" Minutes",style: TextStyle(
-                              color: Colors.redAccent,
-                              fontSize: 20.0,
-                              ),),
-                              SizedBox(height: 15.0,),
-
-                               Text((widget.limit-widget.use).toString()+" Minutes",style: TextStyle(
-                              color: Colors.tealAccent,
-                              fontSize: 20.0,
-                              ),),
-                              
+                            Text(
+                              widget.limit.toString() + " Minutes",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20.0,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 15.0,
+                            ),
+                            Text(
+                              widget.use.toString() + " Minutes",
+                              style: TextStyle(
+                                color: Colors.redAccent,
+                                fontSize: 20.0,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 15.0,
+                            ),
+                            Text(
+                              (widget.limit - widget.use).toString() +
+                                  " Minutes",
+                              style: TextStyle(
+                                color: Colors.tealAccent,
+                                fontSize: 20.0,
+                              ),
+                            ),
                           ],
-                        ),  
+                        ),
                       ],
                     ),
                   ))),
@@ -209,4 +225,3 @@ class Usage {
       : this.color = new charts.Color(
             r: color.red, g: color.green, b: color.blue, a: color.alpha);
 }
-

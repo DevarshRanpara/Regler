@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../CustomWidgets/expantion_tile.dart';
+import 'package:flutter_app/CustomWidgets/expantion_tile.dart';
 
 class Complain extends StatefulWidget {
   @override

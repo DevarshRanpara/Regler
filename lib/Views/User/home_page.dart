@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../CustomWidgets/homepage_dashboard.dart';
-import '../Views/user_profile.dart';
+//import '../CustomWidgets/homepage_dashboard.dart';
+import 'package:flutter_app/CustomWidgets/homepage_dashboard.dart';
+//import '../Views/user_profile.dart';
+import 'package:flutter_app/Views/User/user_profile.dart';
 import './usage_detail_view.dart';
 
 class MainPage extends StatelessWidget {
