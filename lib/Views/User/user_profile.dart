@@ -10,7 +10,6 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
   void showSnakebar() {
@@ -35,7 +34,6 @@ class _UserProfileState extends State<UserProfile> {
           child: ListView(
             children: <Widget>[
               Padding(
-
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
               ),
@@ -197,6 +195,6 @@ class _UserProfileState extends State<UserProfile> {
 // class UserProfile1 extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
-//     return new 
+//     return new
 //   }
 // }

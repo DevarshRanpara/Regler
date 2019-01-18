@@ -6,9 +6,10 @@ class UpperDashboard extends StatelessWidget {
   final int use;
   final String name;
   final int bal;
-  final Function addItem, gotoProfile,gotoUsage;
+  final Function addItem, gotoProfile, gotoUsage;
 
-  UpperDashboard(this.name, this.bal, this.addItem, this.gotoProfile,this.gotoUsage,this.use);
+  UpperDashboard(this.name, this.bal, this.addItem, this.gotoProfile,
+      this.gotoUsage, this.use);
 
   @override
   Widget build(BuildContext context) {
@@ -106,8 +107,6 @@ class UpperDashboard extends StatelessWidget {
                   ),
                 ),
               )),
-          
-
         ],
       ),
     );

@@ -21,8 +21,7 @@ class CircularImage extends StatelessWidget {
               blurRadius: 10,
               color: Colors.red,
             )
-          ]
-      ),
+          ]),
     );
   }
 }

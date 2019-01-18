@@ -62,19 +62,16 @@ class LoginPageState extends State<HomePage>
   }
 
   void _gotoHome() {
-    if(_userId=='user')
-    {
-      Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => UserMainPage()));
+    if (_userId == 'user') {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (BuildContext context) => UserMainPage()));
+    } else if (_userId == 'director') {
+    } else if (_userId == 'admin') {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => AdminHomeView()));
     }
-    else if (_userId=='director') 
-    {
-      
-    }
-    else if (_userId=='admin') 
-    {
-      Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => AdminHomeView()));
-    }
-    
   }
 
   @override
@@ -125,7 +122,6 @@ class LoginPageState extends State<HomePage>
                                 return null;
                               }
                             },
-
                             onSaved: (val) => _userId = val,
                             keyboardType: TextInputType.emailAddress,
                           ),

@@ -25,17 +25,20 @@ class ChangePassword extends StatelessWidget {
                     child: Column(
                       children: <Widget>[
                         Icon(
-                        Icons.security,
-                        color: Colors.redAccent,
-                        size: 35.0,
-                      ),
-                      SizedBox(
-                        height: 15.0,
-                      ),
-                      Text("Change Password",style: TextStyle(
+                          Icons.security,
+                          color: Colors.redAccent,
+                          size: 35.0,
+                        ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Text(
+                          "Change Password",
+                          style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,
-                              fontWeight: FontWeight.w200),)
+                              fontWeight: FontWeight.w200),
+                        )
                       ],
                     ),
                   ))),
@@ -43,51 +46,54 @@ class ChangePassword extends StatelessWidget {
                   onTap: () {},
                   child: Card(
                       child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0, vertical: 2.0),
                     child: Column(
                       children: <Widget>[
                         TextField(
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Enter old Password'),
-                              obscureText: true,
+                          obscureText: true,
                         )
                       ],
                     ),
                   ))),
-                  InkWell(
+              InkWell(
                   onTap: () {},
                   child: Card(
                       child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0, vertical: 2.0),
                     child: Column(
                       children: <Widget>[
                         TextField(
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Enter new Password'),
-                              obscureText: true,
+                          obscureText: true,
                         )
                       ],
                     ),
                   ))),
-                  InkWell(
+              InkWell(
                   onTap: () {},
                   child: Card(
                       child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0, vertical: 2.0),
                     child: Column(
                       children: <Widget>[
                         TextField(
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Confirm new Password'),
-                              obscureText: true,
+                          obscureText: true,
                         )
                       ],
                     ),
                   ))),
-                  Center(
+              Center(
                 child: RaisedButton(
                   color: Colors.teal,
                   child: Row(

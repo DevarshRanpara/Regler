@@ -9,13 +9,11 @@ class _AdminHomeViewState extends State<AdminHomeView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-       theme: ThemeData(
+      theme: ThemeData(
           brightness: Brightness.dark,
           fontFamily: 'Montserrat',
           accentColor: Colors.teal),
-        home: Scaffold(
-          
-        ),
+      home: Scaffold(),
     );
   }
 }

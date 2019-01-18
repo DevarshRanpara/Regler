@@ -107,7 +107,7 @@ class _ComplainState extends State<Complain> {
                       ],
                     ),
                   ))),
-                  Center(
+              Center(
                 child: RaisedButton(
                   color: Colors.teal,
                   child: Row(
