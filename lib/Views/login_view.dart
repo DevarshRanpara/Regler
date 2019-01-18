@@ -50,6 +50,8 @@ class LoginPageState extends State<HomePage>
     _iconAniamation.addListener(() => this.setState(() {}));
 
     _iconanimationController.forward();
+
+    
   }
 
   void _submit() {
