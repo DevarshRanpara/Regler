@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/CustomWidgets/homepage_dashboard.dart';
 import 'package:flutter_app/Views/Profile/profile.dart';
 import './usage_detail_view.dart';
+import 'package:flutter_app/Classes/user_data.dart';
+import 'package:flutter_app/Models/user_home_model.dart';
 
 class UserMainPage extends StatelessWidget {
   @override
@@ -18,6 +20,21 @@ class HomePageView extends StatefulWidget {
 
 class _HomePageViewState extends State<HomePageView> {
   final scaffoldKey = new GlobalKey<ScaffoldState>();
+  UserData data;
+  UserHomeModel model;
+
+  @override
+    void initState() {
+      setData();
+      super.initState();
+    }
+
+    void setData()
+    {
+      model=UserHomeModel(_gotoProfile, _gotoUsage);
+
+      data=model.getData();
+    }
 
   void showSnakebar() {
     final snackbar = new SnackBar(
@@ -29,15 +46,15 @@ class _HomePageViewState extends State<HomePageView> {
 
   void _gotoProfile() {
     Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => Profile()));
+        MaterialPageRoute(builder: (BuildContext context) => Profile(data.name)));
   }
 
-  void _gotoUsage(int usage,int limit) {
+  void _gotoUsage() {
     //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> DonutAutoLabelChart()));
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (BuildContext context) => UsageDetail(usage,limit)));
+            builder: (BuildContext context) => UsageDetail(data.used,data.limit)));
     //showSnakebar();
   }
 
@@ -58,7 +75,7 @@ class _HomePageViewState extends State<HomePageView> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
               ),
-              DashboardTop(_gotoProfile, _gotoUsage)
+              DashboardTop(data)
             ],
           ),
         ),

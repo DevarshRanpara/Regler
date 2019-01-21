@@ -22,7 +22,7 @@ class _DirHomeViewState extends State<DirHomeView> {
             child: Text("Profile"),
             onPressed: (){
               Navigator.push(context,
-          MaterialPageRoute(builder: (BuildContext context) => Profile()));
+          MaterialPageRoute(builder: (BuildContext context) => Profile("Director")));
             },
           ),
         )

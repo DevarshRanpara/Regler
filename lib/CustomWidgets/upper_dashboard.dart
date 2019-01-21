@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../CustomWidgets/circular_image.dart';
+import 'package:flutter_app/Classes/user_data.dart';
 
 class UpperDashboard extends StatelessWidget {
-  final int use;
-  final String name;
-  final int bal;
-
-  final Function addItem, gotoProfile, gotoUsage;
-
-  UpperDashboard(this.name, this.bal, this.addItem, this.gotoProfile,
-      this.gotoUsage, this.use);
+  final UserData data;
+  UpperDashboard(this.data);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +14,7 @@ class UpperDashboard extends StatelessWidget {
         children: <Widget>[
           InkWell(
               onTap: () {
-                gotoProfile();
+                data.gotoProfile();
               },
               child: Card(
                 child: Container(
@@ -37,7 +32,7 @@ class UpperDashboard extends StatelessWidget {
                               width: 10.0,
                             ),
                             Text(
-                              "Welcome Mr. " + name,
+                              "Welcome Mr. " + data.name,
                               style: TextStyle(
                                   color: Colors.tealAccent,
                                   fontSize: 15.0,
@@ -66,7 +61,7 @@ class UpperDashboard extends StatelessWidget {
           // ),
           InkWell(
               onTap: () {
-                gotoUsage(use,use+bal);
+                data.gotoUsage();
               },
               child: Card(
                 child: Container(
@@ -88,7 +83,7 @@ class UpperDashboard extends StatelessWidget {
                                   height: 8.0,
                                 ),
                                 Text(
-                                  bal.toString() + " Minutes",
+                                  data.bal.toString() + " Minutes",
                                   style: TextStyle(
                                       color: Colors.tealAccent,
                                       fontSize: 20.0,

@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import './usage_report_user.dart';
 import './upper_dashboard.dart';
 import '../Classes/user_usage.dart';
+import '../Classes/user_data.dart';
 
 class DashboardTop extends StatefulWidget {
-  final Function _gotoProfile, _gotoUsage;
+  final UserData data;
 
-  DashboardTop(this._gotoProfile, this._gotoUsage);
+  DashboardTop(this.data);
 
   @override
   _DashboardTopState createState() => _DashboardTopState();
@@ -20,18 +21,10 @@ class _DashboardTopState extends State<DashboardTop> {
   bool flag = true;
   int usage = 0;
 
-  var data = [
-    UserUsage("10th, Jan, 2019", "10:00 AM", "10:20 AM", 20),
-    UserUsage("12th, Jan, 2019", "10:00 AM", "10:20 AM", 20),
-    UserUsage("13th, Jan, 2019", "10:00 AM", "10:30 AM", 30),
-    UserUsage("16th, Jan, 2019", "10:00 AM", "10:50 AM", 50),
-  ];
-
   @override
   void initState() {
-    for (var i = 0; i < data.length; i++) {
-      _addItem(data[i]);
-      usage += data[i].use;
+    for (var i = 0; i < widget.data.useData.length; i++) {
+      _addItem(widget.data.useData[i]);
     }
     super.initState();
   }
@@ -67,8 +60,7 @@ class _DashboardTopState extends State<DashboardTop> {
         children: <Widget>[
           Column(
             children: <Widget>[
-              UpperDashboard(uname, limit - usage, _addItem,
-                  widget._gotoProfile, widget._gotoUsage, usage)
+              UpperDashboard(widget.data)
             ],
           ),
           Column(

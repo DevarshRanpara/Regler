@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_app/CustomWidgets/circular_image.dart';
-import 'package:flutter_app/Classes/preferances.dart';
 import './change_password_view.dart';
 import './complain_view.dart';
 
 class Profile extends StatefulWidget {
+
+  final String name;
+
+  Profile(this.name);
+
   @override
   _UserProfileState createState() => _UserProfileState();
 }
@@ -55,7 +59,7 @@ class _UserProfileState extends State<Profile> {
                           height: 15.0,
                         ),
                         Text(
-                          Preferances.name,
+                          widget.name,
                           style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,

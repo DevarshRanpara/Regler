@@ -21,7 +21,7 @@ class _AdminHomeViewState extends State<AdminHomeView> {
             child: Text("Profile"),
             onPressed: (){
               Navigator.push(context,
-          MaterialPageRoute(builder: (BuildContext context) => Profile()));
+          MaterialPageRoute(builder: (BuildContext context) => Profile("Admin")));
             },
           ),
         )
