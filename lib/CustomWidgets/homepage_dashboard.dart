@@ -15,12 +15,9 @@ class DashboardTop extends StatefulWidget {
 }
 
 class _DashboardTopState extends State<DashboardTop> {
-  String uname = "Devarsh";
-  int limit=300;
   List<Widget> list = new List();
   bool flag = true;
-  int usage = 0;
-
+  
   @override
   void initState() {
     for (var i = 0; i < widget.data.useData.length; i++) {
