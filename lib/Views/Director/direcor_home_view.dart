@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_app/Views/Profile/profile.dart';
 
-class AdminHomeView extends StatefulWidget {
+class DirHomeView extends StatefulWidget {
   @override
-  _AdminHomeViewState createState() => _AdminHomeViewState();
+  _DirHomeViewState createState() => _DirHomeViewState();
 }
 
-class _AdminHomeViewState extends State<AdminHomeView> {
+class _DirHomeViewState extends State<DirHomeView> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return 
+      MaterialApp(
       theme: ThemeData(
           brightness: Brightness.dark,
           fontFamily: 'Montserrat',
@@ -27,5 +28,6 @@ class _AdminHomeViewState extends State<AdminHomeView> {
         )
       ),
     );
+    
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/CustomWidgets/fancy_button.dart';
 import './User/home_page.dart';
 import './Admin/admin_home_view.dart';
+import './Director/direcor_home_view.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -33,9 +34,6 @@ class LoginPageState extends State<HomePage>
   final formKey = new GlobalKey<FormState>();
 
   String _userId;
-  //String _password;
-
-  //final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -50,8 +48,6 @@ class LoginPageState extends State<HomePage>
     _iconAniamation.addListener(() => this.setState(() {}));
 
     _iconanimationController.forward();
-
-    
   }
 
   void _submit() {
@@ -68,6 +64,8 @@ class LoginPageState extends State<HomePage>
       Navigator.push(context,
           MaterialPageRoute(builder: (BuildContext context) => UserMainPage()));
     } else if (_userId == 'director') {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (BuildContext context) => DirHomeView()));
     } else if (_userId == 'admin') {
       Navigator.push(
           context,
@@ -117,7 +115,6 @@ class LoginPageState extends State<HomePage>
                             decoration: new InputDecoration(
                                 labelText: "Enter Your User ID"),
                             validator: (val) {
-                              //val.length > 12 ? 'Invalid UserId' : null,
                               if (val.length > 12 || val.isEmpty) {
                                 return 'Invalid UserId';
                               } else {
@@ -132,7 +129,6 @@ class LoginPageState extends State<HomePage>
                                 labelText: "Enter Your Password"),
                             validator: (val) =>
                                 val.length < 8 ? 'Password too short' : null,
-                            //onSaved: (val) => _password = val,
                             keyboardType: TextInputType.text,
                             obscureText: true,
                           ),
@@ -145,7 +141,6 @@ class LoginPageState extends State<HomePage>
                             textColor: Colors.white,
                             child: new Text("Login"),
                             onPressed: () {
-                              //_gotoHome();
                               _submit();
                             },
                             splashColor: Colors.tealAccent,

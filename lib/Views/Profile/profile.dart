@@ -4,12 +4,12 @@ import 'package:flutter_app/CustomWidgets/circular_image.dart';
 import './change_password_view.dart';
 import './complain_view.dart';
 
-class UserProfile extends StatefulWidget {
+class Profile extends StatefulWidget {
   @override
   _UserProfileState createState() => _UserProfileState();
 }
 
-class _UserProfileState extends State<UserProfile> {
+class _UserProfileState extends State<Profile> {
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
   void showSnakebar() {

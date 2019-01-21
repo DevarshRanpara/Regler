@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 //import '../CustomWidgets/homepage_dashboard.dart';
 import 'package:flutter_app/CustomWidgets/homepage_dashboard.dart';
 //import '../Views/user_profile.dart';
-import 'package:flutter_app/Views/User/user_profile.dart';
+import 'package:flutter_app/Views/Profile/profile.dart';
 import './usage_detail_view.dart';
 
 class UserMainPage extends StatelessWidget {
@@ -31,7 +31,7 @@ class _HomePageViewState extends State<HomePageView> {
 
   void _gotoProfile() {
     Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => UserProfile()));
+        MaterialPageRoute(builder: (BuildContext context) => Profile()));
   }
 
   void _gotoUsage(int usage) {
