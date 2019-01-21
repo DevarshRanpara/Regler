@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-//import '../CustomWidgets/homepage_dashboard.dart';
 import 'package:flutter_app/CustomWidgets/homepage_dashboard.dart';
-//import '../Views/user_profile.dart';
 import 'package:flutter_app/Views/Profile/profile.dart';
 import './usage_detail_view.dart';
 
@@ -34,12 +32,12 @@ class _HomePageViewState extends State<HomePageView> {
         MaterialPageRoute(builder: (BuildContext context) => Profile()));
   }
 
-  void _gotoUsage(int usage) {
+  void _gotoUsage(int usage,int limit) {
     //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> DonutAutoLabelChart()));
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (BuildContext context) => UsageDetail(usage)));
+            builder: (BuildContext context) => UsageDetail(usage,limit)));
     //showSnakebar();
   }
 

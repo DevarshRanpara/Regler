@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 class UsageDetail extends StatefulWidget {
-  final int limit = 200;
+  final int limit;
   final int use;
 
-  UsageDetail(this.use);
+  UsageDetail(this.use,this.limit);
 
   @override
   _UsageDetailState createState() => _UsageDetailState();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_app/CustomWidgets/circular_image.dart';
+import 'package:flutter_app/Classes/preferances.dart';
 import './change_password_view.dart';
 import './complain_view.dart';
 
@@ -18,6 +19,7 @@ class _UserProfileState extends State<Profile> {
       backgroundColor: Colors.red,
     );
     scaffoldKey.currentState.showSnackBar(snackbar);
+    
   }
 
   @override
@@ -53,7 +55,7 @@ class _UserProfileState extends State<Profile> {
                           height: 15.0,
                         ),
                         Text(
-                          "Devarsh",
+                          Preferances.name,
                           style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,

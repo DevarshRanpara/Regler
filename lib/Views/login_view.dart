@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_app/CustomWidgets/fancy_button.dart';
+import 'package:flutter_app/Models/login_model.dart';
 import './User/home_page.dart';
 import './Admin/admin_home_view.dart';
 import './Director/direcor_home_view.dart';
@@ -34,6 +35,7 @@ class LoginPageState extends State<HomePage>
   final formKey = new GlobalKey<FormState>();
 
   String _userId;
+  String _password;
 
   @override
   void initState() {
@@ -50,27 +52,36 @@ class LoginPageState extends State<HomePage>
     _iconanimationController.forward();
   }
 
+
+
   void _submit() {
     final form = formKey.currentState;
 
     if (form.validate()) {
       form.save();
-      _gotoHome();
+      var loginModel = LoginModel(_userId, _password);
+      _gotoHome(loginModel.auth());
     }
   }
 
-  void _gotoHome() {
-    if (_userId == 'user') {
+  void _gotoHome(String role) {
+    if (role == 'user') {
       Navigator.push(context,
           MaterialPageRoute(builder: (BuildContext context) => UserMainPage()));
-    } else if (_userId == 'director') {
+    } else if (role == 'director') {
       Navigator.push(context,
           MaterialPageRoute(builder: (BuildContext context) => DirHomeView()));
-    } else if (_userId == 'admin') {
+    } else if (role == 'admin') {
       Navigator.push(
           context,
           MaterialPageRoute(
               builder: (BuildContext context) => AdminHomeView()));
+    } else {
+      final snackbar = new SnackBar(
+        content: new Text("Invalid User ID or password"),
+        backgroundColor: Colors.red,
+      );
+      scaffoldKey.currentState.showSnackBar(snackbar);
     }
   }
 
@@ -129,6 +140,7 @@ class LoginPageState extends State<HomePage>
                                 labelText: "Enter Your Password"),
                             validator: (val) =>
                                 val.length < 8 ? 'Password too short' : null,
+                            onSaved: (val) => _password = val,
                             keyboardType: TextInputType.text,
                             obscureText: true,
                           ),

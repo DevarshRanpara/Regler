@@ -6,6 +6,7 @@ class UpperDashboard extends StatelessWidget {
   final int use;
   final String name;
   final int bal;
+
   final Function addItem, gotoProfile, gotoUsage;
 
   UpperDashboard(this.name, this.bal, this.addItem, this.gotoProfile,
@@ -65,7 +66,7 @@ class UpperDashboard extends StatelessWidget {
           // ),
           InkWell(
               onTap: () {
-                gotoUsage(use);
+                gotoUsage(use,use+bal);
               },
               child: Card(
                 child: Container(
