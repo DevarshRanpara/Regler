@@ -22,7 +22,7 @@ class UserHomeModel
       usage += use[i].use;
     }
     data=UserData(name: "Devarsh",useData: use,limit: limit,used: usage,bal:limit-usage,gotoProfile: gotoProfile,
-    gotoUsage: gotoUsage
+    gotoUsage: gotoUsage,role: "user"
      );
   }
 

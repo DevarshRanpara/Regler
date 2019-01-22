@@ -46,7 +46,7 @@ class _HomePageViewState extends State<HomePageView> {
 
   void _gotoProfile() {
     Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => Profile(data.name)));
+        MaterialPageRoute(builder: (BuildContext context) => Profile(data.name,data.role)));
   }
 
   void _gotoUsage() {

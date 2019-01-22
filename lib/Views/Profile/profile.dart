@@ -6,9 +6,9 @@ import './complain_view.dart';
 
 class Profile extends StatefulWidget {
 
-  final String name;
+  final String name,role;
 
-  Profile(this.name);
+  Profile(this.name,this.role);
 
   @override
   _UserProfileState createState() => _UserProfileState();
@@ -24,6 +24,50 @@ class _UserProfileState extends State<Profile> {
     );
     scaffoldKey.currentState.showSnackBar(snackbar);
     
+  }
+
+  Widget checkRole()
+  {
+    if(widget.role=="user")
+    {
+      return InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => Complain()));
+                },
+                child: Card(
+                    child: Container(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.error,
+                              color: Colors.redAccent,
+                            ),
+                            SizedBox(
+                              width: 15.0,
+                            ),
+                            Text("Complain")
+                          ],
+                        ),
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.red[500],
+                      ),
+                    ],
+                  ),
+                )),
+              );
+    }
+    else{
+      return SizedBox(height: 1.0,);
+    }
   }
 
   @override
@@ -130,40 +174,7 @@ class _UserProfileState extends State<Profile> {
                   ),
                 )),
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => Complain()));
-                },
-                child: Card(
-                    child: Container(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.error,
-                              color: Colors.redAccent,
-                            ),
-                            SizedBox(
-                              width: 15.0,
-                            ),
-                            Text("Complain")
-                          ],
-                        ),
-                      ),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.red[500],
-                      ),
-                    ],
-                  ),
-                )),
-              ),
+              checkRole(),
               Center(
                 child: RaisedButton(
                   color: Colors.red,
