@@ -26,7 +26,7 @@ class _DirHomeViewState extends State<DirHomeView> {
           fontFamily: 'Montserrat',
           accentColor: Colors.teal),
       home: Scaffold(
-        body: CommonHomeView(gotoProfile,model.data.name)
+        body: CommonHomeView(gotoProfile,model.data.name,model.data.role)
       ),
     );
     

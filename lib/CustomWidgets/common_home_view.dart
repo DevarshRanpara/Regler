@@ -1,12 +1,29 @@
 import 'package:flutter/material.dart';
 
 import "package:flutter_app/CustomWidgets/circular_image.dart";
+import 'admin_dashboard.dart';
+import 'director_dashboard.dart';
 
 class CommonHomeView extends StatelessWidget {
   final Function gotoProfile;
   final String name;
+  final String role;
 
-  CommonHomeView(this.gotoProfile, this.name);
+
+  CommonHomeView(this.gotoProfile, this.name,this.role);
+
+  Widget checkRole()
+  {
+    if(role=="admin")
+    {
+      return AdminDashboard();
+    }
+    else
+    {
+      return DirectorDashboard();
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +33,7 @@ class CommonHomeView extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
+                EdgeInsets.symmetric(horizontal: 1.0, vertical: 2.0),
           ),
           InkWell(
               onTap: () {
@@ -54,7 +71,7 @@ class CommonHomeView extends StatelessWidget {
                   ),
                 ),
               )),
-              InkWell(
+          InkWell(
               onTap: () {
                 //data.gotoUsage();
               },
@@ -71,7 +88,7 @@ class CommonHomeView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  "Remaining Balance ",
+                                  "Your usage",
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 SizedBox(
@@ -98,162 +115,9 @@ class CommonHomeView extends StatelessWidget {
                   ),
                 ),
               )),
-                Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              InkWell(
-                  onTap: () {},
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    width: MediaQuery.of(context).size.width * 0.47,
-                    child: Card(
-                      child: Container(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          children: <Widget>[
-                            Icon(
-                              Icons.supervisor_account,
-                              color: Colors.red,
-                            ),
-                            SizedBox(
-                              height: 8.0,
-                            ),
-                            Text("Manage Users")
-                          ],
-                        ),
-                      ),
-                    ),
-                  )),
-              InkWell(
-                onTap: () {},
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.2,
-                  width: MediaQuery.of(context).size.width * 0.47,
-                  child: Card(
-                    child: Container(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.location_city,
-                            color: Colors.red,
-                          ),
-                          SizedBox(
-                            height: 8.0,
-                          ),
-                          Text("Manage Building")
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              InkWell(
-                  onTap: () {},
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    width: MediaQuery.of(context).size.width * 0.47,
-                    child: Card(
-                      child: Container(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          children: <Widget>[
-                            Icon(
-                              Icons.supervisor_account,
-                              color: Colors.red,
-                            ),
-                            SizedBox(
-                              height: 8.0,
-                            ),
-                            Text("Manage Users")
-                          ],
-                        ),
-                      ),
-                    ),
-                  )),
-              InkWell(
-                onTap: () {},
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.2,
-                  width: MediaQuery.of(context).size.width * 0.47,
-                  child: Card(
-                    child: Container(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.location_city,
-                            color: Colors.red,
-                          ),
-                          SizedBox(
-                            height: 8.0,
-                          ),
-                          Text("Manage Building")
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              InkWell(
-                  onTap: () {},
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    width: MediaQuery.of(context).size.width * 0.47,
-                    child: Card(
-                      child: Container(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          children: <Widget>[
-                            Icon(
-                              Icons.supervisor_account,
-                              color: Colors.red,
-                            ),
-                            SizedBox(
-                              height: 8.0,
-                            ),
-                            Text("Manage Users")
-                          ],
-                        ),
-                      ),
-                    ),
-                  )),
-              InkWell(
-                onTap: () {},
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.2,
-                  width: MediaQuery.of(context).size.width * 0.47,
-                  child: Card(
-                    child: Container(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.location_city,
-                            color: Colors.red,
-                          ),
-                          SizedBox(
-                            height: 8.0,
-                          ),
-                          Text("Manage Building")
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              )
-            ],
-          )
+
+          ////////////
+          checkRole()
         ],
       ),
     );
