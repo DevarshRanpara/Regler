@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_app/Views/Profile/profile.dart';
+import 'package:flutter_app/Views/Admin/admin_use_view.dart';
+import 'package:flutter_app/Views/Admin/manage_users_view.dart';
+import 'package:flutter_app/Views/Admin/manage_building_view.dart';
+import 'package:flutter_app/Views/Admin/manage_room_view.dart';
+import 'package:flutter_app/Views/Admin/view_complain_view.dart';
+import 'package:flutter_app/Views/Admin/view_usage_view.dart';
+
 import 'package:flutter_app/Models/admin_home_model.dart';
+
 import 'package:flutter_app/CustomWidgets/common_home_view.dart';
+
 import 'package:flutter_app/Classes/admin_navigation.dart';
 
 class AdminHomeView extends StatefulWidget {
@@ -38,32 +47,32 @@ class _AdminHomeViewState extends State<AdminHomeView> {
 
   void _gotoUsage()
   {
-
+    Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => AdminUseView()));
   }
 
   void _gotoManageUsers()
   {
-
+    Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => ManageUsersView()));
   }
 
   void _gotoManageBuildings()
   {
-
+    Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => ManageBuildingView()));
   }
 
   void _gotoManageRooms()
   {
-
+    Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => ManageRoomView()));
   }
 
   void _gotoViewUsage()
   {
-
+    Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => ViewUsageView()));
   }
 
   void _gotoViewComplains()
   {
-
+    Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => ViewComplainView()));
   }
 
   @override

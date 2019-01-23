@@ -74,7 +74,7 @@ class CommonHomeView extends StatelessWidget {
               )),
           InkWell(
               onTap: () {
-                //data.gotoUsage();
+                nevigation.gotoUsage();
               },
               child: Card(
                 child: Container(

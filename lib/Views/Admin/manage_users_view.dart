@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AdminUseView extends StatelessWidget {
+class ManageUsersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -10,7 +10,7 @@ class AdminUseView extends StatelessWidget {
           accentColor: Colors.teal),
       home: Scaffold(
         body: Center(
-        child: Text("AdminUseView"),
+        child: Text("ManageUsersView"),
       ),
       )
     );

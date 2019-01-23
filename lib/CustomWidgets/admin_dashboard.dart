@@ -18,7 +18,9 @@ class AdminDashboard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        nevigation.gotoManageUsers();
+                      },
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height * boxHeight,
                         width: MediaQuery.of(context).size.width * boxWidth,
@@ -58,7 +60,9 @@ class AdminDashboard extends StatelessWidget {
                         ),
                       )),
                   InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        nevigation.gotoManageBuildings();
+                      },
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height * boxHeight,
                         width: MediaQuery.of(context).size.width * boxWidth,
@@ -103,7 +107,9 @@ class AdminDashboard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        nevigation.gotoManageRooms();
+                      },
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height * boxHeight,
                         width: MediaQuery.of(context).size.width * boxWidth,
@@ -143,7 +149,9 @@ class AdminDashboard extends StatelessWidget {
                         ),
                       )),
                   InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        nevigation.gotoViewUsage();
+                      },
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height * boxHeight,
                         width: MediaQuery.of(context).size.width * boxWidth,
@@ -190,7 +198,9 @@ class AdminDashboard extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(left: 2.0),
                     child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          nevigation.gotoViewComplains();
+                        },
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height * boxHeight,
                           width: MediaQuery.of(context).size.width * boxWidth,
