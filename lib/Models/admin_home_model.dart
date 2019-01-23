@@ -23,6 +23,7 @@ class AdminHomeModel
       UserUsage("18th, Jan, 2019", "10:00 AM", "10:20 AM", 20),
       UserUsage("19th, Jan, 2019", "10:00 AM", "10:10 AM", 10),
       UserUsage("20th, Jan, 2019", "10:00 AM", "10:20 AM", 20),
+      UserUsage("20th, Jan, 2019", "10:00 AM", "10:20 AM", 30),
     ];
     for (var i = 0; i < use.length; i++) {
       usage += use[i].use;
