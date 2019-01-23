@@ -4,7 +4,7 @@ class LoginModel {
   LoginModel(this._userid, this._password);
 
   String auth() {
-    if (_userid == 'user' && _password=="12345678" ) {
+    if (_userid == 'user' && _password=="password1" ) {
       return 'user';
     } else if (_userid == 'admin' && _password=="password1" ) {
       return 'admin';

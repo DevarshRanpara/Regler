@@ -46,10 +46,6 @@ class _DashboardTopState extends State<DashboardTop> {
     });
   }
 
-  List<Widget> _listMyWidgets() {
-    return list;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -61,7 +57,7 @@ class _DashboardTopState extends State<DashboardTop> {
             ],
           ),
           Column(
-            children: _listMyWidgets(),
+            children: list,
           )
         ],
       ),

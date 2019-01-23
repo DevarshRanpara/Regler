@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/user_data.dart';
 
 import "package:flutter_app/CustomWidgets/circular_image.dart";
 import 'admin_dashboard.dart';
@@ -6,25 +7,18 @@ import 'director_dashboard.dart';
 import 'package:flutter_app/Classes/admin_navigation.dart';
 
 class CommonHomeView extends StatelessWidget {
+  final UserData data;
   final AdminNevigation nevigation;
-  final String name;
-  final String role;
 
+  CommonHomeView(this.nevigation,this.data);
 
-  CommonHomeView(this.nevigation, this.name,this.role);
-
-  Widget checkRole()
-  {
-    if(role=="admin")
-    {
+  Widget checkRole() {
+    if (data.role == "admin") {
       return AdminDashboard(nevigation);
-    }
-    else
-    {
+    } else {
       return DirectorDashboard(nevigation);
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +27,7 @@ class CommonHomeView extends StatelessWidget {
       child: ListView(
         children: <Widget>[
           Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: 1.0, vertical: 2.0),
+            padding: EdgeInsets.symmetric(horizontal: 1.0, vertical: 2.0),
           ),
           InkWell(
               onTap: () {
@@ -55,7 +48,7 @@ class CommonHomeView extends StatelessWidget {
                               width: 10.0,
                             ),
                             Text(
-                              "Welcome Mr. " + name,
+                              "Welcome Mr. " + data.name,
                               style: TextStyle(
                                   color: Colors.tealAccent,
                                   fontSize: 15.0,
@@ -85,20 +78,26 @@ class CommonHomeView extends StatelessWidget {
                         /*1*/
                         child: Row(
                           children: <Widget>[
+                            Icon(
+                              Icons.notifications,
+                              color: Colors.redAccent,
+                              size: 35.0,
+                            ),
+                            SizedBox(width: 20.0,),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
                                   "Your usage",
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(color: Colors.tealAccent),
                                 ),
                                 SizedBox(
                                   height: 8.0,
                                 ),
                                 Text(
-                                  "100 Minutes",
+                                  data.used.toString()+" Minutes",
                                   style: TextStyle(
-                                      color: Colors.tealAccent,
+                                      color: Colors.white,
                                       fontSize: 20.0,
                                       fontWeight: FontWeight.bold),
                                 )
@@ -110,7 +109,7 @@ class CommonHomeView extends StatelessWidget {
                       /*3*/
                       Icon(
                         Icons.arrow_forward_ios,
-                        color: Colors.redAccent,
+                        color: Colors.tealAccent,
                       )
                     ],
                   ),
