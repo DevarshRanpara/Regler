@@ -3,24 +3,25 @@ import 'package:flutter/material.dart';
 import "package:flutter_app/CustomWidgets/circular_image.dart";
 import 'admin_dashboard.dart';
 import 'director_dashboard.dart';
+import 'package:flutter_app/Classes/admin_navigation.dart';
 
 class CommonHomeView extends StatelessWidget {
-  final Function gotoProfile;
+  final AdminNevigation nevigation;
   final String name;
   final String role;
 
 
-  CommonHomeView(this.gotoProfile, this.name,this.role);
+  CommonHomeView(this.nevigation, this.name,this.role);
 
   Widget checkRole()
   {
     if(role=="admin")
     {
-      return AdminDashboard();
+      return AdminDashboard(nevigation);
     }
     else
     {
-      return DirectorDashboard();
+      return DirectorDashboard(nevigation);
     }
   }
 
@@ -37,7 +38,7 @@ class CommonHomeView extends StatelessWidget {
           ),
           InkWell(
               onTap: () {
-                gotoProfile();
+                nevigation.gotoProfile();
               },
               child: Card(
                 child: Container(
