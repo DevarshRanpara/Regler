@@ -19,7 +19,6 @@ class HomePageView extends StatefulWidget {
 }
 
 class _HomePageViewState extends State<HomePageView> {
-  final scaffoldKey = new GlobalKey<ScaffoldState>();
   UserData data;
   UserHomeModel model;
 
@@ -36,26 +35,16 @@ class _HomePageViewState extends State<HomePageView> {
       data=model.getData();
     }
 
-  void showSnakebar() {
-    final snackbar = new SnackBar(
-      content: new Text("No Internet Avilable"),
-      backgroundColor: Colors.red,
-    );
-    scaffoldKey.currentState.showSnackBar(snackbar);
-  }
-
   void _gotoProfile() {
     Navigator.push(context,
         MaterialPageRoute(builder: (BuildContext context) => Profile(data.name,data.role)));
   }
 
   void _gotoUsage() {
-    //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> DonutAutoLabelChart()));
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (BuildContext context) => UsageDetail(data.used,data.limit)));
-    //showSnakebar();
   }
 
   @override
@@ -66,7 +55,6 @@ class _HomePageViewState extends State<HomePageView> {
           fontFamily: 'Montserrat',
           accentColor: Colors.teal),
       home: Scaffold(
-        key: scaffoldKey,
         body: Container(
           margin: EdgeInsets.all(8.0),
           child: ListView(

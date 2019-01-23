@@ -5,13 +5,29 @@ import 'package:flutter_app/Models/admin_home_model.dart';
 import 'package:flutter_app/CustomWidgets/common_home_view.dart';
 
 class AdminHomeView extends StatefulWidget {
+
+  final String role;
+
+  AdminHomeView(this.role);
+
   @override
   _AdminHomeViewState createState() => _AdminHomeViewState();
 }
 
 class _AdminHomeViewState extends State<AdminHomeView> {
 
-  AdminHomeModel model=AdminHomeModel("Admin","admin");
+  AdminHomeModel model;
+
+  @override
+    void initState() {
+      if(widget.role=="admin"){
+        model=AdminHomeModel("Admin","admin");
+      }
+      else{
+        model=AdminHomeModel("Director","director");
+      }
+      super.initState();
+    }
 
   void gotoProfile()
   {
@@ -32,13 +48,3 @@ class _AdminHomeViewState extends State<AdminHomeView> {
     );
   }
 }
-
-//  Center(
-//           child: RaisedButton(
-//             child: Text("Profile"),
-//             onPressed: (){
-//               Navigator.push(context,
-//           MaterialPageRoute(builder: (BuildContext context) => Profile("Admin")));
-//             },
-//           ),
-//         )

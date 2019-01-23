@@ -4,7 +4,6 @@ import 'package:flutter_app/CustomWidgets/fancy_button.dart';
 import 'package:flutter_app/Models/login_model.dart';
 import './User/home_page.dart';
 import './Admin/admin_home_view.dart';
-import './Director/direcor_home_view.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -68,14 +67,11 @@ class LoginPageState extends State<HomePage>
     if (role == 'user') {
       Navigator.push(context,
           MaterialPageRoute(builder: (BuildContext context) => UserMainPage()));
-    } else if (role == 'director') {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (BuildContext context) => DirHomeView()));
-    } else if (role == 'admin') {
+    } else if (role == 'director' || role == 'admin') {
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (BuildContext context) => AdminHomeView()));
+              builder: (BuildContext context) => AdminHomeView(role)));
     } else {
       final snackbar = new SnackBar(
         content: new Text("Invalid User ID or password"),
