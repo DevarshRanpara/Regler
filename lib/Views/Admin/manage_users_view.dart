@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/users.dart';
+import 'package:flutter_app/Models/manage_users_model.dart';
 //import 'package:flutter_app/CustomWidgets/circular_image.dart';
 //import 'package:flutter_app/CustomWidgets/user_expantion_tile.dart';
 import 'package:flutter_app/CustomWidgets/user_detail.dart';
@@ -11,20 +13,24 @@ class ManageUsersView extends StatefulWidget {
 class _ManageUsersViewState extends State<ManageUsersView> {
 
   List<UserDetailTile> list=List();
-  List<String> names=['Devarsh','Dhaval','Nilesh','Ravi'];
+  //List<String> names=['Devarsh','Dhaval','Nilesh','Ravi'];
+  ManageUsersModel model=ManageUsersModel();
+  List<Users> user;
 
   @override
-    void initState() {
-      for(int i=0;i<names.length;i++){
-        _addItem(names[i]);
+    void initState() 
+    {
+      user=model.getData();
+      for(int i=0;i<user.length;i++){
+        _addItem(user[i]);
       }
       
       super.initState();
     }
 
-    void _addItem(String name)
+    void _addItem(Users user)
     {
-      list.add(UserDetailTile(name));
+      list.add(UserDetailTile(user));
     }
 
   @override

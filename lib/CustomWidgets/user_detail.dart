@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/users.dart';
 import 'package:flutter_app/CustomWidgets/circular_image.dart';
 import 'package:flutter_app/CustomWidgets/expantion_tile.dart';
 
@@ -6,9 +7,9 @@ import 'package:flutter_app/CustomWidgets/expantion_tile.dart';
 
 class UserDetailTile extends StatelessWidget {
 
-  final String name;
+  final Users user;
 
-  UserDetailTile(this.name);
+  UserDetailTile(this.user);
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +29,11 @@ class UserDetailTile extends StatelessWidget {
                               ),
                               SizedBox(width: 10.0,),
                               SizedBox(width: MediaQuery.of(context).size.width * 0.3,
-                              child:Text(name), 
+                              child:Text(user.name), 
                               ),
                               //Text(name),
                               SizedBox(width: 10.0,),
-                              Text("LJ MCA",
+                              Text(user.institute,
                               style: TextStyle(
                                 color: Colors.tealAccent
                               ),
@@ -50,7 +51,7 @@ class UserDetailTile extends StatelessWidget {
                                       Text(
                                         "Limit",
                                       ),
-                                      Text("150 M")
+                                      Text(user.limit.toString()+" M")
                                     ],
                                   ),
                                 ),
@@ -64,7 +65,7 @@ class UserDetailTile extends StatelessWidget {
                                         style: TextStyle(color: Colors.red),
                                       ),
                                       Text(
-                                        "100 M",
+                                        user.usage.toString()+" M",
                                         style:
                                             TextStyle(color: Colors.redAccent),
                                       )
@@ -81,7 +82,7 @@ class UserDetailTile extends StatelessWidget {
                                           style: TextStyle(color: Colors.teal),
                                         ),
                                         Text(
-                                          "50 M",
+                                          user.bal.toString()+" M",
                                           style: TextStyle(
                                               color: Colors.tealAccent),
                                         )
