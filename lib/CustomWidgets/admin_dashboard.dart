@@ -79,7 +79,7 @@ class AdminDashboard extends StatelessWidget {
                                     children: <Widget>[
                                       Expanded(
                                         child: Icon(
-                                          Icons.home,
+                                          Icons.location_city,
                                           color: Colors.redAccent,
                                           size: 35.0,
                                         ),
