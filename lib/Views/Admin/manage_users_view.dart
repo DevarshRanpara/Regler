@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/users.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
-//import 'package:flutter_app/CustomWidgets/circular_image.dart';
-//import 'package:flutter_app/CustomWidgets/user_expantion_tile.dart';
 import 'package:flutter_app/CustomWidgets/user_detail.dart';
+
+import 'add_user_view.dart';
 
 class ManageUsersView extends StatefulWidget {
   @override
@@ -48,7 +48,12 @@ class _ManageUsersViewState extends State<ManageUsersView> {
                   const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
             ),
             InkWell(
-                onTap: () {},
+                onTap: () {
+                   Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => AddUserView()));
+                },
                 child: Card(
                   child: Container(
                     padding: const EdgeInsets.all(20.0),
