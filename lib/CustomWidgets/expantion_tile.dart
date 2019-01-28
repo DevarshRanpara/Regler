@@ -101,7 +101,6 @@ class AppExpansionTileState extends State<AppExpansionTile>
   Widget _buildChildren(BuildContext context, Widget child) {
     final Color borderSideColor =
         _borderColor.evaluate(_easeOutAnimation) ?? Colors.transparent;
-    final Color titleColor = _headerColor.evaluate(_easeInAnimation);
 
     return new Container(
       decoration: new BoxDecoration(
@@ -120,13 +119,7 @@ class AppExpansionTileState extends State<AppExpansionTile>
             child: new ListTile(
               onTap: toggle,
               leading: widget.leading,
-              title: new DefaultTextStyle(
-                style: Theme.of(context)
-                    .textTheme
-                    .subhead
-                    .copyWith(color: titleColor),
-                child: widget.title,
-              ),
+              title: widget.title,
               trailing: widget.trailing ??
                   new RotationTransition(
                     turns: _iconTurns,
