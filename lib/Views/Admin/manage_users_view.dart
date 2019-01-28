@@ -11,27 +11,18 @@ class ManageUsersView extends StatefulWidget {
 }
 
 class _ManageUsersViewState extends State<ManageUsersView> {
-
-  List<UserDetailTile> list=List();
-  //List<String> names=['Devarsh','Dhaval','Nilesh','Ravi'];
-  ManageUsersModel model=ManageUsersModel();
+  List<UserDetailTile> list = List();
+  ManageUsersModel model = ManageUsersModel();
   List<Users> user;
 
   @override
-    void initState() 
-    {
-      user=model.getData();
-      for(int i=0;i<user.length;i++){
-        _addItem(user[i]);
-      }
-      
-      super.initState();
+  void initState() {
+    user = model.getData();
+    for (int i = 0; i < user.length; i++) {
+      list.add(UserDetailTile(user[i]));
     }
-
-    void _addItem(Users user)
-    {
-      list.add(UserDetailTile(user));
-    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +40,10 @@ class _ManageUsersViewState extends State<ManageUsersView> {
             ),
             InkWell(
                 onTap: () {
-                   Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (BuildContext context) => AddUserView()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => AddUserView()));
                 },
                 child: Card(
                   child: Container(
@@ -75,7 +66,9 @@ class _ManageUsersViewState extends State<ManageUsersView> {
                     ),
                   ),
                 )),
-            Column(children: list,)
+            Column(
+              children: list,
+            )
           ],
         )));
   }

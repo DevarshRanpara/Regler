@@ -180,7 +180,7 @@ class _AddUserViewState extends State<AddUserView> {
                     ],
                   ),
                   onPressed: () {
-                    model.addUser(name,institute,limit);
+                    //model.addUser(name,institute,limit);
                   },
                 ),
               ),
