@@ -32,44 +32,72 @@ class _ManageUsersViewState extends State<ManageUsersView> {
             fontFamily: 'Montserrat',
             accentColor: Colors.teal),
         home: Scaffold(
-            body: ListView(
+            body: Container(
+              
+              child: ListView(
           children: <Widget>[
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
-            ),
-            InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => AddUserView()));
-                },
-                child: Card(
-                  child: Container(
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
+              ),
+              InkWell(
+                  onTap: () {},
+                  child: Card(
+                      child: Container(
                     padding: const EdgeInsets.all(20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                    child: Column(
+                      children: <Widget>[
                         Icon(
-                          Icons.add,
-                          color: Colors.amber,
+                          Icons.supervisor_account,
+                          color: Colors.redAccent,
+                          size: 35.0,
                         ),
                         SizedBox(
-                          width: 8.0,
+                          height: 15.0,
                         ),
                         Text(
-                          "Add User",
-                          style: TextStyle(color: Colors.white),
-                        ),
+                          "Manage Users",
+                          style: TextStyle(
+                              color: Colors.tealAccent,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w200),
+                        )
                       ],
                     ),
-                  ),
-                )),
-            Column(
-              children: list,
-            )
+                  ))),
+              InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => AddUserView()));
+                  },
+                  child: Card(
+                    child: Container(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.add,
+                            color: Colors.amber,
+                          ),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Text(
+                            "Add User",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )),
+              Column(
+                children: list,
+              )
           ],
-        )));
+        ),
+            )));
   }
 }

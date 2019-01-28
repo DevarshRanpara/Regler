@@ -40,6 +40,31 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
               ),
               InkWell(
+                onTap: () {},
+                child: Card(
+                    child: Container(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    children: <Widget>[
+                      Icon(
+                        Icons.location_city,
+                        color: Colors.redAccent,
+                        size: 35.0,
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      Text(
+                        "Manage Buildings",
+                        style: TextStyle(
+                            color: Colors.tealAccent,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w200),
+                      )
+                    ],
+                  ),
+                ))),
+              InkWell(
                   onTap: () {},
                   child: Card(
                     child: Container(
