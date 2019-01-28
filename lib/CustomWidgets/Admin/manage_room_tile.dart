@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/room.dart';
 
 class RoomTile extends StatefulWidget {
-
   final Room room;
 
   RoomTile(this.room);
@@ -20,6 +19,12 @@ class _RoomTileState extends State<RoomTile> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+           
+            Icon(
+              Icons.crop_square,
+              color: Colors.redAccent,
+              size: 25.0,
+            ),
             SizedBox(
               width: 15.0,
             ),
