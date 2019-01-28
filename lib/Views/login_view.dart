@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_app/CustomWidgets/fancy_button.dart';
+import 'package:flutter_app/CustomWidgets/Common/fancy_button.dart';
 import 'package:flutter_app/Models/login_model.dart';
 import './User/home_page.dart';
 import './Admin/admin_home_view.dart';

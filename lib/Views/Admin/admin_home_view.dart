@@ -11,7 +11,7 @@ import 'package:flutter_app/Views/Admin/view_usage_view.dart';
 
 import 'package:flutter_app/Models/admin_home_model.dart';
 
-import 'package:flutter_app/CustomWidgets/common_home_view.dart';
+import 'package:flutter_app/CustomWidgets/Admin/common_home_view.dart';
 
 import 'package:flutter_app/Classes/admin_navigation.dart';
 
@@ -75,7 +75,7 @@ class _AdminHomeViewState extends State<AdminHomeView> {
 
   void _gotoManageRooms() {
     Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => ManageRoomView()));
+        MaterialPageRoute(builder: (BuildContext context) => ManageRoomView(model.role)));
   }
 
   void _gotoViewUsage() {

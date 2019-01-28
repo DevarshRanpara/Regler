@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import './usage_report_user.dart';
+import 'package:flutter_app/CustomWidgets/Common/usage_report_user.dart';
 import './upper_dashboard.dart';
-import '../Classes/user_usage.dart';
-import '../Classes/user_data.dart';
+import 'package:flutter_app/Classes/user_usage.dart';
+import 'package:flutter_app/Classes/user_data.dart';
 
 class DashboardTop extends StatefulWidget {
   final UserData data;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Classes/user_usage.dart';
+import 'package:flutter_app/Classes/user_usage.dart';
 
 class UserReport extends StatelessWidget {
   final UserUsage data;

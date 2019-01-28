@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_app/CustomWidgets/circular_image.dart';
+import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import './change_password_view.dart';
 import './complain_view.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_app/CustomWidgets/circular_image.dart';
-import 'package:flutter_app/CustomWidgets/expantion_tile.dart';
+import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
+import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
 import 'package:flutter_app/Classes/building.dart';
 
 class ManageBuildingTile extends StatefulWidget {

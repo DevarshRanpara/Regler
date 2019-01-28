@@ -1,37 +1,20 @@
 import 'package:flutter/material.dart';
+
+import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 
-import "package:flutter_app/CustomWidgets/circular_image.dart";
-import 'admin_dashboard.dart';
-import 'director_dashboard.dart';
-import 'package:flutter_app/Classes/admin_navigation.dart';
-
-class CommonHomeView extends StatelessWidget {
+class UpperDashboard extends StatelessWidget {
   final UserData data;
-  final AdminNevigation nevigation;
-
-  CommonHomeView(this.nevigation,this.data);
-
-  Widget checkRole() {
-    if (data.role == "admin") {
-      return AdminDashboard(nevigation);
-    } else {
-      return DirectorDashboard(nevigation);
-    }
-  }
+  UpperDashboard(this.data);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(8.0),
-      child: ListView(
+      child: Column(
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 1.0, vertical: 2.0),
-          ),
           InkWell(
               onTap: () {
-                nevigation.gotoProfile();
+                data.gotoProfile();
               },
               child: Card(
                 child: Container(
@@ -39,6 +22,7 @@ class CommonHomeView extends StatelessWidget {
                   child: Row(
                     children: [
                       Expanded(
+                        /*1*/
                         child: Row(
                           children: <Widget>[
                             CircularImage(
@@ -57,6 +41,7 @@ class CommonHomeView extends StatelessWidget {
                           ],
                         ),
                       ),
+                      /*3*/
                       Icon(
                         Icons.settings,
                         color: Colors.redAccent,
@@ -65,9 +50,18 @@ class CommonHomeView extends StatelessWidget {
                   ),
                 ),
               )),
+          // Center(
+          //   child: OutlineButton(
+          //     child: Text("Turn On AC"),
+          //     onPressed: () {
+          //       addItem();
+          //     },
+          //     shape: const StadiumBorder(),
+          //   ),
+          // ),
           InkWell(
               onTap: () {
-                nevigation.gotoUsage();
+                data.gotoUsage();
               },
               child: Card(
                 child: Container(
@@ -88,16 +82,16 @@ class CommonHomeView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  "Your usage",
-                                  style: TextStyle(color: Colors.tealAccent),
+                                  "Remaining Balance ",
+                                  style: TextStyle(color: Colors.white),
                                 ),
                                 SizedBox(
                                   height: 8.0,
                                 ),
                                 Text(
-                                  data.used.toString()+" Minutes",
+                                  data.bal.toString() + " Minutes",
                                   style: TextStyle(
-                                      color: Colors.white,
+                                      color: Colors.tealAccent,
                                       fontSize: 20.0,
                                       fontWeight: FontWeight.bold),
                                 )
@@ -109,15 +103,12 @@ class CommonHomeView extends StatelessWidget {
                       /*3*/
                       Icon(
                         Icons.arrow_forward_ios,
-                        color: Colors.tealAccent,
+                        color: Colors.redAccent,
                       )
                     ],
                   ),
                 ),
               )),
-
-          ////////////
-          checkRole()
         ],
       ),
     );

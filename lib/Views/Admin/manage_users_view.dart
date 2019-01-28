@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/users.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
-import 'package:flutter_app/CustomWidgets/user_detail.dart';
+import 'package:flutter_app/CustomWidgets/Admin/user_detail.dart';
 
 import 'add_user_view.dart';
 

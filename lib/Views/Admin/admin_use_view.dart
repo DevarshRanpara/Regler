@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter_app/Classes/user_usage.dart';
-import 'package:flutter_app/CustomWidgets/usage_report_user.dart';
+import 'package:flutter_app/CustomWidgets/Common/usage_report_user.dart';
 
 class AdminUseView extends StatefulWidget {
   final List<UserUsage> use;

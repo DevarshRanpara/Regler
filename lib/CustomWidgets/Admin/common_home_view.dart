@@ -1,20 +1,37 @@
 import 'package:flutter/material.dart';
-
-import '../CustomWidgets/circular_image.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 
-class UpperDashboard extends StatelessWidget {
+import "package:flutter_app/CustomWidgets/Common/circular_image.dart";
+import 'admin_dashboard.dart';
+import 'director_dashboard.dart';
+import 'package:flutter_app/Classes/admin_navigation.dart';
+
+class CommonHomeView extends StatelessWidget {
   final UserData data;
-  UpperDashboard(this.data);
+  final AdminNevigation nevigation;
+
+  CommonHomeView(this.nevigation,this.data);
+
+  Widget checkRole() {
+    if (data.role == "admin") {
+      return AdminDashboard(nevigation);
+    } else {
+      return DirectorDashboard(nevigation);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
+      margin: EdgeInsets.all(8.0),
+      child: ListView(
         children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 1.0, vertical: 2.0),
+          ),
           InkWell(
               onTap: () {
-                data.gotoProfile();
+                nevigation.gotoProfile();
               },
               child: Card(
                 child: Container(
@@ -22,7 +39,6 @@ class UpperDashboard extends StatelessWidget {
                   child: Row(
                     children: [
                       Expanded(
-                        /*1*/
                         child: Row(
                           children: <Widget>[
                             CircularImage(
@@ -41,7 +57,6 @@ class UpperDashboard extends StatelessWidget {
                           ],
                         ),
                       ),
-                      /*3*/
                       Icon(
                         Icons.settings,
                         color: Colors.redAccent,
@@ -50,18 +65,9 @@ class UpperDashboard extends StatelessWidget {
                   ),
                 ),
               )),
-          // Center(
-          //   child: OutlineButton(
-          //     child: Text("Turn On AC"),
-          //     onPressed: () {
-          //       addItem();
-          //     },
-          //     shape: const StadiumBorder(),
-          //   ),
-          // ),
           InkWell(
               onTap: () {
-                data.gotoUsage();
+                nevigation.gotoUsage();
               },
               child: Card(
                 child: Container(
@@ -82,16 +88,16 @@ class UpperDashboard extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  "Remaining Balance ",
-                                  style: TextStyle(color: Colors.white),
+                                  "Your usage",
+                                  style: TextStyle(color: Colors.tealAccent),
                                 ),
                                 SizedBox(
                                   height: 8.0,
                                 ),
                                 Text(
-                                  data.bal.toString() + " Minutes",
+                                  data.used.toString()+" Minutes",
                                   style: TextStyle(
-                                      color: Colors.tealAccent,
+                                      color: Colors.white,
                                       fontSize: 20.0,
                                       fontWeight: FontWeight.bold),
                                 )
@@ -103,12 +109,15 @@ class UpperDashboard extends StatelessWidget {
                       /*3*/
                       Icon(
                         Icons.arrow_forward_ios,
-                        color: Colors.redAccent,
+                        color: Colors.tealAccent,
                       )
                     ],
                   ),
                 ),
               )),
+
+          ////////////
+          checkRole()
         ],
       ),
     );
