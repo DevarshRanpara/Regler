@@ -1,19 +1,16 @@
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Classes/user_usage.dart';
 
-class AdminHomeModel
-{
+class AdminHomeModel {
   UserData data;
-  int usage=0;
+  int usage = 0;
   List<UserUsage> use;
-  String name,role;
-  AdminHomeModel(this.name,this.role)
-  {
+  String name, role;
+  AdminHomeModel(this.name, this.role) {
     setData();
   }
 
-  void setData()
-  {
+  void setData() {
     use = [
       UserUsage("10th, Jan, 2019", "10:00 AM", "10:20 AM", 20),
       UserUsage("12th, Jan, 2019", "10:00 AM", "10:20 AM", 20),
@@ -28,9 +25,10 @@ class AdminHomeModel
     for (var i = 0; i < use.length; i++) {
       usage += use[i].use;
     }
-    data=UserData(name: name,role: role,useData: use,used: usage);
+    data = UserData(name: name, role: role, useData: use, used: usage);
   }
-  UserData getData(){
+
+  UserData getData() {
     return data;
   }
 }

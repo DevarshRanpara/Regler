@@ -1,7 +1,6 @@
-class AdminData
-{
+class AdminData {
   String name;
   String role;
 
-  AdminData({this.name,this.role});
+  AdminData({this.name, this.role});
 }

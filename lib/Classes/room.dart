@@ -1,7 +1,6 @@
-class Room
-{
+class Room {
   int id;
   String name;
   //String building/institute
-  Room({this.id,this.name});
+  Room({this.id, this.name});
 }

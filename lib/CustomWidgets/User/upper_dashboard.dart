@@ -77,7 +77,9 @@ class UpperDashboard extends StatelessWidget {
                               color: Colors.redAccent,
                               size: 35.0,
                             ),
-                            SizedBox(width: 20.0,),
+                            SizedBox(
+                              width: 20.0,
+                            ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[

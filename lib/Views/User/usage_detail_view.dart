@@ -5,7 +5,7 @@ class UsageDetail extends StatefulWidget {
   final int limit;
   final int use;
 
-  UsageDetail(this.use,this.limit);
+  UsageDetail(this.use, this.limit);
 
   @override
   _UsageDetailState createState() => _UsageDetailState();

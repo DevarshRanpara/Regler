@@ -137,10 +137,10 @@ class _UserDetailTileState extends State<UserDetailTile> {
                             onPressed: () {
                               setState(() {
                                 if (widget.user.isBocked) {
-                                  widget.user.isBocked=false;
+                                  widget.user.isBocked = false;
                                   strblock = "Block";
                                 } else {
-                                  widget.user.isBocked=true;
+                                  widget.user.isBocked = true;
                                   strblock = "Unlock";
                                 }
                               });

@@ -4,28 +4,26 @@ import 'package:flutter_app/CustomWidgets/Admin/manage_building_tile.dart';
 import 'package:flutter_app/Classes/building.dart';
 import 'package:flutter_app/Models/manage_building_model.dart';
 
-
 class ManageBuildingView extends StatefulWidget {
   @override
   _ManageBuildingViewState createState() => _ManageBuildingViewState();
 }
 
 class _ManageBuildingViewState extends State<ManageBuildingView> {
+  ManageBuildingModel model = ManageBuildingModel();
 
-  ManageBuildingModel model=ManageBuildingModel();
+  List<Widget> buildingTile = List();
 
-  List<Widget> buildingTile= List();
-
-  List<Building> buildings ;
+  List<Building> buildings;
 
   @override
-    void initState() {
-      buildings=model.getData();
-      for(int i=0;i<buildings.length;i++){
-        buildingTile.add(ManageBuildingTile(buildings[i]));
-      }
-      super.initState();
+  void initState() {
+    buildings = model.getData();
+    for (int i = 0; i < buildings.length; i++) {
+      buildingTile.add(ManageBuildingTile(buildings[i]));
     }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +62,7 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
                       ),
                     ),
                   )),
-                  Column(
-                    children: buildingTile
-                  )
+              Column(children: buildingTile)
             ],
           ),
         ));

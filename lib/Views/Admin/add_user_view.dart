@@ -17,7 +17,6 @@ class _AddUserViewState extends State<AddUserView> {
 
   @override
   Widget build(BuildContext context) {
-    
     return MaterialApp(
         theme: ThemeData(
             brightness: Brightness.dark,
@@ -66,9 +65,9 @@ class _AddUserViewState extends State<AddUserView> {
                           child: Column(
                             children: <Widget>[
                               TextField(
-                                onChanged: (String val){
+                                onChanged: (String val) {
                                   setState(() {
-                                    name=val;
+                                    name = val;
                                   });
                                 },
                                 decoration: InputDecoration(
@@ -126,9 +125,9 @@ class _AddUserViewState extends State<AddUserView> {
                           child: Column(
                             children: <Widget>[
                               TextField(
-                                onChanged: (String val){
+                                onChanged: (String val) {
                                   setState(() {
-                                    limit=int.parse(val);
+                                    limit = int.parse(val);
                                   });
                                 },
                                 decoration: InputDecoration(
@@ -160,30 +159,30 @@ class _AddUserViewState extends State<AddUserView> {
                           ),
                         ))),
                     Center(
-                child: RaisedButton(
-                  color: Colors.blue,
-                  splashColor: Colors.blueAccent,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Icon(Icons.add),
-                      SizedBox(
-                        width: 8,
+                      child: RaisedButton(
+                        color: Colors.blue,
+                        splashColor: Colors.blueAccent,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Icon(Icons.add),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              "Add User",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.w800),
+                            ),
+                          ],
+                        ),
+                        onPressed: () {
+                          //model.addUser(name,institute,limit);
+                        },
                       ),
-                      Text(
-                        "Add User",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w800),
-                      ),
-                    ],
-                  ),
-                  onPressed: () {
-                    //model.addUser(name,institute,limit);
-                  },
-                ),
-              ),
+                    ),
                   ],
                 ))));
   }

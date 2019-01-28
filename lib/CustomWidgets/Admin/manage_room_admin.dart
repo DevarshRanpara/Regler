@@ -10,17 +10,16 @@ class MngRoomAdmin extends StatefulWidget {
 }
 
 class _MngRoomAdminState extends State<MngRoomAdmin> {
-
-  List<MngRoomBuilding> building=List();
+  List<MngRoomBuilding> building = List();
 
   @override
-    void initState() {
-      for(int i=0;i<widget.buildings.length;i++)
-      {
-        building.add(MngRoomBuilding(widget.buildings[i]));
-      }
-      super.initState();
+  void initState() {
+    for (int i = 0; i < widget.buildings.length; i++) {
+      building.add(MngRoomBuilding(widget.buildings[i]));
     }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(children: building);

@@ -51,8 +51,6 @@ class LoginPageState extends State<HomePage>
     _iconanimationController.forward();
   }
 
-
-
   void _submit() {
     final form = formKey.currentState;
 

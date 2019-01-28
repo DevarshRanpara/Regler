@@ -10,7 +10,7 @@ class CommonHomeView extends StatelessWidget {
   final UserData data;
   final AdminNevigation nevigation;
 
-  CommonHomeView(this.nevigation,this.data);
+  CommonHomeView(this.nevigation, this.data);
 
   Widget checkRole() {
     if (data.role == "admin") {
@@ -83,7 +83,9 @@ class CommonHomeView extends StatelessWidget {
                               color: Colors.redAccent,
                               size: 35.0,
                             ),
-                            SizedBox(width: 20.0,),
+                            SizedBox(
+                              width: 20.0,
+                            ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
@@ -95,7 +97,7 @@ class CommonHomeView extends StatelessWidget {
                                   height: 8.0,
                                 ),
                                 Text(
-                                  data.used.toString()+" Minutes",
+                                  data.used.toString() + " Minutes",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 20.0,

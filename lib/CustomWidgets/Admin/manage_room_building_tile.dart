@@ -5,7 +5,6 @@ import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_tile.dart';
 
 class MngRoomBuilding extends StatefulWidget {
-
   final Building building;
   MngRoomBuilding(this.building);
   @override
@@ -13,20 +12,18 @@ class MngRoomBuilding extends StatefulWidget {
 }
 
 class _MngRoomBuildingState extends State<MngRoomBuilding> {
-
   List<RoomTile> roomtiles = List();
   List<Room> rooms;
 
   @override
-    void initState() {
-      rooms=widget.building.rooms;
+  void initState() {
+    rooms = widget.building.rooms;
 
-      for(int i=0;i<rooms.length;i++)
-      {
-        roomtiles.add(RoomTile(rooms[i]));
-      }
-      super.initState();
+    for (int i = 0; i < rooms.length; i++) {
+      roomtiles.add(RoomTile(rooms[i]));
     }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +61,9 @@ class _MngRoomBuildingState extends State<MngRoomBuilding> {
                             ),
                           ),
                         )),
-                     Column(
-              children: roomtiles,
-            )
+                    Column(
+                      children: roomtiles,
+                    )
                   ],
                 ))));
   }

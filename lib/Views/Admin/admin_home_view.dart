@@ -48,8 +48,7 @@ class _AdminHomeViewState extends State<AdminHomeView> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (BuildContext context) =>
-                Profile(data.name, data.role)));
+            builder: (BuildContext context) => Profile(data.name, data.role)));
   }
 
   void _gotoUsage() {
@@ -74,8 +73,10 @@ class _AdminHomeViewState extends State<AdminHomeView> {
   }
 
   void _gotoManageRooms() {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => ManageRoomView(model.role)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => ManageRoomView(model.role)));
   }
 
   void _gotoViewUsage() {

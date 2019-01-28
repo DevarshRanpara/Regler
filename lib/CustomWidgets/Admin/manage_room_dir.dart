@@ -12,17 +12,15 @@ class MngRoomDir extends StatefulWidget {
 }
 
 class _MngRoomDirState extends State<MngRoomDir> {
-
   List<RoomTile> roomtiles = List();
 
   @override
-    void initState() {
-      for(int i=0;i<widget.rooms.length;i++)
-      {
-        roomtiles.add(RoomTile(widget.rooms[i]));
-      }
-      super.initState();
+  void initState() {
+    for (int i = 0; i < widget.rooms.length; i++) {
+      roomtiles.add(RoomTile(widget.rooms[i]));
     }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +49,10 @@ class _MngRoomDirState extends State<MngRoomDir> {
                 ),
               ),
             )),
-            //RoomTile()
-            Column(
-              children: roomtiles,
-            )
+        //RoomTile()
+        Column(
+          children: roomtiles,
+        )
       ],
     );
   }

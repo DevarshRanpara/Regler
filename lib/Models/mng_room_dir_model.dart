@@ -1,10 +1,9 @@
 import 'package:flutter_app/Classes/room.dart';
-class MngRoomDirModel
-{
+
+class MngRoomDirModel {
   List<Room> rooms;
-  MngRoomDirModel()
-  {
-    rooms=[
+  MngRoomDirModel() {
+    rooms = [
       Room(name: "101"),
       Room(name: "102"),
       Room(name: "103"),
@@ -13,7 +12,7 @@ class MngRoomDirModel
       Room(name: "106")
     ];
   }
-  List<Room> getData(){
+  List<Room> getData() {
     return rooms;
   }
 }

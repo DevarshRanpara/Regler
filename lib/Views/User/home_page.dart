@@ -23,28 +23,30 @@ class _HomePageViewState extends State<HomePageView> {
   UserHomeModel model;
 
   @override
-    void initState() {
-      setData();
-      super.initState();
-    }
+  void initState() {
+    setData();
+    super.initState();
+  }
 
-    void setData()
-    {
-      model=UserHomeModel(_gotoProfile, _gotoUsage);
+  void setData() {
+    model = UserHomeModel(_gotoProfile, _gotoUsage);
 
-      data=model.getData();
-    }
+    data = model.getData();
+  }
 
   void _gotoProfile() {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => Profile(data.name,data.role)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => Profile(data.name, data.role)));
   }
 
   void _gotoUsage() {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (BuildContext context) => UsageDetail(data.used,data.limit)));
+            builder: (BuildContext context) =>
+                UsageDetail(data.used, data.limit)));
   }
 
   @override

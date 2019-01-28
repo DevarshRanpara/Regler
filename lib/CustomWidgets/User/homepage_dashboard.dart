@@ -17,7 +17,7 @@ class DashboardTop extends StatefulWidget {
 class _DashboardTopState extends State<DashboardTop> {
   List<Widget> list = new List();
   bool flag = true;
-  
+
   @override
   void initState() {
     for (var i = 0; i < widget.data.useData.length; i++) {
@@ -52,9 +52,7 @@ class _DashboardTopState extends State<DashboardTop> {
       child: Column(
         children: <Widget>[
           Column(
-            children: <Widget>[
-              UpperDashboard(widget.data)
-            ],
+            children: <Widget>[UpperDashboard(widget.data)],
           ),
           Column(
             children: list,

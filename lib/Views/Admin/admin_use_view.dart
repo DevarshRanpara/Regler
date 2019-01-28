@@ -33,12 +33,10 @@ class _AdminUseViewState extends State<AdminUseView> {
 
   @override
   Widget build(BuildContext context) {
+    List<Usage> data = new List<Usage>();
 
-    List<Usage> data=new List<Usage>();
-
-    for(int i=0;i<=6;i++)
-    {
-      data.add(Usage(i,widget.use[i].use));
+    for (int i = 0; i <= 6; i++) {
+      data.add(Usage(i, widget.use[i].use));
     }
 
     var series = [

@@ -17,7 +17,7 @@ class ManageRoomView extends StatefulWidget {
 class _ManageRoomViewState extends State<ManageRoomView> {
   Widget checkRole() {
     if (widget.role == 'admin') {
-      MngRoomAdminModel model=MngRoomAdminModel();
+      MngRoomAdminModel model = MngRoomAdminModel();
       return MngRoomAdmin(model.getData());
     } else {
       MngRoomDirModel model = MngRoomDirModel();

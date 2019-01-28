@@ -1,5 +1,4 @@
-class Users
-{
+class Users {
   int id;
   String name;
   String url;
@@ -8,5 +7,13 @@ class Users
   int limit;
   int usage;
   int bal;
-  Users({this.id,this.name,this.url,this.institute,this.isBocked,this.limit,this.usage,this.bal});
+  Users(
+      {this.id,
+      this.name,
+      this.url,
+      this.institute,
+      this.isBocked,
+      this.limit,
+      this.usage,
+      this.bal});
 }
