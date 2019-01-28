@@ -1,3 +1,5 @@
+import 'package:flutter_app/Classes/room.dart';
+
 class Building
 {
   int id;
@@ -5,5 +7,6 @@ class Building
   //User dir
   String director;
   bool isBlocked;
-  Building({this.id,this.name,this.director,this.isBlocked});
+  List<Room> rooms;
+  Building({this.id,this.name,this.director,this.isBlocked,this.rooms});
 }

@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_app/CustomWidgets/Admin/manage_room_admin.dart';
+import 'package:flutter_app/CustomWidgets/Admin/manage_room_dir.dart';
+import 'package:flutter_app/Models/mng_room_dir_model.dart';
+import 'package:flutter_app/Models/manage_room_admin_model.dart';
+
 class ManageRoomView extends StatefulWidget {
   final String role;
 
@@ -10,30 +15,35 @@ class ManageRoomView extends StatefulWidget {
 }
 
 class _ManageRoomViewState extends State<ManageRoomView> {
+  Widget checkRole() {
+    if (widget.role == 'admin') {
+      MngRoomAdminModel model=MngRoomAdminModel();
+      return MngRoomAdmin(model.getData());
+    } else {
+      MngRoomDirModel model = MngRoomDirModel();
+      return MngRoomDir(model.getData());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-
-    Widget manageRoom;
-
-    if(widget.role=='admin')
-    {
-      manageRoom=Text("ManageRoomView " + widget.role);
-    }
-    else
-    {
-      manageRoom=Text("ManageRoomView " + widget.role);
-    }
-
     return MaterialApp(
         theme: ThemeData(
             brightness: Brightness.dark,
             fontFamily: 'Montserrat',
             accentColor: Colors.teal),
         home: Scaffold(
-          body: Center(
-            child: manageRoom,
-          ),
+          body: Container(
+              margin: EdgeInsets.all(8.0),
+              child: ListView(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0, vertical: 2.0),
+                  ),
+                  checkRole()
+                ],
+              )),
         ));
   }
 }
