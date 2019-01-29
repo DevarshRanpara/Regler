@@ -3,8 +3,9 @@ import 'package:flutter_app/Classes/building.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_building_tile.dart';
 
 class MngRoomAdmin extends StatefulWidget {
+  final Function gotoAddRoom;
   final List<Building> buildings;
-  MngRoomAdmin(this.buildings);
+  MngRoomAdmin(this.buildings,this.gotoAddRoom);
   @override
   _MngRoomAdminState createState() => _MngRoomAdminState();
 }
@@ -15,7 +16,7 @@ class _MngRoomAdminState extends State<MngRoomAdmin> {
   @override
   void initState() {
     for (int i = 0; i < widget.buildings.length; i++) {
-      building.add(MngRoomBuilding(widget.buildings[i]));
+      building.add(MngRoomBuilding(widget.buildings[i],widget.gotoAddRoom));
     }
     super.initState();
   }

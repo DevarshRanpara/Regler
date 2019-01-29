@@ -3,9 +3,11 @@ import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_tile.dart';
 
 class MngRoomDir extends StatefulWidget {
+
+  final Function gotoAddRoom;
   final List<Room> rooms;
 
-  MngRoomDir(this.rooms);
+  MngRoomDir(this.rooms,this.gotoAddRoom);
 
   @override
   _MngRoomDirState createState() => _MngRoomDirState();
@@ -27,7 +29,9 @@ class _MngRoomDirState extends State<MngRoomDir> {
     return Column(
       children: <Widget>[
         InkWell(
-            onTap: () {},
+            onTap: () {
+              widget.gotoAddRoom();
+            },
             child: Card(
               child: Container(
                 padding: const EdgeInsets.all(20.0),

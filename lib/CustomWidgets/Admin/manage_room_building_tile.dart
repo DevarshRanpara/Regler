@@ -5,8 +5,9 @@ import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_tile.dart';
 
 class MngRoomBuilding extends StatefulWidget {
+  final Function gotoAddRoom;
   final Building building;
-  MngRoomBuilding(this.building);
+  MngRoomBuilding(this.building, this.gotoAddRoom);
   @override
   _MngRoomBuildingState createState() => _MngRoomBuildingState();
 }
@@ -39,7 +40,9 @@ class _MngRoomBuildingState extends State<MngRoomBuilding> {
                   ),
                   children: <Widget>[
                     InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          widget.gotoAddRoom();
+                        },
                         child: Card(
                           child: Container(
                             padding: const EdgeInsets.all(7.0),
