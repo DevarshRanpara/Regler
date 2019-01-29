@@ -4,5 +4,11 @@ class ViewUsageUser
 {
   UserData data;
   UserUsage usage;
-  
+
+  // ViewUsageUser()
+  // {
+  //   usage=[
+  //     UserUsage(date, startingTime, endingTime, use)
+  //   ];
+  // }
 }

@@ -12,15 +12,51 @@ class AdminHomeModel {
 
   void setData() {
     use = [
-      UserUsage("10th, Jan, 2019", "10:00 AM", "10:20 AM", 20),
-      UserUsage("12th, Jan, 2019", "10:00 AM", "10:20 AM", 20),
-      UserUsage("13th, Jan, 2019", "10:00 AM", "10:30 AM", 30),
-      UserUsage("16th, Jan, 2019", "10:00 AM", "10:50 AM", 50),
-      UserUsage("17th, Jan, 2019", "10:00 AM", "10:30 AM", 30),
-      UserUsage("18th, Jan, 2019", "10:00 AM", "10:20 AM", 20),
-      UserUsage("19th, Jan, 2019", "10:00 AM", "10:10 AM", 10),
-      UserUsage("20th, Jan, 2019", "10:00 AM", "10:20 AM", 20),
-      UserUsage("20th, Jan, 2019", "10:00 AM", "10:20 AM", 30),
+      UserUsage(
+          date: "10th, Jan, 2019",
+          startingTime: "10:00 AM",
+          endingTime: "10:20 AM",
+          use: 20),
+      UserUsage(
+          date: "12th, Jan, 2019",
+          startingTime: "10:00 AM",
+          endingTime: "10:20 AM",
+          use: 20),
+      UserUsage(
+          date: "13th, Jan, 2019",
+          startingTime: "10:00 AM",
+          endingTime: "10:30 AM",
+          use: 30),
+      UserUsage(
+          date: "16th, Jan, 2019",
+          startingTime: "10:00 AM",
+          endingTime: "10:50 AM",
+          use: 50),
+      UserUsage(
+          date: "17th, Jan, 2019",
+          startingTime: "10:00 AM",
+          endingTime: "10:30 AM",
+          use: 30),
+      UserUsage(
+          date: "18th, Jan, 2019",
+          startingTime: "10:00 AM",
+          endingTime: "10:20 AM",
+          use: 20),
+      UserUsage(
+          date: "19th, Jan, 2019",
+          startingTime: "10:00 AM",
+          endingTime: "10:10 AM",
+          use: 10),
+      UserUsage(
+          date: "20th, Jan, 2019",
+          startingTime: "10:00 AM",
+          endingTime: "10:20 AM",
+          use: 20),
+      UserUsage(
+          date: "20th, Jan, 2019",
+          startingTime: "10:00 AM",
+          endingTime: "10:20 AM",
+          use: 30),
     ];
     for (var i = 0; i < use.length; i++) {
       usage += use[i].use;

@@ -4,5 +4,5 @@ class UserUsage {
   final String endingTime;
   final int use;
 
-  UserUsage(this.date, this.startingTime, this.endingTime, this.use);
+  UserUsage({this.date, this.startingTime, this.endingTime, this.use});
 }

@@ -16,10 +16,26 @@ class UserHomeModel {
 
   void setData() {
     var use = [
-      UserUsage("10th, Jan, 2019", "10:00 AM", "10:20 AM", 20),
-      UserUsage("12th, Jan, 2019", "10:00 AM", "10:20 AM", 20),
-      UserUsage("13th, Jan, 2019", "10:00 AM", "10:30 AM", 30),
-      UserUsage("16th, Jan, 2019", "10:00 AM", "10:50 AM", 50),
+      UserUsage(
+          date: "10th, Jan, 2019",
+          startingTime: "10:00 AM",
+          endingTime: "10:20 AM",
+          use: 20),
+      UserUsage(
+          date: "12th, Jan, 2019",
+          startingTime: "10:00 AM",
+          endingTime: "10:20 AM",
+          use: 20),
+      UserUsage(
+          date: "13th, Jan, 2019",
+          startingTime: "10:00 AM",
+          endingTime: "10:30 AM",
+          use: 30),
+      UserUsage(
+          date: "16th, Jan, 2019",
+          startingTime: "10:00 AM",
+          endingTime: "10:50 AM",
+          use: 50),
     ];
     for (var i = 0; i < use.length; i++) {
       usage += use[i].use;
@@ -34,13 +50,10 @@ class UserHomeModel {
         gotoUsage: gotoUsage,
         role: "user");
 
-        nevigation=Nevigation(
-          gotoProfile: gotoProfile,
-          gotoUsage: gotoUsage
-        );
+    nevigation = Nevigation(gotoProfile: gotoProfile, gotoUsage: gotoUsage);
   }
 
-  Nevigation getNevigation(){
+  Nevigation getNevigation() {
     return nevigation;
   }
 
