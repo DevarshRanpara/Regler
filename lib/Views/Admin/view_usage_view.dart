@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
 
-class ViewUsageView extends StatelessWidget {
+import 'package:flutter_app/Views/Admin/view_usage_user.dart';
+
+class ViewUsageView extends StatefulWidget {
+  @override
+  _ViewUsageViewState createState() => _ViewUsageViewState();
+}
+
+class _ViewUsageViewState extends State<ViewUsageView> {
+  int _selectedIndex = 0;
+  final _widgetOption = [
+    ViewUsageUser(),
+    Text("Building")
+    ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -9,9 +21,28 @@ class ViewUsageView extends StatelessWidget {
             fontFamily: 'Montserrat',
             accentColor: Colors.teal),
         home: Scaffold(
-          body: Center(
-            child: Text("ViewUsageView"),
+          body: Container(
+            margin: EdgeInsets.all(8.0),
+            child:_widgetOption.elementAt(_selectedIndex),
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.supervisor_account),
+                  title: Text("User Wise")),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.location_city), title: Text("Building Wise"))
+            ],
+            currentIndex: _selectedIndex,
+            fixedColor: Colors.tealAccent,
+            onTap: _onItemTapped,
           ),
         ));
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 }

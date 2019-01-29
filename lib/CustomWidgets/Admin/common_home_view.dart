@@ -8,7 +8,7 @@ import 'package:flutter_app/Classes/admin_navigation.dart';
 
 class CommonHomeView extends StatelessWidget {
   final UserData data;
-  final AdminNevigation nevigation;
+  final Nevigation nevigation;
 
   CommonHomeView(this.nevigation, this.data);
 

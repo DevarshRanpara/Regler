@@ -1,11 +1,14 @@
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Classes/user_usage.dart';
 
+import 'package:flutter_app/Classes/admin_navigation.dart';
+
 class UserHomeModel {
   int usage = 0;
   int limit = 300;
   UserData data;
   Function gotoUsage, gotoProfile;
+  Nevigation nevigation;
 
   UserHomeModel(this.gotoProfile, this.gotoUsage) {
     setData();
@@ -30,6 +33,15 @@ class UserHomeModel {
         gotoProfile: gotoProfile,
         gotoUsage: gotoUsage,
         role: "user");
+
+        nevigation=Nevigation(
+          gotoProfile: gotoProfile,
+          gotoUsage: gotoUsage
+        );
+  }
+
+  Nevigation getNevigation(){
+    return nevigation;
   }
 
   UserData getData() {

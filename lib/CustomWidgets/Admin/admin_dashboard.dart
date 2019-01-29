@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/admin_navigation.dart';
 
 class AdminDashboard extends StatelessWidget {
-  final AdminNevigation nevigation;
+  final Nevigation nevigation;
 
   final boxHeight = 0.218;
   final boxWidth = 0.47;

@@ -1,4 +1,4 @@
-class AdminNevigation {
+class Nevigation {
   Function gotoProfile,
       gotoUsage,
       gotoManageUsers,
@@ -6,7 +6,7 @@ class AdminNevigation {
       gotoManageRooms,
       gotoViewUsage,
       gotoViewComplains;
-  AdminNevigation(
+  Nevigation(
       {this.gotoProfile,
       this.gotoUsage,
       this.gotoManageUsers,

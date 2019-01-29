@@ -4,11 +4,12 @@ import 'package:flutter_app/CustomWidgets/Common/usage_report_user.dart';
 import './upper_dashboard.dart';
 import 'package:flutter_app/Classes/user_usage.dart';
 import 'package:flutter_app/Classes/user_data.dart';
+import 'package:flutter_app/Classes/admin_navigation.dart';
 
 class DashboardTop extends StatefulWidget {
   final UserData data;
-
-  DashboardTop(this.data);
+  final Nevigation nevigation;
+  DashboardTop(this.data,this.nevigation);
 
   @override
   _DashboardTopState createState() => _DashboardTopState();
@@ -52,7 +53,7 @@ class _DashboardTopState extends State<DashboardTop> {
       child: Column(
         children: <Widget>[
           Column(
-            children: <Widget>[UpperDashboard(widget.data)],
+            children: <Widget>[UpperDashboard(widget.data,widget.nevigation)],
           ),
           Column(
             children: list,

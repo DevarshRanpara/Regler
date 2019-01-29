@@ -26,7 +26,7 @@ class AdminHomeView extends StatefulWidget {
 
 class _AdminHomeViewState extends State<AdminHomeView> {
   AdminHomeModel model;
-  AdminNevigation nevigation;
+  Nevigation nevigation;
   UserData data;
 
   @override
@@ -93,7 +93,7 @@ class _AdminHomeViewState extends State<AdminHomeView> {
 
   @override
   Widget build(BuildContext context) {
-    nevigation = AdminNevigation(
+    nevigation = Nevigation(
         gotoProfile: _gotoProfile,
         gotoUsage: _gotoUsage,
         gotoManageUsers: _gotoManageUsers,

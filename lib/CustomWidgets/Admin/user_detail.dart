@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Classes/users.dart';
+import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
 
 class UserDetailTile extends StatefulWidget {
-  final Users user;
+  final UserData user;
   UserDetailTile(this.user);
 
   @override
@@ -75,7 +75,7 @@ class _UserDetailTileState extends State<UserDetailTile> {
                                 style: TextStyle(color: Colors.red),
                               ),
                               Text(
-                                widget.user.usage.toString() + " M",
+                                widget.user.used.toString() + " M",
                                 style: TextStyle(color: Colors.redAccent),
                               )
                             ],

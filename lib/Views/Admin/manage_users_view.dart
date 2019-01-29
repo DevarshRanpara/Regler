@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Classes/users.dart';
+import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
 import 'package:flutter_app/CustomWidgets/Admin/user_detail.dart';
 
@@ -13,7 +13,7 @@ class ManageUsersView extends StatefulWidget {
 class _ManageUsersViewState extends State<ManageUsersView> {
   List<UserDetailTile> list = List();
   ManageUsersModel model = ManageUsersModel();
-  List<Users> user;
+  List<UserData> user;
 
   @override
   void initState() {
@@ -33,9 +33,8 @@ class _ManageUsersViewState extends State<ManageUsersView> {
             accentColor: Colors.teal),
         home: Scaffold(
             body: Container(
-              
-              child: ListView(
-          children: <Widget>[
+          child: ListView(
+            children: <Widget>[
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
@@ -96,8 +95,8 @@ class _ManageUsersViewState extends State<ManageUsersView> {
               Column(
                 children: list,
               )
-          ],
-        ),
-            )));
+            ],
+          ),
+        )));
   }
 }

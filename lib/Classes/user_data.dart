@@ -1,16 +1,26 @@
 import './user_usage.dart';
 
 class UserData {
-  final List<UserUsage> useData;
-  final String name;
-  final String role;
-  final int limit;
-  final int bal;
-  final int used;
-  final Function gotoProfile;
-  final Function gotoUsage;
+  int id;
+  String name;
+  String url;
+  bool isBocked;
+  String institute;
+  String role;
+  int limit;
+  int bal;
+  int used;
+  Function gotoProfile;
+  Function gotoUsage;
+  List<UserUsage> useData;
+  
   UserData(
-      {this.useData,
+      {
+      this.id,
+      this.url,
+      this.isBocked,
+      this.institute,
+      this.useData,
       this.name,
       this.limit,
       this.bal,

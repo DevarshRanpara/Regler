@@ -5,6 +5,7 @@ import 'package:flutter_app/Views/Profile/profile.dart';
 import './usage_detail_view.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Models/user_home_model.dart';
+import 'package:flutter_app/Classes/admin_navigation.dart';
 
 class UserMainPage extends StatelessWidget {
   @override
@@ -21,6 +22,7 @@ class HomePageView extends StatefulWidget {
 class _HomePageViewState extends State<HomePageView> {
   UserData data;
   UserHomeModel model;
+  Nevigation nevigation;
 
   @override
   void initState() {
@@ -30,7 +32,7 @@ class _HomePageViewState extends State<HomePageView> {
 
   void setData() {
     model = UserHomeModel(_gotoProfile, _gotoUsage);
-
+    nevigation=model.getNevigation();
     data = model.getData();
   }
 
@@ -65,7 +67,7 @@ class _HomePageViewState extends State<HomePageView> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
               ),
-              DashboardTop(data)
+              DashboardTop(data,nevigation)
             ],
           ),
         ),

@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 
+import 'package:flutter_app/Classes/admin_navigation.dart';
+
 class UpperDashboard extends StatelessWidget {
   final UserData data;
-  UpperDashboard(this.data);
+  final Nevigation nevigation;
+  UpperDashboard(this.data,this.nevigation);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,7 @@ class UpperDashboard extends StatelessWidget {
         children: <Widget>[
           InkWell(
               onTap: () {
-                data.gotoProfile();
+                nevigation.gotoProfile();
               },
               child: Card(
                 child: Container(
@@ -61,7 +64,7 @@ class UpperDashboard extends StatelessWidget {
           // ),
           InkWell(
               onTap: () {
-                data.gotoUsage();
+                nevigation.gotoUsage();
               },
               child: Card(
                 child: Container(
