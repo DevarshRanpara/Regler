@@ -10,8 +10,6 @@ class UserData {
   int limit;
   int bal;
   int used;
-  Function gotoProfile;
-  Function gotoUsage;
   List<UserUsage> useData;
   
   UserData(
@@ -25,7 +23,5 @@ class UserData {
       this.limit,
       this.bal,
       this.used,
-      this.gotoProfile,
-      this.gotoUsage,
       this.role});
 }

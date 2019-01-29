@@ -5,6 +5,7 @@ import 'package:flutter_app/Classes/user_usage.dart';
 import 'package:flutter_app/CustomWidgets/Common/usage_report_user.dart';
 
 class AdminUseView extends StatefulWidget {
+
   final List<UserUsage> use;
 
   AdminUseView(this.use);
@@ -35,7 +36,7 @@ class _AdminUseViewState extends State<AdminUseView> {
   Widget build(BuildContext context) {
     List<Usage> data = new List<Usage>();
 
-    for (int i = 0; i <= 6; i++) {
+    for (int i = 0; i < widget.use.length; i++) {
       data.add(Usage(i, widget.use[i].use));
     }
 
@@ -106,7 +107,7 @@ class _AdminUseViewState extends State<AdminUseView> {
                         width: MediaQuery.of(context).size.width,
                         child: chart,
                       ),
-                      Text("Your use of last seven days"),
+                      //Text("Your use of last seven days"),
                     ],
                   ),
                 ))),

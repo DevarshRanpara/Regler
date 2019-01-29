@@ -46,8 +46,6 @@ class UserHomeModel {
         limit: limit,
         used: usage,
         bal: limit - usage,
-        gotoProfile: gotoProfile,
-        gotoUsage: gotoUsage,
         role: "user");
 
     nevigation = Nevigation(gotoProfile: gotoProfile, gotoUsage: gotoUsage);
