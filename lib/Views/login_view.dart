@@ -29,7 +29,7 @@ class LoginPageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   AnimationController _iconanimationController;
   Animation<double> _iconAniamation;
-  Dialogs dialogs=new Dialogs();
+  Dialogs dialogs;
 
   final scaffoldKey = new GlobalKey<ScaffoldState>();
   final formKey = new GlobalKey<FormState>();
@@ -58,8 +58,11 @@ class LoginPageState extends State<HomePage>
     if (form.validate()) {
       form.save();
       var loginModel = LoginModel(_userId, _password);
-      //dialogs.waiting(context);
+      dialogs=new Dialogs(context);
+      dialogs.setMessage("Signing in");
+      dialogs.show();
       String res=await loginModel.auth();
+      dialogs.hide();
       _gotoHome(res);
     }
   }
