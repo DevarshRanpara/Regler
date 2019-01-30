@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_app/CustomWidgets/Common/dialog.dart';
 import 'package:flutter_app/CustomWidgets/Common/fancy_button.dart';
 import 'package:flutter_app/Models/login_model.dart';
 import './User/home_page.dart';
@@ -29,6 +29,7 @@ class LoginPageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   AnimationController _iconanimationController;
   Animation<double> _iconAniamation;
+  Dialogs dialogs=new Dialogs();
 
   final scaffoldKey = new GlobalKey<ScaffoldState>();
   final formKey = new GlobalKey<FormState>();
@@ -57,13 +58,14 @@ class LoginPageState extends State<HomePage>
     if (form.validate()) {
       form.save();
       var loginModel = LoginModel(_userId, _password);
-
+      //dialogs.waiting(context);
       String res=await loginModel.auth();
       _gotoHome(res);
     }
   }
 
   void _gotoHome(String role) {
+    
     if (role == 'user') {
       Navigator.push(context,
           MaterialPageRoute(builder: (BuildContext context) => UserMainPage()));

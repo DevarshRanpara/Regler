@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LoginModel {
   String _userid, _password;
@@ -11,7 +11,15 @@ class LoginModel {
       FirebaseUser user=await FirebaseAuth.instance.signInWithEmailAndPassword(email: _userid, password: _password);
       //Firestore.instance.collection("/users").where('uid')
       print(user.uid+"\n\n\n"+user.email);
-      return "user";
+      if(_userid=="dev@mail.com"){
+        return "user";
+      }
+      else if(_userid=="admin@mail.com"){
+        return "admin";
+      }
+      else{
+        return "director";
+      }
     }
     catch(e){
       print(e.toString());
