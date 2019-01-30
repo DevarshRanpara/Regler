@@ -51,13 +51,15 @@ class LoginPageState extends State<HomePage>
     _iconanimationController.forward();
   }
 
-  void _submit() {
+  void _submit() async {
     final form = formKey.currentState;
 
     if (form.validate()) {
       form.save();
       var loginModel = LoginModel(_userId, _password);
-      _gotoHome(loginModel.auth());
+
+      String res=await loginModel.auth();
+      _gotoHome(res);
     }
   }
 
@@ -120,7 +122,7 @@ class LoginPageState extends State<HomePage>
                             decoration: new InputDecoration(
                                 labelText: "Enter Your User ID"),
                             validator: (val) {
-                              if (val.length > 12 || val.isEmpty) {
+                              if (val.length > 20 || val.isEmpty) {
                                 return 'Invalid UserId';
                               } else {
                                 return null;

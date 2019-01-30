@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "601568537508",
+    "firebase_url": "https://regler-ebcb2.firebaseio.com",
+    "project_id": "regler-ebcb2",
+    "storage_bucket": "regler-ebcb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601568537508:android:ec6a74d163e1b736",
+        "android_client_info": {
+          "package_name": "com.regler.flutterapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "601568537508-j4kke0spt8qu2uvjerlmjamipcgbkkh3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpmeg2nGZEsM-BxY_f2_odn40ciHzm3VM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

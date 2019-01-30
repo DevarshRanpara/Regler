@@ -13,10 +13,13 @@ environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
 
 dependencies:
+  firebase_auth: ^0.6.6
+  cloud_firestore: ^0.8.2+3
   flutter:
     sdk: flutter
   charts_flutter: ^0.5.0
   shared_preferences: ^0.4.3
+  
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -26,6 +29,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  #cloud_firestore: ^0.8.2 
+
 
 
 # For information on the generic Dart part of this file, see the
