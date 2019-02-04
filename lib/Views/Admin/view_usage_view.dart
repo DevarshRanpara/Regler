@@ -1,31 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/user_data.dart';
-import 'package:flutter_app/Views/Admin/admin_use_view.dart';
+import 'package:flutter_app/Views/Admin/user_use_view.dart';
 
 import 'package:flutter_app/Views/Admin/view_usage_user.dart';
 
 class ViewUsageView extends StatefulWidget {
+  final String role;
+
+  ViewUsageView(this.role);
+
   @override
   _ViewUsageViewState createState() => _ViewUsageViewState();
 }
 
 class _ViewUsageViewState extends State<ViewUsageView> {
-  
   List<Widget> pages;
   int _selectedIndex = 0;
+  String type;
   //final _widgetOption = [usageUser, Text("Building")];
-  
+
   @override
-    void initState() {
-      Widget usageUser=ViewUsageUser(gotoUsage);
-      pages=[usageUser,Text("Building")];
-      super.initState();
+  void initState() {
+    Widget usageUser = ViewUsageUser(gotoUsage);
+    if (widget.role == 'admin') {
+      Widget usageBuilding = Text("Building");
+      type="Building";
+      pages = [usageUser, usageBuilding];
+    } else {
+      Widget usageRoom = Text("Room");
+      type="Room";
+      pages = [usageUser, usageRoom];
     }
-    void gotoUsage(UserData use) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (BuildContext context) => AdminUseView(use.useData)));
+    super.initState();
+  }
+
+  void gotoUsage(UserData use) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (BuildContext context) => UserUseView(use)));
   }
 
   @override
@@ -46,7 +57,7 @@ class _ViewUsageViewState extends State<ViewUsageView> {
                   icon: Icon(Icons.supervisor_account),
                   title: Text("User Wise")),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.location_city), title: Text("Building Wise"))
+                  icon: Icon(Icons.location_city), title: Text(type+" Wise"))
             ],
             currentIndex: _selectedIndex,
             fixedColor: Colors.tealAccent,
