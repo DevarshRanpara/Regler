@@ -39,6 +39,7 @@ class LoginPageState extends State<HomePage>
 
   @override
   void initState() {
+    
     super.initState();
 
     _iconanimationController = new AnimationController(
