@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Views/Admin/user_use_view.dart';
+import 'package:flutter_app/Views/Admin/view_usage_building.dart';
 
 import 'package:flutter_app/Views/Admin/view_usage_user.dart';
 
@@ -23,7 +24,7 @@ class _ViewUsageViewState extends State<ViewUsageView> {
   void initState() {
     Widget usageUser = ViewUsageUser(gotoUsage);
     if (widget.role == 'admin') {
-      Widget usageBuilding = Text("Building");
+      Widget usageBuilding = ViewUsageBulding();
       type="Building";
       pages = [usageUser, usageBuilding];
     } else {
