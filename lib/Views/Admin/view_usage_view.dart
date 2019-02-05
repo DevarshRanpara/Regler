@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/user_data.dart';
+import 'package:flutter_app/Models/view_usage_building_model.dart';
 import 'package:flutter_app/Views/Admin/admin_use_view.dart';
 import 'package:flutter_app/Views/Admin/view_usage_building.dart';
 import 'package:flutter_app/Views/Admin/view_usage_room.dart';
@@ -28,7 +29,9 @@ class _ViewUsageViewState extends State<ViewUsageView> {
       Widget usageBuilding = ViewUsageBulding(gotoRoom);
       pages = [usageUser, usageBuilding];
     } else {
-      pages = [usageUser, Text("Room")];
+      ViewUsageBuldingModel model=ViewUsageBuldingModel();
+      Widget usageRoom = ViewUsageRoom(model.buildings[0].rooms);
+      pages = [usageUser, usageRoom];
     }
 
     super.initState();

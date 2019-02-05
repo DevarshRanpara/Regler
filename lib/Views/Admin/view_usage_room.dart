@@ -32,7 +32,7 @@ class _ViewUsageRoomState extends State<ViewUsageRoom> {
             accentColor: Colors.teal),
       home: Scaffold(
         body: Container(
-          margin: EdgeInsets.all(8.0),
+          //margin: EdgeInsets.all(8.0),
           child: ListView(
       children: <Widget>[
           Padding(
