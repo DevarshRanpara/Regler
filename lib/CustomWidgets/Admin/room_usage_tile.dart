@@ -17,23 +17,24 @@ class _RoomTileState extends State<RoomUsageTile> {
     return InkWell(
       onTap: () {},
       child: Card(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-           
-            Icon(
-              Icons.crop_square,
-              color: Colors.redAccent,
-              size: 25.0,
-            ),
-            SizedBox(
-              width: 15.0,
-            ),
-            Text(
-              widget.room.name,
-              style: TextStyle(fontSize: 15.0),
-            ),
-          ],
+        child: Container(
+           padding: EdgeInsets.all(20.0),
+          child: Row(
+            children: <Widget>[
+              Icon(
+                Icons.crop_square,
+                color: Colors.redAccent,
+                size: 25.0,
+              ),
+              SizedBox(
+                width: 15.0,
+              ),
+              Text(
+                widget.room.name,
+                style: TextStyle(fontSize: 15.0),
+              ),
+            ],
+          ),
         ),
       ),
     );

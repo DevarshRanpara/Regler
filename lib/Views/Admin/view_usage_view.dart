@@ -1,31 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Views/Admin/admin_use_view.dart';
+import 'package:flutter_app/Views/Admin/view_usage_building.dart';
+import 'package:flutter_app/Views/Admin/view_usage_room.dart';
 
 import 'package:flutter_app/Views/Admin/view_usage_user.dart';
 
 class ViewUsageView extends StatefulWidget {
+  final String role;
+
+  ViewUsageView(this.role);
+
   @override
   _ViewUsageViewState createState() => _ViewUsageViewState();
 }
 
 class _ViewUsageViewState extends State<ViewUsageView> {
-  
   List<Widget> pages;
   int _selectedIndex = 0;
   //final _widgetOption = [usageUser, Text("Building")];
-  
+
   @override
-    void initState() {
-      Widget usageUser=ViewUsageUser(gotoUsage);
-      pages=[usageUser,Text("Building")];
-      super.initState();
+  void initState() {
+    Widget usageUser = ViewUsageUser(gotoUsage);
+    if (widget.role == 'admin') {
+      Widget usageBuilding = ViewUsageBulding(gotoRoom);
+      pages = [usageUser, usageBuilding];
+    } else {
+      pages = [usageUser, Text("Room")];
     }
-    void gotoUsage(UserData use) {
+
+    super.initState();
+  }
+
+  void gotoUsage(UserData use) {
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (BuildContext context) => AdminUseView(use.useData)));
+  }
+
+  void gotoRoom(List<Room> rooms) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => ViewUsageRoom(rooms)));
   }
 
   @override
