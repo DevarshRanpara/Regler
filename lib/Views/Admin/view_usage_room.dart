@@ -6,7 +6,9 @@ class ViewUsageRoom extends StatefulWidget {
 
   final List<Room> rooms;
 
-  ViewUsageRoom(this.rooms);
+  final double margine;
+
+  ViewUsageRoom(this.rooms,this.margine);
   @override
   _ViewUsageRoomState createState() => _ViewUsageRoomState();
 }
@@ -32,7 +34,7 @@ class _ViewUsageRoomState extends State<ViewUsageRoom> {
             accentColor: Colors.teal),
       home: Scaffold(
         body: Container(
-          //margin: EdgeInsets.all(8.0),
+          margin: EdgeInsets.all(widget.margine),
           child: ListView(
       children: <Widget>[
           Padding(

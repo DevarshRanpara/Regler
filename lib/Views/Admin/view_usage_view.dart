@@ -20,17 +20,19 @@ class ViewUsageView extends StatefulWidget {
 class _ViewUsageViewState extends State<ViewUsageView> {
   List<Widget> pages;
   int _selectedIndex = 0;
-  //final _widgetOption = [usageUser, Text("Building")];
+  String inst;
 
   @override
   void initState() {
     Widget usageUser = ViewUsageUser(gotoUsage);
     if (widget.role == 'admin') {
+      inst='Building';
       Widget usageBuilding = ViewUsageBulding(gotoRoom);
       pages = [usageUser, usageBuilding];
     } else {
+      inst='Room';
       ViewUsageBuldingModel model=ViewUsageBuldingModel();
-      Widget usageRoom = ViewUsageRoom(model.buildings[0].rooms);
+      Widget usageRoom = ViewUsageRoom(model.buildings[0].rooms,0);
       pages = [usageUser, usageRoom];
     }
 
@@ -48,7 +50,7 @@ class _ViewUsageViewState extends State<ViewUsageView> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (BuildContext context) => ViewUsageRoom(rooms)));
+            builder: (BuildContext context) => ViewUsageRoom(rooms,8)));
   }
 
   @override
@@ -69,7 +71,7 @@ class _ViewUsageViewState extends State<ViewUsageView> {
                   icon: Icon(Icons.supervisor_account),
                   title: Text("User Wise")),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.location_city), title: Text("Building Wise"))
+                  icon: Icon(Icons.location_city), title: Text(inst+" Wise"))
             ],
             currentIndex: _selectedIndex,
             fixedColor: Colors.tealAccent,
