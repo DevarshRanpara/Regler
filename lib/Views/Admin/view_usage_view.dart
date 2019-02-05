@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Views/Admin/user_use_view.dart';
 import 'package:flutter_app/Views/Admin/view_usage_building.dart';
+import 'package:flutter_app/Views/Admin/view_usage_room.dart';
 
 import 'package:flutter_app/Views/Admin/view_usage_user.dart';
 
@@ -24,7 +26,7 @@ class _ViewUsageViewState extends State<ViewUsageView> {
   void initState() {
     Widget usageUser = ViewUsageUser(gotoUsage);
     if (widget.role == 'admin') {
-      Widget usageBuilding = ViewUsageBulding();
+      Widget usageBuilding = ViewUsageBulding(gotoRoom);
       type="Building";
       pages = [usageUser, usageBuilding];
     } else {
@@ -38,6 +40,10 @@ class _ViewUsageViewState extends State<ViewUsageView> {
   void gotoUsage(UserData use) {
     Navigator.push(context,
         MaterialPageRoute(builder: (BuildContext context) => UserUseView(use)));
+  }
+    void gotoRoom(List<Room> rooms) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (BuildContext context) => ViewUsageRoom(rooms)));
   }
 
   @override
