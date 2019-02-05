@@ -1,9 +1,8 @@
 class LoginModel {
   String _userid, _password;
   LoginModel(this._userid, this._password);
-  
-  String auth()
-  {
+
+  String auth() {
     if (_userid == 'user' && _password == "password1") {
       return 'user';
     } else if (_userid == 'admin' && _password == "password1") {
