@@ -62,7 +62,7 @@ class LoginPageState extends State<HomePage>
       dialogs=new Dialogs(context);
       dialogs.setMessage("Signing in");
       dialogs.show();
-      String res=await loginModel.auth();
+      String res=loginModel.auth();
       dialogs.hide();
       _gotoHome(res);
     }
