@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/CustomWidgets/Common/dialog.dart';
+
 import 'package:flutter_app/CustomWidgets/Common/fancy_button.dart';
 import 'package:flutter_app/Models/login_model.dart';
 import './User/home_page.dart';
@@ -29,7 +29,6 @@ class LoginPageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   AnimationController _iconanimationController;
   Animation<double> _iconAniamation;
-  Dialogs dialogs;
 
   final scaffoldKey = new GlobalKey<ScaffoldState>();
   final formKey = new GlobalKey<FormState>();
@@ -39,7 +38,6 @@ class LoginPageState extends State<HomePage>
 
   @override
   void initState() {
-    
     super.initState();
 
     _iconanimationController = new AnimationController(
@@ -53,23 +51,17 @@ class LoginPageState extends State<HomePage>
     _iconanimationController.forward();
   }
 
-  void _submit() async {
+  void _submit() {
     final form = formKey.currentState;
 
     if (form.validate()) {
       form.save();
       var loginModel = LoginModel(_userId, _password);
-      dialogs=new Dialogs(context);
-      dialogs.setMessage("Signing in");
-      dialogs.show();
-      String res=loginModel.auth();
-      dialogs.hide();
-      _gotoHome(res);
+      _gotoHome(loginModel.auth());
     }
   }
 
   void _gotoHome(String role) {
-    
     if (role == 'user') {
       Navigator.push(context,
           MaterialPageRoute(builder: (BuildContext context) => UserMainPage()));
@@ -128,7 +120,7 @@ class LoginPageState extends State<HomePage>
                             decoration: new InputDecoration(
                                 labelText: "Enter Your User ID"),
                             validator: (val) {
-                              if (val.length > 20 || val.isEmpty) {
+                              if (val.length > 12 || val.isEmpty) {
                                 return 'Invalid UserId';
                               } else {
                                 return null;

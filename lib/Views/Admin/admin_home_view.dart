@@ -81,7 +81,7 @@ class _AdminHomeViewState extends State<AdminHomeView> {
 
   void _gotoViewUsage() {
     Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => ViewUsageView(model.role)));
+        MaterialPageRoute(builder: (BuildContext context) => ViewUsageView()));
   }
 
   void _gotoViewComplains() {
