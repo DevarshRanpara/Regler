@@ -4,6 +4,7 @@ import 'package:flutter_app/CustomWidgets/Common/fancy_button.dart';
 import 'package:flutter_app/Models/login_model.dart';
 import './User/home_page.dart';
 import './Admin/admin_home_view.dart';
+import 'package:flutter_app/CustomWidgets/Common/dialog.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -51,13 +52,18 @@ class LoginPageState extends State<HomePage>
     _iconanimationController.forward();
   }
 
-  void _submit() {
+  void _submit() async {
     final form = formKey.currentState;
 
     if (form.validate()) {
       form.save();
+      Dialogs dialogs=Dialogs(context);
+      dialogs.setMessage('Signing in');
+      dialogs.show();
       var loginModel = LoginModel(_userId, _password);
-      _gotoHome(loginModel.auth());
+      String res=await loginModel.auth();
+      dialogs.hide();
+      _gotoHome(res);
     }
   }
 
