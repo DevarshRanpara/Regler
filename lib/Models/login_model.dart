@@ -1,36 +1,37 @@
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:flutter_app/Classes/preferances.dart';
+import 'package:flutter_app/Classes/gen_string.dart';
 
 class LoginModel {
-
-  
-
   String _userid, _password;
+  final String method = 'login';
   LoginModel(this._userid, this._password);
 
-  Future<String> auth() async
-  {
-    String url='https://devicemanagament.000webhostapp.com/web_service.php?uname='+_userid+'&pass='+_password;
-    var response= await http.get(
+  Future<String> auth() async {
+    
+    String url =GenerateString.genStringLogin(method, _userid, _password);
+
+    var response = await http.get(
       Uri.encodeFull(url),
-      );
+    );
 
     //print(response.body);
 
     //List data=jsonDecode(response.body);
-    if(response.body.toString()=='invalid')
-    {
+    if (response.body.toString() == 'invalid') {
       return 'invalid';
-    }
-    else
-    {
-      List data=jsonDecode(response.body);
+    } else {
+      List data = jsonDecode(response.body);
+      Preferances.id=int.parse(data[0]['id']);
+      Preferances.name = data[0]['u_name'];
+      Preferances.role = data[0]['type'];
+      Preferances.imgurl = data[0]['image_url'];
       print(data[0]['type']);
       return data[0]['type'];
     }
   }
-  
 }
 
 // String auth() {

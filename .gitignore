@@ -10,6 +10,7 @@
 .history
 .svn/
 .json
+gen_string.dart
 # IntelliJ related
 *.iml
 *.ipr

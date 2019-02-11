@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_app/Classes/user_data.dart';
 import "package:flutter_app/CustomWidgets/Common/circular_image.dart";
 import 'admin_dashboard.dart';
 import 'director_dashboard.dart';
 import 'package:flutter_app/Classes/admin_navigation.dart';
+import 'package:flutter_app/Classes/preferances.dart';
 
 class CommonHomeView extends StatelessWidget {
   final UserData data;
@@ -42,8 +42,8 @@ class CommonHomeView extends StatelessWidget {
                         child: Row(
                           children: <Widget>[
                             CircularImage(
-                              AssetImage("assets/dev.jpeg"),
-                            ),
+                                NetworkImage(Preferances.imgurl),
+                             ),
                             SizedBox(
                               width: 10.0,
                             ),

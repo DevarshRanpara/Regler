@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/preferances.dart';
 
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import './change_password_view.dart';
@@ -90,7 +91,7 @@ class _UserProfileState extends State<Profile> {
                     child: Column(
                       children: <Widget>[
                         CircularImage(
-                          AssetImage("assets/dev.jpeg"),
+                          NetworkImage(Preferances.imgurl),
                           width: 100,
                           height: 100,
                         ),

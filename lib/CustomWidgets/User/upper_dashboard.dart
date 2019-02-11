@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/preferances.dart';
 
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/Classes/user_data.dart';
@@ -29,7 +30,7 @@ class UpperDashboard extends StatelessWidget {
                         child: Row(
                           children: <Widget>[
                             CircularImage(
-                              AssetImage("assets/dev.jpeg"),
+                              NetworkImage(Preferances.imgurl),
                             ),
                             SizedBox(
                               width: 10.0,

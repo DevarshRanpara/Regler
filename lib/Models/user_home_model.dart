@@ -1,6 +1,6 @@
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Classes/user_usage.dart';
-
+import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/admin_navigation.dart';
 
 class UserHomeModel {
@@ -41,12 +41,12 @@ class UserHomeModel {
       usage += use[i].use;
     }
     data = UserData(
-        name: "Devarsh",
+        name: Preferances.name,
         useData: use,
         limit: limit,
         used: usage,
         bal: limit - usage,
-        role: "user");
+        role: Preferances.role);
 
     nevigation = Nevigation(gotoProfile: gotoProfile, gotoUsage: gotoUsage);
   }
