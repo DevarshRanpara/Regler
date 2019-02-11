@@ -22,7 +22,12 @@ class LoginModel {
     //List data=jsonDecode(response.body);
     if (response.body.toString() == 'invalid') {
       return 'invalid';
-    } else {
+    } 
+    else if (response.body.toString() == 'blocked')
+    {
+      return 'blocked';
+    }
+    else {
       List data = jsonDecode(response.body);
       Preferances.id=int.parse(data[0]['id']);
       Preferances.name = data[0]['u_name'];

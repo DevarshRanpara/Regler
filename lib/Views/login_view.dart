@@ -76,13 +76,23 @@ class LoginPageState extends State<HomePage>
           context,
           MaterialPageRoute(
               builder: (BuildContext context) => AdminHomeView(role)));
-    } else {
-      final snackbar = new SnackBar(
-        content: new Text("Invalid User ID or password"),
+    }
+    else if(role == 'blocked')
+    {
+      showSnakbar("User is blocked! Contact admin");
+    } 
+    else {
+      showSnakbar("Invalid User ID or password");
+    }
+  }
+
+  void showSnakbar(String msg)
+  {
+    final snackbar = new SnackBar(
+        content: new Text(msg),
         backgroundColor: Colors.red,
       );
       scaffoldKey.currentState.showSnackBar(snackbar);
-    }
   }
 
   @override
