@@ -31,21 +31,26 @@ class ManageUsersModel {
 
     print(response.body);
 
-    for(int i=0;i<data.length;i++){
-      UserData userData=UserData(
-        id: data[i]['id'],
+    for (int i = 0; i < data.length; i++) {
+      bool f = false;
+
+      if (data[i]['isblocked'] == '1') {
+        f = true;
+      }
+
+      UserData userData = UserData(
+        id: int.parse(data[i]['id']),
         name: data[i]['u_name'],
         institute: data[i]['institute'],
         url: data[i]['image_url'],
-        limit: int.parse(data[i]['user_limit']) ,
+        isBocked: f,
+        limit: int.parse(data[i]['user_limit']),
         used: int.parse(data[i]['user_use']),
-        bal: int.parse(data[i]['balence']), 
-        isBocked:false
+        bal: int.parse(data[i]['balence']),
       );
       user.add(userData);
     }
 
     return true;
-
   }
 }
