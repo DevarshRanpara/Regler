@@ -6,17 +6,23 @@ import 'package:flutter_app/CustomWidgets/Admin/user_detail.dart';
 import 'add_user_view.dart';
 
 class ManageUsersView extends StatefulWidget {
+
+  final ManageUsersModel model;
+
+  ManageUsersView(this.model);
+
   @override
   _ManageUsersViewState createState() => _ManageUsersViewState();
 }
 
 class _ManageUsersViewState extends State<ManageUsersView> {
   List<UserDetailTile> list = List();
-  ManageUsersModel model = ManageUsersModel();
+  ManageUsersModel model;
   List<UserData> user;
 
   @override
   void initState() {
+    model= widget.model;
     user = model.getData();
     for (int i = 0; i < user.length; i++) {
       list.add(UserDetailTile(user[i]));
@@ -100,3 +106,4 @@ class _ManageUsersViewState extends State<ManageUsersView> {
         )));
   }
 }
+

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/user_data.dart';
+import 'package:flutter_app/CustomWidgets/Common/dialog.dart';
+import 'package:flutter_app/Models/manage_users_model.dart';
 
 import 'package:flutter_app/Views/Profile/profile.dart';
 import 'package:flutter_app/Views/Admin/admin_use_view.dart';
@@ -34,9 +36,9 @@ class _AdminHomeViewState extends State<AdminHomeView> {
   @override
   void initState() {
     if (widget.role == "admin") {
-      model = AdminHomeModel(Preferances.name,Preferances.role);
+      model = AdminHomeModel(Preferances.name, Preferances.role);
     } else {
-      model = AdminHomeModel(Preferances.name,Preferances.role);
+      model = AdminHomeModel(Preferances.name, Preferances.role);
     }
     setData();
     super.initState();
@@ -60,11 +62,17 @@ class _AdminHomeViewState extends State<AdminHomeView> {
             builder: (BuildContext context) => AdminUseView(model.use)));
   }
 
-  void _gotoManageUsers() {
+  void _gotoManageUsers() async {
+    ManageUsersModel model = ManageUsersModel();
+    Dialogs dialogs = Dialogs(context);
+    dialogs.setMessage('Loading');
+    dialogs.show();
+    await model.setData();
+    dialogs.hide();
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (BuildContext context) => ManageUsersView()));
+            builder: (BuildContext context) => ManageUsersView(model)));
   }
 
   void _gotoManageBuildings() {
@@ -82,8 +90,10 @@ class _AdminHomeViewState extends State<AdminHomeView> {
   }
 
   void _gotoViewUsage() {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => ViewUsageView(data.role)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => ViewUsageView(data.role)));
   }
 
   void _gotoViewComplains() {

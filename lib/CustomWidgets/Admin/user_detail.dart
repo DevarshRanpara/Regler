@@ -31,7 +31,7 @@ class _UserDetailTileState extends State<UserDetailTile> {
                   title: Row(
                     children: <Widget>[
                       CircularImage(
-                        AssetImage("assets/dev.jpeg"),
+                        NetworkImage(widget.user.url),
                         width: 30,
                         height: 30,
                       ),
