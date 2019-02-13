@@ -6,11 +6,6 @@ import 'package:flutter_app/CustomWidgets/Admin/user_detail.dart';
 import 'add_user_view.dart';
 
 class ManageUsersView extends StatefulWidget {
-
-  final ManageUsersModel model;
-
-  ManageUsersView(this.model);
-
   @override
   _ManageUsersViewState createState() => _ManageUsersViewState();
 }
@@ -22,11 +17,7 @@ class _ManageUsersViewState extends State<ManageUsersView> {
 
   @override
   void initState() {
-    model= widget.model;
-    user = model.getData();
-    for (int i = 0; i < user.length; i++) {
-      list.add(UserDetailTile(user[i]));
-    }
+    model = ManageUsersModel();
     super.initState();
   }
 
@@ -41,69 +32,107 @@ class _ManageUsersViewState extends State<ManageUsersView> {
             body: Container(
           child: ListView(
             children: <Widget>[
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
-              ),
-              InkWell(
-                  onTap: () {},
-                  child: Card(
-                      child: Container(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      children: <Widget>[
-                        Icon(
-                          Icons.supervisor_account,
-                          color: Colors.redAccent,
-                          size: 35.0,
+              SizedBox(
+                height: MediaQuery.of(context).size.height*0.95,
+                child: FutureBuilder(
+                  future: model.setData(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.data == null) {
+                      return Center(
+                        child: SizedBox(
+                          height: 30,
+                          width: 30,
+                          child: CircularProgressIndicator(),
                         ),
-                        SizedBox(
-                          height: 15.0,
-                        ),
-                        Text(
-                          "Manage Users",
-                          style: TextStyle(
-                              color: Colors.tealAccent,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w200),
-                        )
-                      ],
-                    ),
-                  ))),
-              InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => AddUserView()));
+                      );
+                    } else {
+                      return ListView.builder(
+                        itemCount: snapshot.data.length+1,
+                        itemBuilder: (BuildContext conext, int i) {
+                          if (i == 0) {
+                            return getUpperUI();
+                          }
+                          return UserDetailTile(snapshot.data[i-1]);
+                        },
+                      );
+                    }
                   },
-                  child: Card(
-                    child: Container(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.add,
-                            color: Colors.amber,
-                          ),
-                          SizedBox(
-                            width: 8.0,
-                          ),
-                          Text(
-                            "Add User",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )),
-              Column(
-                children: list,
+                ),
               )
             ],
           ),
         )));
+        
+  }
+
+  Widget getUpperUI() {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
+          ),
+          InkWell(
+              onTap: () {},
+              child: Card(
+                  child: Container(
+                padding: const EdgeInsets.all(20.0),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Icon(
+                        Icons.supervisor_account,
+                        color: Colors.redAccent,
+                        size: 35.0,
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      Text(
+                        "Manage Users",
+                        style: TextStyle(
+                            color: Colors.tealAccent,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w200),
+                      )
+                    ],
+                  ),
+                ),
+              ))),
+          InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => AddUserView()));
+              },
+              child: Card(
+                child: Container(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.add,
+                        color: Colors.amber,
+                      ),
+                      SizedBox(
+                        width: 8.0,
+                      ),
+                      Text(
+                        "Add User",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+              )),
+        ],
+      ),
+    );
   }
 }
-
