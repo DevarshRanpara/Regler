@@ -5,7 +5,8 @@ import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
 
 class UserDetailTile extends StatefulWidget {
   final UserData user;
-  UserDetailTile(this.user);
+  final Function block;
+  UserDetailTile(this.user,this.block);
 
   @override
   _UserDetailTileState createState() => _UserDetailTileState();
@@ -21,184 +22,293 @@ class _UserDetailTileState extends State<UserDetailTile> {
     } else {
       strblock = "Block";
     }
-    return InkWell(
-        onTap: () {},
-        child: Card(
-            child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0),
-                child: AppExpansionTile(
-                  title: Row(
-                    children: <Widget>[
-                      CircularImage(
-                        NetworkImage(widget.user.url),
-                        width: 30,
-                        height: 30,
-                      ),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.3,
-                        child: Text(widget.user.name),
-                      ),
-                      //Text(name),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      Text(
-                        widget.user.institute,
-                        style: TextStyle(color: Colors.tealAccent),
-                      )
-                    ],
-                  ),
-                  children: <Widget>[
-                    Row(
+
+    if (widget.user.role == 'user') {
+      return InkWell(
+          onTap: () {},
+          child: Card(
+              child: Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 5.0, vertical: 2.0),
+                  child: AppExpansionTile(
+                    title: Row(
                       children: <Widget>[
+                        CircularImage(
+                          NetworkImage(widget.user.url),
+                          width: 30,
+                          height: 30,
+                        ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                "Limit",
-                              ),
-                              Text(widget.user.limit.toString() + " M")
-                            ],
-                          ),
+                          width: 10.0,
                         ),
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.3,
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                "Usage",
-                                style: TextStyle(color: Colors.red),
-                              ),
-                              Text(
-                                widget.user.used.toString() + " M",
-                                style: TextStyle(color: Colors.redAccent),
-                              )
-                            ],
-                          ),
+                          child: Text(widget.user.name),
                         ),
+                        //Text(name),
                         SizedBox(
+                          width: 10.0,
+                        ),
+                        Text(
+                          widget.user.institute,
+                          style: TextStyle(color: Colors.tealAccent),
+                        )
+                      ],
+                    ),
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          SizedBox(
                             width: MediaQuery.of(context).size.width * 0.3,
                             child: Column(
                               children: <Widget>[
                                 Text(
-                                  "Bal",
-                                  style: TextStyle(color: Colors.teal),
+                                  "Limit",
+                                ),
+                                Text(widget.user.limit.toString() + " M")
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: Column(
+                              children: <Widget>[
+                                Text(
+                                  "Usage",
+                                  style: TextStyle(color: Colors.red),
                                 ),
                                 Text(
-                                  widget.user.bal.toString() + " M",
-                                  style: TextStyle(color: Colors.tealAccent),
+                                  widget.user.used.toString() + " M",
+                                  style: TextStyle(color: Colors.redAccent),
                                 )
                               ],
-                            )),
-                      ],
-                    ),
-                    Row(
+                            ),
+                          ),
+                          SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.3,
+                              child: Column(
+                                children: <Widget>[
+                                  Text(
+                                    "Bal",
+                                    style: TextStyle(color: Colors.teal),
+                                  ),
+                                  Text(
+                                    widget.user.bal.toString() + " M",
+                                    style: TextStyle(color: Colors.tealAccent),
+                                  )
+                                ],
+                              )),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: RawMaterialButton(
+                              onPressed: () {},
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 5.0, horizontal: 10.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.timeline,
+                                      size: 15.0,
+                                    ),
+                                    SizedBox(
+                                      width: 2.0,
+                                    ),
+                                    Text("Ch. Limit"),
+                                  ],
+                                ),
+                              ),
+                              fillColor: Colors.blue,
+                              splashColor: Colors.blueAccent,
+                              shape: const StadiumBorder(),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: RawMaterialButton(
+                              onPressed: () {
+                                widget.block(widget.user);
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 5.0, horizontal: 10.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.block,
+                                      size: 15.0,
+                                    ),
+                                    SizedBox(
+                                      width: 2.0,
+                                    ),
+                                    Text(strblock),
+                                  ],
+                                ),
+                              ),
+                              fillColor: Colors.orange,
+                              splashColor: Colors.orangeAccent,
+                              shape: const StadiumBorder(),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: RawMaterialButton(
+                              onPressed: () {},
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 5.0, horizontal: 10.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.delete,
+                                      size: 15.0,
+                                    ),
+                                    SizedBox(
+                                      width: 2.0,
+                                    ),
+                                    Text("Delete"),
+                                  ],
+                                ),
+                              ),
+                              fillColor: Colors.red,
+                              splashColor: Colors.redAccent,
+                              shape: const StadiumBorder(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ))));
+    } else {
+      return InkWell(
+          onTap: () {},
+          child: Card(
+              color: Colors.black12,
+              child: Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 5.0, vertical: 2.0),
+                  child: AppExpansionTile(
+                    title: Row(
                       children: <Widget>[
+                        CircularImage(
+                          NetworkImage(widget.user.url),
+                          width: 30,
+                          height: 30,
+                        ),
                         SizedBox(
-                          width: 5.0,
+                          width: 10.0,
                         ),
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.3,
-                          child: RawMaterialButton(
-                            onPressed: () {},
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 5.0, horizontal: 10.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.timeline,
-                                    size: 15.0,
-                                  ),
-                                  SizedBox(
-                                    width: 2.0,
-                                  ),
-                                  Text("Ch. Limit"),
-                                ],
-                              ),
-                            ),
-                            fillColor: Colors.blue,
-                            splashColor: Colors.blueAccent,
-                            shape: const StadiumBorder(),
-                          ),
+                          child: Text(widget.user.name),
                         ),
                         SizedBox(
-                          width: 5.0,
+                          width: 10.0,
                         ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          child: RawMaterialButton(
-                            onPressed: () {
-                              setState(() {
-                                if (widget.user.isBocked) {
-                                  widget.user.isBocked = false;
-                                  strblock = "Block";
-                                } else {
-                                  widget.user.isBocked = true;
-                                  strblock = "Unlock";
-                                }
-                              });
-                            },
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 5.0, horizontal: 10.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.block,
-                                    size: 15.0,
-                                  ),
-                                  SizedBox(
-                                    width: 2.0,
-                                  ),
-                                  Text(strblock),
-                                ],
-                              ),
-                            ),
-                            fillColor: Colors.orange,
-                            splashColor: Colors.orangeAccent,
-                            shape: const StadiumBorder(),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          child: RawMaterialButton(
-                            onPressed: () {},
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 5.0, horizontal: 10.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.delete,
-                                    size: 15.0,
-                                  ),
-                                  SizedBox(
-                                    width: 2.0,
-                                  ),
-                                  Text("Delete"),
-                                ],
-                              ),
-                            ),
-                            fillColor: Colors.red,
-                            splashColor: Colors.redAccent,
-                            shape: const StadiumBorder(),
-                          ),
-                        ),
+                        Text(
+                          widget.user.institute,
+                          style: TextStyle(color: Colors.tealAccent),
+                        )
                       ],
                     ),
-                  ],
-                ))));
+                    children: <Widget>[
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.3,
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              "Usage",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            Text(
+                              widget.user.used.toString() + " M",
+                              style: TextStyle(color: Colors.white70),
+                            )
+                          ],
+                        ),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.45,
+                            child: RawMaterialButton(
+                              onPressed: () {
+                               widget.block(widget.user);
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 5.0, horizontal: 10.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.block,
+                                      size: 15.0,
+                                    ),
+                                    SizedBox(
+                                      width: 2.0,
+                                    ),
+                                    Text(strblock),
+                                  ],
+                                ),
+                              ),
+                              fillColor: Colors.orange,
+                              splashColor: Colors.orangeAccent,
+                              shape: const StadiumBorder(),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.45,
+                            child: RawMaterialButton(
+                              onPressed: () {},
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 5.0, horizontal: 10.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.delete,
+                                      size: 15.0,
+                                    ),
+                                    SizedBox(
+                                      width: 2.0,
+                                    ),
+                                    Text("Delete"),
+                                  ],
+                                ),
+                              ),
+                              fillColor: Colors.red,
+                              splashColor: Colors.redAccent,
+                              shape: const StadiumBorder(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ))));
+    }
   }
 }

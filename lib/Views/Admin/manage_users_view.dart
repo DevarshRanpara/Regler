@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/user_data.dart';
+import 'package:flutter_app/CustomWidgets/Common/dialog.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
 import 'package:flutter_app/CustomWidgets/Admin/user_detail.dart';
 
@@ -20,7 +21,15 @@ class _ManageUsersViewState extends State<ManageUsersView> {
     model = ManageUsersModel();
     super.initState();
   }
-
+  void blockUser(UserData user)
+  {
+    Dialogs dialogs=Dialogs(context);
+    bool res=dialogs.showAlertUserBlock("Block User", user);
+    model.blockUser(user);
+    // if(res){
+      
+    // }
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -52,7 +61,7 @@ class _ManageUsersViewState extends State<ManageUsersView> {
                           if (i == 0) {
                             return getUpperUI();
                           }
-                          return UserDetailTile(snapshot.data[i-1]);
+                          return UserDetailTile(snapshot.data[i-1],blockUser);
                         },
                       );
                     }

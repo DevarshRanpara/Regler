@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/user_data.dart';
+import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 
 class Dialogs {
-
   BuildContext buildContext;
   String message = "Loading...";
 
   Dialogs(this.buildContext);
 
-  void setMessage(String mess){
+  void setMessage(String mess) {
     this.message = mess;
   }
 
@@ -45,5 +46,57 @@ class Dialogs {
         );
       },
     );
+  }
+
+  bool showAlertUserBlock(String title, UserData user) {
+    bool res;
+    showDialog(
+        context: buildContext,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(title),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    CircularImage(
+                      NetworkImage(user.url),
+                      width: 30,
+                      height: 30,
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(user.name)
+                  ],
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              RawMaterialButton(
+                child: Text(
+                  "Yes",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  res = true;
+                  Navigator.pop(buildContext);
+                },
+              ),
+              RawMaterialButton(
+                child: Text(
+                  "No",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  res = false;
+                  Navigator.pop(buildContext);
+                },
+              )
+            ],
+          );
+        });
+    return res;
   }
 }

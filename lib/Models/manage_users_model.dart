@@ -6,25 +6,21 @@ import 'package:http/http.dart' as http;
 
 class ManageUsersModel {
   
-  String url = GenerateString.genStringMngUsers();
-
   // List<UserData> getData() {
   //   return user;
   // }
 
-  // void addUser(String name, String ins, int limit) {
-  //   user.add(UserData(
-  //       name: name,
-  //       institute: ins,
-  //       limit: limit,
-  //       url: "",
-  //       used: 0,
-  //       bal: 0,
-  //       isBocked: false));
-  // }
+  void blockUser(UserData user) async
+  {
+    String url=GenerateString.genStringBlock(user.id.toString());
+    http.get(
+      Uri.encodeFull(url),
+    );
+  }
 
   Future<List<UserData>> setData() async {
     List<UserData> user = new List<UserData>();
+    String url = GenerateString.genStringMngUsers();
     var response = await http.get(
       Uri.encodeFull(url),
     );
@@ -44,6 +40,7 @@ class ManageUsersModel {
         name: data[i]['u_name'],
         institute: data[i]['institute'],
         url: data[i]['image_url'],
+        role: data[i]['type'],
         isBocked: f,
         limit: int.parse(data[i]['user_limit']),
         used: int.parse(data[i]['user_use']),
