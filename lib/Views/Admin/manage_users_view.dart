@@ -25,10 +25,6 @@ class _ManageUsersViewState extends State<ManageUsersView> {
   {
     Dialogs dialogs=Dialogs(context);
     dialogs.showAlertUserBlock("Block User", user);
-    model.blockUser(user);
-    // if(res){
-      
-    // }
   }
   @override
   Widget build(BuildContext context) {

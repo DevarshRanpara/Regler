@@ -10,12 +10,20 @@ class ManageUsersModel {
   //   return user;
   // }
 
-  void blockUser(UserData user) async
+  Future<bool> blockUser(UserData user) async
   {
     String url=GenerateString.genStringBlock(user.id.toString());
-    http.get(
+    var res = await http.get(
       Uri.encodeFull(url),
     );
+    if(res.body.toString()=='success')
+    {
+      return true;
+    }
+    else{
+      return false;
+    }
+    
   }
 
   Future<List<UserData>> setData() async {
@@ -26,7 +34,7 @@ class ManageUsersModel {
     );
     List data = jsonDecode(response.body);
 
-    print(response.body);
+    //print(response.body);
 
     for (int i = 0; i < data.length; i++) {
       bool f = false;

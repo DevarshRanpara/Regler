@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
+import 'package:flutter_app/Models/manage_users_model.dart';
 
 class Dialogs {
   BuildContext buildContext;
@@ -49,7 +50,7 @@ class Dialogs {
   }
 
   bool showAlertUserBlock(String title, UserData user) {
-    bool res;
+    ManageUsersModel model=ManageUsersModel();
     showDialog(
         context: buildContext,
         builder: (BuildContext context) {
@@ -80,8 +81,9 @@ class Dialogs {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
-                  res = true;
                   Navigator.pop(buildContext);
+                  model.blockUser(user);
+                  return true;
                 },
               ),
               RawMaterialButton(
@@ -90,13 +92,13 @@ class Dialogs {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
-                  res = false;
                   Navigator.pop(buildContext);
+                  return false;
                 },
               )
             ],
           );
         });
-    return res;
+        return false;
   }
 }
