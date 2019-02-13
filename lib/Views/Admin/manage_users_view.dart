@@ -24,7 +24,7 @@ class _ManageUsersViewState extends State<ManageUsersView> {
   void blockUser(UserData user)
   {
     Dialogs dialogs=Dialogs(context);
-    bool res=dialogs.showAlertUserBlock("Block User", user);
+    dialogs.showAlertUserBlock("Block User", user);
     model.blockUser(user);
     // if(res){
       
