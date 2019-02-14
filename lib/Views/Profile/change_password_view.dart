@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/gen_string.dart';
+import 'package:flutter_app/CustomWidgets/Common/dialog.dart';
+import 'package:http/http.dart' as http;
 
 class ChangePassword extends StatefulWidget {
   @override
@@ -11,17 +14,35 @@ class _ChangePasswordState extends State<ChangePassword> {
 
   String oldpassword, newpassword, newpassword1;
 
-  void _submit() {
+  void _submit() async {
     final form = formKey.currentState;
     if (form.validate()) {
       form.save();
-      if(oldpassword==newpassword){
+      if (oldpassword == newpassword) {
         showSnakbar("Old password can't be New Password");
+      } else {
+        //showSnakbar('Valid');
+        Dialogs dialogs = Dialogs(context);
+        dialogs.setMessage('Please wait');
+        dialogs.show();
+        String res= await changePassword();
+        dialogs.hide();
+        showSnakbar(res);
       }
-      else{
-        showSnakbar('Valid');
-      }
-      
+    }
+  }
+
+  Future<String> changePassword() async {
+    String url = GenerateString.genStringChpass(oldpassword, newpassword);
+    print(url);
+    var response = await http.get(
+      Uri.encodeFull(url),
+    );
+    if(response.body.toString()=='updated'){
+      return 'Password changed';
+    }
+    else{
+      return 'Invalid old password';
     }
   }
 
@@ -114,11 +135,10 @@ class _ChangePasswordState extends State<ChangePassword> {
                                     hintText: 'Enter new Password'),
                                 obscureText: true,
                                 validator: (val) {
-                                  if(val.length<8){
+                                  if (val.length < 8) {
                                     return 'Password too short';
-                                  }
-                                  else{
-                                    newpassword=val;
+                                  } else {
+                                    newpassword = val;
                                     return null;
                                   }
                                 },
@@ -140,11 +160,10 @@ class _ChangePasswordState extends State<ChangePassword> {
                                     border: InputBorder.none,
                                     hintText: 'Confirm new Password'),
                                 obscureText: true,
-                                validator: (val){
-                                  if(val==newpassword){
+                                validator: (val) {
+                                  if (val == newpassword) {
                                     return null;
-                                  }
-                                  else{
+                                  } else {
                                     return "Passwords not match";
                                   }
                                 },
