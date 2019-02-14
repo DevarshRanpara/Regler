@@ -49,8 +49,15 @@ class Dialogs {
     );
   }
 
-  bool showAlertUserBlock(String title, UserData user) {
+  bool showAlertUserBlock(UserData user) {
     ManageUsersModel model=ManageUsersModel();
+    String title;
+    if(user.isBocked){
+      title="Unblock user";
+    }
+    else{
+      title="Block user";
+    }
     showDialog(
         context: buildContext,
         builder: (BuildContext context) {
