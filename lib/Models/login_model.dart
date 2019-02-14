@@ -33,6 +33,9 @@ class LoginModel {
       Preferances.name = data[0]['u_name'];
       Preferances.role = data[0]['type'];
       Preferances.imgurl = data[0]['image_url'];
+      Preferances.limit=data[0]['user_limit'];
+      Preferances.use=data[0]['user_use'];
+      Preferances.bal=data[0]['balence'];
       print(data[0]['type']);
       return data[0]['type'];
     }

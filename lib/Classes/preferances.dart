@@ -2,6 +2,8 @@
 class Preferances {
   static String name, role, imgurl;
   static int id;
-  static int limit = 300;
+  static String limit;
+  static String use;
+  static String bal;
   static bool isLoggedin = false;
 }

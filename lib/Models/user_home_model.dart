@@ -4,8 +4,7 @@ import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/admin_navigation.dart';
 
 class UserHomeModel {
-  int usage = 0;
-  int limit = 300;
+
   UserData data;
   Function gotoUsage, gotoProfile;
   Nevigation nevigation;
@@ -37,17 +36,15 @@ class UserHomeModel {
           endingTime: "10:50 AM",
           use: 50),
     ];
-    for (var i = 0; i < use.length; i++) {
-      usage += use[i].use;
-    }
+
     data = UserData(
         name: Preferances.name,
         useData: use,
-        limit: limit,
-        used: usage,
-        bal: limit - usage,
+        limit: int.parse(Preferances.limit),
+        used: int.parse(Preferances.use),
+        bal: int.parse(Preferances.bal),
         role: Preferances.role);
-
+        
     nevigation = Nevigation(gotoProfile: gotoProfile, gotoUsage: gotoUsage);
   }
 
