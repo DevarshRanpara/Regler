@@ -52,7 +52,7 @@ class Dialogs {
   bool showAlertUserBlock(UserData user) {
     ManageUsersModel model=ManageUsersModel();
     String title;
-    if(user.isBocked){
+    if(user.isBlcked){
       title="Unblock user";
     }
     else{

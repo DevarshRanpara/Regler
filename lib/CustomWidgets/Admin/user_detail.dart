@@ -17,7 +17,7 @@ class _UserDetailTileState extends State<UserDetailTile> {
   Widget build(BuildContext context) {
     String strblock;
 
-    if (widget.user.isBocked) {
+    if (widget.user.isBlcked) {
       strblock = "Unblock";
     } else {
       strblock = "Block";

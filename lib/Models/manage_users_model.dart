@@ -26,7 +26,7 @@ class ManageUsersModel {
     
   }
 
-  Future<List<UserData>> setData() async {
+  Stream<List<UserData>> setData() async* {
     List<UserData> user = new List<UserData>();
     String url = GenerateString.genStringMngUsers();
     var response = await http.get(
@@ -49,13 +49,13 @@ class ManageUsersModel {
         institute: data[i]['institute'],
         url: data[i]['image_url'],
         role: data[i]['type'],
-        isBocked: f,
+        isBlcked: f,
         limit: int.parse(data[i]['user_limit']),
         used: int.parse(data[i]['user_use']),
         bal: int.parse(data[i]['balence']),
       );
       user.add(userData);
     }
-    return user;
+    yield user;
   }
 }

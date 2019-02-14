@@ -4,7 +4,7 @@ class UserData {
   int id;
   String name;
   String url;
-  bool isBocked;
+  bool isBlcked;
   String institute;
   String role;
   int limit;
@@ -16,7 +16,7 @@ class UserData {
       {
       this.id,
       this.url,
-      this.isBocked,
+      this.isBlcked,
       this.institute,
       this.useData,
       this.name,

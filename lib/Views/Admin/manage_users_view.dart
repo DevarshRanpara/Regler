@@ -39,8 +39,8 @@ class _ManageUsersViewState extends State<ManageUsersView> {
             children: <Widget>[
               SizedBox(
                 height: MediaQuery.of(context).size.height*0.95,
-                child: FutureBuilder(
-                  future: model.setData(),
+                child: StreamBuilder(
+                  stream: model.setData(),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     if (snapshot.data == null) {
                       return Center(
