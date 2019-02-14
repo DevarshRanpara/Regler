@@ -21,11 +21,12 @@ class _ManageUsersViewState extends State<ManageUsersView> {
     model = ManageUsersModel();
     super.initState();
   }
-  void blockUser(UserData user)
-  {
-    Dialogs dialogs=Dialogs(context);
+
+  void blockUser(UserData user) {
+    Dialogs dialogs = Dialogs(context);
     dialogs.showAlertUserBlock(user);
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,7 +39,7 @@ class _ManageUsersViewState extends State<ManageUsersView> {
           child: ListView(
             children: <Widget>[
               SizedBox(
-                height: MediaQuery.of(context).size.height*0.95,
+                height: MediaQuery.of(context).size.height * 0.95,
                 child: StreamBuilder(
                   stream: model.setData(),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -52,12 +53,13 @@ class _ManageUsersViewState extends State<ManageUsersView> {
                       );
                     } else {
                       return ListView.builder(
-                        itemCount: snapshot.data.length+1,
+                        itemCount: snapshot.data.length + 1,
                         itemBuilder: (BuildContext conext, int i) {
                           if (i == 0) {
                             return getUpperUI();
                           }
-                          return UserDetailTile(snapshot.data[i-1],blockUser);
+                          return UserDetailTile(
+                              snapshot.data[i - 1], blockUser);
                         },
                       );
                     }
@@ -67,7 +69,6 @@ class _ManageUsersViewState extends State<ManageUsersView> {
             ],
           ),
         )));
-        
   }
 
   Widget getUpperUI() {
