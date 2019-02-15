@@ -4,7 +4,6 @@ import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/admin_navigation.dart';
 
 class UserHomeModel {
-
   UserData data;
   Function gotoUsage, gotoProfile;
   Nevigation nevigation;
@@ -44,7 +43,7 @@ class UserHomeModel {
         used: int.parse(Preferances.use),
         bal: int.parse(Preferances.bal),
         role: Preferances.role);
-        
+
     nevigation = Nevigation(gotoProfile: gotoProfile, gotoUsage: gotoUsage);
   }
 

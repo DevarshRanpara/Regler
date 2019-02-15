@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_admin.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_dir.dart';
 import 'package:flutter_app/Models/mng_room_dir_model.dart';
@@ -19,10 +18,10 @@ class _ManageRoomViewState extends State<ManageRoomView> {
   Widget checkRole(Function gotoAddRoom) {
     if (widget.role == 'admin') {
       MngRoomAdminModel model = MngRoomAdminModel();
-      return MngRoomAdmin(model.getData(),gotoAddRoom);
+      return MngRoomAdmin(model.getData(), gotoAddRoom);
     } else {
       MngRoomDirModel model = MngRoomDirModel();
-      return MngRoomDir(model.getData(),gotoAddRoom);
+      return MngRoomDir(model.getData(), gotoAddRoom);
     }
   }
 

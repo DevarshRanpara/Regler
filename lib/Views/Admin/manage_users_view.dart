@@ -3,7 +3,6 @@ import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Common/dialog.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
 import 'package:flutter_app/CustomWidgets/Admin/user_detail.dart';
-
 import 'add_user_view.dart';
 
 class ManageUsersView extends StatefulWidget {
@@ -25,6 +24,11 @@ class _ManageUsersViewState extends State<ManageUsersView> {
   void blockUser(UserData user) {
     Dialogs dialogs = Dialogs(context);
     dialogs.showAlertUserBlock(user);
+  }
+
+  void deleteUser(UserData user) {
+    Dialogs dialogs = Dialogs(context);
+    dialogs.showAlertUserDelete(user);
   }
 
   @override
@@ -59,7 +63,7 @@ class _ManageUsersViewState extends State<ManageUsersView> {
                             return getUpperUI();
                           }
                           return UserDetailTile(
-                              snapshot.data[i - 1], blockUser);
+                              snapshot.data[i - 1], blockUser, deleteUser);
                         },
                       );
                     }

@@ -11,10 +11,9 @@ class UserData {
   int bal;
   int used;
   List<UserUsage> useData;
-  
+
   UserData(
-      {
-      this.id,
+      {this.id,
       this.url,
       this.isBlcked,
       this.institute,

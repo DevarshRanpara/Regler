@@ -9,7 +9,7 @@ import 'package:flutter_app/Classes/admin_navigation.dart';
 class UpperDashboard extends StatelessWidget {
   final UserData data;
   final Nevigation nevigation;
-  UpperDashboard(this.data,this.nevigation);
+  UpperDashboard(this.data, this.nevigation);
 
   @override
   Widget build(BuildContext context) {

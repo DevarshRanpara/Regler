@@ -9,7 +9,7 @@ import 'package:flutter_app/Classes/admin_navigation.dart';
 class DashboardTop extends StatefulWidget {
   final UserData data;
   final Nevigation nevigation;
-  DashboardTop(this.data,this.nevigation);
+  DashboardTop(this.data, this.nevigation);
 
   @override
   _DashboardTopState createState() => _DashboardTopState();
@@ -53,7 +53,7 @@ class _DashboardTopState extends State<DashboardTop> {
       child: Column(
         children: <Widget>[
           Column(
-            children: <Widget>[UpperDashboard(widget.data,widget.nevigation)],
+            children: <Widget>[UpperDashboard(widget.data, widget.nevigation)],
           ),
           Column(
             children: list,

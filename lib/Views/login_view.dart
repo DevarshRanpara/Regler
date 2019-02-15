@@ -57,11 +57,11 @@ class LoginPageState extends State<HomePage>
 
     if (form.validate()) {
       form.save();
-      Dialogs dialogs=Dialogs(context);
+      Dialogs dialogs = Dialogs(context);
       dialogs.setMessage('Signing in');
       dialogs.show();
       var loginModel = LoginModel(_userId, _password);
-      String res=await loginModel.auth();
+      String res = await loginModel.auth();
       dialogs.hide();
       _gotoHome(res);
     }
@@ -76,23 +76,19 @@ class LoginPageState extends State<HomePage>
           context,
           MaterialPageRoute(
               builder: (BuildContext context) => AdminHomeView(role)));
-    }
-    else if(role == 'blocked')
-    {
+    } else if (role == 'blocked') {
       showSnakbar("User is blocked! Contact admin");
-    } 
-    else {
+    } else {
       showSnakbar("Invalid User ID or password");
     }
   }
 
-  void showSnakbar(String msg)
-  {
+  void showSnakbar(String msg) {
     final snackbar = new SnackBar(
-        content: new Text(msg),
-        backgroundColor: Colors.red,
-      );
-      scaffoldKey.currentState.showSnackBar(snackbar);
+      content: new Text(msg),
+      backgroundColor: Colors.red,
+    );
+    scaffoldKey.currentState.showSnackBar(snackbar);
   }
 
   @override
@@ -183,4 +179,3 @@ class LoginPageState extends State<HomePage>
     );
   }
 }
-

@@ -3,27 +3,24 @@ import 'package:flutter_app/Classes/complain.dart';
 import 'package:flutter_app/CustomWidgets/Admin/complain_tile.dart';
 import 'package:flutter_app/Models/view_complain_model.dart';
 
-
 class ViewComplainView extends StatefulWidget {
   @override
   _ViewComplainViewState createState() => _ViewComplainViewState();
 }
 
 class _ViewComplainViewState extends State<ViewComplainView> {
-
-  ViewComplainModel model=ViewComplainModel();
-  List<Complain> complains=List();
-  List<ComplainTile> complainTile=List();
+  ViewComplainModel model = ViewComplainModel();
+  List<Complain> complains = List();
+  List<ComplainTile> complainTile = List();
 
   @override
-    void initState() {
-      complains=model.getData();
-      for(int i=0;i<complains.length;i++)
-      {
-        complainTile.add(ComplainTile(complains[i]));
-      }
-      super.initState();
+  void initState() {
+    complains = model.getData();
+    for (int i = 0; i < complains.length; i++) {
+      complainTile.add(ComplainTile(complains[i]));
     }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +30,10 @@ class _ViewComplainViewState extends State<ViewComplainView> {
             fontFamily: 'Montserrat',
             accentColor: Colors.teal),
         home: Scaffold(
-          body: Container(
-            child: ListView(
-              children: <Widget>[
-                Padding(
+            body: Container(
+          child: ListView(
+            children: <Widget>[
+              Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
               ),
@@ -65,15 +62,9 @@ class _ViewComplainViewState extends State<ViewComplainView> {
                       ],
                     ),
                   ))),
-                  Column(children: complainTile)
-              ],
-            ),
-          )
-        ));
+              Column(children: complainTile)
+            ],
+          ),
+        )));
   }
 }
-
-
-
-
- 

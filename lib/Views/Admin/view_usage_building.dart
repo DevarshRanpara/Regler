@@ -4,7 +4,6 @@ import 'package:flutter_app/CustomWidgets/Admin/building_tile.dart';
 import 'package:flutter_app/Models/view_usage_building_model.dart';
 
 class ViewUsageBulding extends StatefulWidget {
-
   final Function gotoRoom;
 
   ViewUsageBulding(this.gotoRoom);
@@ -13,22 +12,20 @@ class ViewUsageBulding extends StatefulWidget {
 }
 
 class _ViewUsageBuldingState extends State<ViewUsageBulding> {
-
-  ViewUsageBuldingModel model=ViewUsageBuldingModel();
-  List<Building> buildings=List();
-  List<BuildingTile> buildingTile=List();
+  ViewUsageBuldingModel model = ViewUsageBuldingModel();
+  List<Building> buildings = List();
+  List<BuildingTile> buildingTile = List();
 
   @override
-    void initState() {
-      buildings=model.getData();
+  void initState() {
+    buildings = model.getData();
 
-      for(int i=0;i<buildings.length;i++)
-      {
-        buildingTile.add(BuildingTile(buildings[i],widget.gotoRoom));
-      }
-      super.initState();
+    for (int i = 0; i < buildings.length; i++) {
+      buildingTile.add(BuildingTile(buildings[i], widget.gotoRoom));
     }
-  
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -61,10 +58,10 @@ class _ViewUsageBuldingState extends State<ViewUsageBulding> {
                 ],
               ),
             ))),
-            Column(children: buildingTile,)
+        Column(
+          children: buildingTile,
+        )
       ],
     );
   }
 }
-
-

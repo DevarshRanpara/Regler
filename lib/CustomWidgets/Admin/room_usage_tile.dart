@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/room.dart';
 
 class RoomUsageTile extends StatefulWidget {
-  
   final Room room;
 
   RoomUsageTile(this.room);
@@ -18,7 +17,7 @@ class _RoomTileState extends State<RoomUsageTile> {
       onTap: () {},
       child: Card(
         child: Container(
-           padding: EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(20.0),
           child: Row(
             children: <Widget>[
               Icon(

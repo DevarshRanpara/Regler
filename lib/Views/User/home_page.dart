@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_app/CustomWidgets/User/homepage_dashboard.dart';
 import 'package:flutter_app/Views/Profile/profile.dart';
 import './usage_detail_view.dart';
@@ -32,7 +31,7 @@ class _HomePageViewState extends State<HomePageView> {
 
   void setData() {
     model = UserHomeModel(_gotoProfile, _gotoUsage);
-    nevigation=model.getNevigation();
+    nevigation = model.getNevigation();
     data = model.getData();
   }
 
@@ -67,7 +66,7 @@ class _HomePageViewState extends State<HomePageView> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
               ),
-              DashboardTop(data,nevigation)
+              DashboardTop(data, nevigation)
             ],
           ),
         ),

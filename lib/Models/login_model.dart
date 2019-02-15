@@ -10,8 +10,7 @@ class LoginModel {
   LoginModel(this._userid, this._password);
 
   Future<String> auth() async {
-    
-    String url =GenerateString.genStringLogin(method, _userid, _password);
+    String url = GenerateString.genStringLogin(method, _userid, _password);
 
     var response = await http.get(
       Uri.encodeFull(url),
@@ -22,20 +21,17 @@ class LoginModel {
     //List data=jsonDecode(response.body);
     if (response.body.toString() == 'invalid') {
       return 'invalid';
-    } 
-    else if (response.body.toString() == 'blocked')
-    {
+    } else if (response.body.toString() == 'blocked') {
       return 'blocked';
-    }
-    else {
+    } else {
       List data = jsonDecode(response.body);
-      Preferances.id=int.parse(data[0]['id']);
+      Preferances.id = int.parse(data[0]['id']);
       Preferances.name = data[0]['u_name'];
       Preferances.role = data[0]['type'];
       Preferances.imgurl = data[0]['image_url'];
-      Preferances.limit=data[0]['user_limit'];
-      Preferances.use=data[0]['user_use'];
-      Preferances.bal=data[0]['balence'];
+      Preferances.limit = data[0]['user_limit'];
+      Preferances.use = data[0]['user_use'];
+      Preferances.bal = data[0]['balence'];
       print(data[0]['type']);
       return data[0]['type'];
     }

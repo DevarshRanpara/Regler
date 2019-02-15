@@ -19,7 +19,6 @@ class _RoomTileState extends State<RoomTile> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-           
             Icon(
               Icons.crop_square,
               color: Colors.redAccent,

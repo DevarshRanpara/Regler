@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/building.dart';
 
 class BuildingTile extends StatelessWidget {
-
   final Function gotoRoom;
 
   final Building data;
 
-  BuildingTile(this.data,this.gotoRoom);
+  BuildingTile(this.data, this.gotoRoom);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         gotoRoom(data.rooms);
       },
       child: Card(

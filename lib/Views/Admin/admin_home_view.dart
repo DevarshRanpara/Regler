@@ -7,13 +7,9 @@ import 'package:flutter_app/Views/Admin/manage_building_view.dart';
 import 'package:flutter_app/Views/Admin/manage_room_view.dart';
 import 'package:flutter_app/Views/Admin/view_complain_view.dart';
 import 'package:flutter_app/Views/Admin/view_usage_view.dart';
-
 import 'package:flutter_app/Models/admin_home_model.dart';
-
 import 'package:flutter_app/CustomWidgets/Admin/common_home_view.dart';
-
 import 'package:flutter_app/Classes/admin_navigation.dart';
-
 import 'package:flutter_app/Classes/preferances.dart';
 
 class AdminHomeView extends StatefulWidget {

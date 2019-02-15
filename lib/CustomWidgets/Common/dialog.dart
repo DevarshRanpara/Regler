@@ -49,14 +49,13 @@ class Dialogs {
     );
   }
 
-  bool showAlertUserBlock(UserData user) {
-    ManageUsersModel model=ManageUsersModel();
+  showAlertUserBlock(UserData user) {
+    ManageUsersModel model = ManageUsersModel();
     String title;
-    if(user.isBlcked){
-      title="Unblock user";
-    }
-    else{
-      title="Block user";
+    if (user.isBlcked) {
+      title = "Unblock user";
+    } else {
+      title = "Block user";
     }
     showDialog(
         context: buildContext,
@@ -90,7 +89,6 @@ class Dialogs {
                 onPressed: () {
                   Navigator.pop(buildContext);
                   model.blockUser(user);
-                  return true;
                 },
               ),
               RawMaterialButton(
@@ -100,12 +98,61 @@ class Dialogs {
                 ),
                 onPressed: () {
                   Navigator.pop(buildContext);
-                  return false;
                 },
               )
             ],
           );
         });
-        return false;
+  }
+
+  showAlertUserDelete(UserData user) {
+    ManageUsersModel model = ManageUsersModel();
+    String title = "Delete User";
+    showDialog(
+        context: buildContext,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(title),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    CircularImage(
+                      NetworkImage(user.url),
+                      width: 30,
+                      height: 30,
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(user.name)
+                  ],
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              RawMaterialButton(
+                child: Text(
+                  "Yes",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  Navigator.pop(buildContext);
+                  model.deleteUser(user);
+                },
+              ),
+              RawMaterialButton(
+                child: Text(
+                  "No",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  Navigator.pop(buildContext);
+                },
+              )
+            ],
+          );
+        });
   }
 }

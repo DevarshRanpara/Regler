@@ -6,7 +6,7 @@ class UserTile extends StatelessWidget {
   final UserData data;
   final Function gotoUsage;
 
-  UserTile(this.data,this.gotoUsage);
+  UserTile(this.data, this.gotoUsage);
 
   @override
   Widget build(BuildContext context) {

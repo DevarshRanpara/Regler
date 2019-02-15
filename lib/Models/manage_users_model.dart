@@ -5,25 +5,22 @@ import 'package:flutter_app/Classes/gen_string.dart';
 import 'package:http/http.dart' as http;
 
 class ManageUsersModel {
-  
-  // List<UserData> getData() {
-  //   return user;
-  // }
+  void deleteUser(UserData user) async {
+    String url = GenerateString.genStringDelete(user.id.toString());
+    var res = await http.get(Uri.encodeFull(url));
+    print(res.body.toString());
+  }
 
-  Future<bool> blockUser(UserData user) async
-  {
-    String url=GenerateString.genStringBlock(user.id.toString());
+  Future<bool> blockUser(UserData user) async {
+    String url = GenerateString.genStringBlock(user.id.toString());
     var res = await http.get(
       Uri.encodeFull(url),
     );
-    if(res.body.toString()=='success')
-    {
+    if (res.body.toString() == 'success') {
       return true;
-    }
-    else{
+    } else {
       return false;
     }
-    
   }
 
   Stream<List<UserData>> setData() async* {

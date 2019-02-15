@@ -6,7 +6,8 @@ import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
 class UserDetailTile extends StatefulWidget {
   final UserData user;
   final Function block;
-  UserDetailTile(this.user,this.block);
+  final Function delete;
+  UserDetailTile(this.user, this.block, this.delete);
 
   @override
   _UserDetailTileState createState() => _UserDetailTileState();
@@ -168,7 +169,9 @@ class _UserDetailTileState extends State<UserDetailTile> {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.3,
                             child: RawMaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                widget.delete(widget.user);
+                              },
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
                                     vertical: 5.0, horizontal: 10.0),
@@ -252,7 +255,7 @@ class _UserDetailTileState extends State<UserDetailTile> {
                             width: MediaQuery.of(context).size.width * 0.45,
                             child: RawMaterialButton(
                               onPressed: () {
-                               widget.block(widget.user);
+                                widget.block(widget.user);
                               },
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
@@ -282,7 +285,9 @@ class _UserDetailTileState extends State<UserDetailTile> {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.45,
                             child: RawMaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                widget.delete(widget.user);
+                              },
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
                                     vertical: 5.0, horizontal: 10.0),

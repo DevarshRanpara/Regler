@@ -25,7 +25,7 @@ class _ChangePasswordState extends State<ChangePassword> {
         Dialogs dialogs = Dialogs(context);
         dialogs.setMessage('Please wait');
         dialogs.show();
-        String res= await changePassword();
+        String res = await changePassword();
         dialogs.hide();
         showSnakbar(res);
       }
@@ -34,14 +34,12 @@ class _ChangePasswordState extends State<ChangePassword> {
 
   Future<String> changePassword() async {
     String url = GenerateString.genStringChpass(oldpassword, newpassword);
-    print(url);
     var response = await http.get(
       Uri.encodeFull(url),
     );
-    if(response.body.toString()=='updated'){
+    if (response.body.toString() == 'updated') {
       return 'Password changed';
-    }
-    else{
+    } else {
       return 'Invalid old password';
     }
   }

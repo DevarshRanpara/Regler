@@ -33,15 +33,17 @@ class ComplainTile extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Text("AC No. "+complain.acNo)
+                  Text("AC No. " + complain.acNo)
                 ],
               ),
-              Row(children: <Widget>[
-                Padding(padding: EdgeInsets.only(top: 20.0),
-                child: Text(complain.complain),
-                ),
-                
-              ],)
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(top: 20.0),
+                    child: Text(complain.complain),
+                  ),
+                ],
+              )
             ],
           ),
         ),
