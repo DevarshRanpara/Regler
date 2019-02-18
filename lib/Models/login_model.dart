@@ -15,10 +15,7 @@ class LoginModel {
     var response = await http.get(
       Uri.encodeFull(url),
     );
-
-    //print(response.body);
-
-    //List data=jsonDecode(response.body);
+    
     if (response.body.toString() == 'invalid') {
       return 'invalid';
     } else if (response.body.toString() == 'blocked') {

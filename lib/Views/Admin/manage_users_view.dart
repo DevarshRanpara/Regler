@@ -5,6 +5,8 @@ import 'package:flutter_app/Models/manage_users_model.dart';
 import 'package:flutter_app/CustomWidgets/Admin/user_detail.dart';
 import 'add_user_view.dart';
 
+//import 'package:flutter_app/Resources/bloc.dart';
+
 class ManageUsersView extends StatefulWidget {
   @override
   _ManageUsersViewState createState() => _ManageUsersViewState();
@@ -14,12 +16,21 @@ class _ManageUsersViewState extends State<ManageUsersView> {
   List<UserDetailTile> list = List();
   ManageUsersModel model;
   List<UserData> user;
+  Stream<List<UserData>> stream;
 
   @override
   void initState() {
     model = ManageUsersModel();
+    stream = Stream.fromFuture(model.getData());
+    //bloc.fetchAllUsers();
     super.initState();
   }
+
+  @override
+    void dispose() {
+      //bloc.dispose();
+      super.dispose();
+    }
 
   void blockUser(UserData user) {
     Dialogs dialogs = Dialogs(context);
@@ -45,7 +56,8 @@ class _ManageUsersViewState extends State<ManageUsersView> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.95,
                 child: StreamBuilder(
-                  stream: model.setData(),
+                  //stream: bloc.allUsers,
+                  stream: stream,
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     if (snapshot.data == null) {
                       return Center(

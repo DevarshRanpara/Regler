@@ -23,7 +23,7 @@ class ManageUsersModel {
     }
   }
 
-  Stream<List<UserData>> setData() async* {
+  Future<List<UserData>> getData() async {
     List<UserData> user = new List<UserData>();
     String url = GenerateString.genStringMngUsers();
     var response = await http.get(
@@ -53,6 +53,6 @@ class ManageUsersModel {
       );
       user.add(userData);
     }
-    yield user;
+    return user;
   }
 }
