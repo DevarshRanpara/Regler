@@ -14,37 +14,54 @@ class _AddUserViewState extends State<AddUserView> {
   String name;
   int limit;
   ManageUsersModel model;
-  List<Widget> listTiles=List();
+  Widget inst;
+  List<Widget> listTiles = List();
 
   @override
-    void initState() {
-      int n=Preferances.building.length;
-      for(int i=0;i<n;i++){
-        listTiles.add(genListTile(Preferances.building[i].name));
-      }
-      super.initState();
+  void initState() {
+    if(Preferances.role=='admin'){
+      inst=selectInstitute();
+    }
+    else{
+      inst=Card(
+      child: Container(
+        padding: const EdgeInsets.all(20.0),
+        child: Text("Institute : "+Preferances.institute)
+        )
+      );
+    }
+    int n = Preferances.building.length;
+    for (int i = 0; i < n; i++) {
+      listTiles.add(genListTile(Preferances.building[i].name));
     }
     
+    super.initState();
+  }
+
   final GlobalKey<AppExpansionTileState> expansionTile = new GlobalKey();
 
-  genListTile(String ins){
+  genListTile(String ins) {
     return ListTile(
-          title: Text(ins),
-          onTap: () {
-            setState(() {
-              this.institute = ins;
-              expansionTile.currentState.collapse();
-            });
-          },
-        );
+      title: Text(ins),
+      onTap: () {
+        setState(() {
+          this.institute = ins;
+          expansionTile.currentState.collapse();
+        });
+      },
+    );
   }
 
   selectInstitute() {
-    return AppExpansionTile(
-      key: expansionTile,
-      title: Text(institute),
-      children:listTiles
-    );
+    return Card(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 2.0),
+        child:AppExpansionTile(
+        key: expansionTile, 
+        title: Text(institute), 
+        children: listTiles)
+        )
+      );
   }
 
   @override
@@ -111,11 +128,7 @@ class _AddUserViewState extends State<AddUserView> {
                         ))),
                     InkWell(
                         onTap: () {},
-                        child: Card(
-                            child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0, vertical: 2.0),
-                                child: selectInstitute()))),
+                        child: inst),
                     InkWell(
                         onTap: () {},
                         child: Card(

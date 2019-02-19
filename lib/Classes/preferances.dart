@@ -2,8 +2,9 @@
 import 'package:flutter_app/Classes/building.dart';
 
 class Preferances {
-  static String name, role, imgurl;
   static int id;
+  static String name, role, imgurl;
+  static String institute;
   static String limit;
   static String use;
   static String bal;

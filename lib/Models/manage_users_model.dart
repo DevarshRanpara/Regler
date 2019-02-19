@@ -83,7 +83,10 @@ class ManageUsersModel {
       );
       user.add(userData);
     }
-    await getInstituteList();
+    if(Preferances.role=='admin'){
+      await getInstituteList();
+    }
+    
     return user;
   }
 }
