@@ -22,6 +22,10 @@ class GenerateString {
         newpass;
   }
 
+  static String genStringChLimit(String id,String limit){
+    return UrlLink.url+'?method=changeLimit&id='+id+'&limit='+limit;
+  }
+
   static String genStringBlock(String id) {
     return UrlLink.url + '?method=block&id=' + id;
   }

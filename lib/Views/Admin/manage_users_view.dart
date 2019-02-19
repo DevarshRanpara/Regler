@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/user_data.dart';
-import 'package:flutter_app/CustomWidgets/Common/dialog.dart';
+import 'package:flutter_app/CustomWidgets/Admin/dialouges_user.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
 import 'package:flutter_app/CustomWidgets/Admin/user_detail.dart';
 import 'add_user_view.dart';
@@ -17,9 +17,11 @@ class _ManageUsersViewState extends State<ManageUsersView> {
   ManageUsersModel model;
   List<UserData> user;
   Stream<List<UserData>> stream;
+  Dialogs dialogs;
 
   @override
   void initState() {
+    dialogs = Dialogs(context);
     model = ManageUsersModel();
     stream = Stream.fromFuture(model.getData());
     //bloc.fetchAllUsers();
@@ -27,19 +29,21 @@ class _ManageUsersViewState extends State<ManageUsersView> {
   }
 
   @override
-    void dispose() {
-      //bloc.dispose();
-      super.dispose();
-    }
+  void dispose() {
+    //bloc.dispose();
+    super.dispose();
+  }
 
   void blockUser(UserData user) {
-    Dialogs dialogs = Dialogs(context);
     dialogs.showAlertUserBlock(user);
   }
 
   void deleteUser(UserData user) {
-    Dialogs dialogs = Dialogs(context);
     dialogs.showAlertUserDelete(user);
+  }
+
+  void changeLimit(UserData user){
+    dialogs.showAlertUserChlimit(user);
   }
 
   @override
@@ -75,7 +79,7 @@ class _ManageUsersViewState extends State<ManageUsersView> {
                             return getUpperUI();
                           }
                           return UserDetailTile(
-                              snapshot.data[i - 1], blockUser, deleteUser);
+                              snapshot.data[i - 1], blockUser, deleteUser,changeLimit);
                         },
                       );
                     }

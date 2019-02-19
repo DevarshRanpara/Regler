@@ -11,6 +11,12 @@ class ManageUsersModel {
     print(res.body.toString());
   }
 
+  void chhangeLimit(UserData user,String limit) async {
+    String url = GenerateString.genStringChLimit(user.id.toString(),limit);
+   var res = await http.get(Uri.encodeFull(url));
+   print(res.body.toString());
+  }
+
   Future<bool> blockUser(UserData user) async {
     String url = GenerateString.genStringBlock(user.id.toString());
     var res = await http.get(
@@ -29,9 +35,14 @@ class ManageUsersModel {
     var response = await http.get(
       Uri.encodeFull(url),
     );
-    List data = jsonDecode(response.body);
-
+    
     //print(response.body);
+
+    if(response.body.toString()=='no_data'){
+      return user;
+    }
+
+    List data = jsonDecode(response.body);
 
     for (int i = 0; i < data.length; i++) {
       bool f = false;

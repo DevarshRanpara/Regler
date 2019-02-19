@@ -7,7 +7,8 @@ class UserDetailTile extends StatefulWidget {
   final UserData user;
   final Function block;
   final Function delete;
-  UserDetailTile(this.user, this.block, this.delete);
+  final Function changeLimit;
+  UserDetailTile(this.user, this.block, this.delete,this.changeLimit);
 
   @override
   _UserDetailTileState createState() => _UserDetailTileState();
@@ -109,7 +110,9 @@ class _UserDetailTileState extends State<UserDetailTile> {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.3,
                             child: RawMaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                widget.changeLimit(widget.user);
+                              },
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
                                     vertical: 5.0, horizontal: 10.0),
