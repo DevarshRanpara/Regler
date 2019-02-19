@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Admin/dialouges_user.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
@@ -31,6 +32,7 @@ class _ManageUsersViewState extends State<ManageUsersView> {
   @override
   void dispose() {
     //bloc.dispose();
+    Preferances.building.clear();
     super.dispose();
   }
 
@@ -42,7 +44,7 @@ class _ManageUsersViewState extends State<ManageUsersView> {
     dialogs.showAlertUserDelete(user);
   }
 
-  void changeLimit(UserData user){
+  void changeLimit(UserData user) {
     dialogs.showAlertUserChlimit(user);
   }
 
@@ -78,8 +80,8 @@ class _ManageUsersViewState extends State<ManageUsersView> {
                           if (i == 0) {
                             return getUpperUI();
                           }
-                          return UserDetailTile(
-                              snapshot.data[i - 1], blockUser, deleteUser,changeLimit);
+                          return UserDetailTile(snapshot.data[i - 1], blockUser,
+                              deleteUser, changeLimit);
                         },
                       );
                     }

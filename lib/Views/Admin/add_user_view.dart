@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
 
@@ -9,11 +10,42 @@ class AddUserView extends StatefulWidget {
 
 class _AddUserViewState extends State<AddUserView> {
   String institute = "Select Institute";
+  Widget clgList;
   String name;
   int limit;
   ManageUsersModel model;
+  List<Widget> listTiles=List();
 
+  @override
+    void initState() {
+      int n=Preferances.building.length;
+      for(int i=0;i<n;i++){
+        listTiles.add(genListTile(Preferances.building[i].name));
+      }
+      super.initState();
+    }
+    
   final GlobalKey<AppExpansionTileState> expansionTile = new GlobalKey();
+
+  genListTile(String ins){
+    return ListTile(
+          title: Text(ins),
+          onTap: () {
+            setState(() {
+              this.institute = ins;
+              expansionTile.currentState.collapse();
+            });
+          },
+        );
+  }
+
+  selectInstitute() {
+    return AppExpansionTile(
+      key: expansionTile,
+      title: Text(institute),
+      children:listTiles
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,39 +115,7 @@ class _AddUserViewState extends State<AddUserView> {
                             child: Container(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 20.0, vertical: 2.0),
-                                child: AppExpansionTile(
-                                  key: expansionTile,
-                                  title: Text(institute),
-                                  children: <Widget>[
-                                    ListTile(
-                                      title: Text("LJ MCA"),
-                                      onTap: () {
-                                        setState(() {
-                                          this.institute = "LJ MCA";
-                                          expansionTile.currentState.collapse();
-                                        });
-                                      },
-                                    ),
-                                    ListTile(
-                                      title: Text("LJ MBA"),
-                                      onTap: () {
-                                        setState(() {
-                                          this.institute = "LJ MBA";
-                                          expansionTile.currentState.collapse();
-                                        });
-                                      },
-                                    ),
-                                    ListTile(
-                                      title: Text("LJ Engg."),
-                                      onTap: () {
-                                        setState(() {
-                                          this.institute = "LJ Engg.";
-                                          expansionTile.currentState.collapse();
-                                        });
-                                      },
-                                    )
-                                  ],
-                                )))),
+                                child: selectInstitute()))),
                     InkWell(
                         onTap: () {},
                         child: Card(

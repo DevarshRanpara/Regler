@@ -1,5 +1,6 @@
 import 'dart:convert';
-
+import 'package:flutter_app/Classes/preferances.dart';
+import 'package:flutter_app/Classes/building.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Classes/gen_string.dart';
 import 'package:http/http.dart' as http;
@@ -17,8 +18,28 @@ class ManageUsersModel {
    print(res.body.toString());
   }
 
+  getInstituteList() async {
+    String url = GenerateString.generateStringListIns();
+    var response = await http.get(
+      Uri.encodeFull(url),
+    );
+    List data = jsonDecode(response.body);
+    print(data.toString());
+    for(int i=0;i<data.length;i++){
+      Building building=Building(
+        id:int.parse(data[i]['id']),
+        name: data[i]['name'],
+        director: data[i]['director'],
+        );
+
+      Preferances.building.add(building);
+    }
+
+  }
+
   Future<bool> blockUser(UserData user) async {
     String url = GenerateString.genStringBlock(user.id.toString());
+
     var res = await http.get(
       Uri.encodeFull(url),
     );
@@ -35,8 +56,6 @@ class ManageUsersModel {
     var response = await http.get(
       Uri.encodeFull(url),
     );
-    
-    //print(response.body);
 
     if(response.body.toString()=='no_data'){
       return user;
@@ -64,6 +83,7 @@ class ManageUsersModel {
       );
       user.add(userData);
     }
+    await getInstituteList();
     return user;
   }
 }

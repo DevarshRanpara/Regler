@@ -12,6 +12,10 @@ class GenerateString {
         pass;
   }
 
+  static generateStringListIns(){
+    return UrlLink.url+'?method=listInstitute';
+  }
+
   static genStringChpass(String oldpass, String newpass) {
     return UrlLink.url +
         '?method=chpass&uid=' +
