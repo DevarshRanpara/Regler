@@ -109,30 +109,33 @@ class _UserDetailTileState extends State<UserDetailTile> {
                           ),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.3,
-                            child: RawMaterialButton(
-                              onPressed: () {
-                                widget.changeLimit(widget.user);
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 5.0, horizontal: 10.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.timeline,
-                                      size: 15.0,
-                                    ),
-                                    SizedBox(
-                                      width: 2.0,
-                                    ),
-                                    Text("Ch. Limit"),
-                                  ],
+                            child: Tooltip(
+                              message: 'Change Limit',
+                                                          child: RawMaterialButton(
+                                onPressed: () {
+                                  widget.changeLimit(widget.user);
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 5.0, horizontal: 10.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.timeline,
+                                        size: 15.0,
+                                      ),
+                                      SizedBox(
+                                        width: 2.0,
+                                      ),
+                                      Text("Ch. Limit"),
+                                    ],
+                                  ),
                                 ),
+                                fillColor: Colors.blue,
+                                splashColor: Colors.blueAccent,
+                                shape: const StadiumBorder(),
                               ),
-                              fillColor: Colors.blue,
-                              splashColor: Colors.blueAccent,
-                              shape: const StadiumBorder(),
                             ),
                           ),
                           SizedBox(
