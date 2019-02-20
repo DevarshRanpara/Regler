@@ -3,7 +3,7 @@ import 'package:flutter_app/CustomWidgets/Admin/manage_room_admin.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_dir.dart';
 import 'package:flutter_app/Models/mng_room_dir_model.dart';
 import 'package:flutter_app/Models/manage_room_admin_model.dart';
-import 'package:flutter_app/Views/Admin/add_room_view.dart';
+import 'package:flutter_app/Views/Admin/ManageRooms/add_room_view.dart';
 
 class ManageRoomView extends StatefulWidget {
   final String role;

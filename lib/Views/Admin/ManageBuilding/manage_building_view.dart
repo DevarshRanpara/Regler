@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_building_tile.dart';
 import 'package:flutter_app/Classes/building.dart';
 import 'package:flutter_app/Models/manage_building_model.dart';
-import 'package:flutter_app/Views/Admin/add_building.dart';
+import 'package:flutter_app/Views/Admin/ManageBuilding/add_building.dart';
 
 class ManageBuildingView extends StatefulWidget {
   @override

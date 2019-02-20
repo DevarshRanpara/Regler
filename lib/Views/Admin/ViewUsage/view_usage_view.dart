@@ -3,10 +3,9 @@ import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Models/view_usage_building_model.dart';
 import 'package:flutter_app/Views/Admin/admin_use_view.dart';
-import 'package:flutter_app/Views/Admin/view_usage_building.dart';
-import 'package:flutter_app/Views/Admin/view_usage_room.dart';
-
-import 'package:flutter_app/Views/Admin/view_usage_user.dart';
+import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_building.dart';
+import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_room.dart';
+import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_user.dart';
 
 class ViewUsageView extends StatefulWidget {
   final String role;
