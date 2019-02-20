@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/preferances.dart';
+import 'package:flutter_app/CustomWidgets/Common/dialog.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
+import 'package:flutter_app/Classes/building.dart';
 
 class AddUserView extends StatefulWidget {
   @override
@@ -9,43 +11,37 @@ class AddUserView extends StatefulWidget {
 }
 
 class _AddUserViewState extends State<AddUserView> {
+  String username;
+  int userlimit;
   String institute = "Select Institute";
   Widget clgList;
-  String name;
   int limit;
   ManageUsersModel model;
-  Widget inst;
+  int insid;
   List<Widget> listTiles = List();
+  final formKey = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
+  final GlobalKey<AppExpansionTileState> expansionTile = new GlobalKey();
+  final scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
-    if(Preferances.role=='admin'){
-      inst=selectInstitute();
-    }
-    else{
-      inst=Card(
-      child: Container(
-        padding: const EdgeInsets.all(20.0),
-        child: Text("Institute : "+Preferances.institute)
-        )
-      );
-    }
+    model = ManageUsersModel();
     int n = Preferances.building.length;
     for (int i = 0; i < n; i++) {
-      listTiles.add(genListTile(Preferances.building[i].name));
+      listTiles.add(genListTile(Preferances.building[i]));
     }
-    
+
     super.initState();
   }
 
-  final GlobalKey<AppExpansionTileState> expansionTile = new GlobalKey();
-
-  genListTile(String ins) {
+  genListTile(Building building) {
     return ListTile(
-      title: Text(ins),
+      title: Text(building.name),
       onTap: () {
         setState(() {
-          this.institute = ins;
+          this.institute = building.name;
+          this.insid = building.id;
           expansionTile.currentState.collapse();
         });
       },
@@ -53,15 +49,56 @@ class _AddUserViewState extends State<AddUserView> {
   }
 
   selectInstitute() {
-    return Card(
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 2.0),
-        child:AppExpansionTile(
-        key: expansionTile, 
-        title: Text(institute), 
-        children: listTiles)
-        )
-      );
+    if (Preferances.role == 'admin') {
+      return Card(
+          child: Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
+              child: AppExpansionTile(
+                  key: expansionTile,
+                  title: Text(institute),
+                  children: listTiles)));
+    } else {
+      insid=int.parse(Preferances.institute);
+      institute='';
+      return Card(
+          child: Container(
+              padding: const EdgeInsets.all(20.0),
+              child: Text("Institute : " + Preferances.institute)));
+    }
+  }
+
+  showSnakbar(String msg) {
+    final snackbar = new SnackBar(
+      content: new Text(msg),
+      backgroundColor: Colors.red,
+    );
+    scaffoldKey.currentState.showSnackBar(snackbar);
+  }
+
+  _submit() async {
+    final form = formKey.currentState;
+    final form1 = formKey1.currentState;
+    if (form.validate() && form1.validate()) {
+      if (institute == 'Select Institute') {
+        showSnakbar('Please select institute');
+      } else {
+        form.save();
+        form1.save();
+      Dialogs dialogs = Dialogs(context);
+      dialogs.setMessage('Please Wait...');
+      dialogs.show();
+        String res = await model.addUser(username, insid, userlimit);
+        if(res=='error'){
+          showSnakbar('Username is already in use, Choose different one');
+        }
+        else{
+          showSnakbar("User added successfully.");
+        }
+        dialogs.hide();
+        //print(username + '\n' + userlimit.toString() + '\n' + insid.toString());
+      }
+    }
   }
 
   @override
@@ -72,6 +109,7 @@ class _AddUserViewState extends State<AddUserView> {
             fontFamily: 'Montserrat',
             accentColor: Colors.teal),
         home: Scaffold(
+            key: scaffoldKey,
             body: Container(
                 margin: EdgeInsets.all(8.0),
                 child: ListView(
@@ -107,48 +145,55 @@ class _AddUserViewState extends State<AddUserView> {
                         ))),
                     InkWell(
                         onTap: () {},
+                        child: Form(
+                          key: formKey1,
+                          child: Card(
+                              child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20.0, vertical: 2.0),
+                            child: Column(
+                              children: <Widget>[
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: 'Enter Username'),
+                                  validator: (val) {
+                                    if (val.length > 12) {
+                                      return 'Max username limit is 12';
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                  onSaved: (val) => username = val,
+                                )
+                              ],
+                            ),
+                          )),
+                        )),
+                    InkWell(onTap: () {}, child: selectInstitute()),
+                    InkWell(
+                        onTap: () {},
                         child: Card(
                             child: Container(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20.0, vertical: 2.0),
-                          child: Column(
-                            children: <Widget>[
-                              TextField(
-                                onChanged: (String val) {
-                                  setState(() {
-                                    name = val;
-                                  });
-                                },
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'Enter Username'),
-                              )
-                            ],
-                          ),
-                        ))),
-                    InkWell(
-                        onTap: () {},
-                        child: inst),
-                    InkWell(
-                        onTap: () {},
-                        child: Card(
-                            child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 2.0),
-                          child: Column(
-                            children: <Widget>[
-                              TextField(
-                                onChanged: (String val) {
-                                  setState(() {
-                                    limit = int.parse(val);
-                                  });
-                                },
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'Enter Usage limit (In Minutes)'),
-                                keyboardType: TextInputType.number,
-                              )
-                            ],
+                          child: Form(
+                            key: formKey,
+                            child: Column(
+                              children: <Widget>[
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText:
+                                          'Enter Usage limit (In Minutes)'),
+                                  keyboardType: TextInputType.number,
+                                  validator: (val) => int.parse(val) > 500
+                                      ? 'Maximum limit is 500'
+                                      : null,
+                                  onSaved: (val) => userlimit = int.parse(val),
+                                )
+                              ],
+                            ),
                           ),
                         ))),
                     InkWell(
@@ -192,7 +237,7 @@ class _AddUserViewState extends State<AddUserView> {
                           ],
                         ),
                         onPressed: () {
-                          //model.addUser(name,institute,limit);
+                          _submit();
                         },
                       ),
                     ),

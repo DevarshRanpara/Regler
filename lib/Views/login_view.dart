@@ -28,7 +28,6 @@ class HomePage extends StatefulWidget {
 
 class LoginPageState extends State<HomePage>{
 
-  final scaffoldKeyconn = new GlobalKey<ScaffoldState>();
   String _connectionStatus = 'Unknown';
   final Connectivity _connectivity = Connectivity();
   Widget mainView;

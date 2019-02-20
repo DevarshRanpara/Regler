@@ -12,6 +12,10 @@ class GenerateString {
         pass;
   }
 
+  static generateStringAddUser(String username,String ins,String limit){
+    return UrlLink.url+'?method=addUser&uname='+username+'&ins='+ins+'&limit='+limit;
+  }
+
   static generateStringListIns(){
     return UrlLink.url+'?method=listInstitute';
   }

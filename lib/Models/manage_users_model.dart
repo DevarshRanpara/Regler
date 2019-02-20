@@ -18,6 +18,12 @@ class ManageUsersModel {
     print(res.body.toString());
   }
 
+  Future<String> addUser(String uname,int institute,int limit) async {
+    String url=GenerateString.generateStringAddUser(uname,institute.toString(),limit.toString());
+    var res = await http.get(Uri.encodeFull(url));
+    return res.body.toString();
+  }
+
   getInstituteList() async {
     String url = GenerateString.generateStringListIns();
     var response = await http.get(
