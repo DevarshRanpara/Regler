@@ -3,8 +3,6 @@ import 'package:flutter_app/Models/login_model.dart';
 import './User/home_page.dart';
 import './Admin/admin_home_view.dart';
 import 'package:flutter_app/CustomWidgets/Common/dialog.dart';
-import 'package:flutter_app/CustomWidgets/Common/internet_error.dart';
-import 'package:connectivity/connectivity.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -28,10 +26,6 @@ class HomePage extends StatefulWidget {
 
 class LoginPageState extends State<HomePage>{
 
-  String _connectionStatus = 'Unknown';
-  final Connectivity _connectivity = Connectivity();
-  Widget mainView;
-
   final scaffoldKey = new GlobalKey<ScaffoldState>();
   final formKey = new GlobalKey<FormState>();
 
@@ -41,13 +35,6 @@ class LoginPageState extends State<HomePage>{
   @override
   void initState() {
     super.initState();
-     _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
-      setState(() {
-        _connectionStatus = result.toString();
-        setView(_connectionStatus);
-      });
-    });
-
   }
 
   void _submit() async {
@@ -89,14 +76,10 @@ class LoginPageState extends State<HomePage>{
     scaffoldKey.currentState.showSnackBar(snackbar);
   }
 
-   setView(String res) {
-    if (res == "ConnectivityResult.none") {
-      setState(() {
-        mainView = InternetError();
-      });
-    } else {
-      setState(() {
-        mainView = Stack(
+ @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        resizeToAvoidBottomPadding: false, key: scaffoldKey, body: Stack(
           fit: StackFit.expand,
           children: <Widget>[
             new Image(
@@ -172,14 +155,6 @@ class LoginPageState extends State<HomePage>{
               ],
             )
           ],
-        );
-      });
-    }
-  }
-
-   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        resizeToAvoidBottomPadding: false, key: scaffoldKey, body: mainView);
+        ));
   }
 }
