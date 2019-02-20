@@ -12,10 +12,10 @@ class ManageUsersModel {
     print(res.body.toString());
   }
 
-  void chhangeLimit(UserData user,String limit) async {
-    String url = GenerateString.genStringChLimit(user.id.toString(),limit);
-   var res = await http.get(Uri.encodeFull(url));
-   print(res.body.toString());
+  void chhangeLimit(UserData user, String limit) async {
+    String url = GenerateString.genStringChLimit(user.id.toString(), limit);
+    var res = await http.get(Uri.encodeFull(url));
+    print(res.body.toString());
   }
 
   getInstituteList() async {
@@ -25,16 +25,15 @@ class ManageUsersModel {
     );
     List data = jsonDecode(response.body);
     print(data.toString());
-    for(int i=0;i<data.length;i++){
-      Building building=Building(
-        id:int.parse(data[i]['id']),
+    for (int i = 0; i < data.length; i++) {
+      Building building = Building(
+        id: int.parse(data[i]['id']),
         name: data[i]['name'],
         director: data[i]['director'],
-        );
+      );
 
       Preferances.building.add(building);
     }
-
   }
 
   Future<bool> blockUser(UserData user) async {
@@ -57,7 +56,7 @@ class ManageUsersModel {
       Uri.encodeFull(url),
     );
 
-    if(response.body.toString()=='no_data'){
+    if (response.body.toString() == 'no_data') {
       return user;
     }
 
@@ -83,10 +82,10 @@ class ManageUsersModel {
       );
       user.add(userData);
     }
-    if(Preferances.role=='admin'){
+    if (Preferances.role == 'admin') {
       await getInstituteList();
     }
-    
+
     return user;
   }
 }
