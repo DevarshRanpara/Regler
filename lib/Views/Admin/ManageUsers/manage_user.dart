@@ -7,35 +7,38 @@ import 'package:flutter_app/CustomWidgets/Admin/user_detail.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
 
 class ManageUser extends StatefulWidget {
-
   final Dialogs dialogs;
 
   final Function addUser;
 
-  ManageUser(this.addUser,this.dialogs);
+  ManageUser(this.addUser, this.dialogs);
 
   @override
   _ManageUserState createState() => _ManageUserState();
 }
 
 class _ManageUserState extends State<ManageUser> {
-
   List<UserDetailTile> list = List();
   ManageUsersModel model;
   List<UserData> user;
   Stream<List<UserData>> stream;
-  
+  double height;
 
   @override
-    void initState() {
-      model = ManageUsersModel();
-      stream = Stream.fromFuture(model.getData());
-      //bloc.fetchAllUsers();
-    super.initState();
-      super.initState();
+  void initState() {
+    if (Preferances.role == 'admin') {
+      height = 0.87;
+    } else {
+      height = 0.95;
     }
+    model = ManageUsersModel();
+    stream = Stream.fromFuture(model.getData());
+    //bloc.fetchAllUsers();
+    super.initState();
+    super.initState();
+  }
 
-      @override
+  @override
   void dispose() {
     //bloc.dispose();
     Preferances.building.clear();
@@ -54,44 +57,43 @@ class _ManageUserState extends State<ManageUser> {
     widget.dialogs.showAlertUserChlimit(user);
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return ListView(
-            children: <Widget>[
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.95,
-                child: StreamBuilder(
-                  //stream: bloc.allUsers,
-                  stream: stream,
-                  builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    if (snapshot.data == null) {
-                      return Center(
-                        child: SizedBox(
-                          height: 30,
-                          width: 30,
-                          child: CircularProgressIndicator(),
-                        ),
-                      );
-                    } else {
-                      return ListView.builder(
-                        itemCount: snapshot.data.length + 1,
-                        itemBuilder: (BuildContext conext, int i) {
-                          if (i == 0) {
-                            return getUpperUI();
-                          }
-                          return UserDetailTile(snapshot.data[i - 1], blockUser,
-                              deleteUser, changeLimit);
-                        },
-                      );
+      children: <Widget>[
+        SizedBox(
+          height: MediaQuery.of(context).size.height * height,
+          child: StreamBuilder(
+            //stream: bloc.allUsers,
+            stream: stream,
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.data == null) {
+                return Center(
+                  child: SizedBox(
+                    height: 30,
+                    width: 30,
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              } else {
+                return ListView.builder(
+                  itemCount: snapshot.data.length + 1,
+                  itemBuilder: (BuildContext conext, int i) {
+                    if (i == 0) {
+                      return getUpperUI();
                     }
+                    return UserDetailTile(snapshot.data[i - 1], blockUser,
+                        deleteUser, changeLimit);
                   },
-                ),
-              )
-            ],
-          );
+                );
+              }
+            },
+          ),
+        )
+      ],
+    );
   }
+
   Widget getUpperUI() {
     return SizedBox(
       width: MediaQuery.of(context).size.width,

@@ -3,18 +3,18 @@ import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
 
-class UserDetailTile extends StatefulWidget {
+class DirDetailTile extends StatefulWidget {
   final UserData user;
   final Function block;
   final Function delete;
   final Function changeLimit;
-  UserDetailTile(this.user, this.block, this.delete,this.changeLimit);
+  DirDetailTile(this.user, this.block, this.delete, this.changeLimit);
 
   @override
-  _UserDetailTileState createState() => _UserDetailTileState();
+  _DirDetailTileState createState() => _DirDetailTileState();
 }
 
-class _UserDetailTileState extends State<UserDetailTile> {
+class _DirDetailTileState extends State<DirDetailTile> {
   @override
   Widget build(BuildContext context) {
     String strblock;
@@ -24,12 +24,11 @@ class _UserDetailTileState extends State<UserDetailTile> {
     } else {
       strblock = "Block";
     }
-
-    if(widget.user.role=='user'){
-
+    if (widget.user.role == 'director') {
       return InkWell(
           onTap: () {},
           child: Card(
+              color: Colors.black12,
               child: Container(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 5.0, vertical: 2.0),
@@ -48,7 +47,6 @@ class _UserDetailTileState extends State<UserDetailTile> {
                           width: MediaQuery.of(context).size.width * 0.3,
                           child: Text(widget.user.name),
                         ),
-                        //Text(name),
                         SizedBox(
                           width: 10.0,
                         ),
@@ -59,49 +57,20 @@ class _UserDetailTileState extends State<UserDetailTile> {
                       ],
                     ),
                     children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            child: Column(
-                              children: <Widget>[
-                                Text(
-                                  "Limit",
-                                ),
-                                Text(widget.user.limit.toString() + " M")
-                              ],
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.3,
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              "Usage",
+                              style: TextStyle(color: Colors.white),
                             ),
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            child: Column(
-                              children: <Widget>[
-                                Text(
-                                  "Usage",
-                                  style: TextStyle(color: Colors.red),
-                                ),
-                                Text(
-                                  widget.user.used.toString() + " M",
-                                  style: TextStyle(color: Colors.redAccent),
-                                )
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.3,
-                              child: Column(
-                                children: <Widget>[
-                                  Text(
-                                    "Bal",
-                                    style: TextStyle(color: Colors.teal),
-                                  ),
-                                  Text(
-                                    widget.user.bal.toString() + " M",
-                                    style: TextStyle(color: Colors.tealAccent),
-                                  )
-                                ],
-                              )),
-                        ],
+                            Text(
+                              widget.user.used.toString() + " M",
+                              style: TextStyle(color: Colors.white70),
+                            )
+                          ],
+                        ),
                       ),
                       Row(
                         children: <Widget>[
@@ -109,41 +78,7 @@ class _UserDetailTileState extends State<UserDetailTile> {
                             width: 5.0,
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            child: Tooltip(
-                              message: 'Change Limit',
-                                                          child: RawMaterialButton(
-                                onPressed: () {
-                                  widget.changeLimit(widget.user);
-                                },
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 5.0, horizontal: 10.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Icon(
-                                        Icons.timeline,
-                                        size: 15.0,
-                                      ),
-                                      SizedBox(
-                                        width: 2.0,
-                                      ),
-                                      Text("Ch. Limit"),
-                                    ],
-                                  ),
-                                ),
-                                fillColor: Colors.blue,
-                                splashColor: Colors.blueAccent,
-                                shape: const StadiumBorder(),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.3,
+                            width: MediaQuery.of(context).size.width * 0.45,
                             child: RawMaterialButton(
                               onPressed: () {
                                 widget.block(widget.user);
@@ -174,7 +109,7 @@ class _UserDetailTileState extends State<UserDetailTile> {
                             width: 5.0,
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.3,
+                            width: MediaQuery.of(context).size.width * 0.45,
                             child: RawMaterialButton(
                               onPressed: () {
                                 widget.delete(widget.user);
@@ -205,13 +140,8 @@ class _UserDetailTileState extends State<UserDetailTile> {
                       ),
                     ],
                   ))));
-
-    }
-    else{
+    } else {
       return Container();
     }
-
-    
-
   }
 }

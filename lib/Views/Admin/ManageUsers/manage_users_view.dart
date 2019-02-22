@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/CustomWidgets/Admin/dialouges_user.dart';
 import 'package:flutter_app/Views/Admin/ManageUsers/add_user_view.dart';
+import 'package:flutter_app/Views/Admin/ManageUsers/manage_director.dart';
 import 'package:flutter_app/Views/Admin/ManageUsers/manage_user.dart';
-
-//import 'package:flutter_app/Resources/bloc.dart';
 
 class ManageUsersView extends StatefulWidget {
   @override
@@ -18,45 +18,55 @@ class _ManageUsersViewState extends State<ManageUsersView> {
 
   @override
   void initState() {
-
     dialogs = Dialogs(context);
-    
-    Widget user = ManageUser(addUser,dialogs);
-    Widget dir = Text('Director');
+
+    Widget user = ManageUser(addUser, dialogs);
+    Widget dir = ManageDir(addUser, dialogs);
     pages = [user, dir];
     super.initState();
   }
 
-  addUser(){
-      Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => AddUserView()));
+  addUser() {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (BuildContext context) => AddUserView()));
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData(
-            brightness: Brightness.dark,
-            fontFamily: 'Montserrat',
-            accentColor: Colors.teal),
-        home: Scaffold(
-          body: Container(
-            child: pages.elementAt(_selectedIndex),
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.supervisor_account), title: Text("User")),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.verified_user), title: Text('Director'))
-            ],
-            currentIndex: _selectedIndex,
-            fixedColor: Colors.tealAccent,
-            onTap: _onItemTapped,
-          ),
-        ));
+    if (Preferances.role == 'admin') {
+      return MaterialApp(
+          theme: ThemeData(
+              brightness: Brightness.dark,
+              fontFamily: 'Montserrat',
+              accentColor: Colors.teal),
+          home: Scaffold(
+            body: Container(
+              child: pages.elementAt(_selectedIndex),
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              items: <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.supervisor_account), title: Text("User")),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.verified_user), title: Text('Director'))
+              ],
+              currentIndex: _selectedIndex,
+              fixedColor: Colors.tealAccent,
+              onTap: _onItemTapped,
+            ),
+          ));
+    } else {
+      return MaterialApp(
+          theme: ThemeData(
+              brightness: Brightness.dark,
+              fontFamily: 'Montserrat',
+              accentColor: Colors.teal),
+          home: Scaffold(
+            body: Container(
+              child: ManageUser(addUser, dialogs),
+            ),
+          ));
+    }
   }
 
   void _onItemTapped(int index) {
