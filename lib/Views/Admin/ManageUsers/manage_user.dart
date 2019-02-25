@@ -3,7 +3,6 @@ import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Admin/dialouges_user.dart';
 import 'package:flutter_app/CustomWidgets/Admin/user_detail.dart';
-
 import 'package:flutter_app/Models/manage_users_model.dart';
 
 class ManageUser extends StatefulWidget {
@@ -18,9 +17,7 @@ class ManageUser extends StatefulWidget {
 }
 
 class _ManageUserState extends State<ManageUser> {
-  List<UserDetailTile> list = List();
   ManageUsersModel model;
-  List<UserData> user;
   Stream<List<UserData>> stream;
   double height;
 

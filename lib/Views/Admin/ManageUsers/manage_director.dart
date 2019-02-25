@@ -19,7 +19,6 @@ class ManageDir extends StatefulWidget {
 
 class _ManageDirState extends State<ManageDir> {
   ManageUsersModel model;
-  List<UserData> user;
   Stream<List<UserData>> stream;
 
   @override

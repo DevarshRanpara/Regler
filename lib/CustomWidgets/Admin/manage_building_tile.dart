@@ -14,8 +14,18 @@ class ManageBuildingTile extends StatefulWidget {
 }
 
 class _ManageBuildingTileState extends State<ManageBuildingTile> {
+
+  String strblock;
+
   @override
   Widget build(BuildContext context) {
+
+    if(widget.building.isBlocked){
+      strblock='Unblock';
+    }
+    else{
+      strblock='Block';
+    }
     return InkWell(
       onTap: () {},
       child: Card(
@@ -113,7 +123,7 @@ class _ManageBuildingTileState extends State<ManageBuildingTile> {
                               SizedBox(
                                 width: 2.0,
                               ),
-                              Text("Block"),
+                              Text(strblock),
                             ],
                           ),
                         ),
