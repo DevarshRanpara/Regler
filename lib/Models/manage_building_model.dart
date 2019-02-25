@@ -17,6 +17,8 @@ class ManageBuildingModel {
         id: int.parse(data[i]['id']),
         name: data[i]['name'],
         director: data[i]['director'],
+        directorName: data[i]['u_name'],
+        dirImgUrl: data[i]['image_url']
       );
       buildings.add(building);
     }

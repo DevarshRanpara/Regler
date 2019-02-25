@@ -48,7 +48,7 @@ class _ManageBuildingTileState extends State<ManageBuildingTile> {
                           Container(
                             padding: EdgeInsets.all(10.0),
                             child: CircularImage(
-                              AssetImage("assets/dev.jpeg"),
+                              NetworkImage(widget.building.dirImgUrl),
                               width: 30,
                               height: 30,
                             ),
@@ -56,7 +56,7 @@ class _ManageBuildingTileState extends State<ManageBuildingTile> {
                           SizedBox(
                             width: 10,
                           ),
-                          Text(widget.building.director),
+                          Text(widget.building.directorName),
                         ],
                       ),
                     ),

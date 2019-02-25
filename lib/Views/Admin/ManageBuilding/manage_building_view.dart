@@ -120,7 +120,6 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
                   ),
                 ),
               )),
-          // Column(children: buildingTile)
         ],
       ),
     );
