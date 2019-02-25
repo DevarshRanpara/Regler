@@ -18,10 +18,6 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
 
   @override
   void initState() {
-    buildings = model.getData();
-    for (int i = 0; i < buildings.length; i++) {
-      buildingTile.add(ManageBuildingTile(buildings[i]));
-    }
     super.initState();
   }
 
@@ -33,7 +29,37 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
             fontFamily: 'Montserrat',
             accentColor: Colors.teal),
         home: Scaffold(
-          body: ListView(
+          body: FutureBuilder(
+            future: model.getData(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.data == null) {
+                return Center(
+                  child: SizedBox(
+                    height: 30,
+                    width: 30,
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              } else {
+                return ListView.builder(
+                  itemCount: snapshot.data.length + 1,
+                  itemBuilder: (BuildContext conext, int i) {
+                    if (i == 0) {
+                      return getUpperUI();
+                    }
+                    return ManageBuildingTile(snapshot.data[i - 1]);
+                  },
+                );
+              }
+            },
+          )
+        ));
+  }
+
+  getUpperUI(){
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Column(
             children: <Widget>[
               Padding(
                 padding:
@@ -93,9 +119,10 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
                       ),
                     ),
                   )),
-              Column(children: buildingTile)
+             // Column(children: buildingTile)
             ],
           ),
-        ));
+    );
   }
 }
+
