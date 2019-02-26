@@ -78,7 +78,8 @@ class ManageUsersModel {
       UserData userData = UserData(
         id: int.parse(data[i]['id']),
         name: data[i]['u_name'],
-        institute: data[i]['institute'],
+        // institute: data[i]['institute'],
+        institute: data[i]['name'],
         url: data[i]['image_url'],
         role: data[i]['type'],
         isBlcked: f,

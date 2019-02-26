@@ -49,14 +49,17 @@ class _ManageUserState extends State<ManageUser> {
 
   void blockUser(UserData user) {
     widget.dialogs.showAlertUserBlock(user);
+    model.getData();
   }
 
   void deleteUser(UserData user) {
     widget.dialogs.showAlertUserDelete(user);
+    model.getData();
   }
 
   void changeLimit(UserData user) {
     widget.dialogs.showAlertUserChlimit(user);
+    model.getData();
   }
 
   @override

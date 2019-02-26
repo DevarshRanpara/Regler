@@ -20,7 +20,17 @@ class DialogsIns {
             title: Text(title),
             content: Column(
               mainAxisSize: MainAxisSize.min,
-              children: <Widget>[],
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(Icons.location_city, color: Colors.red),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(ins.name)
+                  ],
+                )
+              ],
             ),
             actions: <Widget>[
               RawMaterialButton(
@@ -55,7 +65,17 @@ class DialogsIns {
             title: Text(title),
             content: Column(
               mainAxisSize: MainAxisSize.min,
-              children: <Widget>[],
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(Icons.location_city, color: Colors.red),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(ins.name)
+                  ],
+                )
+              ],
             ),
             actions: <Widget>[
               RawMaterialButton(

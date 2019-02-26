@@ -27,7 +27,7 @@ class _AddUserViewState extends State<AddUserView> {
   @override
   void initState() {
     model = ManageUsersModel();
-    int n = Preferances.institute.length;
+    int n = Preferances.institutes.length;
     for (int i = 0; i < n; i++) {
       listTiles.add(genListTile(Preferances.institutes[i]));
     }
