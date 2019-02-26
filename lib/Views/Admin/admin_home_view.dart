@@ -3,7 +3,7 @@ import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Views/Profile/profile.dart';
 import 'package:flutter_app/Views/Admin/admin_use_view.dart';
 import 'package:flutter_app/Views/Admin/ManageUsers/manage_users_view.dart';
-import 'package:flutter_app/Views/Admin/ManageBuilding/manage_building_view.dart';
+import 'package:flutter_app/Views/Admin/ManageInstitute/manage_institute_view.dart';
 import 'package:flutter_app/Views/Admin/ManageRooms/manage_room_view.dart';
 import 'package:flutter_app/Views/Admin/view_complain_view.dart';
 import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_view.dart';

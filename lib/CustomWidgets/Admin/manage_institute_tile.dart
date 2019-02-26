@@ -2,25 +2,25 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
-import 'package:flutter_app/Classes/building.dart';
+import 'package:flutter_app/Classes/institute.dart';
 
-class ManageBuildingTile extends StatefulWidget {
-  final Building building;
+class ManageinstituteTile extends StatefulWidget {
+  final Institute institute;
 
-  ManageBuildingTile(this.building);
+  ManageinstituteTile(this.institute);
 
   @override
-  _ManageBuildingTileState createState() => _ManageBuildingTileState();
+  _ManageinstituteTileState createState() => _ManageinstituteTileState();
 }
 
-class _ManageBuildingTileState extends State<ManageBuildingTile> {
+class _ManageinstituteTileState extends State<ManageinstituteTile> {
 
   String strblock;
 
   @override
   Widget build(BuildContext context) {
 
-    if(widget.building.isBlocked){
+    if(widget.institute.isBlocked){
       strblock='Unblock';
     }
     else{
@@ -38,7 +38,7 @@ class _ManageBuildingTileState extends State<ManageBuildingTile> {
                   SizedBox(
                     width: 10.0,
                   ),
-                  Text(widget.building.name)
+                  Text(widget.institute.name)
                 ],
               ),
               children: <Widget>[
@@ -58,7 +58,7 @@ class _ManageBuildingTileState extends State<ManageBuildingTile> {
                           Container(
                             padding: EdgeInsets.all(10.0),
                             child: CircularImage(
-                              NetworkImage(widget.building.dirImgUrl),
+                              NetworkImage(widget.institute.dirImgUrl),
                               width: 30,
                               height: 30,
                             ),
@@ -66,7 +66,7 @@ class _ManageBuildingTileState extends State<ManageBuildingTile> {
                           SizedBox(
                             width: 10,
                           ),
-                          Text(widget.building.directorName),
+                          Text(widget.institute.directorName),
                         ],
                       ),
                     ),

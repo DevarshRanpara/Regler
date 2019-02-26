@@ -33,7 +33,7 @@ class _ManageDirState extends State<ManageDir> {
   @override
   void dispose() {
     //bloc.dispose();
-    Preferances.building.clear();
+    Preferances.institutes.clear();
     super.dispose();
   }
 

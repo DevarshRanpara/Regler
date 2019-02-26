@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Classes/building.dart';
+import 'package:flutter_app/Classes/institute.dart';
 
-class BuildingTile extends StatelessWidget {
+class InstituteTile extends StatelessWidget {
   final Function gotoRoom;
 
-  final Building data;
+  final Institute data;
 
-  BuildingTile(this.data, this.gotoRoom);
+  InstituteTile(this.data, this.gotoRoom);
 
   @override
   Widget build(BuildContext context) {

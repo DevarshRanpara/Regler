@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
-import 'package:flutter_app/Classes/building.dart';
+import 'package:flutter_app/Classes/institute.dart';
 import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_tile.dart';
 
-class MngRoomBuilding extends StatefulWidget {
+class MngRoominstitute extends StatefulWidget {
   final Function gotoAddRoom;
-  final Building building;
-  MngRoomBuilding(this.building, this.gotoAddRoom);
+  final Institute institute;
+  MngRoominstitute(this.institute, this.gotoAddRoom);
   @override
-  _MngRoomBuildingState createState() => _MngRoomBuildingState();
+  _MngRoominstituteState createState() => _MngRoominstituteState();
 }
 
-class _MngRoomBuildingState extends State<MngRoomBuilding> {
+class _MngRoominstituteState extends State<MngRoominstitute> {
   List<RoomTile> roomtiles = List();
   List<Room> rooms;
 
   @override
   void initState() {
-    rooms = widget.building.rooms;
+    rooms = widget.institute.rooms;
 
     for (int i = 0; i < rooms.length; i++) {
       roomtiles.add(RoomTile(rooms[i]));
@@ -36,7 +36,7 @@ class _MngRoomBuildingState extends State<MngRoomBuilding> {
                     const EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0),
                 child: AppExpansionTile(
                   title: Row(
-                    children: <Widget>[Text(widget.building.name)],
+                    children: <Widget>[Text(widget.institute.name)],
                   ),
                   children: <Widget>[
                     InkWell(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/user_data.dart';
-import 'package:flutter_app/Models/view_usage_building_model.dart';
+import 'package:flutter_app/Models/view_usage_institute_model.dart';
 import 'package:flutter_app/Views/Admin/admin_use_view.dart';
 import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_building.dart';
 import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_room.dart';
@@ -30,7 +30,7 @@ class _ViewUsageViewState extends State<ViewUsageView> {
       pages = [usageUser, usageBuilding];
     } else {
       inst = 'Room';
-      ViewUsageBuldingModel model = ViewUsageBuldingModel();
+      ViewUsageInstituteModel model = ViewUsageInstituteModel();
       Widget usageRoom = ViewUsageRoom(model.buildings[0].rooms, 0);
       pages = [usageUser, usageRoom];
     }

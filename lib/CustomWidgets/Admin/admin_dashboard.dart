@@ -84,7 +84,7 @@ class AdminDashboard extends StatelessWidget {
                                 SizedBox(
                                   height: 8.0,
                                 ),
-                                Text("Manage \nBuildings")
+                                Text("Manage \nInstitutes")
                               ],
                             ),
                           ),

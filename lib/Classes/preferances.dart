@@ -1,5 +1,5 @@
 //import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_app/Classes/building.dart';
+import 'package:flutter_app/Classes/institute.dart';
 
 class Preferances {
   static int id;
@@ -9,5 +9,5 @@ class Preferances {
   static String use;
   static String bal;
   static bool isLoggedin = false;
-  static List<Building> building = List();
+  static List<Institute> institutes = List();
 }

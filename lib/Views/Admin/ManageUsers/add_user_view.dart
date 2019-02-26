@@ -3,7 +3,7 @@ import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/CustomWidgets/Common/dialog.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
-import 'package:flutter_app/Classes/building.dart';
+import 'package:flutter_app/Classes/institute.dart';
 
 class AddUserView extends StatefulWidget {
   @override
@@ -27,21 +27,21 @@ class _AddUserViewState extends State<AddUserView> {
   @override
   void initState() {
     model = ManageUsersModel();
-    int n = Preferances.building.length;
+    int n = Preferances.institute.length;
     for (int i = 0; i < n; i++) {
-      listTiles.add(genListTile(Preferances.building[i]));
+      listTiles.add(genListTile(Preferances.institutes[i]));
     }
 
     super.initState();
   }
 
-  genListTile(Building building) {
+  genListTile(Institute institute) {
     return ListTile(
-      title: Text(building.name),
+      title: Text(institute.name),
       onTap: () {
         setState(() {
-          this.institute = building.name;
-          this.insid = building.id;
+          this.institute = institute.name;
+          this.insid = institute.id;
           expansionTile.currentState.collapse();
         });
       },

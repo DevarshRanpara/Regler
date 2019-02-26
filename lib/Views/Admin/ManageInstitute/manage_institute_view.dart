@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/CustomWidgets/Admin/manage_building_tile.dart';
-import 'package:flutter_app/Classes/building.dart';
-import 'package:flutter_app/Models/manage_building_model.dart';
-import 'package:flutter_app/Views/Admin/ManageBuilding/add_building.dart';
+import 'package:flutter_app/CustomWidgets/Admin/manage_institute_tile.dart';
+import 'package:flutter_app/Classes/institute.dart';
+import 'package:flutter_app/Models/manage_institute_model.dart';
+import 'package:flutter_app/Views/Admin/ManageInstitute/add_institute.dart';
 
 class ManageBuildingView extends StatefulWidget {
   @override
@@ -10,11 +10,10 @@ class ManageBuildingView extends StatefulWidget {
 }
 
 class _ManageBuildingViewState extends State<ManageBuildingView> {
-  ManageBuildingModel model = ManageBuildingModel();
+  
+  ManageInstituteModel model = ManageInstituteModel();
 
-  List<Widget> buildingTile = List();
-
-  List<Building> buildings;
+  List<Institute> buildings;
 
   @override
   void initState() {
@@ -47,7 +46,7 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
                   if (i == 0) {
                     return getUpperUI();
                   }
-                  return ManageBuildingTile(snapshot.data[i - 1]);
+                  return ManageinstituteTile(snapshot.data[i - 1]);
                 },
               );
             }
@@ -82,7 +81,7 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
                         height: 15.0,
                       ),
                       Text(
-                        "Manage Buildings",
+                        "Manage Institutes",
                         style: TextStyle(
                             color: Colors.tealAccent,
                             fontSize: 20.0,
@@ -97,7 +96,7 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => AddBuildingView()));
+                        builder: (BuildContext context) => AddInstituteView()));
               },
               child: Card(
                 child: Container(
@@ -113,7 +112,7 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
                         width: 8.0,
                       ),
                       Text(
-                        "Add Building",
+                        "Add Institute",
                         style: TextStyle(color: Colors.white),
                       ),
                     ],

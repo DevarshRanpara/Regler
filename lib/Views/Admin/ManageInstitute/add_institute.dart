@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class AddBuildingView extends StatefulWidget {
+class AddInstituteView extends StatefulWidget {
   @override
-  _AddBuildingViewState createState() => _AddBuildingViewState();
+  _AddInstituteViewState createState() => _AddInstituteViewState();
 }
 
-class _AddBuildingViewState extends State<AddBuildingView> {
+class _AddInstituteViewState extends State<AddInstituteView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,7 +37,7 @@ class _AddBuildingViewState extends State<AddBuildingView> {
                           height: 15.0,
                         ),
                         Text(
-                          "Add Building",
+                          "Add Institute",
                           style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,

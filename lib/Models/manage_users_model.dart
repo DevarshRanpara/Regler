@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_app/Classes/preferances.dart';
-import 'package:flutter_app/Classes/building.dart';
+import 'package:flutter_app/Classes/institute.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Classes/gen_string.dart';
 import 'package:http/http.dart' as http;
@@ -32,13 +32,13 @@ class ManageUsersModel {
     List data = jsonDecode(response.body);
     print(data.toString());
     for (int i = 0; i < data.length; i++) {
-      Building building = Building(
+      Institute building = Institute(
         id: int.parse(data[i]['id']),
         name: data[i]['name'],
         director: data[i]['director'],
       );
 
-      Preferances.building.add(building);
+      Preferances.institutes.add(building);
     }
   }
 

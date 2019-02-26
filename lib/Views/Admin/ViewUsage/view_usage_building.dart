@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Classes/building.dart';
-import 'package:flutter_app/CustomWidgets/Admin/building_tile.dart';
-import 'package:flutter_app/Models/view_usage_building_model.dart';
+import 'package:flutter_app/Classes/institute.dart';
+import 'package:flutter_app/CustomWidgets/Admin/institute_tile.dart';
+import 'package:flutter_app/Models/view_usage_institute_model.dart';
 
 class ViewUsageBulding extends StatefulWidget {
   final Function gotoRoom;
@@ -12,16 +12,16 @@ class ViewUsageBulding extends StatefulWidget {
 }
 
 class _ViewUsageBuldingState extends State<ViewUsageBulding> {
-  ViewUsageBuldingModel model = ViewUsageBuldingModel();
-  List<Building> buildings = List();
-  List<BuildingTile> buildingTile = List();
+  ViewUsageInstituteModel model = ViewUsageInstituteModel();
+  List<Institute> institutes = List();
+  List<InstituteTile> instituteTile = List();
 
   @override
   void initState() {
-    buildings = model.getData();
+    institutes = model.getData();
 
-    for (int i = 0; i < buildings.length; i++) {
-      buildingTile.add(BuildingTile(buildings[i], widget.gotoRoom));
+    for (int i = 0; i < institutes.length; i++) {
+      instituteTile.add(InstituteTile(institutes[i], widget.gotoRoom));
     }
     super.initState();
   }
@@ -59,7 +59,7 @@ class _ViewUsageBuldingState extends State<ViewUsageBulding> {
               ),
             ))),
         Column(
-          children: buildingTile,
+          children: instituteTile,
         )
       ],
     );

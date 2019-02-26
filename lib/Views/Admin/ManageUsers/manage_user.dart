@@ -38,7 +38,7 @@ class _ManageUserState extends State<ManageUser> {
   @override
   void dispose() {
     //bloc.dispose();
-    Preferances.building.clear();
+    Preferances.institutes.clear();
     super.dispose();
   }
 
