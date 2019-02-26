@@ -114,7 +114,7 @@ class _ManageDirState extends State<ManageDir> {
                         height: 15.0,
                       ),
                       Text(
-                        "Manage Users",
+                        "Manage Directors",
                         style: TextStyle(
                             color: Colors.tealAccent,
                             fontSize: 20.0,
@@ -124,31 +124,6 @@ class _ManageDirState extends State<ManageDir> {
                   ),
                 ),
               ))),
-          InkWell(
-              onTap: () {
-                widget.addUser();
-              },
-              child: Card(
-                child: Container(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.add,
-                        color: Colors.amber,
-                      ),
-                      SizedBox(
-                        width: 8.0,
-                      ),
-                      Text(
-                        "Add User",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ),
-              )),
         ],
       ),
     );
