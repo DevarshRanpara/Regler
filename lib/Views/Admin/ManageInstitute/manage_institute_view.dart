@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/CustomWidgets/Admin/manage_institute_tile.dart';
+import 'package:flutter_app/Classes/functions.dart';
 import 'package:flutter_app/Classes/institute.dart';
+import 'package:flutter_app/CustomWidgets/Admin/dialouges_institute.dart';
+import 'package:flutter_app/CustomWidgets/Admin/manage_institute_tile.dart';
 import 'package:flutter_app/Models/manage_institute_model.dart';
 import 'package:flutter_app/Views/Admin/ManageInstitute/add_institute.dart';
 
@@ -13,11 +15,26 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
   
   ManageInstituteModel model = ManageInstituteModel();
 
-  List<Institute> buildings;
+  ManageFunctions functions;
+  DialogsIns dialogs;
 
   @override
   void initState() {
+    functions=ManageFunctions(change: changeDirector,block: blockInstitute,delete: deleteInstitute);
+    dialogs=DialogsIns(context);
     super.initState();
+  }
+
+  changeDirector(Institute ins){
+    dialogs.showAlertInstituteChDir(ins);
+  }
+
+  blockInstitute(Institute ins){
+    dialogs.showAlertInstituteBlock(ins);
+  }
+
+  deleteInstitute(Institute ins){
+    dialogs.showAlertInstituteDelete(ins);
   }
 
   @override
@@ -46,7 +63,7 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
                   if (i == 0) {
                     return getUpperUI();
                   }
-                  return ManageinstituteTile(snapshot.data[i - 1]);
+                  return ManageinstituteTile(snapshot.data[i - 1],functions);
                 },
               );
             }

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/functions.dart';
 
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
 import 'package:flutter_app/Classes/institute.dart';
 
 class ManageinstituteTile extends StatefulWidget {
+  final ManageFunctions functions;
   final Institute institute;
 
-  ManageinstituteTile(this.institute);
+  ManageinstituteTile(this.institute,this.functions);
 
   @override
   _ManageinstituteTileState createState() => _ManageinstituteTileState();
@@ -80,7 +82,9 @@ class _ManageinstituteTileState extends State<ManageinstituteTile> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.3,
                       child: RawMaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          widget.functions.change(widget.institute);
+                        },
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               vertical: 5.0, horizontal: 10.0),
@@ -109,7 +113,9 @@ class _ManageinstituteTileState extends State<ManageinstituteTile> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.3,
                       child: RawMaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          widget.functions.block(widget.institute);
+                        },
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               vertical: 5.0, horizontal: 10.0),
@@ -138,7 +144,9 @@ class _ManageinstituteTileState extends State<ManageinstituteTile> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.3,
                       child: RawMaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          widget.functions.delete(widget.institute);
+                        },
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               vertical: 5.0, horizontal: 10.0),

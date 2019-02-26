@@ -189,18 +189,16 @@ class Dialogs {
                 Form(
                   key: formKey,
                   child: TextFormField(
-                    validator: (val){
-                      if(int.parse(val)>500){
+                    validator: (val) {
+                      if (int.parse(val) > 500) {
                         print('max then 500');
                         return 'Max limit is 500';
-                      }
-                      else if(int.parse(val)<user.used){
+                      } else if (int.parse(val) < user.used) {
                         return 'Limit must be grater then user use';
-                      }
-                      else{
+                      } else {
                         return null;
                       }
-                    },  
+                    },
                     onSaved: (val) => limit = val,
                     decoration: InputDecoration(
                       hintText: 'Enter new Limit',
@@ -218,12 +216,11 @@ class Dialogs {
                 ),
                 onPressed: () {
                   final form = formKey.currentState;
-                  if(form.validate()){
+                  if (form.validate()) {
                     form.save();
                     model.chhangeLimit(user, limit);
                     Navigator.pop(buildContext);
                   }
-                  
                 },
               ),
               RawMaterialButton(

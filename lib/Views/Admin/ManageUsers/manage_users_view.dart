@@ -18,6 +18,7 @@ class _ManageUsersViewState extends State<ManageUsersView> {
 
   @override
   void initState() {
+    
     dialogs = Dialogs(context);
 
     Widget user = ManageUser(addUser, dialogs);

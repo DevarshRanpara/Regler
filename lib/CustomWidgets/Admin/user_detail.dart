@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/functions.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
 
 class UserDetailTile extends StatefulWidget {
+  final ManageFunctions functions;
   final UserData user;
-  final Function block;
-  final Function delete;
-  final Function changeLimit;
-  UserDetailTile(this.user, this.block, this.delete,this.changeLimit);
+  UserDetailTile(this.user, this.functions);
 
   @override
   _UserDetailTileState createState() => _UserDetailTileState();
@@ -114,7 +113,7 @@ class _UserDetailTileState extends State<UserDetailTile> {
                               message: 'Change Limit',
                                                           child: RawMaterialButton(
                                 onPressed: () {
-                                  widget.changeLimit(widget.user);
+                                  widget.functions.change(widget.user);
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
@@ -146,7 +145,7 @@ class _UserDetailTileState extends State<UserDetailTile> {
                             width: MediaQuery.of(context).size.width * 0.3,
                             child: RawMaterialButton(
                               onPressed: () {
-                                widget.block(widget.user);
+                                widget.functions.block(widget.user);
                               },
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
@@ -177,7 +176,7 @@ class _UserDetailTileState extends State<UserDetailTile> {
                             width: MediaQuery.of(context).size.width * 0.3,
                             child: RawMaterialButton(
                               onPressed: () {
-                                widget.delete(widget.user);
+                                widget.functions.delete(widget.user);
                               },
                               child: Padding(
                                 padding: EdgeInsets.symmetric(

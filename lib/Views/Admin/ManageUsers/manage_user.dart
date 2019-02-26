@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/functions.dart';
 import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Admin/dialouges_user.dart';
@@ -17,6 +18,8 @@ class ManageUser extends StatefulWidget {
 }
 
 class _ManageUserState extends State<ManageUser> {
+  ManageFunctions functions;
+
   ManageUsersModel model;
   Stream<List<UserData>> stream;
   double height;
@@ -28,6 +31,8 @@ class _ManageUserState extends State<ManageUser> {
     } else {
       height = 0.95;
     }
+    functions = ManageFunctions(
+        block: blockUser, change: changeLimit, delete: deleteUser);
     model = ManageUsersModel();
     stream = Stream.fromFuture(model.getData());
     //bloc.fetchAllUsers();
@@ -79,8 +84,7 @@ class _ManageUserState extends State<ManageUser> {
                     if (i == 0) {
                       return getUpperUI();
                     }
-                    return UserDetailTile(snapshot.data[i - 1], blockUser,
-                        deleteUser, changeLimit);
+                    return UserDetailTile(snapshot.data[i - 1], functions);
                   },
                 );
               }
@@ -159,4 +163,3 @@ class _ManageUserState extends State<ManageUser> {
     );
   }
 }
-
