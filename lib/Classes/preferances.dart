@@ -8,6 +8,7 @@ class Preferances {
   static String limit;
   static String use;
   static String bal;
+  static String instituteid;
   static bool isLoggedin = false;
   static List<Institute> institutes = List();
 }

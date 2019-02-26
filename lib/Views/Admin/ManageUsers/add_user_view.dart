@@ -59,7 +59,7 @@ class _AddUserViewState extends State<AddUserView> {
                   title: Text(institute),
                   children: listTiles)));
     } else {
-      insid=int.parse(Preferances.institute);
+      insid=int.parse(Preferances.instituteid);
       institute='';
       return Card(
           child: Container(

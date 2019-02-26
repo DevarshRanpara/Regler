@@ -25,7 +25,8 @@ class LoginModel {
       Preferances.id = int.parse(data[0]['id']);
       Preferances.name = data[0]['u_name'];
       Preferances.role = data[0]['type'];
-      Preferances.institute=data[0]['institute'];
+      Preferances.instituteid = data[0]['institute'];
+      Preferances.institute=data[0]['name'];
       Preferances.imgurl = data[0]['image_url'];
       Preferances.limit = data[0]['user_limit'];
       Preferances.use = data[0]['user_use'];
