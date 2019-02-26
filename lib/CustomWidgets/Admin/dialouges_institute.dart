@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/institute.dart';
+import 'package:flutter_app/Models/manage_institute_model.dart';
 
 class DialogsIns {
   BuildContext buildContext;
@@ -7,6 +8,9 @@ class DialogsIns {
   DialogsIns(this.buildContext);
 
   showAlertInstituteBlock(Institute ins) {
+
+    ManageInstituteModel model=ManageInstituteModel();
+
     String title;
     if (ins.isBlocked) {
       title = "Unblock Institute";
@@ -40,6 +44,7 @@ class DialogsIns {
                 ),
                 onPressed: () {
                   Navigator.pop(buildContext);
+                  model.blockIns(ins);
                 },
               ),
               RawMaterialButton(

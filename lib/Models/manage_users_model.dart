@@ -30,7 +30,7 @@ class ManageUsersModel {
       Uri.encodeFull(url),
     );
     List data = jsonDecode(response.body);
-    print(data.toString());
+    // print(data.toString());
     for (int i = 0; i < data.length; i++) {
       Institute building = Institute(
         id: int.parse(data[i]['id']),

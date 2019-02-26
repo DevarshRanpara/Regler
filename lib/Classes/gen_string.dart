@@ -12,6 +12,10 @@ class GenerateString {
         pass;
   }
 
+  static genStringBlockIns(String id){
+    return UrlLink.url+'?method=blockInstitute&insid='+id;
+  }
+
   static generateStringAddUser(String username,String ins,String limit){
     return UrlLink.url+'?method=addUser&uname='+username+'&ins='+ins+'&limit='+limit;
   }
