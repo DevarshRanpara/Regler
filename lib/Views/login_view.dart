@@ -68,7 +68,11 @@ class LoginPageState extends State<HomePage> {
               builder: (BuildContext context) => AdminHomeView()));
     } else if (role == Strings.userBlocked) {
       showSnakbar(Strings.userBlockMessage);
-    } else {
+    }
+    else if(role==Strings.internetEr){
+      showSnakbar(Strings.internetErrorMsg);
+    }
+     else {
       showSnakbar(Strings.invalidUserMessage);
     }
   }

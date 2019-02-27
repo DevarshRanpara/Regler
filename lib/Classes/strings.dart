@@ -135,4 +135,7 @@ class Strings {
   static String keyUse='use';
   static String keyBal='bal';
   static String keyIsLoggedin = 'isLoggedIn';
+
+  static String internetEr='interneterror';
+  static String internetErrorMsg = "No active internet connection";
 }
