@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
+import 'package:flutter_app/Views/login_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import './change_password_view.dart';
 import './complain_view.dart';
 
@@ -16,6 +18,8 @@ class Profile extends StatefulWidget {
 
 class _UserProfileState extends State<Profile> {
   final scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  SharedPreferences prefs;
 
   void showSnakebar() {
     final snackbar = new SnackBar(
@@ -66,8 +70,54 @@ class _UserProfileState extends State<Profile> {
     }
   }
 
+  initPref() async {
+    prefs = await SharedPreferences.getInstance();
+  }
+
+  _logout(){
+     showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(Strings.lbllogoutMsg),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                  ],
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              RawMaterialButton(
+                child: Text(
+                  Strings.yes,
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                    prefs.setBool(Strings.keyIsLoggedin, false);
+                    Navigator.pushReplacement(context,MaterialPageRoute(builder: (BuildContext context) => LoginPage()));
+                },
+              ),
+              RawMaterialButton(
+                child: Text(
+                  Strings.no,
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
+    initPref();
     return MaterialApp(
       theme: ThemeData(
           brightness: Brightness.dark,
@@ -191,7 +241,7 @@ class _UserProfileState extends State<Profile> {
                     ],
                   ),
                   onPressed: () {
-                    showSnakebar();
+                    _logout();
                   },
                   splashColor: Colors.orangeAccent,
                 ),

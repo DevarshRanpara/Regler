@@ -14,9 +14,6 @@ import 'package:flutter_app/Classes/admin_navigation.dart';
 import 'package:flutter_app/Classes/preferances.dart';
 
 class AdminHomeView extends StatefulWidget {
-  final String role;
-
-  AdminHomeView(this.role);
 
   @override
   _AdminHomeViewState createState() => _AdminHomeViewState();
@@ -29,7 +26,7 @@ class _AdminHomeViewState extends State<AdminHomeView> {
 
   @override
   void initState() {
-    if (widget.role == Strings.roleAdmin) {
+    if (Preferances.role == Strings.roleAdmin) {
       model = AdminHomeModel(Preferances.name, Preferances.role);
     } else {
       model = AdminHomeModel(Preferances.name, Preferances.role);

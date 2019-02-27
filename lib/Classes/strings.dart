@@ -43,6 +43,7 @@ class Strings {
   static String logoutMsg = "User Will logout here";
   static String changeProfilePic = "Change Profile Picture";
   static String logout = "Logout";
+  static String lbllogoutMsg = 'You want to Logout?';
 
   static String addInstitute = 'Add Institute';
   static String addInstituteName = 'Enter Institute Name';
@@ -123,4 +124,15 @@ class Strings {
   static String to=" to ";
   static String min=" Min";
   static String remBal="Remaining Balance ";
+
+  static String keyId='id';
+  static String keyName='name';
+  static String keyRole = 'role';
+  static String keyInsId='instituteId';
+  static String keyIns='institute';
+  static String keyImgUrl='image_url';
+  static String keyLimit='limit';
+  static String keyUse='use';
+  static String keyBal='bal';
+  static String keyIsLoggedin = 'isLoggedIn';
 }
