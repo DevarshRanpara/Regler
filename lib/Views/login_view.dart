@@ -97,8 +97,12 @@ class LoginPageState extends State<HomePage> {
     Preferances.use = prefs.getString(Strings.keyUse);
     Preferances.bal = prefs.getString(Strings.keyBal);
     Preferances.isLoggedin = prefs.getBool(Strings.keyIsLoggedin);
-
-    return Preferances.isLoggedin;
+    if(Preferances.isLoggedin==null){
+      return false;
+    }
+    else{
+      return Preferances.isLoggedin;
+    }
   }
 
   @override
