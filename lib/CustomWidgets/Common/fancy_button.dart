@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 
 class FancyButton extends StatelessWidget {
   FancyButton({@required this.onPressed});
@@ -22,7 +23,7 @@ class FancyButton extends StatelessWidget {
               width: 8.0,
             ),
             Text(
-              "SIGNUP",
+              Strings.signup,
               style: TextStyle(color: Colors.white),
             ),
           ],

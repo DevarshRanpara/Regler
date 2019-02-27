@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/functions.dart';
 import 'package:flutter_app/Classes/institute.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Admin/dialouges_institute.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_institute_tile.dart';
 import 'package:flutter_app/Models/manage_institute_model.dart';
@@ -12,7 +13,6 @@ class ManageBuildingView extends StatefulWidget {
 }
 
 class _ManageBuildingViewState extends State<ManageBuildingView> {
-  
   ManageInstituteModel model = ManageInstituteModel();
 
   ManageFunctions functions;
@@ -20,20 +20,21 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
 
   @override
   void initState() {
-    functions=ManageFunctions(change: changeDirector,block: blockInstitute,delete: deleteInstitute);
-    dialogs=DialogsIns(context);
+    functions = ManageFunctions(
+        change: changeDirector, block: blockInstitute, delete: deleteInstitute);
+    dialogs = DialogsIns(context);
     super.initState();
   }
 
-  changeDirector(Institute ins){
+  changeDirector(Institute ins) {
     dialogs.showAlertInstituteChDir(ins);
   }
 
-  blockInstitute(Institute ins){
+  blockInstitute(Institute ins) {
     dialogs.showAlertInstituteBlock(ins);
   }
 
-  deleteInstitute(Institute ins){
+  deleteInstitute(Institute ins) {
     dialogs.showAlertInstituteDelete(ins);
   }
 
@@ -42,7 +43,7 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
     return MaterialApp(
         theme: ThemeData(
             brightness: Brightness.dark,
-            fontFamily: 'Montserrat',
+            fontFamily: Strings.fontFamily,
             accentColor: Colors.teal),
         home: Scaffold(
             body: FutureBuilder(
@@ -63,7 +64,7 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
                   if (i == 0) {
                     return getUpperUI();
                   }
-                  return ManageinstituteTile(snapshot.data[i - 1],functions);
+                  return ManageinstituteTile(snapshot.data[i - 1], functions);
                 },
               );
             }
@@ -98,7 +99,7 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
                         height: 15.0,
                       ),
                       Text(
-                        "Manage Institutes",
+                        Strings.manageInstitutes,
                         style: TextStyle(
                             color: Colors.tealAccent,
                             fontSize: 20.0,
@@ -129,7 +130,7 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
                         width: 8.0,
                       ),
                       Text(
-                        "Add Institute",
+                        Strings.btnAddInstitute,
                         style: TextStyle(color: Colors.white),
                       ),
                     ],

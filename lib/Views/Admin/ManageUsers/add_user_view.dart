@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/preferances.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Common/dialog.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
@@ -13,7 +14,7 @@ class AddUserView extends StatefulWidget {
 class _AddUserViewState extends State<AddUserView> {
   String username;
   int userlimit;
-  String institute = "Select Institute";
+  String institute = Strings.selectInstitute;
   Widget clgList;
   int limit;
   ManageUsersModel model;
@@ -49,7 +50,7 @@ class _AddUserViewState extends State<AddUserView> {
   }
 
   selectInstitute() {
-    if (Preferances.role == 'admin') {
+    if (Preferances.role == Strings.roleAdmin) {
       return Card(
           child: Container(
               padding:
@@ -64,7 +65,7 @@ class _AddUserViewState extends State<AddUserView> {
       return Card(
           child: Container(
               padding: const EdgeInsets.all(20.0),
-              child: Text("Institute : " + Preferances.institute)));
+              child: Text(Strings.institute + Preferances.institute)));
     }
   }
 
@@ -80,20 +81,20 @@ class _AddUserViewState extends State<AddUserView> {
     final form = formKey.currentState;
     final form1 = formKey1.currentState;
     if (form.validate() && form1.validate()) {
-      if (institute == 'Select Institute') {
-        showSnakbar('Please select institute');
+      if (institute == Strings.selectInstitute) {
+        showSnakbar(Strings.insError);
       } else {
         form.save();
         form1.save();
       Dialogs dialogs = Dialogs(context);
-      dialogs.setMessage('Please Wait...');
+      dialogs.setMessage(Strings.pleaseWait);
       dialogs.show();
         String res = await model.addUser(username, insid, userlimit);
-        if(res=='error'){
-          showSnakbar('Username is already in use, Choose different one');
+        if(res==Strings.error){
+          showSnakbar(Strings.sameUnameError);
         }
         else{
-          showSnakbar("User added successfully.");
+          showSnakbar(Strings.userAdded);
         }
         dialogs.hide();
         //print(username + '\n' + userlimit.toString() + '\n' + insid.toString());
@@ -106,7 +107,7 @@ class _AddUserViewState extends State<AddUserView> {
     return MaterialApp(
         theme: ThemeData(
             brightness: Brightness.dark,
-            fontFamily: 'Montserrat',
+            fontFamily: Strings.fontFamily,
             accentColor: Colors.teal),
         home: Scaffold(
             key: scaffoldKey,
@@ -134,7 +135,7 @@ class _AddUserViewState extends State<AddUserView> {
                                 height: 15.0,
                               ),
                               Text(
-                                "Add User",
+                                Strings.addUser,
                                 style: TextStyle(
                                     color: Colors.tealAccent,
                                     fontSize: 20.0,
@@ -156,10 +157,10 @@ class _AddUserViewState extends State<AddUserView> {
                                 TextFormField(
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
-                                      hintText: 'Enter Username'),
+                                      hintText: Strings.enterUname),
                                   validator: (val) {
                                     if (val.length > 12) {
-                                      return 'Max username limit is 12';
+                                      return Strings.unameError;
                                     } else {
                                       return null;
                                     }
@@ -185,10 +186,10 @@ class _AddUserViewState extends State<AddUserView> {
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
                                       hintText:
-                                          'Enter Usage limit (In Minutes)'),
+                                          Strings.enterHint),
                                   keyboardType: TextInputType.number,
                                   validator: (val) => int.parse(val) > 500
-                                      ? 'Maximum limit is 500'
+                                      ? Strings.maxLimit
                                       : null,
                                   onSaved: (val) => userlimit = int.parse(val),
                                 )
@@ -209,7 +210,7 @@ class _AddUserViewState extends State<AddUserView> {
                                     SizedBox(
                                       width: 15.0,
                                     ),
-                                    Text("Upload Profile Picture")
+                                    Text(Strings.uploadProfilePic)
                                   ],
                                 ),
                               ),
@@ -228,7 +229,7 @@ class _AddUserViewState extends State<AddUserView> {
                               width: 8,
                             ),
                             Text(
-                              "Add User",
+                              Strings.addUser,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20.0,

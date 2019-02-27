@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Views/Profile/profile.dart';
 import 'package:flutter_app/Views/Admin/admin_use_view.dart';
@@ -28,7 +29,7 @@ class _AdminHomeViewState extends State<AdminHomeView> {
 
   @override
   void initState() {
-    if (widget.role == "admin") {
+    if (widget.role == Strings.roleAdmin) {
       model = AdminHomeModel(Preferances.name, Preferances.role);
     } else {
       model = AdminHomeModel(Preferances.name, Preferances.role);
@@ -104,7 +105,7 @@ class _AdminHomeViewState extends State<AdminHomeView> {
     return MaterialApp(
       theme: ThemeData(
           brightness: Brightness.dark,
-          fontFamily: 'Montserrat',
+          fontFamily: Strings.fontFamily,
           accentColor: Colors.teal),
       home: Scaffold(body: CommonHomeView(nevigation, data)),
     );

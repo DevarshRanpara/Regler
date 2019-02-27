@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/functions.dart';
 import 'package:flutter_app/Classes/preferances.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Admin/dialouges_user.dart';
 import 'package:flutter_app/CustomWidgets/Admin/user_detail.dart';
@@ -26,7 +27,7 @@ class _ManageUserState extends State<ManageUser> {
 
   @override
   void initState() {
-    if (Preferances.role == 'admin') {
+    if (Preferances.role == Strings.roleAdmin) {
       height = 0.87;
     } else {
       height = 0.95;
@@ -126,7 +127,7 @@ class _ManageUserState extends State<ManageUser> {
                         height: 15.0,
                       ),
                       Text(
-                        "Manage Users",
+                        Strings.mngUser,
                         style: TextStyle(
                             color: Colors.tealAccent,
                             fontSize: 20.0,
@@ -154,7 +155,7 @@ class _ManageUserState extends State<ManageUser> {
                         width: 8.0,
                       ),
                       Text(
-                        "Add User",
+                        Strings.addUser,
                         style: TextStyle(color: Colors.white),
                       ),
                     ],

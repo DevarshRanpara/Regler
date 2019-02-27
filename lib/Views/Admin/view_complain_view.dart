@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/complain.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Admin/complain_tile.dart';
 import 'package:flutter_app/Models/view_complain_model.dart';
 
@@ -27,7 +28,7 @@ class _ViewComplainViewState extends State<ViewComplainView> {
     return MaterialApp(
         theme: ThemeData(
             brightness: Brightness.dark,
-            fontFamily: 'Montserrat',
+            fontFamily: Strings.fontFamily,
             accentColor: Colors.teal),
         home: Scaffold(
             body: Container(
@@ -53,7 +54,7 @@ class _ViewComplainViewState extends State<ViewComplainView> {
                           height: 15.0,
                         ),
                         Text(
-                          "View Complains",
+                         Strings.viewComplains,
                           style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,

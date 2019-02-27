@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/complain.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 
 class ComplainTile extends StatelessWidget {
@@ -22,7 +23,7 @@ class ComplainTile extends StatelessWidget {
                     child: Row(
                       children: <Widget>[
                         CircularImage(
-                          AssetImage("assets/dev.jpeg"),
+                          AssetImage(Strings.defImage),
                           width: 20,
                           height: 20,
                         ),
@@ -33,7 +34,7 @@ class ComplainTile extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Text("AC No. " + complain.acNo)
+                  Text(Strings.acNo + complain.acNo)
                 ],
               ),
               Row(

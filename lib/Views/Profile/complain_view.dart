@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
 
@@ -8,7 +9,7 @@ class Complain extends StatefulWidget {
 }
 
 class _ComplainState extends State<Complain> {
-  String expantitle = "Select AC";
+  String expantitle = Strings.selectAc;
   final GlobalKey<AppExpansionTileState> expansionTile = new GlobalKey();
 
   @override
@@ -16,7 +17,7 @@ class _ComplainState extends State<Complain> {
     return MaterialApp(
       theme: ThemeData(
           brightness: Brightness.dark,
-          fontFamily: 'Montserrat',
+          fontFamily: Strings.fontFamily,
           accentColor: Colors.teal),
       home: Scaffold(
         body: Container(
@@ -43,7 +44,7 @@ class _ComplainState extends State<Complain> {
                           height: 15.0,
                         ),
                         Text(
-                          "Complain",
+                          Strings.complain,
                           style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,
@@ -102,7 +103,7 @@ class _ComplainState extends State<Complain> {
                         TextField(
                           decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: 'Enter Details'),
+                              hintText: Strings.enterDetails),
                         )
                       ],
                     ),
@@ -118,7 +119,7 @@ class _ComplainState extends State<Complain> {
                         width: 8,
                       ),
                       Text(
-                        "Submit",
+                        Strings.btnSubmit,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 20.0,

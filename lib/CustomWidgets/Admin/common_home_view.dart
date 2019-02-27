@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import "package:flutter_app/CustomWidgets/Common/circular_image.dart";
 import 'admin_dashboard.dart';
@@ -13,7 +14,7 @@ class CommonHomeView extends StatelessWidget {
   CommonHomeView(this.nevigation, this.data);
 
   Widget checkRole() {
-    if (data.role == "admin") {
+    if (data.role == Strings.roleAdmin) {
       return AdminDashboard(nevigation);
     } else {
       return DirectorDashboard(nevigation);
@@ -48,7 +49,7 @@ class CommonHomeView extends StatelessWidget {
                               width: 10.0,
                             ),
                             Text(
-                              "Welcome Mr. " + data.name,
+                              Strings.welcomeMr + data.name,
                               style: TextStyle(
                                   color: Colors.tealAccent,
                                   fontSize: 15.0,
@@ -90,14 +91,14 @@ class CommonHomeView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  "Your usage",
+                                  Strings.yourUsage,
                                   style: TextStyle(color: Colors.tealAccent),
                                 ),
                                 SizedBox(
                                   height: 8.0,
                                 ),
                                 Text(
-                                  data.used.toString() + " Minutes",
+                                  data.used.toString() + Strings.minutes,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 20.0,

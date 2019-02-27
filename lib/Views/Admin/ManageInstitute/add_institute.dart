@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 
 class AddInstituteView extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class _AddInstituteViewState extends State<AddInstituteView> {
     return MaterialApp(
         theme: ThemeData(
             brightness: Brightness.dark,
-            fontFamily: 'Montserrat',
+            fontFamily: Strings.fontFamily,
             accentColor: Colors.teal),
         home: Scaffold(
           body: Container(
@@ -37,7 +38,7 @@ class _AddInstituteViewState extends State<AddInstituteView> {
                           height: 15.0,
                         ),
                         Text(
-                          "Add Institute",
+                          Strings.addInstitute,
                           style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,
@@ -58,7 +59,7 @@ class _AddInstituteViewState extends State<AddInstituteView> {
                           onChanged: (String val) {},
                           decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: 'Enter Building Name'),
+                              hintText: Strings.addInstituteName),
                         )
                       ],
                     ),
@@ -75,7 +76,7 @@ class _AddInstituteViewState extends State<AddInstituteView> {
                           onChanged: (String val) {},
                           decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: 'Enter Director Name'),
+                              hintText:Strings.enterDirectorName),
                         )
                       ],
                     ),
@@ -92,7 +93,7 @@ class _AddInstituteViewState extends State<AddInstituteView> {
                         width: 8,
                       ),
                       Text(
-                        "Add Building",
+                        Strings.btnAddInstitute,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 20.0,

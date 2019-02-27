@@ -2,7 +2,7 @@ import 'package:flutter_app/Classes/institute.dart';
 import 'package:flutter_app/Classes/room.dart';
 
 class ViewUsageInstituteModel {
-  List<Institute> buildings;
+  List<Institute> institutes;
   List<Room> rooms;
 
   ViewUsageInstituteModel() {
@@ -14,7 +14,7 @@ class ViewUsageInstituteModel {
       Room(name: '105')
     ];
 
-    buildings = [
+    institutes = [
       Institute(name: "LJ MCA", rooms: rooms),
       Institute(name: "LJ MCA", rooms: rooms),
       Institute(name: "LJ Engg.", rooms: rooms),
@@ -23,6 +23,6 @@ class ViewUsageInstituteModel {
   }
 
   List<Institute> getData() {
-    return buildings;
+    return institutes;
   }
 }

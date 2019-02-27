@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/functions.dart';
+import 'package:flutter_app/Classes/strings.dart';
 
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
@@ -23,10 +24,10 @@ class _ManageinstituteTileState extends State<ManageinstituteTile> {
   Widget build(BuildContext context) {
 
     if(widget.institute.isBlocked){
-      strblock='Unblock';
+      strblock=Strings.unblock;
     }
     else{
-      strblock='Block';
+      strblock=Strings.block;
     }
     return InkWell(
       onTap: () {},
@@ -50,7 +51,7 @@ class _ManageinstituteTileState extends State<ManageinstituteTile> {
                       width: MediaQuery.of(context).size.width * 0.35,
                       child: Column(
                         children: <Widget>[
-                          Text("Director : "),
+                          Text(Strings.lbldirrector),
                         ],
                       ),
                     ),
@@ -98,7 +99,7 @@ class _ManageinstituteTileState extends State<ManageinstituteTile> {
                               SizedBox(
                                 width: 2.0,
                               ),
-                              Text("Ch. Dir."),
+                              Text(Strings.lblchDir),
                             ],
                           ),
                         ),
@@ -160,7 +161,7 @@ class _ManageinstituteTileState extends State<ManageinstituteTile> {
                               SizedBox(
                                 width: 2.0,
                               ),
-                              Text("Delete"),
+                              Text(Strings.delete),
                             ],
                           ),
                         ),

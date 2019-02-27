@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/room.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_tile.dart';
 
 class MngRoomDir extends StatefulWidget {
@@ -45,14 +46,13 @@ class _MngRoomDirState extends State<MngRoomDir> {
                       width: 8.0,
                     ),
                     Text(
-                      "Add Room",
+                      Strings.addRoom,
                       style: TextStyle(color: Colors.white),
                     ),
                   ],
                 ),
               ),
             )),
-        //RoomTile()
         Column(
           children: roomtiles,
         )

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
 
 class Dialogs {
   BuildContext buildContext;
-  String message = "Loading...";
+  String message = Strings.loading;
   ManageUsersModel model;
 
   Dialogs(this.buildContext);
@@ -27,7 +28,6 @@ class Dialogs {
       context: buildContext,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        // return object of type Dialog
         return AlertDialog(
           content: SizedBox(
             height: 45.0,
@@ -54,9 +54,9 @@ class Dialogs {
     model = ManageUsersModel();
     String title;
     if (user.isBlcked) {
-      title = "Unblock user";
+      title = Strings.unblockUser;
     } else {
-      title = "Block user";
+      title = Strings.blockUser;
     }
     showDialog(
         context: buildContext,
@@ -84,7 +84,7 @@ class Dialogs {
             actions: <Widget>[
               RawMaterialButton(
                 child: Text(
-                  "Yes",
+                  Strings.yes,
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
@@ -94,7 +94,7 @@ class Dialogs {
               ),
               RawMaterialButton(
                 child: Text(
-                  "No",
+                  Strings.no,
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
@@ -108,7 +108,7 @@ class Dialogs {
 
   showAlertUserDelete(UserData user) {
     model = ManageUsersModel();
-    String title = "Delete User";
+    String title = Strings.deleteUser;
     showDialog(
         context: buildContext,
         builder: (BuildContext context) {
@@ -135,7 +135,7 @@ class Dialogs {
             actions: <Widget>[
               RawMaterialButton(
                 child: Text(
-                  "Yes",
+                  Strings.yes,
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
@@ -145,7 +145,7 @@ class Dialogs {
               ),
               RawMaterialButton(
                 child: Text(
-                  "No",
+                  Strings.no,
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
@@ -161,7 +161,7 @@ class Dialogs {
     final formKey = new GlobalKey<FormState>();
     model = ManageUsersModel();
     String limit;
-    String title = "Change Limit";
+    String title = Strings.changeLimit;
     showDialog(
         context: buildContext,
         builder: (BuildContext context) {
@@ -191,17 +191,16 @@ class Dialogs {
                   child: TextFormField(
                     validator: (val) {
                       if (int.parse(val) > 500) {
-                        print('max then 500');
-                        return 'Max limit is 500';
+                        return Strings.maxLimit;
                       } else if (int.parse(val) < user.used) {
-                        return 'Limit must be grater then user use';
+                        return Strings.limitError;
                       } else {
                         return null;
                       }
                     },
                     onSaved: (val) => limit = val,
                     decoration: InputDecoration(
-                      hintText: 'Enter new Limit',
+                      hintText: Strings.enterNewLimit,
                     ),
                     keyboardType: TextInputType.numberWithOptions(),
                   ),
@@ -211,7 +210,7 @@ class Dialogs {
             actions: <Widget>[
               RawMaterialButton(
                 child: Text(
-                  "Yes",
+                  Strings.yes,
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
@@ -225,7 +224,7 @@ class Dialogs {
               ),
               RawMaterialButton(
                 child: Text(
-                  "No",
+                  Strings.no,
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {

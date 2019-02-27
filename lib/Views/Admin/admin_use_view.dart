@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_usage.dart';
 import 'package:flutter_app/CustomWidgets/Common/usage_report_user.dart';
 
@@ -40,7 +41,7 @@ class _AdminUseViewState extends State<AdminUseView> {
 
     var series = [
       charts.Series<Usage, int>(
-        id: "Usage",
+        id: Strings.usage,
         domainFn: (Usage usage, _) => usage.useTitle,
         measureFn: (Usage usage, _) => usage.useData,
         data: data,
@@ -58,7 +59,7 @@ class _AdminUseViewState extends State<AdminUseView> {
     return MaterialApp(
         theme: ThemeData(
             brightness: Brightness.dark,
-            fontFamily: 'Montserrat',
+            fontFamily: Strings.fontFamily,
             accentColor: Colors.teal),
         home: Scaffold(
             body: ListView(
@@ -83,7 +84,7 @@ class _AdminUseViewState extends State<AdminUseView> {
                         height: 15.0,
                       ),
                       Text(
-                        "Your Usage",
+                        Strings.yourUsage,
                         style: TextStyle(
                             color: Colors.tealAccent,
                             fontSize: 20.0,

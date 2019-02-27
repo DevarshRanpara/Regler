@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/room.dart';
+import 'package:flutter_app/Classes/strings.dart';
 
 class RoomTile extends StatefulWidget {
   final Room room;
@@ -51,7 +52,7 @@ class _RoomTileState extends State<RoomTile> {
                       SizedBox(
                         width: 2.0,
                       ),
-                      Text("Block"),
+                      Text(Strings.block),
                     ],
                   ),
                 ),
@@ -80,7 +81,7 @@ class _RoomTileState extends State<RoomTile> {
                       SizedBox(
                         width: 2.0,
                       ),
-                      Text("Delete"),
+                      Text(Strings.delete),
                     ],
                   ),
                 ),

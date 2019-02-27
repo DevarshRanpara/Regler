@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/institute.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Models/manage_institute_model.dart';
 
 class DialogsIns {
@@ -13,9 +14,9 @@ class DialogsIns {
 
     String title;
     if (ins.isBlocked) {
-      title = "Unblock Institute";
+      title = Strings.unblockIns;
     } else {
-      title = "Block Institute";
+      title = Strings.blockIns;
     }
     showDialog(
         context: buildContext,
@@ -39,7 +40,7 @@ class DialogsIns {
             actions: <Widget>[
               RawMaterialButton(
                 child: Text(
-                  "Yes",
+                  Strings.yes,
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
@@ -49,7 +50,7 @@ class DialogsIns {
               ),
               RawMaterialButton(
                 child: Text(
-                  "No",
+                  Strings.no,
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
@@ -62,7 +63,7 @@ class DialogsIns {
   }
 
   showAlertInstituteDelete(Institute ins) {
-    String title = "Delete Institute";
+    String title = Strings.deleteIns;
     showDialog(
         context: buildContext,
         builder: (BuildContext context) {
@@ -85,7 +86,7 @@ class DialogsIns {
             actions: <Widget>[
               RawMaterialButton(
                 child: Text(
-                  "Yes",
+                  Strings.yes,
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
@@ -94,7 +95,7 @@ class DialogsIns {
               ),
               RawMaterialButton(
                 child: Text(
-                  "No",
+                  Strings.no,
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
@@ -107,7 +108,7 @@ class DialogsIns {
   }
 
   showAlertInstituteChDir(Institute ins) {
-    String title = "Change Director";
+    String title = Strings.chDir;
     showDialog(
         context: buildContext,
         builder: (BuildContext context) {
@@ -120,14 +121,14 @@ class DialogsIns {
             actions: <Widget>[
               RawMaterialButton(
                 child: Text(
-                  "Yes",
+                  Strings.yes,
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {},
               ),
               RawMaterialButton(
                 child: Text(
-                  "No",
+                  Strings.no,
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {

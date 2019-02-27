@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/institute.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Admin/institute_tile.dart';
 import 'package:flutter_app/Models/view_usage_institute_model.dart';
 
-class ViewUsageBulding extends StatefulWidget {
+class ViewUsageInstitute extends StatefulWidget {
   final Function gotoRoom;
 
-  ViewUsageBulding(this.gotoRoom);
+  ViewUsageInstitute(this.gotoRoom);
   @override
-  _ViewUsageBuldingState createState() => _ViewUsageBuldingState();
+  _ViewUsageInstituteState createState() => _ViewUsageInstituteState();
 }
 
-class _ViewUsageBuldingState extends State<ViewUsageBulding> {
+class _ViewUsageInstituteState extends State<ViewUsageInstitute> {
   ViewUsageInstituteModel model = ViewUsageInstituteModel();
   List<Institute> institutes = List();
   List<InstituteTile> instituteTile = List();
@@ -49,7 +50,7 @@ class _ViewUsageBuldingState extends State<ViewUsageBulding> {
                     height: 15.0,
                   ),
                   Text(
-                    "View Building Usage",
+                    Strings.viewInstituteUsage,
                     style: TextStyle(
                         color: Colors.tealAccent,
                         fontSize: 20.0,

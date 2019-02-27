@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/room.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Models/view_usage_institute_model.dart';
 import 'package:flutter_app/Views/Admin/admin_use_view.dart';
-import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_building.dart';
+import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_institute.dart';
 import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_room.dart';
 import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_user.dart';
 
@@ -24,14 +25,14 @@ class _ViewUsageViewState extends State<ViewUsageView> {
   @override
   void initState() {
     Widget usageUser = ViewUsageUser(gotoUsage);
-    if (widget.role == 'admin') {
-      inst = 'Building';
-      Widget usageBuilding = ViewUsageBulding(gotoRoom);
-      pages = [usageUser, usageBuilding];
+    if (widget.role == Strings.roleAdmin) {
+      inst = Strings.lblInstitute;
+      Widget usageInstitute = ViewUsageInstitute(gotoRoom);
+      pages = [usageUser, usageInstitute];
     } else {
-      inst = 'Room';
+      inst = Strings.room;
       ViewUsageInstituteModel model = ViewUsageInstituteModel();
-      Widget usageRoom = ViewUsageRoom(model.buildings[0].rooms, 0);
+      Widget usageRoom = ViewUsageRoom(model.institutes[0].rooms, 0);
       pages = [usageUser, usageRoom];
     }
 
@@ -57,7 +58,7 @@ class _ViewUsageViewState extends State<ViewUsageView> {
     return MaterialApp(
         theme: ThemeData(
             brightness: Brightness.dark,
-            fontFamily: 'Montserrat',
+            fontFamily: Strings.fontFamily,
             accentColor: Colors.teal),
         home: Scaffold(
           body: Container(
@@ -68,9 +69,9 @@ class _ViewUsageViewState extends State<ViewUsageView> {
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                   icon: Icon(Icons.supervisor_account),
-                  title: Text("User Wise")),
+                  title: Text(Strings.userWise)),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.location_city), title: Text(inst + " Wise"))
+                  icon: Icon(Icons.location_city), title: Text(inst + Strings.wise))
             ],
             currentIndex: _selectedIndex,
             fixedColor: Colors.tealAccent,

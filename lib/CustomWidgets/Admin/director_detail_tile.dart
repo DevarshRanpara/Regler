@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
@@ -20,11 +21,11 @@ class _DirDetailTileState extends State<DirDetailTile> {
     String strblock;
 
     if (widget.user.isBlcked) {
-      strblock = "Unblock";
+      strblock = Strings.unblock;
     } else {
-      strblock = "Block";
+      strblock = Strings.block;
     }
-    if (widget.user.role == 'director') {
+    if (widget.user.role == Strings.roleDirector) {
       return InkWell(
           onTap: () {},
           child: Card(
@@ -62,11 +63,11 @@ class _DirDetailTileState extends State<DirDetailTile> {
                         child: Column(
                           children: <Widget>[
                             Text(
-                              "Usage",
+                              Strings.usage,
                               style: TextStyle(color: Colors.white),
                             ),
                             Text(
-                              widget.user.used.toString() + " M",
+                              widget.user.used.toString() + Strings.m,
                               style: TextStyle(color: Colors.white70),
                             )
                           ],
@@ -127,7 +128,7 @@ class _DirDetailTileState extends State<DirDetailTile> {
                                     SizedBox(
                                       width: 2.0,
                                     ),
-                                    Text("Delete"),
+                                    Text(Strings.delete),
                                   ],
                                 ),
                               ),

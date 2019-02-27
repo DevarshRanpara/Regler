@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/admin_navigation.dart';
+import 'package:flutter_app/Classes/strings.dart';
 
 class AdminDashboard extends StatelessWidget {
   final Nevigation nevigation;
@@ -43,7 +44,7 @@ class AdminDashboard extends StatelessWidget {
                                 SizedBox(
                                   height: 8.0,
                                 ),
-                                Text("Manage \nUsers")
+                                Text(Strings.lblmngUser)
                               ],
                             ),
                           ),
@@ -84,7 +85,7 @@ class AdminDashboard extends StatelessWidget {
                                 SizedBox(
                                   height: 8.0,
                                 ),
-                                Text("Manage \nInstitutes")
+                                Text(Strings.lblmgnIns)
                               ],
                             ),
                           ),
@@ -130,7 +131,7 @@ class AdminDashboard extends StatelessWidget {
                                 SizedBox(
                                   height: 8.0,
                                 ),
-                                Text("Manage \nRooms")
+                                Text(Strings.lblmngRooms)
                               ],
                             ),
                           ),
@@ -171,7 +172,7 @@ class AdminDashboard extends StatelessWidget {
                                 SizedBox(
                                   height: 8.0,
                                 ),
-                                Text("View \nUsage")
+                                Text(Strings.lblViewUsage)
                               ],
                             ),
                           ),
@@ -219,7 +220,7 @@ class AdminDashboard extends StatelessWidget {
                                   SizedBox(
                                     height: 8.0,
                                   ),
-                                  Text("View \nComplains")
+                                  Text(Strings.lblViewComplain)
                                 ],
                               ),
                             ),

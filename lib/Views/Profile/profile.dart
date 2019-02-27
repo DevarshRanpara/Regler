@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/preferances.dart';
-
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import './change_password_view.dart';
 import './complain_view.dart';
@@ -19,14 +19,14 @@ class _UserProfileState extends State<Profile> {
 
   void showSnakebar() {
     final snackbar = new SnackBar(
-      content: new Text("User Will logout here"),
+      content: new Text(Strings.logoutMsg),
       backgroundColor: Colors.red,
     );
     scaffoldKey.currentState.showSnackBar(snackbar);
   }
 
   Widget checkRole() {
-    if (widget.role == "user") {
+    if (widget.role == Strings.roleUser) {
       return InkWell(
         onTap: () {
           Navigator.push(context,
@@ -47,7 +47,7 @@ class _UserProfileState extends State<Profile> {
                     SizedBox(
                       width: 15.0,
                     ),
-                    Text("Complain")
+                    Text(Strings.complain)
                   ],
                 ),
               ),
@@ -71,7 +71,7 @@ class _UserProfileState extends State<Profile> {
     return MaterialApp(
       theme: ThemeData(
           brightness: Brightness.dark,
-          fontFamily: 'Montserrat',
+          fontFamily: Strings.fontFamily,
           accentColor: Colors.teal),
       home: Scaffold(
         key: scaffoldKey,
@@ -125,7 +125,7 @@ class _UserProfileState extends State<Profile> {
                               SizedBox(
                                 width: 15.0,
                               ),
-                              Text("Change Profile Picture")
+                              Text(Strings.changeProfilePic)
                             ],
                           ),
                         ),
@@ -158,7 +158,7 @@ class _UserProfileState extends State<Profile> {
                             SizedBox(
                               width: 15.0,
                             ),
-                            Text("Change Password")
+                            Text(Strings.chPass)
                           ],
                         ),
                       ),
@@ -182,7 +182,7 @@ class _UserProfileState extends State<Profile> {
                         width: 8,
                       ),
                       Text(
-                        "Logout",
+                        Strings.logout,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 20.0,
@@ -191,7 +191,6 @@ class _UserProfileState extends State<Profile> {
                     ],
                   ),
                   onPressed: () {
-                    //Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context)=> LoginPage()));
                     showSnakebar();
                   },
                   splashColor: Colors.orangeAccent,
@@ -204,10 +203,3 @@ class _UserProfileState extends State<Profile> {
     );
   }
 }
-
-// class UserProfile1 extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return new
-//   }
-// }

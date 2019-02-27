@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_admin.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_dir.dart';
 import 'package:flutter_app/Models/mng_room_dir_model.dart';
@@ -16,7 +17,7 @@ class ManageRoomView extends StatefulWidget {
 
 class _ManageRoomViewState extends State<ManageRoomView> {
   Widget checkRole(Function gotoAddRoom) {
-    if (widget.role == 'admin') {
+    if (widget.role == Strings.roleAdmin) {
       MngRoomAdminModel model = MngRoomAdminModel();
       return MngRoomAdmin(model.getData(), gotoAddRoom);
     } else {
@@ -35,7 +36,7 @@ class _ManageRoomViewState extends State<ManageRoomView> {
     return MaterialApp(
         theme: ThemeData(
             brightness: Brightness.dark,
-            fontFamily: 'Montserrat',
+            fontFamily: Strings.fontFamily,
             accentColor: Colors.teal),
         home: Scaffold(
           body: Container(
@@ -61,7 +62,7 @@ class _ManageRoomViewState extends State<ManageRoomView> {
                           height: 15.0,
                         ),
                         Text(
-                          "Manage Rooms",
+                          Strings.manageRooms,
                           style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,

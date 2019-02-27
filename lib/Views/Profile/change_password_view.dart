@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/gen_string.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Common/dialog.dart';
 import 'package:http/http.dart' as http;
 
@@ -19,11 +20,11 @@ class _ChangePasswordState extends State<ChangePassword> {
     if (form.validate()) {
       form.save();
       if (oldpassword == newpassword) {
-        showSnakbar("Old password can't be New Password");
+        showSnakbar(Strings.oldPassError);
       } else {
         //showSnakbar('Valid');
         Dialogs dialogs = Dialogs(context);
-        dialogs.setMessage('Please wait');
+        dialogs.setMessage(Strings.pleaseWait);
         dialogs.show();
         String res = await changePassword();
         dialogs.hide();
@@ -37,10 +38,10 @@ class _ChangePasswordState extends State<ChangePassword> {
     var response = await http.get(
       Uri.encodeFull(url),
     );
-    if (response.body.toString() == 'updated') {
-      return 'Password changed';
+    if (response.body.toString() == Strings.updated) {
+      return Strings.passChanged;
     } else {
-      return 'Invalid old password';
+      return Strings.invalidPass;
     }
   }
 
@@ -57,7 +58,7 @@ class _ChangePasswordState extends State<ChangePassword> {
     return MaterialApp(
       theme: ThemeData(
           brightness: Brightness.dark,
-          fontFamily: 'Montserrat',
+          fontFamily: Strings.fontFamily,
           accentColor: Colors.teal),
       home: Scaffold(
         key: scaffoldKey,
@@ -85,7 +86,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                           height: 15.0,
                         ),
                         Text(
-                          "Change Password",
+                          Strings.chPass,
                           style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,
@@ -109,10 +110,10 @@ class _ChangePasswordState extends State<ChangePassword> {
                               TextFormField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: 'Enter old Password'),
+                                    hintText: Strings.chPassHint),
                                 obscureText: true,
                                 validator: (val) => val.length < 8
-                                    ? 'Password too short'
+                                    ? Strings.chPassError
                                     : null,
                                 onSaved: (val) => oldpassword = val,
                               )
@@ -130,11 +131,11 @@ class _ChangePasswordState extends State<ChangePassword> {
                               TextFormField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: 'Enter new Password'),
+                                    hintText: Strings.newPassHint),
                                 obscureText: true,
                                 validator: (val) {
                                   if (val.length < 8) {
-                                    return 'Password too short';
+                                    return Strings.chPassError;
                                   } else {
                                     newpassword = val;
                                     return null;
@@ -156,13 +157,13 @@ class _ChangePasswordState extends State<ChangePassword> {
                               TextFormField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: 'Confirm new Password'),
+                                    hintText: Strings.confirmChpassHint),
                                 obscureText: true,
                                 validator: (val) {
                                   if (val == newpassword) {
                                     return null;
                                   } else {
-                                    return "Passwords not match";
+                                    return Strings.passNotMatch;
                                   }
                                 },
                                 onSaved: (val) => newpassword1 = val,
@@ -181,7 +182,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                               width: 8,
                             ),
                             Text(
-                              "Change Password",
+                              Strings.chPass,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20.0,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:flutter_app/Classes/strings.dart';
 
 class UsageDetail extends StatefulWidget {
   final int limit;
@@ -17,8 +18,8 @@ class _UsageDetailState extends State<UsageDetail> {
   @override
   Widget build(BuildContext context) {
     var data = [
-      Usage("Remaining", widget.limit - widget.use, Colors.teal),
-      Usage("Used", widget.use, Colors.red),
+      Usage(Strings.remaining, widget.limit - widget.use, Colors.teal),
+      Usage(Strings.used, widget.use, Colors.red),
     ];
 
     var series = [
@@ -26,7 +27,7 @@ class _UsageDetailState extends State<UsageDetail> {
           domainFn: (Usage usage, _) => usage.useTitle,
           measureFn: (Usage usage, _) => usage.useData,
           colorFn: (Usage usage, _) => usage.color,
-          id: "Usage",
+          id: Strings.used,
           data: data)
     ];
 
@@ -59,7 +60,7 @@ class _UsageDetailState extends State<UsageDetail> {
                           height: 15.0,
                         ),
                         Text(
-                          "Usage Report",
+                          Strings.usageReport,
                           style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,
@@ -97,7 +98,7 @@ class _UsageDetailState extends State<UsageDetail> {
                                   width: 5.0,
                                 ),
                                 Text(
-                                  "Remaining",
+                                  Strings.remaining,
                                   style: TextStyle(
                                     fontSize: 10.0,
                                   ),
@@ -121,7 +122,7 @@ class _UsageDetailState extends State<UsageDetail> {
                                   width: 5.0,
                                 ),
                                 Text(
-                                  "Used",
+                                  Strings.used,
                                   style: TextStyle(
                                     fontSize: 10.0,
                                   ),
@@ -144,7 +145,7 @@ class _UsageDetailState extends State<UsageDetail> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              "Limit",
+                              Strings.limit,
                               style: TextStyle(
                                   color: Colors.white70,
                                   fontSize: 20.0,
@@ -154,7 +155,7 @@ class _UsageDetailState extends State<UsageDetail> {
                               height: 15.0,
                             ),
                             Text(
-                              "Usage",
+                              Strings.usage,
                               style: TextStyle(
                                   color: Colors.red,
                                   fontSize: 20.0,
@@ -164,7 +165,7 @@ class _UsageDetailState extends State<UsageDetail> {
                               height: 15.0,
                             ),
                             Text(
-                              "Remining",
+                              Strings.remaining,
                               style: TextStyle(
                                   color: Colors.teal,
                                   fontSize: 20.0,
@@ -179,7 +180,7 @@ class _UsageDetailState extends State<UsageDetail> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              widget.limit.toString() + " Minutes",
+                              widget.limit.toString() + Strings.minutes,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20.0,
@@ -189,7 +190,7 @@ class _UsageDetailState extends State<UsageDetail> {
                               height: 15.0,
                             ),
                             Text(
-                              widget.use.toString() + " Minutes",
+                              widget.use.toString() + Strings.minutes,
                               style: TextStyle(
                                 color: Colors.redAccent,
                                 fontSize: 20.0,
@@ -200,7 +201,7 @@ class _UsageDetailState extends State<UsageDetail> {
                             ),
                             Text(
                               (widget.limit - widget.use).toString() +
-                                  " Minutes",
+                                  Strings.minutes,
                               style: TextStyle(
                                 color: Colors.tealAccent,
                                 fontSize: 20.0,

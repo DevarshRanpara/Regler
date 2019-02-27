@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/preferances.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Admin/dialouges_user.dart';
 import 'package:flutter_app/Views/Admin/ManageUsers/add_user_view.dart';
 import 'package:flutter_app/Views/Admin/ManageUsers/manage_director.dart';
@@ -34,11 +35,11 @@ class _ManageUsersViewState extends State<ManageUsersView> {
 
   @override
   Widget build(BuildContext context) {
-    if (Preferances.role == 'admin') {
+    if (Preferances.role == Strings.roleAdmin) {
       return MaterialApp(
           theme: ThemeData(
               brightness: Brightness.dark,
-              fontFamily: 'Montserrat',
+              fontFamily: Strings.fontFamily,
               accentColor: Colors.teal),
           home: Scaffold(
             body: Container(
@@ -47,9 +48,9 @@ class _ManageUsersViewState extends State<ManageUsersView> {
             bottomNavigationBar: BottomNavigationBar(
               items: <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.supervisor_account), title: Text("User")),
+                    icon: Icon(Icons.supervisor_account), title: Text(Strings.roleUser)),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.verified_user), title: Text('Director'))
+                    icon: Icon(Icons.verified_user), title: Text(Strings.roleDirector))
               ],
               currentIndex: _selectedIndex,
               fixedColor: Colors.tealAccent,
@@ -60,7 +61,7 @@ class _ManageUsersViewState extends State<ManageUsersView> {
       return MaterialApp(
           theme: ThemeData(
               brightness: Brightness.dark,
-              fontFamily: 'Montserrat',
+              fontFamily: Strings.fontFamily,
               accentColor: Colors.teal),
           home: Scaffold(
             body: Container(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 
@@ -23,7 +24,7 @@ class UserTile extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     CircularImage(
-                      AssetImage("assets/dev.jpeg"),
+                      AssetImage(Strings.defImage),
                       width: 30,
                       height: 30,
                     ),

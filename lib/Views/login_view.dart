@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Models/login_model.dart';
 import './User/home_page.dart';
 import './Admin/admin_home_view.dart';
@@ -8,10 +9,10 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: "New App",
+      title: Strings.title,
       home: new HomePage(),
       theme: new ThemeData(
-          fontFamily: 'Montserrat',
+          fontFamily: Strings.fontFamily,
           primarySwatch: Colors.red,
           brightness: Brightness.dark,
           accentColor: Colors.red),
@@ -43,7 +44,7 @@ class LoginPageState extends State<HomePage>{
     if (form.validate()) {
       form.save();
       Dialogs dialogs = Dialogs(context);
-      dialogs.setMessage('Signing in');
+      dialogs.setMessage(Strings.signInMessage);
       dialogs.show();
       var loginModel = LoginModel(_userId, _password);
       String res = await loginModel.auth();
@@ -53,18 +54,18 @@ class LoginPageState extends State<HomePage>{
   }
 
   void _gotoHome(String role) {
-    if (role == 'user') {
+    if (role == Strings.roleUser) {
       Navigator.push(context,
           MaterialPageRoute(builder: (BuildContext context) => UserMainPage()));
-    } else if (role == 'director' || role == 'admin') {
+    } else if (role == Strings.roleDirector || role == Strings.roleAdmin) {
       Navigator.push(
           context,
           MaterialPageRoute(
               builder: (BuildContext context) => AdminHomeView(role)));
-    } else if (role == 'blocked') {
-      showSnakbar("User is blocked! Contact admin");
+    } else if (role == Strings.userBlocked) {
+      showSnakbar(Strings.userBlockMessage);
     } else {
-      showSnakbar("Invalid User ID or password");
+      showSnakbar(Strings.invalidUserMessage);
     }
   }
 
@@ -83,7 +84,7 @@ class LoginPageState extends State<HomePage>{
           fit: StackFit.expand,
           children: <Widget>[
             new Image(
-              image: new AssetImage("assets/girl.jpeg"),
+              image: new AssetImage(Strings.loginBackgroundImage),
               fit: BoxFit.cover,
               color: Colors.black87,
               colorBlendMode: BlendMode.darken,
@@ -102,7 +103,7 @@ class LoginPageState extends State<HomePage>{
                       data: new ThemeData(
                           brightness: Brightness.dark,
                           primarySwatch: Colors.teal,
-                          fontFamily: 'Montserrat',
+                          fontFamily: Strings.fontFamily,
                           inputDecorationTheme: new InputDecorationTheme(
                               labelStyle: new TextStyle(
                                   color: Colors.teal, fontSize: 17.0))),
@@ -113,10 +114,10 @@ class LoginPageState extends State<HomePage>{
                           children: <Widget>[
                             TextFormField(
                               decoration: new InputDecoration(
-                                  labelText: "Enter Your User ID"),
+                                  labelText: Strings.enterUserIdMsg),
                               validator: (val) {
                                 if (val.length > 12 || val.isEmpty) {
-                                  return 'Invalid UserId';
+                                  return Strings.errorInvaliduserID;
                                 } else {
                                   return null;
                                 }
@@ -126,9 +127,9 @@ class LoginPageState extends State<HomePage>{
                             ),
                             TextFormField(
                               decoration: new InputDecoration(
-                                  labelText: "Enter Your Password"),
+                                  labelText: Strings.enterPasswordMsg),
                               validator: (val) =>
-                                  val.length < 8 ? 'Password too short' : null,
+                                  val.length < 8 ? Strings.errorPasswordShort : null,
                               onSaved: (val) => _password = val,
                               keyboardType: TextInputType.text,
                               obscureText: true,
@@ -140,7 +141,7 @@ class LoginPageState extends State<HomePage>{
                               minWidth: 200.0,
                               color: Colors.teal,
                               textColor: Colors.white,
-                              child: new Text("Login"),
+                              child: new Text(Strings.btnLogin),
                               onPressed: () {
                                 _submit();
                               },

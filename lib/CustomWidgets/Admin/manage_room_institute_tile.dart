@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
 import 'package:flutter_app/Classes/institute.dart';
 import 'package:flutter_app/Classes/room.dart';
@@ -57,7 +58,7 @@ class _MngRoominstituteState extends State<MngRoominstitute> {
                                   width: 8.0,
                                 ),
                                 Text(
-                                  "Add Room",
+                                  Strings.addRoom,
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ],

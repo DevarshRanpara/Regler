@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/User/homepage_dashboard.dart';
 import 'package:flutter_app/Views/Profile/profile.dart';
 import './usage_detail_view.dart';
@@ -55,7 +56,7 @@ class _HomePageViewState extends State<HomePageView> {
     return new MaterialApp(
       theme: ThemeData(
           brightness: Brightness.dark,
-          fontFamily: 'Montserrat',
+          fontFamily: Strings.fontFamily,
           accentColor: Colors.teal),
       home: Scaffold(
         body: Container(

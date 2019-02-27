@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 
 import 'package:flutter_app/Classes/user_usage.dart';
 
@@ -44,7 +45,7 @@ class UserReport extends StatelessWidget {
                         Icon(Icons.timelapse),
                         SizedBox(width: 8.0),
                         Text(
-                          data.startingTime + " to " + data.endingTime,
+                          data.startingTime + Strings.to + data.endingTime,
                           style: TextStyle(
                             color: Colors.grey[500],
                           ),
@@ -59,7 +60,7 @@ class UserReport extends StatelessWidget {
                 Icons.arrow_forward_ios,
                 color: Colors.red[500],
               ),
-              Text(data.use.toString() + " Min"),
+              Text(data.use.toString() + Strings.min),
             ],
           ),
         ),

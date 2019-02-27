@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 
 class AddRoomView extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class _AddRoomViewState extends State<AddRoomView> {
     return MaterialApp(
         theme: ThemeData(
             brightness: Brightness.dark,
-            fontFamily: 'Montserrat',
+            fontFamily: Strings.fontFamily,
             accentColor: Colors.teal),
         home: Scaffold(
           body: Container(
@@ -37,7 +38,7 @@ class _AddRoomViewState extends State<AddRoomView> {
                           height: 15.0,
                         ),
                         Text(
-                          "Add Room",
+                          Strings.addRoom,
                           style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,
@@ -58,7 +59,7 @@ class _AddRoomViewState extends State<AddRoomView> {
                           onChanged: (String val) {},
                           decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: 'Enter Room Number'),
+                              hintText: Strings.enterRoomNo),
                         )
                       ],
                     ),
@@ -75,7 +76,7 @@ class _AddRoomViewState extends State<AddRoomView> {
                         width: 8,
                       ),
                       Text(
-                        "Add Room",
+                        Strings.addRoom,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 20.0,

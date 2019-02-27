@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/preferances.dart';
+import 'package:flutter_app/Classes/strings.dart';
 
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/Classes/user_data.dart';
@@ -36,7 +37,7 @@ class UpperDashboard extends StatelessWidget {
                               width: 10.0,
                             ),
                             Text(
-                              "Welcome Mr. " + data.name,
+                              Strings.welcomeMr + data.name,
                               style: TextStyle(
                                   color: Colors.tealAccent,
                                   fontSize: 15.0,
@@ -88,14 +89,14 @@ class UpperDashboard extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  "Remaining Balance ",
+                                  Strings.remBal,
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 SizedBox(
                                   height: 8.0,
                                 ),
                                 Text(
-                                  data.bal.toString() + " Minutes",
+                                  data.bal.toString() + Strings.minutes,
                                   style: TextStyle(
                                       color: Colors.tealAccent,
                                       fontSize: 20.0,

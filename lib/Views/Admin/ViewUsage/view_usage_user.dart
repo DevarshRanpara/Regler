@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Admin/user_tile.dart';
 import 'package:flutter_app/Models/view_usage_user_model.dart';
@@ -50,7 +51,7 @@ class _ViewUsageUserState extends State<ViewUsageUser> {
                     height: 15.0,
                   ),
                   Text(
-                    "View User Usage",
+                    Strings.viewUserUsage,
                     style: TextStyle(
                         color: Colors.tealAccent,
                         fontSize: 20.0,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/room.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Admin/room_usage_tile.dart';
 
 class ViewUsageRoom extends StatefulWidget {
@@ -28,7 +29,7 @@ class _ViewUsageRoomState extends State<ViewUsageRoom> {
     return MaterialApp(
       theme: ThemeData(
           brightness: Brightness.dark,
-          fontFamily: 'Montserrat',
+          fontFamily: Strings.fontFamily,
           accentColor: Colors.teal),
       home: Scaffold(
         body: Container(
@@ -55,7 +56,7 @@ class _ViewUsageRoomState extends State<ViewUsageRoom> {
                           height: 15.0,
                         ),
                         Text(
-                          "View Room Usage",
+                          Strings.viewRoomUsage,
                           style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,

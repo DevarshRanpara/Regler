@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 
 import 'package:flutter_app/CustomWidgets/Common/usage_report_user.dart';
 import './upper_dashboard.dart';
@@ -34,7 +35,7 @@ class _DashboardTopState extends State<DashboardTop> {
           margin: const EdgeInsets.all(8.0),
           child: Center(
               child: Text(
-            "Your Usage",
+            Strings.yourUsage,
             style: TextStyle(
                 color: Colors.red, fontSize: 25.0, fontWeight: FontWeight.bold),
           )),

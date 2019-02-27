@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
+import 'package:flutter_app/Classes/strings.dart';
 
 class InternetError extends StatelessWidget {
   @override
@@ -8,8 +9,8 @@ class InternetError extends StatelessWidget {
           fit: StackFit.expand,
           children: <Widget>[
             FlareActor(
-              "assets/space_demo.flr",
-              animation: 'loading',
+              Strings.flareImage,
+              animation: Strings.flareAnimation,
               fit: BoxFit.cover,
             ),
             Column(
@@ -19,7 +20,7 @@ class InternetError extends StatelessWidget {
                     child: Padding(
                   padding: EdgeInsets.only(bottom: 70.0),
                   child: Text(
-                    "You are not connected to internet",
+                    Strings.internetError,
                     style: TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                 ))

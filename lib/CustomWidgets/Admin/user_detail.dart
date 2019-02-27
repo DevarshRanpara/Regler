@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/functions.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
@@ -19,13 +20,12 @@ class _UserDetailTileState extends State<UserDetailTile> {
     String strblock;
 
     if (widget.user.isBlcked) {
-      strblock = "Unblock";
+      strblock = Strings.unblock;
     } else {
-      strblock = "Block";
+      strblock = Strings.block;
     }
 
-    if(widget.user.role=='user'){
-
+    if (widget.user.role == Strings.roleUser) {
       return InkWell(
           onTap: () {},
           child: Card(
@@ -65,7 +65,7 @@ class _UserDetailTileState extends State<UserDetailTile> {
                             child: Column(
                               children: <Widget>[
                                 Text(
-                                  "Limit",
+                                  Strings.limit,
                                 ),
                                 Text(widget.user.limit.toString() + " M")
                               ],
@@ -76,11 +76,11 @@ class _UserDetailTileState extends State<UserDetailTile> {
                             child: Column(
                               children: <Widget>[
                                 Text(
-                                  "Usage",
+                                  Strings.usage,
                                   style: TextStyle(color: Colors.red),
                                 ),
                                 Text(
-                                  widget.user.used.toString() + " M",
+                                  widget.user.used.toString() + Strings.m,
                                   style: TextStyle(color: Colors.redAccent),
                                 )
                               ],
@@ -91,11 +91,11 @@ class _UserDetailTileState extends State<UserDetailTile> {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    "Bal",
+                                    Strings.bal,
                                     style: TextStyle(color: Colors.teal),
                                   ),
                                   Text(
-                                    widget.user.bal.toString() + " M",
+                                    widget.user.bal.toString() + Strings.m,
                                     style: TextStyle(color: Colors.tealAccent),
                                   )
                                 ],
@@ -110,8 +110,8 @@ class _UserDetailTileState extends State<UserDetailTile> {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.3,
                             child: Tooltip(
-                              message: 'Change Limit',
-                                                          child: RawMaterialButton(
+                              message: Strings.changeLimit,
+                              child: RawMaterialButton(
                                 onPressed: () {
                                   widget.functions.change(widget.user);
                                 },
@@ -128,7 +128,7 @@ class _UserDetailTileState extends State<UserDetailTile> {
                                       SizedBox(
                                         width: 2.0,
                                       ),
-                                      Text("Ch. Limit"),
+                                      Text(Strings.lblChlimit),
                                     ],
                                   ),
                                 ),
@@ -191,7 +191,7 @@ class _UserDetailTileState extends State<UserDetailTile> {
                                     SizedBox(
                                       width: 2.0,
                                     ),
-                                    Text("Delete"),
+                                    Text(Strings.delete),
                                   ],
                                 ),
                               ),
@@ -204,13 +204,8 @@ class _UserDetailTileState extends State<UserDetailTile> {
                       ),
                     ],
                   ))));
-
-    }
-    else{
+    } else {
       return Container();
     }
-
-    
-
   }
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/strings.dart';
 
 class Dialogs {
   BuildContext buildContext;
-  String message = "Loading...";
+  String message = Strings.loading;
 
   Dialogs(this.buildContext);
 

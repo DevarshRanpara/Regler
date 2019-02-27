@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/preferances.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Admin/dialouges_user.dart';
 import 'package:flutter_app/CustomWidgets/Admin/director_detail_tile.dart';
@@ -114,7 +115,7 @@ class _ManageDirState extends State<ManageDir> {
                         height: 15.0,
                       ),
                       Text(
-                        "Manage Directors",
+                        Strings.mngDir,
                         style: TextStyle(
                             color: Colors.tealAccent,
                             fontSize: 20.0,

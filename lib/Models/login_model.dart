@@ -31,20 +31,7 @@ class LoginModel {
       Preferances.limit = data[0]['user_limit'];
       Preferances.use = data[0]['user_use'];
       Preferances.bal = data[0]['balence'];
-      print(data[0]['type']);
       return data[0]['type'];
     }
   }
 }
-
-// String auth() {
-//     if (_userid == 'user' && _password == "password1") {
-//       return 'user';
-//     } else if (_userid == 'admin' && _password == "password1") {
-//       return 'admin';
-//     } else if (_userid == 'director' && _password == "password1") {
-//       return 'director';
-//     } else {
-//       return "invalid";
-//     }
-//   }
