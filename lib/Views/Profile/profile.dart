@@ -74,8 +74,8 @@ class _UserProfileState extends State<Profile> {
     prefs = await SharedPreferences.getInstance();
   }
 
-  _logout(){
-     showDialog(
+  _logout() {
+    showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
@@ -84,8 +84,7 @@ class _UserProfileState extends State<Profile> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Row(
-                  children: <Widget>[
-                  ],
+                  children: <Widget>[],
                 ),
               ],
             ),
@@ -97,8 +96,14 @@ class _UserProfileState extends State<Profile> {
                 ),
                 onPressed: () {
                   Navigator.pop(context);
-                    prefs.setBool(Strings.keyIsLoggedin, false);
-                    Navigator.pushReplacement(context,MaterialPageRoute(builder: (BuildContext context) => LoginPage()));
+                  prefs.setBool(Strings.keyIsLoggedin, false);
+                  //Navigator.pushReplacement(context,MaterialPageRoute(builder: (BuildContext context) => LoginPage()));
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => LoginPage()),
+                    ModalRoute.withName('/'),
+                  );
                 },
               ),
               RawMaterialButton(
