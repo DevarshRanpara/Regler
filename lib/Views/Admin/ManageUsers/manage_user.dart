@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/functions.dart';
 import 'package:flutter_app/Classes/preferances.dart';
@@ -35,11 +37,18 @@ class _ManageUserState extends State<ManageUser> {
     functions = ManageFunctions(
         block: blockUser, change: changeLimit, delete: deleteUser);
     model = ManageUsersModel();
-    stream = Stream.fromFuture(model.getData());
+    // _setStream();
     //bloc.fetchAllUsers();
+    stream = Stream.fromFuture(model.getData());
     super.initState();
     super.initState();
   }
+
+  // _setStream(){
+  //   Timer.periodic(Duration(seconds: 10), (Timer value){
+  //     stream = Stream.fromFuture(model.getData());
+  //   });
+  // }
 
   @override
   void dispose() {

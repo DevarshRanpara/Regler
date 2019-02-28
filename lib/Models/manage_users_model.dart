@@ -93,6 +93,8 @@ class ManageUsersModel {
       await getInstituteList();
     }
 
+    print(user.toString());
+
     return user;
   }
 }
