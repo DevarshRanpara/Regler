@@ -11,10 +11,10 @@ import 'package:flutter_app/CustomWidgets/Common/dialog.dart';
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: Strings.title,
-      home: new HomePage(),
-      theme: new ThemeData(
+      home: HomePage(),
+      theme: ThemeData(
           fontFamily: Strings.fontFamily,
           primarySwatch: Colors.red,
           brightness: Brightness.dark,
@@ -29,8 +29,8 @@ class HomePage extends StatefulWidget {
 }
 
 class LoginPageState extends State<HomePage> {
-  final scaffoldKey = new GlobalKey<ScaffoldState>();
-  final formKey = new GlobalKey<FormState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  final formKey = GlobalKey<FormState>();
 
   String _userId;
   String _password;
@@ -68,18 +68,16 @@ class LoginPageState extends State<HomePage> {
               builder: (BuildContext context) => AdminHomeView()));
     } else if (role == Strings.userBlocked) {
       showSnakbar(Strings.userBlockMessage);
-    }
-    else if(role==Strings.internetEr){
+    } else if (role == Strings.internetEr) {
       showSnakbar(Strings.internetErrorMsg);
-    }
-     else {
+    } else {
       showSnakbar(Strings.invalidUserMessage);
     }
   }
 
   void showSnakbar(String msg) {
-    final snackbar = new SnackBar(
-      content: new Text(msg),
+    final snackbar = SnackBar(
+      content: Text(msg),
       backgroundColor: Colors.red,
     );
     scaffoldKey.currentState.showSnackBar(snackbar);
@@ -97,10 +95,9 @@ class LoginPageState extends State<HomePage> {
     Preferances.use = prefs.getString(Strings.keyUse);
     Preferances.bal = prefs.getString(Strings.keyBal);
     Preferances.isLoggedin = prefs.getBool(Strings.keyIsLoggedin);
-    if(Preferances.isLoggedin==null){
+    if (Preferances.isLoggedin == null) {
       return false;
-    }
-    else{
+    } else {
       return Preferances.isLoggedin;
     }
   }
@@ -127,83 +124,87 @@ class LoginPageState extends State<HomePage> {
           }
         }
         return Scaffold(
-            resizeToAvoidBottomPadding: false,
+            // resizeToAvoidBottomPadding: false,
             key: scaffoldKey,
             body: Stack(
               fit: StackFit.expand,
               children: <Widget>[
-                new Image(
-                  image: new AssetImage(Strings.loginBackgroundImage),
+                Image(
+                  image: AssetImage(Strings.loginBackgroundImage),
                   fit: BoxFit.cover,
                   color: Colors.black87,
                   colorBlendMode: BlendMode.darken,
                 ),
-                new Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    new FlutterLogo(
-                      size: 100.0,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Form(
-                        key: formKey,
-                        child: new Theme(
-                          data: new ThemeData(
-                              brightness: Brightness.dark,
-                              primarySwatch: Colors.teal,
-                              fontFamily: Strings.fontFamily,
-                              inputDecorationTheme: new InputDecorationTheme(
-                                  labelStyle: new TextStyle(
-                                      color: Colors.teal, fontSize: 17.0))),
-                          child: new Container(
-                            padding: const EdgeInsets.all(40.0),
-                            child: new Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                TextFormField(
-                                  decoration: new InputDecoration(
-                                      labelText: Strings.enterUserIdMsg),
-                                  validator: (val) {
-                                    if (val.length > 12 || val.isEmpty) {
-                                      return Strings.errorInvaliduserID;
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                  onSaved: (val) => _userId = val,
-                                  keyboardType: TextInputType.emailAddress,
+                Center(
+                  child: SingleChildScrollView(
+                                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        FlutterLogo(
+                          size: 100.0,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Form(
+                            key: formKey,
+                            child: Theme(
+                              data: ThemeData(
+                                  brightness: Brightness.dark,
+                                  primarySwatch: Colors.teal,
+                                  fontFamily: Strings.fontFamily,
+                                  inputDecorationTheme: InputDecorationTheme(
+                                      labelStyle: TextStyle(
+                                          color: Colors.teal, fontSize: 17.0))),
+                              child: Container(
+                                padding: const EdgeInsets.all(40.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    TextFormField(
+                                      decoration: InputDecoration(
+                                          labelText: Strings.enterUserIdMsg),
+                                      validator: (val) {
+                                        if (val.length > 12 || val.isEmpty) {
+                                          return Strings.errorInvaliduserID;
+                                        } else {
+                                          return null;
+                                        }
+                                      },
+                                      onSaved: (val) => _userId = val,
+                                      keyboardType: TextInputType.emailAddress,
+                                    ),
+                                    TextFormField(
+                                      decoration: InputDecoration(
+                                          labelText: Strings.enterPasswordMsg),
+                                      validator: (val) => val.length < 8
+                                          ? Strings.errorPasswordShort
+                                          : null,
+                                      onSaved: (val) => _password = val,
+                                      keyboardType: TextInputType.text,
+                                      obscureText: true,
+                                    ),
+                                    Padding(
+                                        padding: const EdgeInsets.only(top: 20.0)),
+                                    MaterialButton(
+                                      height: 40.0,
+                                      minWidth: 200.0,
+                                      color: Colors.teal,
+                                      textColor: Colors.white,
+                                      child: Text(Strings.btnLogin),
+                                      onPressed: () {
+                                        _submit();
+                                      },
+                                      splashColor: Colors.tealAccent,
+                                    ),
+                                  ],
                                 ),
-                                TextFormField(
-                                  decoration: new InputDecoration(
-                                      labelText: Strings.enterPasswordMsg),
-                                  validator: (val) => val.length < 8
-                                      ? Strings.errorPasswordShort
-                                      : null,
-                                  onSaved: (val) => _password = val,
-                                  keyboardType: TextInputType.text,
-                                  obscureText: true,
-                                ),
-                                new Padding(
-                                    padding: const EdgeInsets.only(top: 20.0)),
-                                new MaterialButton(
-                                  height: 40.0,
-                                  minWidth: 200.0,
-                                  color: Colors.teal,
-                                  textColor: Colors.white,
-                                  child: new Text(Strings.btnLogin),
-                                  onPressed: () {
-                                    _submit();
-                                  },
-                                  splashColor: Colors.tealAccent,
-                                ),
-                              ],
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    )
-                  ],
+                        )
+                      ],
+                    ),
+                  ),
                 )
               ],
             ));

@@ -97,7 +97,6 @@ class _UserProfileState extends State<Profile> {
                 onPressed: () {
                   Navigator.pop(context);
                   prefs.setBool(Strings.keyIsLoggedin, false);
-                  //Navigator.pushReplacement(context,MaterialPageRoute(builder: (BuildContext context) => LoginPage()));
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
