@@ -5,9 +5,9 @@ import 'package:flutter_app/Classes/institute.dart';
 import 'package:http/http.dart' as http;
 
 class MngRoomAdminModel {
-  List<Institute> institutes=List<Institute>();
-  List<Room> rooms;
 
+  List<Room> rooms;
+  
   Future<List<Institute>> getData() async {
      rooms = [
       Room(name: "101"),

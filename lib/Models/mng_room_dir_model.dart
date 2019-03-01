@@ -12,7 +12,7 @@ class MngRoomDirModel {
       Room(name: "106")
     ];
   }
-  List<Room> getData() {
+  Future<List<Room>> getData() async {
     return rooms;
   }
 }
