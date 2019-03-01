@@ -51,6 +51,7 @@ class LoginPageState extends State<HomePage> {
       Dialogs dialogs = Dialogs(context);
       dialogs.setMessage(Strings.signInMessage);
       dialogs.show();
+      await Future.delayed(const Duration(seconds: 2), () => "1");
       String res = await loginModel.auth(_userId, _password);
       dialogs.hide();
       _gotoHome(res);
@@ -137,7 +138,7 @@ class LoginPageState extends State<HomePage> {
                 ),
                 Center(
                   child: SingleChildScrollView(
-                                    child: Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         FlutterLogo(
@@ -184,7 +185,8 @@ class LoginPageState extends State<HomePage> {
                                       obscureText: true,
                                     ),
                                     Padding(
-                                        padding: const EdgeInsets.only(top: 20.0)),
+                                        padding:
+                                            const EdgeInsets.only(top: 20.0)),
                                     MaterialButton(
                                       height: 40.0,
                                       minWidth: 200.0,
