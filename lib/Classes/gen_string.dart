@@ -12,16 +12,22 @@ class GenerateString {
         pass;
   }
 
-  static genStringBlockIns(String id){
-    return UrlLink.url+'?method=blockInstitute&insid='+id;
+  static genStringBlockIns(String id) {
+    return UrlLink.url + '?method=blockInstitute&insid=' + id;
   }
 
-  static generateStringAddUser(String username,String ins,String limit){
-    return UrlLink.url+'?method=addUser&uname='+username+'&ins='+ins+'&limit='+limit;
+  static generateStringAddUser(String username, String ins, String limit) {
+    return UrlLink.url +
+        '?method=addUser&uname=' +
+        username +
+        '&ins=' +
+        ins +
+        '&limit=' +
+        limit;
   }
 
-  static generateStringListIns(){
-    return UrlLink.url+'?method=listInstitute';
+  static generateStringListIns() {
+    return UrlLink.url + '?method=listInstitute';
   }
 
   static genStringChpass(String oldpass, String newpass) {
@@ -34,8 +40,8 @@ class GenerateString {
         newpass;
   }
 
-  static String genStringChLimit(String id,String limit){
-    return UrlLink.url+'?method=changeLimit&id='+id+'&limit='+limit;
+  static String genStringChLimit(String id, String limit) {
+    return UrlLink.url + '?method=changeLimit&id=' + id + '&limit=' + limit;
   }
 
   static String genStringBlock(String id) {
@@ -49,4 +55,9 @@ class GenerateString {
   static String genStringDelete(String id) {
     return UrlLink.url + '?method=deleteuser&id=' + id;
   }
+
+  static String genStringGetRooms(int id){
+    return UrlLink.url + '?method=listrooms&id=' + id.toString();
+  }
+
 }
