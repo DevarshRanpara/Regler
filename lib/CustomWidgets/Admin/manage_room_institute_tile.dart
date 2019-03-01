@@ -14,15 +14,20 @@ class MngRoominstitute extends StatefulWidget {
 }
 
 class _MngRoominstituteState extends State<MngRoominstitute> {
-  List<RoomTile> roomtiles = List();
+  List<Widget> roomtiles = List();
   List<Room> rooms;
 
   @override
   void initState() {
     rooms = widget.institute.rooms;
 
-    for (int i = 0; i < rooms.length; i++) {
+    if(rooms!=null){
+      for (int i = 0; i < rooms.length; i++) {
       roomtiles.add(RoomTile(rooms[i]));
+      }
+    }
+    else{
+      roomtiles.add(Container());
     }
     super.initState();
   }

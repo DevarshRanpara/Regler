@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_app/Classes/institute.dart';
 import 'package:flutter_app/Classes/gen_string.dart';
 import 'package:http/http.dart' as http;

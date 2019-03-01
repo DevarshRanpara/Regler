@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_admin.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_dir.dart';
@@ -16,15 +17,31 @@ class ManageRoomView extends StatefulWidget {
 }
 
 class _ManageRoomViewState extends State<ManageRoomView> {
-  Widget checkRole(Function gotoAddRoom) {
-    if (widget.role == Strings.roleAdmin) {
-      MngRoomAdminModel model = MngRoomAdminModel();
-      return MngRoomAdmin(model.getData(), gotoAddRoom);
-    } else {
-      MngRoomDirModel model = MngRoomDirModel();
-      return MngRoomDir(model.getData(), gotoAddRoom);
+  //  if (widget.role == Strings.roleAdmin) {
+  //     MngRoomAdminModel model = MngRoomAdminModel();
+  //     return MngRoomAdmin(, gotoAddRoom);
+  //   } else {
+  //     MngRoomDirModel model = MngRoomDirModel();
+  //     return MngRoomDir(, gotoAddRoom);
+  //   }
+
+  
+  MngRoomAdminModel adminModel;
+  MngRoomDirModel dirModel;
+  var model;
+
+  @override
+    void initState() {
+      if(Preferances.role==Strings.roleAdmin){
+        adminModel = MngRoomAdminModel();
+        model=adminModel;
+      }
+      else{
+        dirModel = MngRoomDirModel();
+        model=dirModel;
+      }
+      super.initState();
     }
-  }
 
   void gotoAddRoom() {
     Navigator.push(context,
@@ -39,18 +56,53 @@ class _ManageRoomViewState extends State<ManageRoomView> {
             fontFamily: Strings.fontFamily,
             accentColor: Colors.teal),
         home: Scaffold(
-          body: Container(
-              child: ListView(
-            children: <Widget>[
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
-              ),
-              InkWell(
-                  onTap: () {},
-                  child: Card(
-                      child: Container(
-                    padding: const EdgeInsets.all(20.0),
+            body: FutureBuilder(
+          future: model.getData(),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.data == null) {
+              return Center(
+                child: SizedBox(
+                  height: 30,
+                  width: 30,
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            } else {
+              return ListView.builder(
+                itemCount: snapshot.data.length + 1,
+                itemBuilder: (BuildContext conext, int i) {
+                  if (i == 0) {
+                    return getUpperUI();
+                  }
+                  if(Preferances.role==Strings.roleAdmin){
+                    return MngRoomAdmin(snapshot.data[i - 1], gotoAddRoom);
+                  }
+                  else{
+                    return MngRoomDir(snapshot.data[i - 1], gotoAddRoom);
+                  }
+                },
+              );
+            }
+          },
+        )));
+  }
+
+  getUpperUI() {
+    return SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
+            ),
+            InkWell(
+                onTap: () {},
+                child: Card(
+                    child: Container(
+                  padding: const EdgeInsets.all(20.0),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
                     child: Column(
                       children: <Widget>[
                         Icon(
@@ -70,10 +122,9 @@ class _ManageRoomViewState extends State<ManageRoomView> {
                         )
                       ],
                     ),
-                  ))),
-              checkRole(gotoAddRoom)
-            ],
-          )),
+                  ),
+                ))),
+          ],
         ));
   }
 }
