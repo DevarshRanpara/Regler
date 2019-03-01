@@ -48,9 +48,9 @@ class _ManageUsersViewState extends State<ManageUsersView> {
             bottomNavigationBar: BottomNavigationBar(
               items: <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.supervisor_account), title: Text(Strings.roleUser)),
+                    icon: Icon(Icons.supervisor_account), title: Text(Strings.mngUser)),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.verified_user), title: Text(Strings.roleDirector))
+                    icon: Icon(Icons.verified_user), title: Text(Strings.mngDir))
               ],
               currentIndex: _selectedIndex,
               fixedColor: Colors.tealAccent,
