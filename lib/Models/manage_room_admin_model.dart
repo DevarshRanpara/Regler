@@ -2,20 +2,23 @@ import 'dart:convert';
 import 'package:flutter_app/Classes/gen_string.dart';
 import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/institute.dart';
+import 'package:flutter_app/Models/mng_room_dir_model.dart';
 import 'package:http/http.dart' as http;
 
 class MngRoomAdminModel {
 
-  List<Room> rooms;
+  List<Room> rooms = List<Room>();
+
+  MngRoomDirModel roomModel=MngRoomDirModel();
   
   Future<List<Institute>> getData() async {
-     rooms = [
-      Room(name: "101"),
-      Room(name: "102"),
-      Room(name: "103"),
-      Room(name: "104"),
-      Room(name: "105")
-    ];
+    //  rooms = [
+    //   Room(name: "101"),
+    //   Room(name: "102"),
+    //   Room(name: "103"),
+    //   Room(name: "104"),
+    //   Room(name: "105")
+    // ];
     List<Institute> institutes = List<Institute>();
     String url = GenerateString.generateStringListIns();
     http.Response response;
@@ -26,10 +29,11 @@ class MngRoomAdminModel {
     } catch (e) {
       print(e.toString());
     }
+    print(response.body.toString());
     List data = jsonDecode(response.body);
 
     for (int i = 0; i < data.length; i++) {
-      
+      rooms = await roomModel.getData(int.parse(data[i]['id']));
       bool f = false;
       if (data[i]['isblocked'] == '1') {
         f = true;
@@ -45,7 +49,7 @@ class MngRoomAdminModel {
       institutes.add(building);
     }
     // rooms.clear();
-    print(institutes.toString());
+    //print(institutes.toString());
     return institutes;
   }
 }

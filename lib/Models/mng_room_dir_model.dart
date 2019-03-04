@@ -1,18 +1,57 @@
+import 'dart:convert';
+
+import 'package:flutter_app/Classes/gen_string.dart';
+import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/room.dart';
+import 'package:flutter_app/Classes/strings.dart';
+import 'package:http/http.dart' as http;
 
 class MngRoomDirModel {
-  List<Room> rooms;
-  MngRoomDirModel() {
-    rooms = [
-      Room(name: "101"),
-      Room(name: "102"),
-      Room(name: "103"),
-      Room(name: "104"),
-      Room(name: "105"),
-      Room(name: "106")
-    ];
-  }
-  Future<List<Room>> getData() async {
+  Future<List<Room>> getData(int id) async {
+    
+    List<Room> rooms = List<Room>();
+
+    String url;
+
+    if(Preferances.role==Strings.roleAdmin){
+      url=GenerateString.genStringGetRooms(id);
+    }
+    else{
+      url = GenerateString.genStringGetRooms(int.parse(Preferances.instituteid));
+    }
+    
+    http.Response response;
+    try {
+      response = await http.get(
+        Uri.encodeFull(url),
+      );
+    } catch (e) {
+      print(e.toString());
+    }
+    if (response == null) {
+      return null;
+    }
+    print(response.body.toString());
+
+    List data;
+
+    if(response.body.toString()=='no_data'){
+      return null;
+    }
+    else{
+    data = jsonDecode(response.body);
+    }
+
+    for (int i = 0; i < data.length; i++) {
+      Room room = Room(
+          // id: int.parse(data[i]['id']),
+          name: data[i]['room_no'],
+          // isBlocked: false,
+          // institute: data[i]['institute']
+          );
+      rooms.add(room);
+    }
+
     return rooms;
   }
 }
