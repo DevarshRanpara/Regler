@@ -2,23 +2,14 @@ import 'dart:convert';
 import 'package:flutter_app/Classes/gen_string.dart';
 import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/institute.dart';
-import 'package:flutter_app/Models/mng_room_dir_model.dart';
 import 'package:http/http.dart' as http;
 
 class MngRoomAdminModel {
 
   List<Room> rooms = List<Room>();
-
-  MngRoomDirModel roomModel=MngRoomDirModel();
   
   Future<List<Institute>> getData() async {
-    //  rooms = [
-    //   Room(name: "101"),
-    //   Room(name: "102"),
-    //   Room(name: "103"),
-    //   Room(name: "104"),
-    //   Room(name: "105")
-    // ];
+    
     List<Institute> institutes = List<Institute>();
     String url = GenerateString.generateStringListIns();
     http.Response response;
@@ -33,7 +24,7 @@ class MngRoomAdminModel {
     List data = jsonDecode(response.body);
 
     for (int i = 0; i < data.length; i++) {
-      rooms = await roomModel.getData(int.parse(data[i]['id']));
+      rooms = await getRoomData(int.parse(data[i]['id']));
       bool f = false;
       if (data[i]['isblocked'] == '1') {
         f = true;
@@ -51,5 +42,46 @@ class MngRoomAdminModel {
     // rooms.clear();
     //print(institutes.toString());
     return institutes;
+  }
+
+  Future<List<Room>> getRoomData(int id) async {
+    
+    List<Room> rooms = List<Room>();
+
+    String url=GenerateString.genStringGetRooms(id);
+
+    http.Response response;
+    try {
+      response = await http.get(
+        Uri.encodeFull(url),
+      );
+    } catch (e) {
+      print(e.toString());
+    }
+    if (response == null) {
+      return null;
+    }
+    print(response.body.toString());
+
+    List data;
+
+    if(response.body.toString()=='no_data'){
+      return null;
+    }
+    else{
+    data = jsonDecode(response.body);
+    }
+
+    for (int i = 0; i < data.length; i++) {
+      Room room = Room(
+          id: int.parse(data[i]['id']),
+          name: data[i]['room_no'],
+          isBlocked: false,
+          institute: data[i]['institute']
+          );
+      rooms.add(room);
+    }
+
+    return rooms;
   }
 }

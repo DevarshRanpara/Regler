@@ -3,22 +3,14 @@ import 'dart:convert';
 import 'package:flutter_app/Classes/gen_string.dart';
 import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/room.dart';
-import 'package:flutter_app/Classes/strings.dart';
 import 'package:http/http.dart' as http;
 
 class MngRoomDirModel {
-  Future<List<Room>> getData(int id) async {
+  Future<List<Room>> getData() async {
     
     List<Room> rooms = List<Room>();
 
-    String url;
-
-    if(Preferances.role==Strings.roleAdmin){
-      url=GenerateString.genStringGetRooms(id);
-    }
-    else{
-      url = GenerateString.genStringGetRooms(int.parse(Preferances.instituteid));
-    }
+    String url = GenerateString.genStringGetRooms(int.parse(Preferances.instituteid));
     
     http.Response response;
     try {
@@ -44,10 +36,10 @@ class MngRoomDirModel {
 
     for (int i = 0; i < data.length; i++) {
       Room room = Room(
-          // id: int.parse(data[i]['id']),
+          id: int.parse(data[i]['id']),
           name: data[i]['room_no'],
-          // isBlocked: false,
-          // institute: data[i]['institute']
+          isBlocked: false,
+          institute: data[i]['institute']
           );
       rooms.add(room);
     }
