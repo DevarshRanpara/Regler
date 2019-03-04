@@ -9,8 +9,7 @@ class DialogsIns {
   DialogsIns(this.buildContext);
 
   showAlertInstituteBlock(Institute ins) {
-
-    ManageInstituteModel model=ManageInstituteModel();
+    ManageInstituteModel model = ManageInstituteModel();
 
     String title;
     if (ins.isBlocked) {

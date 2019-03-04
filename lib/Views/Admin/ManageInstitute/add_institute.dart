@@ -76,7 +76,7 @@ class _AddInstituteViewState extends State<AddInstituteView> {
                           onChanged: (String val) {},
                           decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText:Strings.enterDirectorName),
+                              hintText: Strings.enterDirectorName),
                         )
                       ],
                     ),

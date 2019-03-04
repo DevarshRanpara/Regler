@@ -16,7 +16,7 @@ class _ManageRoomViewState extends State<ManageRoomView> {
 
   @override
   void initState() {
-      model = MngRoomAdminModel();
+    model = MngRoomAdminModel();
     super.initState();
   }
 

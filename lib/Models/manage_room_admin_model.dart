@@ -5,11 +5,9 @@ import 'package:flutter_app/Classes/institute.dart';
 import 'package:http/http.dart' as http;
 
 class MngRoomAdminModel {
-
   List<Room> rooms = List<Room>();
-  
+
   Future<List<Institute>> getData() async {
-    
     List<Institute> institutes = List<Institute>();
     String url = GenerateString.generateStringListIns();
     http.Response response;
@@ -45,10 +43,9 @@ class MngRoomAdminModel {
   }
 
   Future<List<Room>> getRoomData(int id) async {
-    
     List<Room> rooms = List<Room>();
 
-    String url=GenerateString.genStringGetRooms(id);
+    String url = GenerateString.genStringGetRooms(id);
 
     http.Response response;
     try {
@@ -65,11 +62,10 @@ class MngRoomAdminModel {
 
     List data;
 
-    if(response.body.toString()=='no_data'){
+    if (response.body.toString() == 'no_data') {
       return null;
-    }
-    else{
-    data = jsonDecode(response.body);
+    } else {
+      data = jsonDecode(response.body);
     }
 
     for (int i = 0; i < data.length; i++) {
@@ -77,8 +73,7 @@ class MngRoomAdminModel {
           id: int.parse(data[i]['id']),
           name: data[i]['room_no'],
           isBlocked: false,
-          institute: data[i]['institute']
-          );
+          institute: data[i]['institute']);
       rooms.add(room);
     }
 

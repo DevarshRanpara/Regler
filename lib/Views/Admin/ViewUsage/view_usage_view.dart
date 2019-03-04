@@ -71,7 +71,8 @@ class _ViewUsageViewState extends State<ViewUsageView> {
                   icon: Icon(Icons.supervisor_account),
                   title: Text(Strings.userWise)),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.location_city), title: Text(inst + Strings.wise))
+                  icon: Icon(Icons.location_city),
+                  title: Text(inst + Strings.wise))
             ],
             currentIndex: _selectedIndex,
             fixedColor: Colors.tealAccent,

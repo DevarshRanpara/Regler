@@ -80,8 +80,7 @@ class LoginPageState extends State<HomePage> {
             height: 130.0,
             decoration: new BoxDecoration(
               image: new DecorationImage(
-                image: new AssetImage(Strings.rLogoTeal
-                ),
+                image: new AssetImage(Strings.rLogoTeal),
                 repeat: ImageRepeat.repeat,
                 fit: BoxFit.contain,
               ),
@@ -180,7 +179,7 @@ class LoginPageState extends State<HomePage> {
 
   Future<bool> setData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if(prefs.getBool(Strings.keyIsLoggedin)==null){
+    if (prefs.getBool(Strings.keyIsLoggedin) == null) {
       return false;
     }
     Preferances.id = prefs.getInt(Strings.keyId);
@@ -218,7 +217,6 @@ class LoginPageState extends State<HomePage> {
           }
         }
         return Scaffold(
-            // resizeToAvoidBottomPadding: false,
             key: scaffoldKey,
             body: Stack(
               fit: StackFit.expand,

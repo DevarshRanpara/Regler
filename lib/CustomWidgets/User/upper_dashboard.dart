@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/strings.dart';
-
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/Classes/user_data.dart';
-
 import 'package:flutter_app/Classes/admin_navigation.dart';
 
 class UpperDashboard extends StatelessWidget {

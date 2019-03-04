@@ -15,7 +15,6 @@ import 'package:flutter_app/Classes/admin_navigation.dart';
 import 'package:flutter_app/Classes/preferances.dart';
 
 class AdminHomeView extends StatefulWidget {
-
   @override
   _AdminHomeViewState createState() => _AdminHomeViewState();
 }
@@ -69,17 +68,16 @@ class _AdminHomeViewState extends State<AdminHomeView> {
   }
 
   void _gotoManageRooms() {
-    if(Preferances.role==Strings.roleAdmin){
+    if (Preferances.role == Strings.roleAdmin) {
       Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (BuildContext context) => ManageRoomView()));
-    }
-    else{
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => ManageRoomView()));
+    } else {
       Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (BuildContext context) => ManageRoomDir()));
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => ManageRoomDir()));
     }
   }
 

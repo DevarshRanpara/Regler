@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/functions.dart';
 import 'package:flutter_app/Classes/strings.dart';
-
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
 import 'package:flutter_app/Classes/institute.dart';
@@ -10,24 +9,21 @@ class ManageinstituteTile extends StatefulWidget {
   final ManageFunctions functions;
   final Institute institute;
 
-  ManageinstituteTile(this.institute,this.functions);
+  ManageinstituteTile(this.institute, this.functions);
 
   @override
   _ManageinstituteTileState createState() => _ManageinstituteTileState();
 }
 
 class _ManageinstituteTileState extends State<ManageinstituteTile> {
-
   String strblock;
 
   @override
   Widget build(BuildContext context) {
-
-    if(widget.institute.isBlocked){
-      strblock=Strings.unblock;
-    }
-    else{
-      strblock=Strings.block;
+    if (widget.institute.isBlocked) {
+      strblock = Strings.unblock;
+    } else {
+      strblock = Strings.block;
     }
     return InkWell(
       onTap: () {},

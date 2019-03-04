@@ -60,8 +60,8 @@ class _AddUserViewState extends State<AddUserView> {
                   title: Text(institute),
                   children: listTiles)));
     } else {
-      insid=int.parse(Preferances.instituteid);
-      institute='';
+      insid = int.parse(Preferances.instituteid);
+      institute = '';
       return Card(
           child: Container(
               padding: const EdgeInsets.all(20.0),
@@ -86,14 +86,13 @@ class _AddUserViewState extends State<AddUserView> {
       } else {
         form.save();
         form1.save();
-      Dialogs dialogs = Dialogs(context);
-      dialogs.setMessage(Strings.pleaseWait);
-      dialogs.show();
+        Dialogs dialogs = Dialogs(context);
+        dialogs.setMessage(Strings.pleaseWait);
+        dialogs.show();
         String res = await model.addUser(username, insid, userlimit);
-        if(res==Strings.error){
+        if (res == Strings.error) {
           showSnakbar(Strings.sameUnameError);
-        }
-        else{
+        } else {
           showSnakbar(Strings.userAdded);
         }
         dialogs.hide();
@@ -185,8 +184,7 @@ class _AddUserViewState extends State<AddUserView> {
                                 TextFormField(
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
-                                      hintText:
-                                          Strings.enterHint),
+                                      hintText: Strings.enterHint),
                                   keyboardType: TextInputType.number,
                                   validator: (val) => int.parse(val) > 500
                                       ? Strings.maxLimit

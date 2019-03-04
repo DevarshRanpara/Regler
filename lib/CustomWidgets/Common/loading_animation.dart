@@ -9,13 +9,13 @@ class LoadingAnimationCls extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.only(left: 25.0),
         child: SizedBox(
-            height: 200,
-            width: 200,
-            child: FlareActor(
-              Strings.loadingFlr,
-              animation: Strings.loadingFlrAnimtion,
-            ),
+          height: 200,
+          width: 200,
+          child: FlareActor(
+            Strings.loadingFlr,
+            animation: Strings.loadingFlrAnimtion,
           ),
+        ),
       ),
     );
   }

@@ -21,12 +21,11 @@ class _MngRoominstituteState extends State<MngRoominstitute> {
   void initState() {
     rooms = widget.institute.rooms;
 
-    if(rooms!=null){
+    if (rooms != null) {
       for (int i = 0; i < rooms.length; i++) {
-      roomtiles.add(RoomTile(rooms[i]));
+        roomtiles.add(RoomTile(rooms[i]));
       }
-    }
-    else{
+    } else {
       roomtiles.add(Container());
     }
     super.initState();

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/functions.dart';
 import 'package:flutter_app/Classes/preferances.dart';

@@ -19,7 +19,6 @@ class _ManageUsersViewState extends State<ManageUsersView> {
 
   @override
   void initState() {
-    
     dialogs = Dialogs(context);
 
     Widget user = ManageUser(addUser, dialogs);
@@ -48,9 +47,11 @@ class _ManageUsersViewState extends State<ManageUsersView> {
             bottomNavigationBar: BottomNavigationBar(
               items: <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.supervisor_account), title: Text(Strings.mngUser)),
+                    icon: Icon(Icons.supervisor_account),
+                    title: Text(Strings.mngUser)),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.verified_user), title: Text(Strings.mngDir))
+                    icon: Icon(Icons.verified_user),
+                    title: Text(Strings.mngDir))
               ],
               currentIndex: _selectedIndex,
               fixedColor: Colors.tealAccent,

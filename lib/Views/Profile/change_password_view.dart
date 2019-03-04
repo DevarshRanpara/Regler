@@ -112,9 +112,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                                     border: InputBorder.none,
                                     hintText: Strings.chPassHint),
                                 obscureText: true,
-                                validator: (val) => val.length < 8
-                                    ? Strings.chPassError
-                                    : null,
+                                validator: (val) =>
+                                    val.length < 8 ? Strings.chPassError : null,
                                 onSaved: (val) => oldpassword = val,
                               )
                             ],

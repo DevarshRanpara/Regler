@@ -4,9 +4,8 @@ import 'package:flutter_app/Classes/gen_string.dart';
 import 'package:http/http.dart' as http;
 
 class ManageInstituteModel {
-
-  blockIns(Institute ins){
-    String url=GenerateString.genStringBlockIns(ins.id.toString());
+  blockIns(Institute ins) {
+    String url = GenerateString.genStringBlockIns(ins.id.toString());
     http.get(
       Uri.encodeFull(url),
     );

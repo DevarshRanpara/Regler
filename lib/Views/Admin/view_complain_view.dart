@@ -54,7 +54,7 @@ class _ViewComplainViewState extends State<ViewComplainView> {
                           height: 15.0,
                         ),
                         Text(
-                         Strings.viewComplains,
+                          Strings.viewComplains,
                           style: TextStyle(
                               color: Colors.tealAccent,
                               fontSize: 20.0,

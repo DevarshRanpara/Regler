@@ -56,8 +56,7 @@ class GenerateString {
     return UrlLink.url + '?method=deleteuser&id=' + id;
   }
 
-  static String genStringGetRooms(int id){
+  static String genStringGetRooms(int id) {
     return UrlLink.url + '?method=listrooms&id=' + id.toString();
   }
-
 }

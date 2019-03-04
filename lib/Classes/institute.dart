@@ -8,5 +8,12 @@ class Institute {
   String dirImgUrl;
   bool isBlocked;
   List<Room> rooms;
-  Institute({this.id, this.name, this.director,this.directorName,this.dirImgUrl, this.isBlocked, this.rooms});
+  Institute(
+      {this.id,
+      this.name,
+      this.director,
+      this.directorName,
+      this.dirImgUrl,
+      this.isBlocked,
+      this.rooms});
 }

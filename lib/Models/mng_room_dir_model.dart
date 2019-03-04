@@ -7,11 +7,11 @@ import 'package:http/http.dart' as http;
 
 class MngRoomDirModel {
   Future<List<Room>> getData() async {
-    
     List<Room> rooms = List<Room>();
 
-    String url = GenerateString.genStringGetRooms(int.parse(Preferances.instituteid));
-    
+    String url =
+        GenerateString.genStringGetRooms(int.parse(Preferances.instituteid));
+
     http.Response response;
     try {
       response = await http.get(
@@ -27,11 +27,10 @@ class MngRoomDirModel {
 
     List data;
 
-    if(response.body.toString()=='no_data'){
+    if (response.body.toString() == 'no_data') {
       return null;
-    }
-    else{
-    data = jsonDecode(response.body);
+    } else {
+      data = jsonDecode(response.body);
     }
 
     for (int i = 0; i < data.length; i++) {
@@ -39,8 +38,7 @@ class MngRoomDirModel {
           id: int.parse(data[i]['id']),
           name: data[i]['room_no'],
           isBlocked: false,
-          institute: data[i]['institute']
-          );
+          institute: data[i]['institute']);
       rooms.add(room);
     }
 
