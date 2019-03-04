@@ -52,22 +52,22 @@ class LoginPageState extends State<HomePage> {
       form.save();
       _setLoading();
       String res = await loginModel.auth(_userId, _password);
-      
+
       _gotoHome(res);
     }
   }
 
   _setLoading() {
-      setState(() {
-              lgForm=SizedBox(
-                height: 200,
-                width: 200,
-                child: FlareActor(
-              Strings.verifyFlare,
-              animation: Strings.verifyFlareAnimation,
-            ),
-              );
-            });
+    setState(() {
+      lgForm = SizedBox(
+        height: 200,
+        width: 200,
+        child: FlareActor(
+          Strings.verifyFlare,
+          animation: Strings.verifyFlareAnimation,
+        ),
+      );
+    });
   }
 
   _setBackForm() {
@@ -75,10 +75,22 @@ class LoginPageState extends State<HomePage> {
       lgForm = Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Image.asset(
-            'assets/r_logoteal.png',
-            scale: 30.0,
+          // Image.asset(
+          //   'assets/r_logoteal.png',
+          //   scale: 30.0,
+          //   ),
+          Container(
+            width: 130.0,
+            height: 130.0,
+            decoration: new BoxDecoration(
+              image: new DecorationImage(
+                image: new AssetImage('assets/r_logoteal.png'
+                ),
+                repeat: ImageRepeat.repeat,
+                fit: BoxFit.contain,
+              ),
             ),
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Form(
