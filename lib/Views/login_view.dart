@@ -180,6 +180,9 @@ class LoginPageState extends State<HomePage> {
 
   Future<bool> setData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    if(prefs.getBool(Strings.keyIsLoggedin)==null){
+      return false;
+    }
     Preferances.id = prefs.getInt(Strings.keyId);
     Preferances.name = prefs.getString(Strings.keyName);
     Preferances.role = prefs.getString(Strings.keyRole);
@@ -190,11 +193,7 @@ class LoginPageState extends State<HomePage> {
     Preferances.use = prefs.getString(Strings.keyUse);
     Preferances.bal = prefs.getString(Strings.keyBal);
     Preferances.isLoggedin = prefs.getBool(Strings.keyIsLoggedin);
-    if (Preferances.isLoggedin == null) {
-      return false;
-    } else {
-      return Preferances.isLoggedin;
-    }
+    return Preferances.isLoggedin;
   }
 
   @override
