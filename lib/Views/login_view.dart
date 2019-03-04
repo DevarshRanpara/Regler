@@ -63,8 +63,8 @@ class LoginPageState extends State<HomePage> {
         height: 200,
         width: 200,
         child: FlareActor(
-          Strings.verifyFlare,
-          animation: Strings.verifyFlareAnimation,
+          Strings.dropLoadFlr,
+          animation: Strings.dropLoadFlrAnimtion,
         ),
       );
     });
@@ -75,10 +75,6 @@ class LoginPageState extends State<HomePage> {
       lgForm = Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          // Image.asset(
-          //   'assets/r_logoteal.png',
-          //   scale: 30.0,
-          //   ),
           Container(
             width: 130.0,
             height: 130.0,

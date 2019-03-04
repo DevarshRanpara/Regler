@@ -3,6 +3,7 @@ import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_institute_tile.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_tile.dart';
+import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
 import 'package:flutter_app/Models/mng_room_dir_model.dart';
 import 'package:flutter_app/Models/manage_room_admin_model.dart';
 import 'package:flutter_app/Views/Admin/ManageRooms/add_room_view.dart';
@@ -52,13 +53,7 @@ class _ManageRoomViewState extends State<ManageRoomView> {
           future: model.getData(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
-              return Center(
-                child: SizedBox(
-                  height: 30,
-                  width: 30,
-                  child: CircularProgressIndicator(),
-                ),
-              );
+              return LoadingAnimationCls();
             } else {
               return ListView.builder(
                 itemCount: snapshot.data.length + 1,

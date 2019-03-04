@@ -140,4 +140,10 @@ class Strings {
   static const String internetErrorMsg = "No active internet connection";
   static const String verifyFlare='assets/verify.flr';
   static const String verifyFlareAnimation = 'verify';
+
+  static const String loadingFlr='assets/loadingshape.flr';
+  static const String loadingFlrAnimtion = 'circle-jump';
+
+  static const String dropLoadFlr='assets/drop_load.flr';
+  static const String dropLoadFlrAnimtion = 'Loading';
 }

@@ -4,6 +4,7 @@ import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Admin/dialouges_user.dart';
 import 'package:flutter_app/CustomWidgets/Admin/director_detail_tile.dart';
+import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
 //import 'package:flutter_app/CustomWidgets/Admin/user_detail.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
 
@@ -61,13 +62,7 @@ class _ManageDirState extends State<ManageDir> {
             stream: stream,
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.data == null) {
-                return Center(
-                  child: SizedBox(
-                    height: 30,
-                    width: 30,
-                    child: CircularProgressIndicator(),
-                  ),
-                );
+                return LoadingAnimationCls();
               } else {
                 return ListView.builder(
                   itemCount: snapshot.data.length + 1,

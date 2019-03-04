@@ -4,6 +4,7 @@ import 'package:flutter_app/Classes/institute.dart';
 import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Admin/dialouges_institute.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_institute_tile.dart';
+import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
 import 'package:flutter_app/Models/manage_institute_model.dart';
 import 'package:flutter_app/Views/Admin/ManageInstitute/add_institute.dart';
 
@@ -50,13 +51,7 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
           future: model.getData(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
-              return Center(
-                child: SizedBox(
-                  height: 30,
-                  width: 30,
-                  child: CircularProgressIndicator(),
-                ),
-              );
+              return LoadingAnimationCls();
             } else {
               return ListView.builder(
                 itemCount: snapshot.data.length + 1,
