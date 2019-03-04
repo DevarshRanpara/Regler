@@ -80,7 +80,7 @@ class LoginPageState extends State<HomePage> {
             height: 130.0,
             decoration: new BoxDecoration(
               image: new DecorationImage(
-                image: new AssetImage('assets/r_logoteal.png'
+                image: new AssetImage(Strings.rLogoTeal
                 ),
                 repeat: ImageRepeat.repeat,
                 fit: BoxFit.contain,

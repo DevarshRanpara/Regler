@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
+import 'package:flutter_app/Views/Admin/ManageRooms/manage_room_dir.dart';
 import 'package:flutter_app/Views/Profile/profile.dart';
 import 'package:flutter_app/Views/Admin/admin_use_view.dart';
 import 'package:flutter_app/Views/Admin/ManageUsers/manage_users_view.dart';
 import 'package:flutter_app/Views/Admin/ManageInstitute/manage_institute_view.dart';
-import 'package:flutter_app/Views/Admin/ManageRooms/manage_room_view.dart';
+import 'package:flutter_app/Views/Admin/ManageRooms/manage_room_admin.dart';
 import 'package:flutter_app/Views/Admin/view_complain_view.dart';
 import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_view.dart';
 import 'package:flutter_app/Models/admin_home_model.dart';
@@ -68,10 +69,18 @@ class _AdminHomeViewState extends State<AdminHomeView> {
   }
 
   void _gotoManageRooms() {
-    Navigator.push(
+    if(Preferances.role==Strings.roleAdmin){
+      Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (BuildContext context) => ManageRoomView(model.role)));
+            builder: (BuildContext context) => ManageRoomView()));
+    }
+    else{
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => ManageRoomDir()));
+    }
   }
 
   void _gotoViewUsage() {

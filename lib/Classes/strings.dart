@@ -1,6 +1,8 @@
 class Strings {
   static const String loginBackgroundImage = "assets/girl.jpeg";
 
+  static const String rLogoTeal='assets/r_logoteal.png';
+
   static const String fontFamily = 'Montserrat';
   static const String signInMessage = 'Signing in';
   static const String title = "Regler";

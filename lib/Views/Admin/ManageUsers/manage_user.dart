@@ -42,7 +42,6 @@ class _ManageUserState extends State<ManageUser> {
     //bloc.fetchAllUsers();
     stream = Stream.fromFuture(model.getData());
     super.initState();
-    super.initState();
   }
 
   // _setStream(){
