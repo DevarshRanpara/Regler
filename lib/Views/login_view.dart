@@ -6,7 +6,7 @@ import 'package:flutter_app/Models/login_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './User/home_page.dart';
 import './Admin/admin_home_view.dart';
-import 'package:flutter_app/CustomWidgets/Common/dialog.dart';
+import 'package:flare_flutter/flare_actor.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -31,6 +31,7 @@ class HomePage extends StatefulWidget {
 class LoginPageState extends State<HomePage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final formKey = GlobalKey<FormState>();
+  Widget lgForm;
 
   String _userId;
   String _password;
@@ -40,6 +41,7 @@ class LoginPageState extends State<HomePage> {
   @override
   void initState() {
     loginModel = LoginModel();
+    _setBackForm();
     super.initState();
   }
 
@@ -48,14 +50,95 @@ class LoginPageState extends State<HomePage> {
 
     if (form.validate()) {
       form.save();
-      Dialogs dialogs = Dialogs(context);
-      dialogs.setMessage(Strings.signInMessage);
-      dialogs.show();
-      await Future.delayed(const Duration(seconds: 2), () => "1");
+      _setLoading();
       String res = await loginModel.auth(_userId, _password);
-      dialogs.hide();
+      
       _gotoHome(res);
     }
+  }
+
+  _setLoading() {
+      setState(() {
+              lgForm=SizedBox(
+                height: 200,
+                width: 200,
+                child: FlareActor(
+              Strings.verifyFlare,
+              animation: Strings.verifyFlareAnimation,
+            ),
+              );
+            });
+  }
+
+  _setBackForm() {
+    setState(() {
+      lgForm = Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Image.asset(
+            'assets/r_logoteal.png',
+            scale: 30.0,
+            ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Form(
+              key: formKey,
+              child: Theme(
+                data: ThemeData(
+                    brightness: Brightness.dark,
+                    primarySwatch: Colors.teal,
+                    fontFamily: Strings.fontFamily,
+                    inputDecorationTheme: InputDecorationTheme(
+                        labelStyle:
+                            TextStyle(color: Colors.teal, fontSize: 17.0))),
+                child: Container(
+                  padding: const EdgeInsets.all(40.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      TextFormField(
+                        decoration:
+                            InputDecoration(labelText: Strings.enterUserIdMsg),
+                        validator: (val) {
+                          if (val.length > 12 || val.isEmpty) {
+                            return Strings.errorInvaliduserID;
+                          } else {
+                            return null;
+                          }
+                        },
+                        onSaved: (val) => _userId = val,
+                        keyboardType: TextInputType.emailAddress,
+                      ),
+                      TextFormField(
+                        decoration: InputDecoration(
+                            labelText: Strings.enterPasswordMsg),
+                        validator: (val) =>
+                            val.length < 8 ? Strings.errorPasswordShort : null,
+                        onSaved: (val) => _password = val,
+                        keyboardType: TextInputType.text,
+                        obscureText: true,
+                      ),
+                      Padding(padding: const EdgeInsets.only(top: 20.0)),
+                      MaterialButton(
+                        height: 40.0,
+                        minWidth: 200.0,
+                        color: Colors.teal,
+                        textColor: Colors.white,
+                        child: Text(Strings.btnLogin),
+                        onPressed: () {
+                          _submit();
+                        },
+                        splashColor: Colors.tealAccent,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          )
+        ],
+      );
+    });
   }
 
   void _gotoHome(String role) {
@@ -68,10 +151,13 @@ class LoginPageState extends State<HomePage> {
           MaterialPageRoute(
               builder: (BuildContext context) => AdminHomeView()));
     } else if (role == Strings.userBlocked) {
+      _setBackForm();
       showSnakbar(Strings.userBlockMessage);
     } else if (role == Strings.internetEr) {
+      _setBackForm();
       showSnakbar(Strings.internetErrorMsg);
     } else {
+      _setBackForm();
       showSnakbar(Strings.invalidUserMessage);
     }
   }
@@ -137,76 +223,7 @@ class LoginPageState extends State<HomePage> {
                   colorBlendMode: BlendMode.darken,
                 ),
                 Center(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        FlutterLogo(
-                          size: 100.0,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Form(
-                            key: formKey,
-                            child: Theme(
-                              data: ThemeData(
-                                  brightness: Brightness.dark,
-                                  primarySwatch: Colors.teal,
-                                  fontFamily: Strings.fontFamily,
-                                  inputDecorationTheme: InputDecorationTheme(
-                                      labelStyle: TextStyle(
-                                          color: Colors.teal, fontSize: 17.0))),
-                              child: Container(
-                                padding: const EdgeInsets.all(40.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    TextFormField(
-                                      decoration: InputDecoration(
-                                          labelText: Strings.enterUserIdMsg),
-                                      validator: (val) {
-                                        if (val.length > 12 || val.isEmpty) {
-                                          return Strings.errorInvaliduserID;
-                                        } else {
-                                          return null;
-                                        }
-                                      },
-                                      onSaved: (val) => _userId = val,
-                                      keyboardType: TextInputType.emailAddress,
-                                    ),
-                                    TextFormField(
-                                      decoration: InputDecoration(
-                                          labelText: Strings.enterPasswordMsg),
-                                      validator: (val) => val.length < 8
-                                          ? Strings.errorPasswordShort
-                                          : null,
-                                      onSaved: (val) => _password = val,
-                                      keyboardType: TextInputType.text,
-                                      obscureText: true,
-                                    ),
-                                    Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 20.0)),
-                                    MaterialButton(
-                                      height: 40.0,
-                                      minWidth: 200.0,
-                                      color: Colors.teal,
-                                      textColor: Colors.white,
-                                      child: Text(Strings.btnLogin),
-                                      onPressed: () {
-                                        _submit();
-                                      },
-                                      splashColor: Colors.tealAccent,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                  child: SingleChildScrollView(child: lgForm),
                 )
               ],
             ));

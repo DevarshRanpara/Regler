@@ -3,7 +3,7 @@ class Strings {
 
   static const String fontFamily = 'Montserrat';
   static const String signInMessage = 'Signing in';
-  static const String title = "New App";
+  static const String title = "Regler";
   static const String roleUser = 'user';
   static const String roleDirector = 'director';
   static const String roleAdmin = 'admin';
@@ -138,4 +138,6 @@ class Strings {
 
   static const String internetEr='interneterror';
   static const String internetErrorMsg = "No active internet connection";
+  static const String verifyFlare='assets/verify.flr';
+  static const String verifyFlareAnimation = 'verify';
 }
