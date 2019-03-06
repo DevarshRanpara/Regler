@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_institute_tile.dart';
 import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
@@ -49,40 +48,6 @@ class _ManageRoomViewState extends State<ManageRoomView> {
   }
 
   getUpperUI() {
-    Widget addUserBtn;
-    if (Preferances.role == Strings.roleAdmin) {
-      addUserBtn = Container();
-    } else {
-      addUserBtn = Column(
-        children: <Widget>[
-          InkWell(
-              onTap: () {
-                gotoAddRoom();
-              },
-              child: Card(
-                child: Container(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.add,
-                        color: Colors.amber,
-                      ),
-                      SizedBox(
-                        width: 8.0,
-                      ),
-                      Text(
-                        Strings.addRoom,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ),
-              )),
-        ],
-      );
-    }
     return SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -119,7 +84,6 @@ class _ManageRoomViewState extends State<ManageRoomView> {
                     ),
                   ),
                 ))),
-            addUserBtn
           ],
         ));
   }
