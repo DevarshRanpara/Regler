@@ -55,12 +55,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-          brightness: Brightness.dark,
-          fontFamily: Strings.fontFamily,
-          accentColor: Colors.teal),
-      home: Scaffold(
+    return Scaffold(
         key: scaffoldKey,
         body: Container(
           margin: EdgeInsets.all(8.0),
@@ -201,7 +196,6 @@ class _ChangePasswordState extends State<ChangePassword> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

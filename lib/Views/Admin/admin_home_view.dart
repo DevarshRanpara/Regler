@@ -106,12 +106,6 @@ class _AdminHomeViewState extends State<AdminHomeView> {
         gotoViewUsage: _gotoViewUsage,
         gotoViewComplains: _gotoViewComplains);
 
-    return MaterialApp(
-      theme: ThemeData(
-          brightness: Brightness.dark,
-          fontFamily: Strings.fontFamily,
-          accentColor: Colors.teal),
-      home: Scaffold(body: CommonHomeView(nevigation, data)),
-    );
+    return Scaffold(body: CommonHomeView(nevigation, data));
   }
 }

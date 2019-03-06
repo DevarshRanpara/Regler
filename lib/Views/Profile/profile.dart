@@ -122,12 +122,7 @@ class _UserProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     initPref();
-    return MaterialApp(
-      theme: ThemeData(
-          brightness: Brightness.dark,
-          fontFamily: Strings.fontFamily,
-          accentColor: Colors.teal),
-      home: Scaffold(
+    return Scaffold(
         key: scaffoldKey,
         body: Container(
           margin: EdgeInsets.all(8.0),
@@ -253,7 +248,6 @@ class _UserProfileState extends State<Profile> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

@@ -26,12 +26,7 @@ class _ViewUsageRoomState extends State<ViewUsageRoom> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-          brightness: Brightness.dark,
-          fontFamily: Strings.fontFamily,
-          accentColor: Colors.teal),
-      home: Scaffold(
+    return Scaffold(
         body: Container(
           margin: EdgeInsets.all(widget.margine),
           child: ListView(
@@ -71,7 +66,6 @@ class _ViewUsageRoomState extends State<ViewUsageRoom> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

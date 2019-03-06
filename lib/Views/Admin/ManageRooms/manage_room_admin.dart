@@ -27,30 +27,25 @@ class _ManageRoomViewState extends State<ManageRoomView> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData(
-            brightness: Brightness.dark,
-            fontFamily: Strings.fontFamily,
-            accentColor: Colors.teal),
-        home: Scaffold(
-            body: FutureBuilder(
-          future: model.getData(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.data == null) {
-              return LoadingAnimationCls();
-            } else {
-              return ListView.builder(
-                itemCount: snapshot.data.length + 1,
-                itemBuilder: (BuildContext conext, int i) {
-                  if (i == 0) {
-                    return getUpperUI();
-                  }
-                  return MngRoominstitute(snapshot.data[i - 1], gotoAddRoom);
-                },
-              );
-            }
-          },
-        )));
+    return Scaffold(
+        body: FutureBuilder(
+      future: model.getData(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.data == null) {
+          return LoadingAnimationCls();
+        } else {
+          return ListView.builder(
+            itemCount: snapshot.data.length + 1,
+            itemBuilder: (BuildContext conext, int i) {
+              if (i == 0) {
+                return getUpperUI();
+              }
+              return MngRoominstitute(snapshot.data[i - 1], gotoAddRoom);
+            },
+          );
+        }
+      },
+    ));
   }
 
   getUpperUI() {

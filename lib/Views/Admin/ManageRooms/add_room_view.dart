@@ -9,12 +9,7 @@ class AddRoomView extends StatefulWidget {
 class _AddRoomViewState extends State<AddRoomView> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData(
-            brightness: Brightness.dark,
-            fontFamily: Strings.fontFamily,
-            accentColor: Colors.teal),
-        home: Scaffold(
+    return Scaffold(
           body: Container(
               child: ListView(
             children: <Widget>[
@@ -89,6 +84,6 @@ class _AddRoomViewState extends State<AddRoomView> {
               ),
             ],
           )),
-        ));
+        );
   }
 }

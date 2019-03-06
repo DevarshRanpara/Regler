@@ -26,12 +26,7 @@ class _ManageRoomDirState extends State<ManageRoomDir> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData(
-            brightness: Brightness.dark,
-            fontFamily: Strings.fontFamily,
-            accentColor: Colors.teal),
-        home: Scaffold(
+    return Scaffold(
             body: FutureBuilder(
           future: model.getData(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -49,7 +44,7 @@ class _ManageRoomDirState extends State<ManageRoomDir> {
               );
             }
           },
-        )));
+        ));
   }
 
   getUpperUI() {

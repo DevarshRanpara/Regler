@@ -55,12 +55,7 @@ class _ViewUsageViewState extends State<ViewUsageView> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData(
-            brightness: Brightness.dark,
-            fontFamily: Strings.fontFamily,
-            accentColor: Colors.teal),
-        home: Scaffold(
+    return Scaffold(
           body: Container(
             margin: EdgeInsets.all(8.0),
             child: pages.elementAt(_selectedIndex),
@@ -78,7 +73,7 @@ class _ViewUsageViewState extends State<ViewUsageView> {
             fixedColor: Colors.tealAccent,
             onTap: _onItemTapped,
           ),
-        ));
+        );
   }
 
   void _onItemTapped(int index) {

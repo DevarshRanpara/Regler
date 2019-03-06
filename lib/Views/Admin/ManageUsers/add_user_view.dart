@@ -103,144 +103,139 @@ class _AddUserViewState extends State<AddUserView> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData(
-            brightness: Brightness.dark,
-            fontFamily: Strings.fontFamily,
-            accentColor: Colors.teal),
-        home: Scaffold(
-            key: scaffoldKey,
-            body: Container(
-                margin: EdgeInsets.all(8.0),
-                child: ListView(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 2.0),
-                    ),
-                    InkWell(
-                        onTap: () {},
-                        child: Card(
-                            child: Container(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.person_add,
-                                color: Colors.redAccent,
-                                size: 35.0,
-                              ),
-                              SizedBox(
-                                height: 15.0,
-                              ),
-                              Text(
-                                Strings.addUser,
-                                style: TextStyle(
-                                    color: Colors.tealAccent,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w200),
-                              )
-                            ],
+    return Scaffold(
+        key: scaffoldKey,
+        body: Container(
+            margin: EdgeInsets.all(8.0),
+            child: ListView(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 2.0),
+                ),
+                InkWell(
+                    onTap: () {},
+                    child: Card(
+                        child: Container(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        children: <Widget>[
+                          Icon(
+                            Icons.person_add,
+                            color: Colors.redAccent,
+                            size: 35.0,
                           ),
-                        ))),
-                    InkWell(
-                        onTap: () {},
-                        child: Form(
-                          key: formKey1,
-                          child: Card(
-                              child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20.0, vertical: 2.0),
-                            child: Column(
-                              children: <Widget>[
-                                TextFormField(
-                                  decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: Strings.enterUname),
-                                  validator: (val) {
-                                    if (val.length > 12) {
-                                      return Strings.unameError;
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                  onSaved: (val) => username = val,
-                                )
-                              ],
-                            ),
-                          )),
-                        )),
-                    InkWell(onTap: () {}, child: selectInstitute()),
-                    InkWell(
-                        onTap: () {},
-                        child: Card(
-                            child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 2.0),
-                          child: Form(
-                            key: formKey,
-                            child: Column(
-                              children: <Widget>[
-                                TextFormField(
-                                  decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: Strings.enterHint),
-                                  keyboardType: TextInputType.number,
-                                  validator: (val) => int.parse(val) > 500
-                                      ? Strings.maxLimit
-                                      : null,
-                                  onSaved: (val) => userlimit = int.parse(val),
-                                )
-                              ],
-                            ),
+                          SizedBox(
+                            height: 15.0,
                           ),
-                        ))),
-                    InkWell(
-                        onTap: () {},
-                        child: Card(
-                            child: Container(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: Row(
-                                  children: <Widget>[
-                                    SizedBox(
-                                      width: 15.0,
-                                    ),
-                                    Text(Strings.uploadProfilePic)
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ))),
-                    Center(
-                      child: RaisedButton(
-                        color: Colors.blue,
-                        splashColor: Colors.blueAccent,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
+                          Text(
+                            Strings.addUser,
+                            style: TextStyle(
+                                color: Colors.tealAccent,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w200),
+                          )
+                        ],
+                      ),
+                    ))),
+                InkWell(
+                    onTap: () {},
+                    child: Form(
+                      key: formKey1,
+                      child: Card(
+                          child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 2.0),
+                        child: Column(
                           children: <Widget>[
-                            Icon(Icons.add),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              Strings.addUser,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w800),
-                            ),
+                            TextFormField(
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: Strings.enterUname),
+                              validator: (val) {
+                                if (val.length > 12) {
+                                  return Strings.unameError;
+                                } else {
+                                  return null;
+                                }
+                              },
+                              onSaved: (val) => username = val,
+                            )
                           ],
                         ),
-                        onPressed: () {
-                          _submit();
-                        },
+                      )),
+                    )),
+                InkWell(onTap: () {}, child: selectInstitute()),
+                InkWell(
+                    onTap: () {},
+                    child: Card(
+                        child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 2.0),
+                      child: Form(
+                        key: formKey,
+                        child: Column(
+                          children: <Widget>[
+                            TextFormField(
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: Strings.enterHint),
+                              keyboardType: TextInputType.number,
+                              validator: (val) => int.parse(val) > 500
+                                  ? Strings.maxLimit
+                                  : null,
+                              onSaved: (val) => userlimit = int.parse(val),
+                            )
+                          ],
+                        ),
                       ),
+                    ))),
+                InkWell(
+                    onTap: () {},
+                    child: Card(
+                        child: Container(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Row(
+                              children: <Widget>[
+                                SizedBox(
+                                  width: 15.0,
+                                ),
+                                Text(Strings.uploadProfilePic)
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ))),
+                Center(
+                  child: RaisedButton(
+                    color: Colors.blue,
+                    splashColor: Colors.blueAccent,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Icon(Icons.add),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          Strings.addUser,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w800),
+                        ),
+                      ],
                     ),
-                  ],
-                ))));
+                    onPressed: () {
+                      _submit();
+                    },
+                  ),
+                ),
+              ],
+            )));
   }
 }

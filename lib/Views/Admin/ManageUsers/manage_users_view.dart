@@ -35,40 +35,29 @@ class _ManageUsersViewState extends State<ManageUsersView> {
   @override
   Widget build(BuildContext context) {
     if (Preferances.role == Strings.roleAdmin) {
-      return MaterialApp(
-          theme: ThemeData(
-              brightness: Brightness.dark,
-              fontFamily: Strings.fontFamily,
-              accentColor: Colors.teal),
-          home: Scaffold(
-            body: Container(
-              child: pages.elementAt(_selectedIndex),
-            ),
-            bottomNavigationBar: BottomNavigationBar(
-              items: <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.supervisor_account),
-                    title: Text(Strings.mngUser)),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.verified_user),
-                    title: Text(Strings.mngDir))
-              ],
-              currentIndex: _selectedIndex,
-              fixedColor: Colors.tealAccent,
-              onTap: _onItemTapped,
-            ),
-          ));
+      return Scaffold(
+        body: Container(
+          child: pages.elementAt(_selectedIndex),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(Icons.supervisor_account),
+                title: Text(Strings.mngUser)),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.verified_user), title: Text(Strings.mngDir))
+          ],
+          currentIndex: _selectedIndex,
+          fixedColor: Colors.tealAccent,
+          onTap: _onItemTapped,
+        ),
+      );
     } else {
-      return MaterialApp(
-          theme: ThemeData(
-              brightness: Brightness.dark,
-              fontFamily: Strings.fontFamily,
-              accentColor: Colors.teal),
-          home: Scaffold(
-            body: Container(
-              child: ManageUser(addUser, dialogs),
-            ),
-          ));
+      return Scaffold(
+        body: Container(
+          child: ManageUser(addUser, dialogs),
+        ),
+      );
     }
   }
 

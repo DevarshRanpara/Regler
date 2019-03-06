@@ -56,12 +56,7 @@ class _AdminUseViewState extends State<AdminUseView> {
       ),
     );
 
-    return MaterialApp(
-        theme: ThemeData(
-            brightness: Brightness.dark,
-            fontFamily: Strings.fontFamily,
-            accentColor: Colors.teal),
-        home: Scaffold(
+    return Scaffold(
             body: ListView(
           children: <Widget>[
             Padding(
@@ -114,7 +109,7 @@ class _AdminUseViewState extends State<AdminUseView> {
               children: list,
             )
           ],
-        )));
+        ));
   }
 }
 
