@@ -39,7 +39,7 @@ class _ManageRoomDirState extends State<ManageRoomDir> {
                   if (i == 0) {
                     return getUpperUI();
                   }
-                  RoomTile(snapshot.data[i - 1]);
+                  return RoomTile(snapshot.data[i - 1]);
                 },
               );
             }
