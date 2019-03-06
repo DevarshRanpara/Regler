@@ -3,9 +3,10 @@ import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/strings.dart';
 
 class RoomTile extends StatefulWidget {
+  final Function blockRoom;
   final Room room;
 
-  RoomTile(this.room);
+  RoomTile(this.room, this.blockRoom);
 
   @override
   _RoomTileState createState() => _RoomTileState();
@@ -14,6 +15,12 @@ class RoomTile extends StatefulWidget {
 class _RoomTileState extends State<RoomTile> {
   @override
   Widget build(BuildContext context) {
+    String strblock;
+    if (widget.room.isBlocked) {
+      strblock = Strings.unblock;
+    } else {
+      strblock = Strings.block;
+    }
     return InkWell(
       onTap: () {},
       child: Card(
@@ -38,7 +45,9 @@ class _RoomTileState extends State<RoomTile> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.3,
               child: RawMaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  widget.blockRoom(widget.room);
+                },
                 child: Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
@@ -52,7 +61,7 @@ class _RoomTileState extends State<RoomTile> {
                       SizedBox(
                         width: 2.0,
                       ),
-                      Text(Strings.block),
+                      Text(strblock),
                     ],
                   ),
                 ),

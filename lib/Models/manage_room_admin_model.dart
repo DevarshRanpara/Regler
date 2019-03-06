@@ -2,12 +2,18 @@ import 'dart:convert';
 import 'package:flutter_app/Classes/gen_string.dart';
 import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/institute.dart';
+import 'package:flutter_app/Models/mng_room_dir_model.dart';
 import 'package:http/http.dart' as http;
 
 class MngRoomAdminModel {
-  List<Room> rooms = List<Room>();
+  MngRoomDirModel model = MngRoomDirModel();
+
+  Future<void> blockRoom(String id) async {
+    model.blockRoom(id);
+  }
 
   Future<List<Institute>> getData() async {
+    List<Room> rooms = List<Room>();
     List<Institute> institutes = List<Institute>();
     String url = GenerateString.generateStringListIns();
     http.Response response;
@@ -69,10 +75,14 @@ class MngRoomAdminModel {
     }
 
     for (int i = 0; i < data.length; i++) {
+      bool f = false;
+      if (data[i]['isblocked'] == '1') {
+        f = true;
+      }
       Room room = Room(
           id: int.parse(data[i]['id']),
           name: data[i]['room_no'],
-          isBlocked: false,
+          isBlocked: f,
           institute: data[i]['institute']);
       rooms.add(room);
     }

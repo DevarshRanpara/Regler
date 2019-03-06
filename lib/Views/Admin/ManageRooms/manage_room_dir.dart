@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/strings.dart';
+import 'package:flutter_app/CustomWidgets/Admin/dialouges_rooms.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_tile.dart';
 import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
 import 'package:flutter_app/Models/mng_room_dir_model.dart';
@@ -11,10 +13,14 @@ class ManageRoomDir extends StatefulWidget {
 }
 
 class _ManageRoomDirState extends State<ManageRoomDir> {
+
+  DialogsRooms dialog;
+
   MngRoomDirModel model;
 
   @override
   void initState() {
+    dialog = DialogsRooms(context);
     model = MngRoomDirModel();
     super.initState();
   }
@@ -24,27 +30,31 @@ class _ManageRoomDirState extends State<ManageRoomDir> {
         MaterialPageRoute(builder: (BuildContext context) => AddRoomView()));
   }
 
+  void blockRoom(Room room) {
+    dialog.showAlertRoomBlock(room);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            body: FutureBuilder(
-          future: model.getData(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.data == null) {
-              return LoadingAnimationCls();
-            } else {
-              return ListView.builder(
-                itemCount: snapshot.data.length + 1,
-                itemBuilder: (BuildContext conext, int i) {
-                  if (i == 0) {
-                    return getUpperUI();
-                  }
-                  return RoomTile(snapshot.data[i - 1]);
-                },
-              );
-            }
-          },
-        ));
+        body: FutureBuilder(
+      future: model.getData(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.data == null) {
+          return LoadingAnimationCls();
+        } else {
+          return ListView.builder(
+            itemCount: snapshot.data.length + 1,
+            itemBuilder: (BuildContext conext, int i) {
+              if (i == 0) {
+                return getUpperUI();
+              }
+              return RoomTile(snapshot.data[i - 1],blockRoom);
+            },
+          );
+        }
+      },
+    ));
   }
 
   getUpperUI() {

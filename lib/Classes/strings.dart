@@ -151,4 +151,8 @@ class Strings {
   static const String dropLoadFlrAnimtion = 'Loading';
   static const String heroChpass='chpass';
   static const String heroProfile='profile';
+  static const String msgSuccess = 'success';
+
+  static const String blockRoom = 'Block Room';
+  static const String unblockRoom = 'Unblock Room';
 }

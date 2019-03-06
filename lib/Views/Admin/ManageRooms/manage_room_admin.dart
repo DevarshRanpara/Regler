@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/strings.dart';
+import 'package:flutter_app/CustomWidgets/Admin/dialouges_rooms.dart';
 import 'package:flutter_app/CustomWidgets/Admin/manage_room_institute_tile.dart';
 import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
 import 'package:flutter_app/Models/manage_room_admin_model.dart';
@@ -13,8 +15,11 @@ class ManageRoomView extends StatefulWidget {
 class _ManageRoomViewState extends State<ManageRoomView> {
   MngRoomAdminModel model;
 
+  DialogsRooms dialog;
+
   @override
   void initState() {
+    dialog = DialogsRooms(context);
     model = MngRoomAdminModel();
     super.initState();
   }
@@ -22,6 +27,10 @@ class _ManageRoomViewState extends State<ManageRoomView> {
   void gotoAddRoom() {
     Navigator.push(context,
         MaterialPageRoute(builder: (BuildContext context) => AddRoomView()));
+  }
+
+  void blockRoom(Room room) {
+    dialog.showAlertRoomBlock(room);
   }
 
   @override
@@ -39,7 +48,7 @@ class _ManageRoomViewState extends State<ManageRoomView> {
               if (i == 0) {
                 return getUpperUI();
               }
-              return MngRoominstitute(snapshot.data[i - 1], gotoAddRoom);
+              return MngRoominstitute(snapshot.data[i - 1], gotoAddRoom,blockRoom);
             },
           );
         }
