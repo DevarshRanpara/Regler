@@ -1,5 +1,5 @@
 class Strings {
-  static const String loginBackgroundImage = "assets/girl.jpeg";
+  static const String loginBackgroundImage = "assets/backg.png";
 
   static const String rLogoTeal = 'assets/r_logoteal.png';
 
