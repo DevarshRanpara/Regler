@@ -149,4 +149,6 @@ class Strings {
 
   static const String dropLoadFlr = 'assets/drop_load.flr';
   static const String dropLoadFlrAnimtion = 'Loading';
+  static const String heroChpass='chpass';
+  static const String heroProfile='profile';
 }

@@ -42,8 +42,11 @@ class CommonHomeView extends StatelessWidget {
                       Expanded(
                         child: Row(
                           children: <Widget>[
-                            CircularImage(
-                              NetworkImage(Preferances.imgurl),
+                            Hero(
+                              tag: Strings.heroProfile,
+                              child: CircularImage(
+                                NetworkImage(Preferances.imgurl),
+                              ),
                             ),
                             SizedBox(
                               width: 10.0,

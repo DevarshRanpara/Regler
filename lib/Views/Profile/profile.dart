@@ -123,75 +123,45 @@ class _UserProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     initPref();
     return Scaffold(
-        key: scaffoldKey,
-        body: Container(
-          margin: EdgeInsets.all(8.0),
-          child: ListView(
-            children: <Widget>[
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
-              ),
-              InkWell(
-                  onTap: () {},
-                  child: Card(
-                      child: Container(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      children: <Widget>[
-                        CircularImage(
+      key: scaffoldKey,
+      body: Container(
+        margin: EdgeInsets.all(8.0),
+        child: ListView(
+          children: <Widget>[
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
+            ),
+            InkWell(
+                onTap: () {},
+                child: Card(
+                    child: Container(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    children: <Widget>[
+                      Hero(
+                        tag: Strings.heroProfile,
+                        child: CircularImage(
                           NetworkImage(Preferances.imgurl),
                           width: 100,
                           height: 100,
                         ),
-                        SizedBox(
-                          height: 15.0,
-                        ),
-                        Text(
-                          widget.name,
-                          style: TextStyle(
-                              color: Colors.tealAccent,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w800),
-                        ),
-                      ],
-                    ),
-                  ))),
-              InkWell(
-                  onTap: () {},
-                  child: Card(
-                      child: Container(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.person,
-                                color: Colors.redAccent,
-                              ),
-                              SizedBox(
-                                width: 15.0,
-                              ),
-                              Text(Strings.changeProfilePic)
-                            ],
-                          ),
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.red[500],
-                        ),
-                      ],
-                    ),
-                  ))),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => ChangePassword()));
-                },
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      Text(
+                        widget.name,
+                        style: TextStyle(
+                            color: Colors.tealAccent,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w800),
+                      ),
+                    ],
+                  ),
+                ))),
+            InkWell(
+                onTap: () {},
                 child: Card(
                     child: Container(
                   padding: const EdgeInsets.all(20.0),
@@ -201,13 +171,13 @@ class _UserProfileState extends State<Profile> {
                         child: Row(
                           children: <Widget>[
                             Icon(
-                              Icons.security,
+                              Icons.person,
                               color: Colors.redAccent,
                             ),
                             SizedBox(
                               width: 15.0,
                             ),
-                            Text(Strings.chPass)
+                            Text(Strings.changeProfilePic)
                           ],
                         ),
                       ),
@@ -217,37 +187,73 @@ class _UserProfileState extends State<Profile> {
                       ),
                     ],
                   ),
-                )),
-              ),
-              checkRole(),
-              Center(
-                child: RaisedButton(
-                  color: Colors.red,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Icon(Icons.arrow_back),
-                      SizedBox(
-                        width: 8,
+                ))),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => ChangePassword()));
+              },
+              child: Card(
+                  child: Container(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Row(
+                        children: <Widget>[
+                          Hero(
+                            tag: Strings.heroChpass,
+                            child: Icon(
+                              Icons.security,
+                              color: Colors.redAccent,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 15.0,
+                          ),
+                          Text(Strings.chPass)
+                        ],
                       ),
-                      Text(
-                        Strings.logout,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w800),
-                      ),
-                    ],
-                  ),
-                  onPressed: () {
-                    _logout();
-                  },
-                  splashColor: Colors.orangeAccent,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.red[500],
+                    ),
+                  ],
                 ),
+              )),
+            ),
+            checkRole(),
+            Center(
+              child: RaisedButton(
+                color: Colors.red,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Icon(Icons.arrow_back),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      Strings.logout,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w800),
+                    ),
+                  ],
+                ),
+                onPressed: () {
+                  _logout();
+                },
+                splashColor: Colors.orangeAccent,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      );
+      ),
+    );
   }
 }
