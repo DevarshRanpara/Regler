@@ -24,9 +24,9 @@ class _ManageRoomViewState extends State<ManageRoomView> {
     super.initState();
   }
 
-  void gotoAddRoom() {
+  void gotoAddRoom(String insid) {
     Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => AddRoomView()));
+        MaterialPageRoute(builder: (BuildContext context) => AddRoomView(insid)));
   }
 
   void blockRoom(Room room) {

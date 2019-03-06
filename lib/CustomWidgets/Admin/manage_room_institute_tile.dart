@@ -47,7 +47,7 @@ class _MngRoominstituteState extends State<MngRoominstitute> {
                   children: <Widget>[
                     InkWell(
                         onTap: () {
-                          widget.gotoAddRoom();
+                          widget.gotoAddRoom(widget.institute.id.toString());
                         },
                         child: Card(
                           child: Container(

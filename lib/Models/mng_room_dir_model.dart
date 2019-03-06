@@ -7,6 +7,21 @@ import 'package:flutter_app/Classes/strings.dart';
 import 'package:http/http.dart' as http;
 
 class MngRoomDirModel {
+    Future<void> addRoom(String roomNo,String insid) async {
+    String url = GenerateString.genStringAddRoom(roomNo,insid);
+    http.Response response;
+    try {
+      response = await http.get(
+        Uri.encodeFull(url),
+      );
+    } catch (e) {
+      print(e.toString());
+    }
+    if (response.body.toString() == Strings.msgSuccess) {
+      print(Strings.msgSuccess);
+    }
+  }
+
   Future<void> blockRoom(String id) async {
     String url = GenerateString.genStringBlockRoom(id);
     http.Response response;

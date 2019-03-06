@@ -63,4 +63,7 @@ class GenerateString {
   static String genStringBlockRoom(String id) {
     return UrlLink.url + '?method=blockroom&id=' + id;
   }
+  static String genStringAddRoom(String roomName,String id) {
+    return UrlLink.url + '?method=addroom&roomno='+roomName+'&insid='+id;
+  }
 }

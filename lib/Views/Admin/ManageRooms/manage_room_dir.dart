@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Admin/dialouges_rooms.dart';
@@ -27,7 +28,7 @@ class _ManageRoomDirState extends State<ManageRoomDir> {
 
   void gotoAddRoom() {
     Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => AddRoomView()));
+        MaterialPageRoute(builder: (BuildContext context) => AddRoomView(Preferances.instituteid)));
   }
 
   void blockRoom(Room room) {
