@@ -2,41 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_usage.dart';
+import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
 import 'package:flutter_app/CustomWidgets/Common/usage_report_user.dart';
+import 'package:flutter_app/Models/view_usage_user_model.dart';
 
 class AdminUseView extends StatefulWidget {
-  final List<UserUsage> use;
 
-  AdminUseView(this.use);
+  final String id;
+  AdminUseView(this.id);
 
   @override
   _AdminUseViewState createState() => _AdminUseViewState();
 }
 
 class _AdminUseViewState extends State<AdminUseView> {
+  Widget chart;
+
   List<Widget> list = new List();
 
-  @override
-  void initState() {
-    for (int i = 0; i < widget.use.length; i++) {
-      _addItem(widget.use[i]);
-    }
+  ViewUsageUserModel model = ViewUsageUserModel();
 
-    super.initState();
-  }
-
-  void _addItem(UserUsage data) {
-    setState(() {
-      list.add(UserReport(data));
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  _setChart(List<UserUsage> use) {
     List<Usage> data = new List<Usage>();
 
-    for (int i = 0; i < widget.use.length; i++) {
-      data.add(Usage(i, widget.use[i].use));
+    for (int i = 0; i < use.length; i++) {
+      data.add(Usage(i, use[i].use));
     }
 
     var series = [
@@ -48,26 +38,55 @@ class _AdminUseViewState extends State<AdminUseView> {
       )
     ];
 
-    var chart = charts.LineChart(
+    chart = charts.LineChart(
       series,
       animate: true,
       defaultRenderer: charts.LineRendererConfig(
         includePoints: true,
       ),
     );
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-            body: ListView(
-          children: <Widget>[
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
-            ),
-            InkWell(
-                onTap: () {},
-                child: Card(
-                    child: Container(
-                  padding: const EdgeInsets.all(20.0),
+        body: FutureBuilder(
+      future: model.getUsage(widget.id),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.data == null) {
+          return LoadingAnimationCls();
+        } else {
+          _setChart(snapshot.data);
+          return ListView.builder(
+            itemCount: snapshot.data.length + 1,
+            itemBuilder: (BuildContext conext, int i) {
+              if (i == 0) {
+                return _getUpperUI();
+              }
+              return UserReport(snapshot.data[i - 1]);
+            },
+          );
+        }
+      },
+    ));
+  }
+
+  _getUpperUI() {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
+          ),
+          InkWell(
+              onTap: () {},
+              child: Card(
+                  child: Container(
+                padding: const EdgeInsets.all(20.0),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
                   child: Column(
                     children: <Widget>[
                       Icon(
@@ -87,29 +106,30 @@ class _AdminUseViewState extends State<AdminUseView> {
                       )
                     ],
                   ),
-                ))),
-            InkWell(
-                onTap: () {},
-                child: Card(
-                    child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 200,
-                        width: MediaQuery.of(context).size.width,
-                        child: chart,
-                      ),
-                      //Text("Your use of last seven days"),
-                    ],
-                  ),
-                ))),
-            Column(
-              children: list,
-            )
-          ],
-        ));
+                ),
+              ))),
+          InkWell(
+              onTap: () {},
+              child: Card(
+                  child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 200,
+                      width: MediaQuery.of(context).size.width,
+                      child: chart,
+                    ),
+                  ],
+                ),
+              ))),
+          Column(
+            children: list,
+          )
+        ],
+      ),
+    );
   }
 }
 

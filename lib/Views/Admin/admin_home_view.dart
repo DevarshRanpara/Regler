@@ -50,7 +50,7 @@ class _AdminHomeViewState extends State<AdminHomeView> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (BuildContext context) => AdminUseView(model.use)));
+            builder: (BuildContext context) => AdminUseView(Preferances.id.toString())));
   }
 
   void _gotoManageUsers() async {

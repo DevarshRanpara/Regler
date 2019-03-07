@@ -43,7 +43,7 @@ class _ViewUsageViewState extends State<ViewUsageView> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (BuildContext context) => AdminUseView(use.useData)));
+            builder: (BuildContext context) => AdminUseView(use.id.toString())));
   }
 
   void gotoRoom(List<Room> rooms) {

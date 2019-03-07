@@ -27,7 +27,7 @@ class ViewUsageUserModel {
     );
 
     if (response.body.toString() == 'no_data') {
-      return null;
+      return useData;
     }
 
     print(response.body.toString());
