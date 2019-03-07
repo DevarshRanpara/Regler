@@ -9,7 +9,6 @@ import 'package:flutter_app/Views/Admin/ManageInstitute/manage_institute_view.da
 import 'package:flutter_app/Views/Admin/ManageRooms/manage_room_admin.dart';
 import 'package:flutter_app/Views/Admin/view_complain_view.dart';
 import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_view.dart';
-import 'package:flutter_app/Models/admin_home_model.dart';
 import 'package:flutter_app/CustomWidgets/Admin/common_home_view.dart';
 import 'package:flutter_app/Classes/admin_navigation.dart';
 import 'package:flutter_app/Classes/preferances.dart';
@@ -20,23 +19,25 @@ class AdminHomeView extends StatefulWidget {
 }
 
 class _AdminHomeViewState extends State<AdminHomeView> {
-  AdminHomeModel model;
+  
   Nevigation nevigation;
   UserData data;
 
   @override
   void initState() {
-    if (Preferances.role == Strings.roleAdmin) {
-      model = AdminHomeModel(Preferances.name, Preferances.role);
-    } else {
-      model = AdminHomeModel(Preferances.name, Preferances.role);
-    }
     setData();
     super.initState();
   }
 
   void setData() {
-    data = model.data;
+    data = UserData(
+      id:Preferances.id,
+      name: Preferances.name,
+      url: Preferances.imgurl,
+      institute: Preferances.institute,
+      role: Preferances.role,
+      used: int.parse(Preferances.use)
+    );
   }
 
   void _gotoProfile() {

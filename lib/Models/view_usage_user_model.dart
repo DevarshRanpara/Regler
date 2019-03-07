@@ -10,11 +10,6 @@ class ViewUsageUserModel {
   Future<List<UserData>> getData() async {
     ManageUsersModel model = ManageUsersModel();
     List<UserData> data = await model.getData();
-    // for (int i = 0; i < data.length; i++) {
-    //   int id = data[i].id;
-    //   List<UserUsage> useData = await getUsage(id.toString());
-    //   data[i].useData = useData;
-    // }
     return data;
   }
 
