@@ -24,7 +24,7 @@ class UserTile extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     CircularImage(
-                      AssetImage(Strings.defImage),
+                      NetworkImage(data.url),
                       width: 30,
                       height: 30,
                     ),
@@ -39,7 +39,7 @@ class UserTile extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.1,
+                      width: MediaQuery.of(context).size.width * 0.05,
                     ),
                     Text(
                       data.institute,

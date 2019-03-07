@@ -1,72 +1,54 @@
+import 'dart:convert';
+
+import 'package:flutter_app/Classes/gen_string.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Classes/user_usage.dart';
+import 'package:flutter_app/Models/manage_users_model.dart';
+import 'package:http/http.dart' as http;
 
 class ViewUsageUserModel {
-  List<UserData> data;
-  List<UserUsage> usage;
-
-  ViewUsageUserModel() {
-    usage = [
-      UserUsage(
-          date: "29th Jan, 2019",
-          startingTime: "10:00 AM",
-          endingTime: "10:20 AM",
-          use: 20),
-      UserUsage(
-          date: "29th Jan, 2019",
-          startingTime: "10:00 AM",
-          endingTime: "10:20 AM",
-          use: 30),
-      UserUsage(
-          date: "29th Jan, 2019",
-          startingTime: "10:00 AM",
-          endingTime: "10:20 AM",
-          use: 25),
-      UserUsage(
-          date: "29th Jan, 2019",
-          startingTime: "10:00 AM",
-          endingTime: "10:20 AM",
-          use: 10),
-      UserUsage(
-          date: "29th Jan, 2019",
-          startingTime: "10:00 AM",
-          endingTime: "10:20 AM",
-          use: 15),
-    ];
-
-    data = [
-      UserData(
-          name: "Devarsh",
-          institute: "LJ MCA",
-          useData: usage,
-          limit: 120,
-          used: 100,
-          bal: 20),
-      UserData(
-          name: "Dhaval",
-          institute: "LJ MBA",
-          useData: usage,
-          limit: 120,
-          used: 100,
-          bal: 20),
-      UserData(
-          name: "Kanti",
-          institute: "LJ Eng.",
-          useData: usage,
-          limit: 120,
-          used: 100,
-          bal: 20),
-      UserData(
-          name: "Nilesh",
-          institute: "LJ Art",
-          useData: usage,
-          limit: 120,
-          used: 100,
-          bal: 20),
-    ];
+  Future<List<UserData>> getData() async {
+    ManageUsersModel model = ManageUsersModel();
+    List<UserData> data = await model.getData();
+    // for (int i = 0; i < data.length; i++) {
+    //   int id = data[i].id;
+    //   List<UserUsage> useData = await getUsage(id.toString());
+    //   data[i].useData = useData;
+    // }
+    return data;
   }
 
-  List<UserData> getData() {
-    return data;
+  Future<List<UserUsage>> getUsage(String id) async {
+    List<UserUsage> useData = List<UserUsage>();
+
+    String url = GenerateString.genStringViewUsageUser(id);
+    var response = await http.get(
+      Uri.encodeFull(url),
+    );
+
+    if (response.body.toString() == 'no_data') {
+      return null;
+    }
+
+    print(response.body.toString());
+
+    List data = jsonDecode(response.body);
+
+    for (int i = 0; i < data.length; i++) {
+      UserUsage usage = UserUsage(
+          id: int.parse(data[i]['id']),
+          uname: data[i]['u_name'],
+          institute: data[i]['name'],
+          room: data[i]['room_no'],
+          date: data[i]['reading_date'],
+          startingTime: data[i]['start_time'],
+          endingTime: data[i]['stop_time'],
+          temp: data[i]['temperature'],
+          hum: data[i]['humidity'],
+          use: int.parse(data[i]['usage_time']));
+      useData.add(usage);
+    }
+
+    return useData;
   }
 }

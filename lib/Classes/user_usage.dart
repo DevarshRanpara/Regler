@@ -1,8 +1,25 @@
 class UserUsage {
+  final int id;
+  final String uname;
+  final String institute;
+  final String room;
   final String date;
   final String startingTime;
   final String endingTime;
+  final String temp;
+  final String hum;
   final int use;
 
-  UserUsage({this.date, this.startingTime, this.endingTime, this.use});
+  UserUsage({
+    this.id,
+    this.uname,
+    this.institute,
+    this.room,
+    this.date,
+    this.startingTime,
+    this.endingTime,
+    this.temp,
+    this.hum,
+    this.use
+  });
 }

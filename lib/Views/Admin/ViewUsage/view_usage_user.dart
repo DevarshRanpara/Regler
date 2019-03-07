@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Admin/user_tile.dart';
+import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
 import 'package:flutter_app/Models/view_usage_user_model.dart';
 
 class ViewUsageUser extends StatefulWidget {
@@ -14,56 +15,68 @@ class ViewUsageUser extends StatefulWidget {
 class _ViewUsageUserState extends State<ViewUsageUser> {
   ViewUsageUserModel model = ViewUsageUserModel();
 
-  List<UserData> users = List();
-
-  List<UserTile> userTile = List();
-
-  @override
-  void initState() {
-    users = model.getData();
-
-    for (int i = 0; i < users.length; i++) {
-      userTile.add(UserTile(users[i], widget.gotoUsage));
-    }
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
-        ),
-        InkWell(
-            onTap: () {},
-            child: Card(
-                child: Container(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                children: <Widget>[
-                  Icon(
-                    Icons.supervisor_account,
-                    color: Colors.redAccent,
-                    size: 35.0,
+    return FutureBuilder(
+      future: model.getData(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.data == null) {
+          return LoadingAnimationCls();
+        } else {
+          return ListView.builder(
+            itemCount: snapshot.data.length + 1,
+            itemBuilder: (BuildContext conext, int i) {
+              if (i == 0) {
+                return getUpperUI();
+              }
+              return UserTile(snapshot.data[i-1],widget.gotoUsage);
+            },
+          );
+        }
+      },
+    );
+  }
+
+  getUpperUI() {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
+          ),
+          InkWell(
+              onTap: () {},
+              child: Card(
+                  child: Container(
+                padding: const EdgeInsets.all(20.0),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Icon(
+                        Icons.supervisor_account,
+                        color: Colors.redAccent,
+                        size: 35.0,
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      Text(
+                        Strings.viewUserUsage,
+                        style: TextStyle(
+                            color: Colors.tealAccent,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w200),
+                      )
+                    ],
                   ),
-                  SizedBox(
-                    height: 15.0,
-                  ),
-                  Text(
-                    Strings.viewUserUsage,
-                    style: TextStyle(
-                        color: Colors.tealAccent,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w200),
-                  )
-                ],
-              ),
-            ))),
-        Column(
-          children: userTile,
-        )
-      ],
+                ),
+              ))),
+        ],
+      ),
     );
   }
 }

@@ -66,4 +66,12 @@ class GenerateString {
   static String genStringAddRoom(String roomName,String id) {
     return UrlLink.url + '?method=addroom&roomno='+roomName+'&insid='+id;
   }
+
+  static String genStringViewUsageRoom(String roomid) {
+    return UrlLink.url + '?method=viewUsageRoom&roomid='+roomid;
+  }
+
+  static String genStringViewUsageUser(String userid) {
+    return UrlLink.url + '?method=viewUsageUser&userid='+userid;
+  }
 }

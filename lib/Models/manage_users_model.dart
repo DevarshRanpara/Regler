@@ -67,6 +67,8 @@ class ManageUsersModel {
       return user;
     }
 
+    print(response.body.toString());
+
     List data = jsonDecode(response.body);
 
     for (int i = 0; i < data.length; i++) {
@@ -93,9 +95,6 @@ class ManageUsersModel {
     if (Preferances.role == 'admin') {
       await getInstituteList();
     }
-
-    print(user.toString());
-
     return user;
   }
 }
