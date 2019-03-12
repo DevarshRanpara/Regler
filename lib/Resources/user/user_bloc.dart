@@ -1,5 +1,5 @@
 import 'package:flutter_app/Classes/user_data.dart';
-import 'package:flutter_app/Resources/user_repository.dart';
+import 'package:flutter_app/Resources/user/user_repository.dart';
 import 'package:rxdart/rxdart.dart';
 
 class UserBloc {

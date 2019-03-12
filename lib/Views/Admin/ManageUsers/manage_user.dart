@@ -6,7 +6,7 @@ import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Admin/dialouges_user.dart';
 import 'package:flutter_app/CustomWidgets/Admin/user_detail.dart';
 import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
-import 'package:flutter_app/Resources/user_bloc.dart';
+import 'package:flutter_app/Resources/user/user_bloc.dart';
 
 class ManageUser extends StatefulWidget {
   final Dialogs dialogs;

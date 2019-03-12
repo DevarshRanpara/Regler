@@ -6,7 +6,7 @@ import 'package:flutter_app/CustomWidgets/Admin/dialouges_user.dart';
 import 'package:flutter_app/CustomWidgets/Admin/director_detail_tile.dart';
 import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
-import 'package:flutter_app/Resources/user_bloc.dart';
+import 'package:flutter_app/Resources/user/user_bloc.dart';
 
 class ManageDir extends StatefulWidget {
   final Dialogs dialogs;
