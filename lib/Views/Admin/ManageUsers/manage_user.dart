@@ -52,12 +52,10 @@ class _ManageUserState extends State<ManageUser> {
 
   void deleteUser(UserData user) {
     widget.dialogs.showAlertUserDelete(user);
-    bloc.fetchAllUsers();
   }
 
   void changeLimit(UserData user) {
     widget.dialogs.showAlertUserChlimit(user);
-    bloc.fetchAllUsers();
   }
 
   @override

@@ -52,7 +52,6 @@ class Dialogs {
   }
 
   showAlertUserBlock(UserData user) {
-    // model = ManageUsersModel();
     UserBloc bloc = UserBloc();
     String title;
     if (user.isBlcked) {
@@ -109,7 +108,7 @@ class Dialogs {
   }
 
   showAlertUserDelete(UserData user) {
-    model = ManageUsersModel();
+    UserBloc bloc = UserBloc();
     String title = Strings.deleteUser;
     showDialog(
         context: buildContext,
@@ -142,7 +141,7 @@ class Dialogs {
                 ),
                 onPressed: () {
                   Navigator.pop(buildContext);
-                  model.deleteUser(user);
+                  bloc.deleteUser(user);
                 },
               ),
               RawMaterialButton(

@@ -6,7 +6,7 @@ import 'package:flutter_app/Classes/gen_string.dart';
 import 'package:http/http.dart' as http;
 
 class ManageUsersModel {
-  void deleteUser(UserData user) async {
+  Future<void> deleteUser(UserData user) async {
     String url = GenerateString.genStringDelete(user.id.toString());
     var res = await http.get(Uri.encodeFull(url));
     print(res.body.toString());
@@ -46,9 +46,10 @@ class ManageUsersModel {
   Future<void> blockUser(UserData user) async {
     String url = GenerateString.genStringBlock(user.id.toString());
 
-    await http.get(
+    var res = await http.get(
       Uri.encodeFull(url),
     );
+    print(res.body.toString());
   }
 
   Future<List<UserData>> getData() async {

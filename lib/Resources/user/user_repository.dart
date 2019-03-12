@@ -8,7 +8,7 @@ class UserRepository {
 
   Future<void> blockUser(UserData user) => manageUsers.blockUser(user);
 
-  // Future<List<UserData>> deleteUser() => manageUsers.getData();
+  Future<void> deleteUser(UserData user) => manageUsers.deleteUser(user);
 
   // Future<List<UserData>> changeLimit() => manageUsers.getData();
 }

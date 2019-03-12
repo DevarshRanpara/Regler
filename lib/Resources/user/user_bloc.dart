@@ -15,7 +15,10 @@ class UserBloc {
 
   void blockUser(UserData user) async {
     _repositary.blockUser(user);
-    fetchAllUsers();
+  }
+
+  void deleteUser(UserData user) async {
+    _repositary.deleteUser(user);
   }
 
   dispose() {
