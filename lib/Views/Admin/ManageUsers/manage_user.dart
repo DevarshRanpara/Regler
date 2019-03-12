@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/functions.dart';
 import 'package:flutter_app/Classes/preferances.dart';
@@ -7,7 +6,7 @@ import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Admin/dialouges_user.dart';
 import 'package:flutter_app/CustomWidgets/Admin/user_detail.dart';
 import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
-import 'package:flutter_app/Models/manage_users_model.dart';
+import 'package:flutter_app/Resources/bloc.dart';
 
 class ManageUser extends StatefulWidget {
   final Dialogs dialogs;
@@ -23,8 +22,8 @@ class ManageUser extends StatefulWidget {
 class _ManageUserState extends State<ManageUser> {
   ManageFunctions functions;
 
-  ManageUsersModel model;
-  Stream<List<UserData>> stream;
+  final bloc = Bloc();
+
   double height;
 
   @override
@@ -36,39 +35,30 @@ class _ManageUserState extends State<ManageUser> {
     }
     functions = ManageFunctions(
         block: blockUser, change: changeLimit, delete: deleteUser);
-    model = ManageUsersModel();
-    // _setStream();
-    //bloc.fetchAllUsers();
-    stream = Stream.fromFuture(model.getData());
+    bloc.fetchAllUsers();
     super.initState();
   }
 
-  // _setStream(){
-  //   Timer.periodic(Duration(seconds: 10), (Timer value){
-  //     stream = Stream.fromFuture(model.getData());
-  //   });
-  // }
-
   @override
   void dispose() {
-    //bloc.dispose();
+    bloc.dispose();
     Preferances.institutes.clear();
     super.dispose();
   }
 
   void blockUser(UserData user) {
     widget.dialogs.showAlertUserBlock(user);
-    model.getData();
+    bloc.fetchAllUsers();
   }
 
   void deleteUser(UserData user) {
     widget.dialogs.showAlertUserDelete(user);
-    model.getData();
+    bloc.fetchAllUsers();
   }
 
   void changeLimit(UserData user) {
     widget.dialogs.showAlertUserChlimit(user);
-    model.getData();
+    bloc.fetchAllUsers();
   }
 
   @override
@@ -78,8 +68,7 @@ class _ManageUserState extends State<ManageUser> {
         SizedBox(
           height: MediaQuery.of(context).size.height * height,
           child: StreamBuilder(
-            //stream: bloc.allUsers,
-            stream: stream,
+            stream: bloc.allUsers,
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.data == null) {
                 return LoadingAnimationCls();

@@ -18,4 +18,3 @@ class Bloc {
   }
 }
 
-final bloc = Bloc();
