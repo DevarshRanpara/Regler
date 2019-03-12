@@ -5,8 +5,8 @@ import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Admin/dialouges_user.dart';
 import 'package:flutter_app/CustomWidgets/Admin/director_detail_tile.dart';
 import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
-//import 'package:flutter_app/CustomWidgets/Admin/user_detail.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
+import 'package:flutter_app/Resources/bloc.dart';
 
 class ManageDir extends StatefulWidget {
   final Dialogs dialogs;
@@ -20,21 +20,19 @@ class ManageDir extends StatefulWidget {
 }
 
 class _ManageDirState extends State<ManageDir> {
+  Bloc bloc = Bloc();
   ManageUsersModel model;
   Stream<List<UserData>> stream;
 
   @override
   void initState() {
-    model = ManageUsersModel();
-    stream = Stream.fromFuture(model.getData());
-    //bloc.fetchAllUsers();
-    super.initState();
+    bloc.fetchAllUsers();
     super.initState();
   }
 
   @override
   void dispose() {
-    //bloc.dispose();
+    bloc.dispose();
     Preferances.institutes.clear();
     super.dispose();
   }
@@ -58,8 +56,8 @@ class _ManageDirState extends State<ManageDir> {
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.87,
           child: StreamBuilder(
-            //stream: bloc.allUsers,
-            stream: stream,
+            stream: bloc.allUsers,
+            // stream: stream,
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.data == null) {
                 return LoadingAnimationCls();

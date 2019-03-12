@@ -22,7 +22,7 @@ class ManageUser extends StatefulWidget {
 class _ManageUserState extends State<ManageUser> {
   ManageFunctions functions;
 
-  final bloc = Bloc();
+  Bloc bloc = Bloc();
 
   double height;
 
