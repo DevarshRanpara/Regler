@@ -43,17 +43,12 @@ class ManageUsersModel {
     }
   }
 
-  Future<bool> blockUser(UserData user) async {
+  Future<void> blockUser(UserData user) async {
     String url = GenerateString.genStringBlock(user.id.toString());
 
-    var res = await http.get(
+    await http.get(
       Uri.encodeFull(url),
     );
-    if (res.body.toString() == 'success') {
-      return true;
-    } else {
-      return false;
-    }
   }
 
   Future<List<UserData>> getData() async {

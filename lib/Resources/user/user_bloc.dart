@@ -13,6 +13,11 @@ class UserBloc {
     _userFetcher.sink.add(userData);
   }
 
+  void blockUser(UserData user) async {
+    _repositary.blockUser(user);
+    fetchAllUsers();
+  }
+
   dispose() {
     _userFetcher.close();
   }

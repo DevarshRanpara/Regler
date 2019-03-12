@@ -5,4 +5,10 @@ class UserRepository {
   final manageUsers = ManageUsersModel();
 
   Future<List<UserData>> fetchAllUsers() => manageUsers.getData();
+
+  Future<void> blockUser(UserData user) => manageUsers.blockUser(user);
+
+  // Future<List<UserData>> deleteUser() => manageUsers.getData();
+
+  // Future<List<UserData>> changeLimit() => manageUsers.getData();
 }

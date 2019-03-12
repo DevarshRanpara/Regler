@@ -3,6 +3,7 @@ import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/Models/manage_users_model.dart';
+import 'package:flutter_app/Resources/user/user_bloc.dart';
 
 class Dialogs {
   BuildContext buildContext;
@@ -51,7 +52,8 @@ class Dialogs {
   }
 
   showAlertUserBlock(UserData user) {
-    model = ManageUsersModel();
+    // model = ManageUsersModel();
+    UserBloc bloc = UserBloc();
     String title;
     if (user.isBlcked) {
       title = Strings.unblockUser;
@@ -89,7 +91,7 @@ class Dialogs {
                 ),
                 onPressed: () {
                   Navigator.pop(buildContext);
-                  model.blockUser(user);
+                  bloc.blockUser(user);
                 },
               ),
               RawMaterialButton(
