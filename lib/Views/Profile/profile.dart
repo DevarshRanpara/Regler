@@ -29,6 +29,10 @@ class _UserProfileState extends State<Profile> {
     scaffoldKey.currentState.showSnackBar(snackbar);
   }
 
+  _initPref() async {
+    prefs = await SharedPreferences.getInstance();
+  }
+
   Widget checkRole() {
     if (widget.role == Strings.roleUser) {
       return InkWell(
@@ -117,6 +121,7 @@ class _UserProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
+    _initPref();
     return Scaffold(
       key: scaffoldKey,
       body: Container(
