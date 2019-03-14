@@ -12,7 +12,7 @@ class InstituteTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        gotoRoom(data.rooms);
+        gotoRoom(data.id);
       },
       child: Card(
         child: Container(

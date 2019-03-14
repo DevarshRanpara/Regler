@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Classes/room.dart';
+import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Models/view_usage_institute_model.dart';
@@ -31,8 +31,8 @@ class _ViewUsageViewState extends State<ViewUsageView> {
       pages = [usageUser, usageInstitute];
     } else {
       inst = Strings.room;
-      ViewUsageInstituteModel model = ViewUsageInstituteModel();
-      Widget usageRoom = ViewUsageRoom(model.institutes[0].rooms, 0);
+      // ViewUsageInstituteModel model = ViewUsageInstituteModel();
+      Widget usageRoom = ViewUsageRoom(int.parse(Preferances.instituteid), 0);
       pages = [usageUser, usageRoom];
     }
 
@@ -46,11 +46,11 @@ class _ViewUsageViewState extends State<ViewUsageView> {
             builder: (BuildContext context) => AdminUseView(use.id.toString())));
   }
 
-  void gotoRoom(List<Room> rooms) {
+  void gotoRoom(int id) {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (BuildContext context) => ViewUsageRoom(rooms, 8)));
+            builder: (BuildContext context) => ViewUsageRoom(id, 8)));
   }
 
   @override
