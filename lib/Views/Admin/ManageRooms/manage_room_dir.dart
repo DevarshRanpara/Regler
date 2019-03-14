@@ -48,7 +48,7 @@ class _ManageRoomDirState extends State<ManageRoomDir> {
             itemCount: snapshot.data.length + 1,
             itemBuilder: (BuildContext conext, int i) {
               if (i == 0) {
-                return getUpperUI();
+                return _getUpperUI();
               }
               return RoomTile(snapshot.data[i - 1],blockRoom);
             },
@@ -58,7 +58,7 @@ class _ManageRoomDirState extends State<ManageRoomDir> {
     ));
   }
 
-  getUpperUI() {
+  _getUpperUI() {
     return SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(

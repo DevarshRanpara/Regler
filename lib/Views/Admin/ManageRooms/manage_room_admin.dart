@@ -46,7 +46,7 @@ class _ManageRoomViewState extends State<ManageRoomView> {
             itemCount: snapshot.data.length + 1,
             itemBuilder: (BuildContext conext, int i) {
               if (i == 0) {
-                return getUpperUI();
+                return _getUpperUI();
               }
               return MngRoominstitute(snapshot.data[i - 1], gotoAddRoom,blockRoom);
             },
@@ -56,7 +56,7 @@ class _ManageRoomViewState extends State<ManageRoomView> {
     ));
   }
 
-  getUpperUI() {
+  _getUpperUI() {
     return SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(

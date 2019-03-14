@@ -66,7 +66,7 @@ class _ManageDirState extends State<ManageDir> {
                   itemCount: snapshot.data.length + 1,
                   itemBuilder: (BuildContext conext, int i) {
                     if (i == 0) {
-                      return getUpperUI();
+                      return _getUpperUI();
                     }
                     return DirDetailTile(snapshot.data[i - 1], blockUser,
                         deleteUser, changeLimit);
@@ -80,7 +80,7 @@ class _ManageDirState extends State<ManageDir> {
     );
   }
 
-  Widget getUpperUI() {
+  Widget _getUpperUI() {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Column(

@@ -33,7 +33,7 @@ class _ViewUsageRoomState extends State<ViewUsageRoom> {
                 itemCount: snapshot.data.length + 1,
                 itemBuilder: (BuildContext conext, int i) {
                   if (i == 0) {
-                    return _getUpperUI();
+                    return __getUpperUI();
                   }
                   return RoomUsageTile(snapshot.data[i - 1]);
                 },
@@ -45,7 +45,7 @@ class _ViewUsageRoomState extends State<ViewUsageRoom> {
     );
   }
 
-  _getUpperUI() {
+  __getUpperUI() {
     return Column(
       children: <Widget>[
         Padding(

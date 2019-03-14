@@ -70,10 +70,6 @@ class _UserProfileState extends State<Profile> {
     }
   }
 
-  initPref() async {
-    prefs = await SharedPreferences.getInstance();
-  }
-
   _logout() {
     showDialog(
         context: context,
@@ -121,7 +117,6 @@ class _UserProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    initPref();
     return Scaffold(
       key: scaffoldKey,
       body: Container(

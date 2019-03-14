@@ -61,7 +61,7 @@ class _AdminUseViewState extends State<AdminUseView> {
             itemCount: snapshot.data.length + 1,
             itemBuilder: (BuildContext conext, int i) {
               if (i == 0) {
-                return _getUpperUI();
+                return __getUpperUI();
               }
               return UserReport(snapshot.data[i - 1]);
             },
@@ -71,7 +71,7 @@ class _AdminUseViewState extends State<AdminUseView> {
     ));
   }
 
-  _getUpperUI() {
+  __getUpperUI() {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Column(

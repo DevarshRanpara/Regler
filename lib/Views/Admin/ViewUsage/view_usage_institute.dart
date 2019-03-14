@@ -28,7 +28,7 @@ class _ViewUsageInstituteState extends State<ViewUsageInstitute> {
             itemCount: snapshot.data.length + 1,
             itemBuilder: (BuildContext conext, int i) {
               if (i == 0) {
-                return getUpperUI();
+                return _getUpperUI();
               }
               return InstituteTile(snapshot.data[i - 1], widget.gotoRoom);
             },
@@ -38,7 +38,7 @@ class _ViewUsageInstituteState extends State<ViewUsageInstitute> {
     );
   }
 
-  getUpperUI() {
+  _getUpperUI() {
     return Column(
       children: <Widget>[
         Padding(

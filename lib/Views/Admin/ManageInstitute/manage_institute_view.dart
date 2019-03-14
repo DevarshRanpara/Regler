@@ -52,7 +52,7 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
             itemCount: snapshot.data.length + 1,
             itemBuilder: (BuildContext conext, int i) {
               if (i == 0) {
-                return getUpperUI();
+                return _getUpperUI();
               }
               return ManageinstituteTile(snapshot.data[i - 1], functions);
             },
@@ -62,7 +62,7 @@ class _ManageBuildingViewState extends State<ManageBuildingView> {
     ));
   }
 
-  getUpperUI() {
+  _getUpperUI() {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Column(

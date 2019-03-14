@@ -26,7 +26,7 @@ class _ViewUsageUserState extends State<ViewUsageUser> {
             itemCount: snapshot.data.length + 1,
             itemBuilder: (BuildContext conext, int i) {
               if (i == 0) {
-                return getUpperUI();
+                return _getUpperUI();
               }
               return UserTile(snapshot.data[i-1],widget.gotoUsage);
             },
@@ -36,7 +36,7 @@ class _ViewUsageUserState extends State<ViewUsageUser> {
     );
   }
 
-  getUpperUI() {
+  _getUpperUI() {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Column(
