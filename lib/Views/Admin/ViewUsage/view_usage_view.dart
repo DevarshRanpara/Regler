@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
-import 'package:flutter_app/Models/view_usage_institute_model.dart';
 import 'package:flutter_app/Views/Admin/admin_use_view.dart';
 import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_institute.dart';
 import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_room.dart';
