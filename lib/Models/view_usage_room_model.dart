@@ -1,84 +1,42 @@
+import 'package:flutter_app/Classes/gen_string.dart';
 import 'package:flutter_app/Classes/user_usage.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class ViewUsageRoomModel
 {
-  List<UserUsage> usage = List<UserUsage>();
-  ViewUsageRoomModel()
-  {
-    _setData();
-  }
+  Future<List<UserUsage>> getUsage(String id) async {
+    List<UserUsage> useData = List<UserUsage>();
 
-  _setData(){
-    usage=[
-      UserUsage(
-        id:1,
-        uname: 'Devarsh',
-        imgurl: 'https://devicemanagament.000webhostapp.com/userimages/defult.png',
-        institute: 'LJMCA',
-        room: 'MCA01',
-        date: '10/11/13',
-        startingTime: '1:1:1',
-        endingTime: '1,1,1',
-        temp: '10',
-        hum: '10',
-        use: 100
-      ),
-            UserUsage(
-        id:1,
-        uname: 'Devarsh',
-        imgurl: 'https://devicemanagament.000webhostapp.com/userimages/defult.png',
-        institute: 'LJMCA',
-        room: 'MCA01',
-        date: '10/11/13',
-        startingTime: '1:1:1',
-        endingTime: '1,1,1',
-        temp: '10',
-        hum: '10',
-        use: 100
-      ),
-            UserUsage(
-        id:1,
-        uname: 'Devarsh',
-        imgurl: 'https://devicemanagament.000webhostapp.com/userimages/defult.png',
-        institute: 'LJMCA',
-        room: 'MCA01',
-        date: '10/11/13',
-        startingTime: '1:1:1',
-        endingTime: '1,1,1',
-        temp: '10',
-        hum: '10',
-        use: 100
-      ),
-            UserUsage(
-        id:1,
-        uname: 'Devarsh',
-        imgurl: 'https://devicemanagament.000webhostapp.com/userimages/defult.png',
-        institute: 'LJMCA',
-        room: 'MCA01',
-        date: '10/11/13',
-        startingTime: '1:1:1',
-        endingTime: '1,1,1',
-        temp: '10',
-        hum: '10',
-        use: 100
-      ),
-            UserUsage(
-        id:1,
-        uname: 'Devarsh',
-        imgurl: 'https://devicemanagament.000webhostapp.com/userimages/defult.png',
-        institute: 'LJMCA',
-        room: 'MCA01',
-        date: '10/11/13',
-        startingTime: '1:1:1',
-        endingTime: '1,1,1',
-        temp: '10',
-        hum: '10',
-        use: 100
-      ),
-    ];
-  }
+    String url = GenerateString.genStringViewUsageRoom(id);
+    var response = await http.get(
+      Uri.encodeFull(url),
+    );
 
-  List<UserUsage> getData(){
-    return usage;
+    if (response.body.toString() == 'no_data') {
+      return useData;
+    }
+
+    print(response.body.toString());
+
+    List data = jsonDecode(response.body);
+
+    for (int i = 0; i < data.length; i++) {
+      UserUsage usage = UserUsage(
+          id: int.parse(data[i]['id']),
+          uname: data[i]['u_name'],
+          imgurl: data[i]['image_url'],
+          institute: data[i]['name'],
+          room: data[i]['room_no'],
+          date: data[i]['reading_date'],
+          startingTime: data[i]['start_time'],
+          endingTime: data[i]['stop_time'],
+          temp: data[i]['temperature'],
+          hum: data[i]['humidity'],
+          use: int.parse(data[i]['usage_time']));
+      useData.add(usage);
+    }
+
+    return useData;
   }
 }

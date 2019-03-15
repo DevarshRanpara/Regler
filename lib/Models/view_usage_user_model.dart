@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_app/Classes/gen_string.dart';
 import 'package:flutter_app/Classes/user_data.dart';
 import 'package:flutter_app/Classes/user_usage.dart';
