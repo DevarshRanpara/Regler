@@ -3,9 +3,11 @@ import 'package:flutter_app/Classes/room.dart';
 
 class RoomUsageTile extends StatefulWidget {
 
+  final Function gotoRoomUsage;
+
   final Room room;
 
-  RoomUsageTile(this.room);
+  RoomUsageTile(this.room,this.gotoRoomUsage);
 
   @override
   _RoomTileState createState() => _RoomTileState();
@@ -15,7 +17,9 @@ class _RoomTileState extends State<RoomUsageTile> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        widget.gotoRoomUsage(widget.room);
+      },
       child: Card(
         child: Container(
           padding: EdgeInsets.all(20.0),

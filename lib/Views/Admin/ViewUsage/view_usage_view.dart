@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/preferances.dart';
+import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_data.dart';
+import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_room.dart';
 import 'package:flutter_app/Views/Admin/admin_use_view.dart';
 import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_institute.dart';
 import 'package:flutter_app/Views/Admin/ViewUsage/view_usage_room_list.dart';
@@ -31,7 +33,7 @@ class _ViewUsageViewState extends State<ViewUsageView> {
     } else {
       inst = Strings.room;
       // ViewUsageInstituteModel model = ViewUsageInstituteModel();
-      Widget usageRoom = ViewUsageRoomList(int.parse(Preferances.instituteid), 0);
+      Widget usageRoom = ViewUsageRoomList(int.parse(Preferances.instituteid), 0,gotoRoomUsage);
       pages = [usageUser, usageRoom];
     }
 
@@ -45,18 +47,18 @@ class _ViewUsageViewState extends State<ViewUsageView> {
             builder: (BuildContext context) => AdminUseView(use.id.toString())));
   }
 
-  // void gotoRoomUsage(){
-  //   Navigator.push(
-  //       context,
-  //       MaterialPageRoute(
-  //           builder: (BuildContext context) => ));
-  // }
+  void gotoRoomUsage(Room room){
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => RoomUseView(room)));
+  }
 
   void gotoRoom(int id) {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (BuildContext context) => ViewUsageRoomList(id, 8)));
+            builder: (BuildContext context) => ViewUsageRoomList(id, 8,gotoRoomUsage)));
   }
 
   @override

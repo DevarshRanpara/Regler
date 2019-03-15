@@ -157,4 +157,6 @@ class Strings {
   static const String unblockRoom = 'Unblock Room';
 
   static const String errorRoomNo = 'Room number must less then 5';
+
+  static const String roomTitle = " 's Usage";
 }

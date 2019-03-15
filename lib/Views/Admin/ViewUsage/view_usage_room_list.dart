@@ -5,11 +5,13 @@ import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
 import 'package:flutter_app/Models/manage_room_admin_model.dart';
 
 class ViewUsageRoomList extends StatefulWidget {
+
+  final Function gotoRoomUsage;
   final int id;
 
   final double margine;
 
-  ViewUsageRoomList(this.id, this.margine);
+  ViewUsageRoomList(this.id, this.margine,this.gotoRoomUsage);
   @override
   _ViewUsageRoomListState createState() => _ViewUsageRoomListState();
 }
@@ -35,7 +37,7 @@ class _ViewUsageRoomListState extends State<ViewUsageRoomList> {
                   if (i == 0) {
                     return __getUpperUI();
                   }
-                  return RoomUsageTile(snapshot.data[i - 1]);
+                  return RoomUsageTile(snapshot.data[i - 1],widget.gotoRoomUsage);
                 },
               );
             }
