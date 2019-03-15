@@ -4,34 +4,25 @@ import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/Classes/user_usage.dart';
 import 'package:flutter_app/CustomWidgets/Admin/view_room_use_tile.dart';
-import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
-import 'package:flutter_app/CustomWidgets/Common/usage_report_user.dart';
 import 'package:flutter_app/Models/view_usage_room_model.dart';
-import 'package:flutter_app/Models/view_usage_user_model.dart';
 
 class RoomUseView extends StatefulWidget {
   final Room room;
-
   RoomUseView(this.room);
-
   @override
   _RoomUseViewState createState() => _RoomUseViewState();
 }
 
 class _RoomUseViewState extends State<RoomUseView> {
-
   Widget chart;
-
   ViewUsageRoomModel model = ViewUsageRoomModel();
 
   _setChart(List<UserUsage> use) {
     List<Usage> data = new List<Usage>();
-
     for (int i = 0; i < use.length; i++) {
       data.add(Usage(i, use[i].use));
     }
-
     var series = [
       charts.Series<Usage, int>(
         id: Strings.usage,
@@ -53,30 +44,25 @@ class _RoomUseViewState extends State<RoomUseView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // body: Container(
-      //   margin: EdgeInsets.all(8.0),
-      //   child: __getUpperUI(),
-      // ),
-          body: FutureBuilder(
-        future: model.getUsage(widget.room.id.toString()),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.data == null) {
-            return LoadingAnimationCls();
-          } else {
-            _setChart(snapshot.data);
-            return ListView.builder(
-              itemCount: snapshot.data.length + 1,
-              itemBuilder: (BuildContext conext, int i) {
-                if (i == 0) {
-                  return __getUpperUI();
-                }
-                return ViewRoomUseTile(snapshot.data[i - 1]);
-              },
-            );
-          }
-        },
-      )
-    );
+        body: FutureBuilder(
+      future: model.getUsage(widget.room.id.toString()),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.data == null) {
+          return LoadingAnimationCls();
+        } else {
+          _setChart(snapshot.data);
+          return ListView.builder(
+            itemCount: snapshot.data.length + 1,
+            itemBuilder: (BuildContext conext, int i) {
+              if (i == 0) {
+                return __getUpperUI();
+              }
+              return ViewRoomUseTile(snapshot.data[i - 1]);
+            },
+          );
+        }
+      },
+    ));
   }
 
   __getUpperUI() {

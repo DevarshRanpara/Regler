@@ -93,7 +93,7 @@ class Strings {
 
   static const String welcomeMr = "Welcome Mr. ";
   static const String defImage = "assets/dev.jpeg";
-  static const String acNo = "AC No. ";
+  static const String roomNo = "Room No. : ";
   static const String unblockIns = "Unblock Institute";
   static const String blockIns = "Block Institute";
   static const String yes = "Yes";
@@ -159,4 +159,5 @@ class Strings {
   static const String errorRoomNo = 'Room number must less then 5';
 
   static const String roomTitle = " 's Usage";
+  static const String inst = 'Inst : ';
 }

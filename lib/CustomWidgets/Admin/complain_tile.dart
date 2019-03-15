@@ -30,11 +30,18 @@ class ComplainTile extends StatelessWidget {
                         SizedBox(
                           width: 10.0,
                         ),
-                        Text(complain.uname)
+                        Text(complain.uname),
                       ],
                     ),
+
                   ),
-                  Text(Strings.acNo + complain.acNo)
+                  Text(Strings.inst + complain.institute,
+                  style: TextStyle(color: Colors.tealAccent),
+                  ),
+                  SizedBox(width: 30.0,),
+                  Text(Strings.roomNo + complain.roomNO,
+                  style: TextStyle(color: Colors.tealAccent),
+                  )
                 ],
               ),
               Row(

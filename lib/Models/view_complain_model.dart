@@ -5,13 +5,13 @@ class ViewComplainModel {
   ViewComplainModel() {
     complain = [
       Complain(
-          id: 1, uname: "Devarsh", complain: "AC Not working", acNo: "101"),
-      Complain(id: 2, uname: "Nilesh", complain: "Module Problem", acNo: "103"),
+          id: 1, uname: "Devarsh", complain: "AC Not working",institute: 'MCA' ,roomNO: "101"),
+      Complain(id: 2, uname: "Nilesh", complain: "Module Problem",institute: 'MCA', roomNO: "103"),
       Complain(
-          id: 3, uname: "Dhaval", complain: "Card not working", acNo: "102"),
-      Complain(id: 4, uname: "Kanti", complain: "AC Not working", acNo: "106"),
-      Complain(id: 5, uname: "Kirtan", complain: "AC Not working", acNo: "107"),
-      Complain(id: 5, uname: "Kirtan", complain: "AC Not working", acNo: "107"),
+          id: 3, uname: "Dhaval", complain: "Card not working",institute: 'MCA', roomNO: "102"),
+      Complain(id: 4, uname: "Kanti", complain: "AC Not working",institute: 'MCA', roomNO: "106"),
+      Complain(id: 5, uname: "Kirtan", complain: "AC Not working",institute: 'MCA', roomNO: "107"),
+      Complain(id: 5, uname: "Kirtan", complain: "AC Not working",institute: 'MCA', roomNO: "107"),
     ];
   }
 
