@@ -4,17 +4,17 @@ import 'package:flutter_app/CustomWidgets/Admin/room_usage_tile.dart';
 import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
 import 'package:flutter_app/Models/manage_room_admin_model.dart';
 
-class ViewUsageRoom extends StatefulWidget {
+class ViewUsageRoomList extends StatefulWidget {
   final int id;
 
   final double margine;
 
-  ViewUsageRoom(this.id, this.margine);
+  ViewUsageRoomList(this.id, this.margine);
   @override
-  _ViewUsageRoomState createState() => _ViewUsageRoomState();
+  _ViewUsageRoomListState createState() => _ViewUsageRoomListState();
 }
 
-class _ViewUsageRoomState extends State<ViewUsageRoom> {
+class _ViewUsageRoomListState extends State<ViewUsageRoomList> {
   List<RoomUsageTile> roomtile = List();
   MngRoomAdminModel model = MngRoomAdminModel();
 

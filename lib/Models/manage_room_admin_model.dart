@@ -62,14 +62,14 @@ class MngRoomAdminModel {
       print(e.toString());
     }
     if (response == null) {
-      return null;
+      return rooms;
     }
     print(response.body.toString());
 
     List data;
 
     if (response.body.toString() == 'no_data') {
-      return null;
+      return rooms;
     } else {
       data = jsonDecode(response.body);
     }
