@@ -82,7 +82,7 @@ class UserReport extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     CircularImage(
-                      AssetImage(Strings.defImage),
+                      NetworkImage(data.imgurl),
                       width: 20,
                       height: 20,
                     ),
