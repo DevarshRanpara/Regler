@@ -19,31 +19,35 @@ class ComplainTile extends StatelessWidget {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Expanded(
-                    child: Row(
-                      children: <Widget>[
-                        CircularImage(
-                          AssetImage(Strings.defImage),
-                          width: 20,
-                          height: 20,
-                        ),
-                        SizedBox(
-                          width: 10.0,
-                        ),
-                        Text(complain.uname),
-                      ],
-                    ),
-
+                  CircularImage(
+                    AssetImage(Strings.defImage),
+                    width: 20,
+                    height: 20,
                   ),
-                  Text(Strings.inst + complain.institute,
-                  style: TextStyle(color: Colors.tealAccent),
+                  SizedBox(
+                    width: 10.0,
                   ),
-                  SizedBox(width: 30.0,),
-                  Text(Strings.roomNo + complain.roomNO,
-                  style: TextStyle(color: Colors.tealAccent),
+                  Text(complain.uname),
+                ],
+              ),
+             Padding(
+               padding: EdgeInsets.only(top : 20.0),
+               child:  Row(
+                children: <Widget>[
+                  Text(
+                    Strings.inst + complain.institute,
+                    style: TextStyle(color: Colors.tealAccent),
+                  ),
+                  SizedBox(
+                    width: 30.0,
+                  ),
+                  Text(
+                    Strings.roomNo + complain.roomNO,
+                    style: TextStyle(color: Colors.tealAccent),
                   )
                 ],
               ),
+             ),
               Row(
                 children: <Widget>[
                   Padding(

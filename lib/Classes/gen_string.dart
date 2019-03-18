@@ -74,4 +74,9 @@ class GenerateString {
   static String genStringViewUsageUser(String userid) {
     return UrlLink.url + '?method=viewUsageUser&userid='+userid;
   }
+
+  static String genStringViewComplain(String userid) {
+    return UrlLink.url + '?method=viewcomplain&id='+userid;
+  }
+  
 }
