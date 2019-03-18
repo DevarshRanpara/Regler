@@ -25,3 +25,4 @@ class UserUsage {
     this.use
   });
 }
+
