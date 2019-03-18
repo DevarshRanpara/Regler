@@ -7,9 +7,10 @@ import 'package:flutter_app/CustomWidgets/Admin/manage_room_tile.dart';
 
 class MngRoominstitute extends StatefulWidget {
   final Function blockRoom;
+  final Function deleteRoom;
   final Function gotoAddRoom;
   final Institute institute;
-  MngRoominstitute(this.institute, this.gotoAddRoom,this.blockRoom);
+  MngRoominstitute(this.institute, this.gotoAddRoom,this.blockRoom,this.deleteRoom);
   @override
   _MngRoominstituteState createState() => _MngRoominstituteState();
 }
@@ -24,7 +25,7 @@ class _MngRoominstituteState extends State<MngRoominstitute> {
 
     if (rooms != null) {
       for (int i = 0; i < rooms.length; i++) {
-        roomtiles.add(RoomTile(rooms[i],widget.blockRoom));
+        roomtiles.add(RoomTile(rooms[i],widget.blockRoom,widget.deleteRoom));
       }
     } else {
       roomtiles.add(Container());

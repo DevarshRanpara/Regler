@@ -161,4 +161,6 @@ class Strings {
   static const String roomTitle = " 's Usage";
   static const String inst = 'Inst : ';
   static const String ok = 'Ok';
+
+  static const String deleteroom = "Delete Room";
 }

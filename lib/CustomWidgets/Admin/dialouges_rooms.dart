@@ -61,81 +61,50 @@ class DialogsRooms {
         });
   }
 
-  // showAlertInstituteDelete(Institute ins) {
-  //   String title = Strings.deleteIns;
-  //   showDialog(
-  //       context: buildContext,
-  //       builder: (BuildContext context) {
-  //         return AlertDialog(
-  //           title: Text(title),
-  //           content: Column(
-  //             mainAxisSize: MainAxisSize.min,
-  //             children: <Widget>[
-  //               Row(
-  //                 children: <Widget>[
-  //                   Icon(Icons.location_city, color: Colors.red),
-  //                   SizedBox(
-  //                     width: 10.0,
-  //                   ),
-  //                   Text(ins.name)
-  //                 ],
-  //               )
-  //             ],
-  //           ),
-  //           actions: <Widget>[
-  //             RawMaterialButton(
-  //               child: Text(
-  //                 Strings.yes,
-  //                 style: TextStyle(color: Colors.white),
-  //               ),
-  //               onPressed: () {
-  //                 Navigator.pop(buildContext);
-  //               },
-  //             ),
-  //             RawMaterialButton(
-  //               child: Text(
-  //                 Strings.no,
-  //                 style: TextStyle(color: Colors.white),
-  //               ),
-  //               onPressed: () {
-  //                 Navigator.pop(buildContext);
-  //               },
-  //             )
-  //           ],
-  //         );
-  //       });
-  // }
+  showAlertRoomDelete(Room room) {
+    MngRoomDirModel model = MngRoomDirModel();
 
-  // showAlertInstituteChDir(Institute ins) {
-  //   String title = Strings.chDir;
-  //   showDialog(
-  //       context: buildContext,
-  //       builder: (BuildContext context) {
-  //         return AlertDialog(
-  //           title: Text(title),
-  //           content: Column(
-  //             mainAxisSize: MainAxisSize.min,
-  //             children: <Widget>[],
-  //           ),
-  //           actions: <Widget>[
-  //             RawMaterialButton(
-  //               child: Text(
-  //                 Strings.yes,
-  //                 style: TextStyle(color: Colors.white),
-  //               ),
-  //               onPressed: () {},
-  //             ),
-  //             RawMaterialButton(
-  //               child: Text(
-  //                 Strings.no,
-  //                 style: TextStyle(color: Colors.white),
-  //               ),
-  //               onPressed: () {
-  //                 Navigator.pop(buildContext);
-  //               },
-  //             )
-  //           ],
-  //         );
-  //       });
-  // }
+    showDialog(
+        context: buildContext,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(Strings.deleteroom),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(Icons.crop_square, color: Colors.red),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(room.name)
+                  ],
+                )
+              ],
+            ),
+            actions: <Widget>[
+              RawMaterialButton(
+                child: Text(
+                  Strings.yes,
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  Navigator.pop(buildContext);
+                  model.deleteRoom(room.id.toString());
+                },
+              ),
+              RawMaterialButton(
+                child: Text(
+                  Strings.no,
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  Navigator.pop(buildContext);
+                },
+              )
+            ],
+          );
+        });
+  }
 }

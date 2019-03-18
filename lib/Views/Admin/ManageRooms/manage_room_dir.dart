@@ -34,6 +34,9 @@ class _ManageRoomDirState extends State<ManageRoomDir> {
   void blockRoom(Room room) {
     dialog.showAlertRoomBlock(room);
   }
+  void deleteRoom(Room room) {
+    dialog.showAlertRoomDelete(room);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +53,7 @@ class _ManageRoomDirState extends State<ManageRoomDir> {
               if (i == 0) {
                 return _getUpperUI();
               }
-              return RoomTile(snapshot.data[i - 1],blockRoom);
+              return RoomTile(snapshot.data[i - 1],blockRoom,deleteRoom);
             },
           );
         }

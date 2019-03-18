@@ -22,6 +22,21 @@ class MngRoomDirModel {
     }
   }
 
+    Future<void> deleteRoom(String id) async {
+    String url = GenerateString.genStringDeleteRoom(id);
+    http.Response response;
+    try {
+      response = await http.get(
+        Uri.encodeFull(url),
+      );
+    } catch (e) {
+      print(e.toString());
+    }
+    if (response.body.toString() == Strings.msgSuccess) {
+      print(Strings.msgSuccess);
+    }
+  }
+
   Future<void> blockRoom(String id) async {
     String url = GenerateString.genStringBlockRoom(id);
     http.Response response;

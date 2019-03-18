@@ -79,4 +79,7 @@ class GenerateString {
     return UrlLink.url + '?method=viewcomplain&id='+userid;
   }
   
+  static String genStringDeleteRoom(String roomid) {
+    return UrlLink.url + '?method=deleteRoom&roomid='+roomid;
+  }
 }

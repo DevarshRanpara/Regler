@@ -25,14 +25,19 @@ class _ManageRoomViewState extends State<ManageRoomView> {
   }
 
   void gotoAddRoom(String insid) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => AddRoomView(insid)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => AddRoomView(insid)));
   }
 
   void blockRoom(Room room) {
     dialog.showAlertRoomBlock(room);
   }
 
+  void deleteRoom(Room room) {
+    dialog.showAlertRoomDelete(room);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +53,8 @@ class _ManageRoomViewState extends State<ManageRoomView> {
               if (i == 0) {
                 return _getUpperUI();
               }
-              return MngRoominstitute(snapshot.data[i - 1], gotoAddRoom,blockRoom);
+              return MngRoominstitute(
+                  snapshot.data[i - 1], gotoAddRoom, blockRoom,deleteRoom);
             },
           );
         }

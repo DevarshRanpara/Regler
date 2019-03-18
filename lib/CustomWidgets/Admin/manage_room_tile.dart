@@ -3,10 +3,11 @@ import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/strings.dart';
 
 class RoomTile extends StatefulWidget {
+  final Function deleteRoom;
   final Function blockRoom;
   final Room room;
 
-  RoomTile(this.room, this.blockRoom);
+  RoomTile(this.room, this.blockRoom,this.deleteRoom);
 
   @override
   _RoomTileState createState() => _RoomTileState();
@@ -76,7 +77,9 @@ class _RoomTileState extends State<RoomTile> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.3,
               child: RawMaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  widget.deleteRoom(widget.room);
+                },
                 child: Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),

@@ -12,6 +12,10 @@ class MngRoomAdminModel {
     model.blockRoom(id);
   }
 
+  Future<void> deleteRoom(String id) async {
+    model.deleteRoom(id);
+  }
+
   Future<List<Institute>> getData() async {
     List<Room> rooms = List<Room>();
     List<Institute> institutes = List<Institute>();
