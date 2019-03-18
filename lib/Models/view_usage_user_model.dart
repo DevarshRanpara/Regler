@@ -32,6 +32,7 @@ class ViewUsageUserModel {
       UserUsage usage = UserUsage(
           id: int.parse(data[i]['id']),
           uname: data[i]['u_name'],
+          imgurl: data[i]['image_url'],
           institute: data[i]['name'],
           room: data[i]['room_no'],
           date: data[i]['reading_date'],

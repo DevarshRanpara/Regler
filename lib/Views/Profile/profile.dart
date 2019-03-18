@@ -8,10 +8,6 @@ import './change_password_view.dart';
 import './complain_view.dart';
 
 class Profile extends StatefulWidget {
-  final String name, role;
-
-  Profile(this.name, this.role);
-
   @override
   _UserProfileState createState() => _UserProfileState();
 }
@@ -34,7 +30,7 @@ class _UserProfileState extends State<Profile> {
   }
 
   Widget checkRole() {
-    if (widget.role == Strings.roleUser) {
+    if (Preferances.role == Strings.roleUser) {
       return InkWell(
         onTap: () {
           Navigator.push(context,
@@ -151,7 +147,7 @@ class _UserProfileState extends State<Profile> {
                         height: 15.0,
                       ),
                       Text(
-                        widget.name,
+                        Preferances.name,
                         style: TextStyle(
                             color: Colors.tealAccent,
                             fontSize: 20.0,
