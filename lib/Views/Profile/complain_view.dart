@@ -12,18 +12,39 @@ class _ComplainState extends State<Complain> {
   String expantitle = Strings.selectAc;
   final GlobalKey<AppExpansionTileState> expansionTile = new GlobalKey();
 
+  List<String> roomData = ['MCA01', 'MCA02'];
+  List<Widget> listTles = List<Widget>();
+
+  @override
+  void initState() {
+    for (int i = 0; i < roomData.length; i++) {
+      listTles.add(ListTile(
+        title: Text(roomData[i]),
+        onTap: () {
+          setState(() {
+            this.expantitle = roomData[i];
+            expansionTile.currentState.collapse();
+          });
+        },
+      ));
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-          margin: EdgeInsets.all(8.0),
-          child: ListView(
-            children: <Widget>[
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
-              ),
-              InkWell(
+      body: Container(
+        margin: EdgeInsets.all(8.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: InkWell(
                   onTap: () {},
                   child: Card(
                       child: Container(
@@ -48,87 +69,59 @@ class _ComplainState extends State<Complain> {
                       ],
                     ),
                   ))),
-              InkWell(
-                  onTap: () {},
-                  child: Card(
-                      child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 2.0),
-                          child: AppExpansionTile(
+            ),
+            InkWell(
+                onTap: () {},
+                child: Card(
+                    child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 2.0),
+                        child: AppExpansionTile(
                             key: expansionTile,
                             title: Text(expantitle),
-                            children: <Widget>[
-                              ListTile(
-                                title: Text("AC 101"),
-                                onTap: () {
-                                  setState(() {
-                                    this.expantitle = "AC 101";
-                                    expansionTile.currentState.collapse();
-                                  });
-                                },
-                              ),
-                              ListTile(
-                                title: Text("AC 102"),
-                                onTap: () {
-                                  setState(() {
-                                    this.expantitle = "AC 102";
-                                    expansionTile.currentState.collapse();
-                                  });
-                                },
-                              ),
-                              ListTile(
-                                title: Text("AC 103"),
-                                onTap: () {
-                                  setState(() {
-                                    this.expantitle = "AC 103";
-                                    expansionTile.currentState.collapse();
-                                  });
-                                },
-                              )
-                            ],
-                          )))),
-              InkWell(
-                  onTap: () {},
-                  child: Card(
-                      child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30.0, vertical: 5.0),
-                    child: Column(
-                      children: <Widget>[
-                        TextField(
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: Strings.enterDetails),
-                        )
-                      ],
-                    ),
-                  ))),
-              Center(
-                child: RaisedButton(
-                  color: Colors.teal,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
+                            children: listTles)))),
+            InkWell(
+                onTap: () {},
+                child: Card(
+                    child: Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 30.0, vertical: 5.0),
+                  child: Column(
                     children: <Widget>[
-                      Icon(Icons.check),
-                      SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                        Strings.btnSubmit,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w500),
-                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: Strings.enterDetails),
+                      )
                     ],
                   ),
-                  onPressed: () {},
-                  splashColor: Colors.tealAccent,
+                ))),
+            Center(
+              child: RaisedButton(
+                color: Colors.teal,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Icon(Icons.check),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      Strings.btnSubmit,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
                 ),
+                onPressed: () {},
+                splashColor: Colors.tealAccent,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      );
+      ),
+    );
   }
 }
