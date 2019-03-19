@@ -82,4 +82,8 @@ class GenerateString {
   static String genStringDeleteRoom(String roomid) {
     return UrlLink.url + '?method=deleteRoom&roomid='+roomid;
   }
+
+  static String genStringDeleteComplain(String complainid) {
+    return UrlLink.url + '?method=deleteComplain&complainid='+complainid;
+  }
 }

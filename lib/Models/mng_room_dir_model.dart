@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_app/Classes/gen_string.dart';
 import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/room.dart';

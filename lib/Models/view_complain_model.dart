@@ -1,10 +1,26 @@
 import 'package:flutter_app/Classes/complain.dart';
 import 'package:flutter_app/Classes/gen_string.dart';
 import 'package:flutter_app/Classes/preferances.dart';
+import 'package:flutter_app/Classes/strings.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ViewComplainModel {
+
+  Future<void> deleteComplain(String id) async {
+    String url = GenerateString.genStringDeleteComplain(id);
+    http.Response response;
+    try {
+      response = await http.get(
+        Uri.encodeFull(url),
+      );
+    } catch (e) {
+      print(e.toString());
+    }
+    if (response.body.toString() == Strings.msgSuccess) {
+      print(Strings.msgSuccess);
+    }
+  }
   
 
   Future<List<Complain>> getData() async {
