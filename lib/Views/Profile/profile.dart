@@ -1,7 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Classes/preferances.dart';
 import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
+import 'package:flutter_app/CustomWidgets/Common/get_image.dart';
 import 'package:flutter_app/Views/login_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './change_password_view.dart';
@@ -13,9 +15,17 @@ class Profile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<Profile> {
+  File _image;
+  GetImage getImage;
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
   SharedPreferences prefs;
+
+  @override
+    void initState() {
+      getImage=GetImage(context);
+      super.initState();
+    }
 
   void showSnakebar() {
     final snackbar = new SnackBar(
@@ -157,7 +167,10 @@ class _UserProfileState extends State<Profile> {
                   ),
                 ))),
             InkWell(
-                onTap: () {},
+                onTap: () {
+                  getImage.showDialouge();
+                  _image=getImage.getFile();
+                },
                 child: Card(
                     child: Container(
                   padding: const EdgeInsets.all(20.0),
