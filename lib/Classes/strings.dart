@@ -37,7 +37,7 @@ class Strings {
   static const String confirmChpassHint = 'Confirm new Password';
   static const String passNotMatch = "Passwords not match";
 
-  static const String selectAc = "Select AC";
+  static const String selectRoom = "Select Room";
   static const String complain = "Complain";
   static const String enterDetails = 'Enter Details';
   static const String btnSubmit = "Submit";
