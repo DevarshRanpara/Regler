@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Classes/institute.dart';
 import 'package:flutter_app/Classes/preferances.dart';
+import 'package:flutter_app/Classes/room.dart';
 import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Common/expantion_tile.dart';
-import 'package:flutter_app/Models/mng_room_dir_model.dart';
+import 'package:flutter_app/Models/complain_view_model.dart';
 
 class Complain extends StatefulWidget {
   @override
@@ -13,35 +13,63 @@ class Complain extends StatefulWidget {
 class _ComplainState extends State<Complain> {
   String expantitle = Strings.selectRoom;
   final GlobalKey<AppExpansionTileState> expansionTile = new GlobalKey();
-  MngRoomDirModel model = MngRoomDirModel();
+  AddComplainModel model = AddComplainModel();
   List<Widget> listTles = List<Widget>();
+  final formKey = GlobalKey<FormState>();
+  final scaffoldKey = new GlobalKey<ScaffoldState>();
+  String complain;
+  int rid = -1;
   Widget mainUI;
 
   @override
   void initState() {
-    int n = Preferances.institutes.length;
+    int n = Preferances.rooms.length;
 
     for (int i = 0; i < n; i++) {
-      _genListTiles(Preferances.institutes[i]);
+      _genListTiles(Preferances.rooms[i]);
     }
     super.initState();
   }
 
-  _genListTiles(Institute institute) {
+  _genListTiles(Room room) {
     listTles.add(ListTile(
-      title: Text(institute.name),
+      title: Text(room.name),
       onTap: () {
         setState(() {
-          this.expantitle = institute.name;
+          this.expantitle = room.name;
+          rid = room.id;
           expansionTile.currentState.collapse();
         });
       },
     ));
   }
 
+  _submit()
+  {
+    final form = formKey.currentState;
+    if(form.validate()){
+      form.save();
+      if(rid==-1){
+        showSnakbar("Please select room");
+      }
+      else{
+        model.addComplain(rid.toString(), complain);
+      }
+    }
+  }
+
+    showSnakbar(String msg) {
+    final snackbar = new SnackBar(
+      content: new Text(msg),
+      backgroundColor: Colors.red,
+    );
+    scaffoldKey.currentState.showSnackBar(snackbar);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       body: Container(
           margin: EdgeInsets.all(8.0),
           child: ListView(
@@ -92,18 +120,30 @@ class _ComplainState extends State<Complain> {
                   onTap: () {},
                   child: Card(
                       child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30.0, vertical: 5.0),
-                    child: Column(
-                      children: <Widget>[
-                        TextField(
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: Strings.enterDetails),
-                        )
-                      ],
-                    ),
-                  ))),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 30.0, vertical: 5.0),
+                          child: Form(
+                            key: formKey,
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: Strings.enterDetails),
+
+                                validator: (val){
+                                  if(val.length==0)
+                                  {
+                                    return 'Enter complain';
+                                  }
+                                  else if(val.length>50){
+                                    return 'Max lenght is 50';
+                                  }
+                                  else{
+                                    return null;
+                                  }
+                                },
+                                onSaved: (val) => complain = val,
+                            ),
+                          )))),
               Center(
                 child: RaisedButton(
                   color: Colors.teal,
@@ -123,7 +163,9 @@ class _ComplainState extends State<Complain> {
                       ),
                     ],
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    _submit();
+                  },
                   splashColor: Colors.tealAccent,
                 ),
               ),

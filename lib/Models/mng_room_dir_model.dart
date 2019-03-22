@@ -91,6 +91,7 @@ class MngRoomDirModel {
       rooms.add(room);
     }
 
+    Preferances.rooms=rooms;
     return rooms;
   }
 }

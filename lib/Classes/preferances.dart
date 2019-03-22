@@ -1,4 +1,5 @@
 import 'package:flutter_app/Classes/institute.dart';
+import 'package:flutter_app/Classes/room.dart';
 
 class Preferances {
   static int id;
@@ -10,4 +11,5 @@ class Preferances {
   static String instituteid;
   static bool isLoggedin;
   static List<Institute> institutes = List();
+  static List<Room> rooms = List();
 }

@@ -86,4 +86,8 @@ class GenerateString {
   static String genStringDeleteComplain(String complainid) {
     return UrlLink.url + '?method=deleteComplain&complainid='+complainid;
   }
+
+    static String genStringAddComplain(String uid,String rid,String complain) {
+    return UrlLink.url + '?method=addComplain&userid='+uid+'&roomid='+rid+'&complain='+complain;
+  }
 }
