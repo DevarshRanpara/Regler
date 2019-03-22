@@ -1,4 +1,3 @@
-//import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_app/Classes/institute.dart';
 
 class Preferances {

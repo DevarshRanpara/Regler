@@ -4,6 +4,7 @@ import 'package:flutter_app/Classes/strings.dart';
 import 'package:flutter_app/CustomWidgets/Common/circular_image.dart';
 import 'package:flutter_app/CustomWidgets/Common/loading_animation.dart';
 import 'package:flutter_app/CustomWidgets/Common/usage_report_user.dart';
+import 'package:flutter_app/Models/manage_users_model.dart';
 import 'package:flutter_app/Models/view_usage_user_model.dart';
 import 'package:flutter_app/Views/Profile/profile.dart';
 import './usage_detail_view.dart';
@@ -22,6 +23,14 @@ class HomePageView extends StatefulWidget {
 
 class _HomePageViewState extends State<HomePageView> {
   ViewUsageUserModel model = ViewUsageUserModel();
+
+  ManageUsersModel listins = ManageUsersModel();
+
+  @override
+    void initState() {
+      listins.getInstituteList();
+      super.initState();
+    }
 
   void _gotoProfile() {
     Navigator.push(
