@@ -1,4 +1,7 @@
 # Regler
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e00711613a664d67bd93d5d24cc230d7)](https://www.codacy.com/app/DevarshRanpara/Regler?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DevarshRanpara/Regler&amp;utm_campaign=Badge_Grade)
+
 ## Device managament system App
 
 Mobile side application for managing the device like AC.
