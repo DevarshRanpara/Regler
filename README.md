@@ -1,5 +1,5 @@
 # Regler
-## Device managament system App.
+## Device managament system App
 
 Mobile side application for managing the device like AC.
 
