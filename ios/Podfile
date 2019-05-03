@@ -12,7 +12,7 @@ project 'Runner', {
 
 def parse_KV_file(file, separator='=')
   file_abs_path = File.expand_path(file)
-  if !File.exists? file_abs_path
+  unless File.exists? file_abs_path
     return [];
   end
   pods_ary = []
